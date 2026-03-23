@@ -1,1595 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buran Ghati — Getting Lost to Find Myself</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --forest-deep:   #1a2e1a;
-  --forest-mid:    #2d4a2d;
-  --forest-light:  #3d6b3d;
-  --moss:          #5a7a3a;
-  --fern:          #7aaa52;
-  --sage:          #a8c490;
-  --meadow:        #c8ddb0;
-  --mist:          #e6f0de;
-  --snow-white:    #f4f9f0;
-  --parchment:     #f0ece0;
-  --bark:          #6b5a40;
-  --stone:         #8a8070;
-  --gold:          #c9a84c;
-  --ember:         #c0643a;
-  --ice:           #b8d4e0;
-  --ink:           #181c14;
-  --body-text:     #2a3020;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>She Explores — Adventure Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0c0c; --text: #f0ece4; --muted: #7a7570; --mycolour:#ffff;
+      --border: rgba(255,255,255,0.07);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-ui: 'Josefin Sans', sans-serif;
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-ui); font-weight: 300; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 2px; }
 
-  --nav-height: 64px;
-}
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 66px; padding: 0 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12,12,12,0.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); transition: background 0.4s;
+    }
+    .nav-logo { font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.85rem); font-weight: 300; letter-spacing: 0.05em; }
+    .nav-logo em { font-style: italic; color: #6bbb82; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+    .mob-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); padding: 2rem 6vw 2.5rem; flex-direction: column; gap: 1.5rem; border-bottom: 1px solid var(--border); }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+    /* HERO */
+    .hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 6vw; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 55% at 50% 35%, rgba(20,55,32,0.28) 0%, transparent 65%), radial-gradient(ellipse 50% 70% at 75% 75%, rgba(10,30,55,0.22) 0%, transparent 55%), #0c0c0c; }
+    .hero-bg::after { content:''; position:absolute; inset:0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+    .hero-eyebrow { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: #6bbb82; margin-bottom: 1.6rem; animation: up 0.9s ease both; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(4.5rem,13vw,11rem); font-weight: 300; line-height: 0.9; animation: up 0.9s 0.12s ease both; }
+    .hero-title em { font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(240,236,228,0.45); }
+    .hero-sub { margin-top: 1.8rem; font-size: clamp(0.68rem,1.4vw,0.8rem); letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); animation: up 0.9s 0.24s ease both; }
+    .hero-scroll { position: absolute; bottom: 2.8rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: up 0.9s 0.5s ease both; }
+    .hero-scroll span { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom,var(--muted),transparent); animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:0.35;} 50%{opacity:1;} }
+    @keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
 
-body {
-  background: var(--snow-white);
-  color: var(--body-text);
-  font-family: 'Lora', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.9;
-  overflow-x: hidden;
-}
+    /* QUOTE */
+    .quote-wrap { padding: 5.5rem 6vw; text-align: center; background: #090909; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .quote-wrap blockquote { font-family: var(--font-display); font-size: clamp(1.5rem,3.8vw,2.6rem); font-weight: 300; font-style: italic; line-height: 1.5; color: rgba(240,236,228,0.7); max-width: 840px; margin: 0 auto 1.1rem; }
+    .quote-wrap cite { font-size: 0.63rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); font-style: normal; }
 
-body::before {
-  content:'';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse at 10% 20%, rgba(90,122,58,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse at 90% 80%, rgba(45,74,45,0.05) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
+    /* TREKS SECTION */
+    .treks-section { padding: clamp(5rem,9vw,8rem) 6vw; }
+    .treks-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem; padding-bottom: 1.8rem; border-bottom: 1px solid var(--border); }
+    .treks-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+    .treks-title { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,4rem); font-weight: 300; line-height: 1; }
+    .treks-title em { font-style: italic; }
+    .treks-count { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding-bottom: 0.3rem; }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top:0; left:0; right:0; z-index:200;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 2.5rem;
-  height: var(--nav-height);
-  background: rgba(26,46,26,0.97);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(122,170,82,0.2);
-}
-.nav-brand {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--sage);
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  flex-shrink: 0;
-}
-.nav-links { display:flex; gap:2rem; list-style:none; }
-.nav-links a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(168,196,144,0.7);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--fern); }
+    /* GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%,340px),1fr)); gap: 1.8rem; }
 
-/* ── HAMBURGER BUTTON ── */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 8px;
-  gap: 5px;
-  border-radius: 4px;
-  transition: background 0.2s;
-  -webkit-tap-highlight-color: transparent;
-}
-.hamburger:hover { background: rgba(122,170,82,0.12); }
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--sage);
-  border-radius: 2px;
-  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1),
-              opacity 0.25s ease,
-              background 0.2s;
-  transform-origin: center;
-}
-/* Animated state when open */
-.hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-  background: var(--fern);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-  background: var(--fern);
-}
+    /* CARD BASE */
+    .card { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--border); cursor: pointer; transition: transform 0.38s var(--ease), box-shadow 0.38s var(--ease), border-color 0.38s var(--ease); text-decoration: none; color: inherit; opacity: 0; transform: translateY(28px); }
+    .card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease), box-shadow 0.38s var(--ease), border-color 0.38s var(--ease); }
+    .card:hover { transform: translateY(-7px); }
+    .card-img { position: relative; height: 250px; overflow: hidden; }
+    .card-img img { transition: transform 0.55s var(--ease); }
+    .card:hover .card-img img { transform: scale(1.07); }
+    .placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
+    .placeholder svg { opacity: 0.2; }
+    .placeholder p { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.25; }
+    .badge { position: absolute; top: 1rem; left: 1rem; font-size: 0.56rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.28rem 0.75rem; border-radius: 100px; backdrop-filter: blur(8px); }
+    .card-body { padding: 1.5rem 1.7rem 1.8rem; display: flex; flex-direction: column; flex: 1; }
+    .card-meta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.9rem; }
+    .meta-item { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
+    .card-title { font-family: var(--font-display); font-size: clamp(1.35rem,3vw,1.65rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.7rem; }
+    .card-desc { font-size: 0.79rem; line-height: 1.75; opacity: 0.5; flex: 1; }
+    .card-cta { margin-top: 1.4rem; display: flex; align-items: center; justify-content: space-between; }
+    .cta-link { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 0.45rem; transition: gap 0.25s; }
+    .card:hover .cta-link { gap: 0.85rem; }
+    .arrow { display: inline-block; transition: transform 0.25s; }
+    .card:hover .arrow { transform: translateX(4px); }
+    .status-tag { font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 100px; opacity: 0.65; }
 
-/* ── MOBILE MENU DRAWER ── */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: var(--nav-height);
-  left: 0; right: 0;
-  z-index: 199;
-  background: rgba(18,32,18,0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(122,170,82,0.18);
-  transform: translateY(-8px);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1),
-              opacity 0.3s ease;
-  padding: 0.5rem 0 1rem;
-}
-.mobile-menu.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: all;
-}
-.mobile-menu ul {
-  list-style: none;
-  padding: 0.5rem 0;
-}
-.mobile-menu ul li {
-  border-bottom: 1px solid rgba(90,122,58,0.1);
-}
-.mobile-menu ul li:last-child { border-bottom: none; }
-.mobile-menu ul li a {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.8rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(168,196,144,0.75);
-  text-decoration: none;
-  transition: color 0.2s, background 0.2s, padding-left 0.2s;
-}
-.mobile-menu ul li a:hover,
-.mobile-menu ul li a:active {
-  color: var(--fern);
-  background: rgba(122,170,82,0.07);
-  padding-left: 2.4rem;
-}
-.mobile-menu-footer {
-  padding: 0.8rem 1.8rem 0.2rem;
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-size: 0.78rem;
-  color: rgba(168,196,144,0.3);
-}
+    /* GREEN (Buranghati) */
+    .theme-green { background: linear-gradient(145deg,#0e2218,#0c1b13); border-color: rgba(74,158,96,0.15); }
+    .theme-green:hover { border-color: rgba(74,158,96,0.42); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(74,158,96,0.2); }
+    .theme-green .placeholder { background: linear-gradient(145deg,#0e2218,#162d1e); }
+    .theme-green .badge { background: rgba(74,158,96,0.18); color: #ffffff; border: 1px solid rgba(74,158,96,0.3); }
+    .theme-green .cta-link { color: #6bbb82; }
+    .theme-green .status-tag { background: rgba(74,158,96,0.1); color: #6bbb82; border: 1px solid rgba(74,158,96,0.2); }
 
-/* ── INSTAGRAM LINK ── */
-.insta-link{
-  margin-top:20px;
-  font-size:12px;
-  color:#9fbf9f;
-  font-style: italic;
-}
-.insta-link a{
-  color:#b7d9b7;
-  text-decoration:none;
-}
-.insta-link a:hover{ text-decoration:underline; }
+    /* SNOW (Kedarkanta) */
+    .theme-snow { background:  #466985; color: #ffffff; border-color: rgba(0,0,0,0.08); box-shadow: 0 2px 18px rgba(245, 244, 244, 0.06); }
+    .theme-snow:hover { border-color: rgba(0,0,0,0.18); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.15), 0 0 38px -14px rgba(180,195,210,0.4); }
+    .theme-snow .placeholder { background: linear-gradient(145deg,#e0e0da,#eaeae4); }
+    .theme-snow .badge { background: rgba(42,42,38,0.07); color: #ffffff; border: 1px solid rgba(42,42,38,0.15); }
+    .theme-snow .meta-item { color: #ffffff; opacity: 1; }
+    .theme-snow .card-title { color: #ffffff; }
+    .theme-snow .card-desc { color: #ffffff; opacity: 1; }
+    .theme-snow .cta-link { color: #e1e1d8; }
+    .theme-snow .status-tag { background: rgba(42,42,38,0.06); color: #e1e1d8; border: 1px solid rgba(42,42,38,0.12); }
 
-/* ── HERO ── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  height: 100svh;
-  display: flex; align-items: flex-end;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url(images/meonmountain.JPG) center center / cover no-repeat;
-  transform: scale(1.04);
-  animation: slowZoom 18s ease-out forwards;
-}
-@keyframes slowZoom {
-  from { transform: scale(1.04); }
-  to   { transform: scale(1.0); }
-}
-.hero-overlay {
-  position: absolute; inset:0;
-  background: linear-gradient(
-    160deg,
-    rgba(26,46,26,0.15) 0%,
-    transparent 35%,
-    rgba(26,46,26,0.0) 55%,
-    rgba(15,25,10,0.88) 100%
-  );
-}
-.hero-vine {
-  position: absolute;
-  top: 0; left: 0;
-  width: 320px; height: 100%;
-  background: linear-gradient(to right, rgba(26,46,26,0.35), transparent);
-  pointer-events: none;
-}
-.hero-content {
-  position: relative; z-index:2;
-  padding: 3rem 4rem 5rem;
-  max-width: 820px;
-}
-.hero-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem; font-weight:500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fern);
-  margin-bottom: 1rem;
-  display: block;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.3s ease forwards;
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 6.5vw, 5.8rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.02;
-  margin-bottom: 1.2rem;
-  text-shadow: 0 3px 30px rgba(0,0,0,0.5);
-  opacity: 0;
-  animation: fadeUp 0.9s 0.5s ease forwards;
-}
-.hero-title em { font-style: italic; color: var(--meadow); }
-.hero-sub {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  color: rgba(255,255,255,0.72);
-  font-size: 1.1rem;
-  max-width: 520px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.7s ease forwards;
-}
-.hero-meta {
-  margin-top: 2rem;
-  display: flex; gap: 2rem; flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.9s ease forwards;
-}
-.meta-pill {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.76rem;
-  color: rgba(255,255,255,0.55);
-  display: flex; align-items: center; gap: 0.4rem;
-}
-.meta-pill span { color: var(--meadow); font-weight:500; }
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(20px); }
-  to   { opacity:1; transform: none; }
-}
+    /* SKY (Kuari & Pangarchula) */
+    .theme-sky { background: linear-gradient(145deg,#071626,#08121e); border-color: rgba(74,159,212,0.15); }
+    .theme-sky:hover { border-color: rgba(74,159,212,0.42); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(74,159,212,0.2); }
+    .theme-sky .placeholder { background: linear-gradient(145deg,#071626,#0e2035); }
+    .theme-sky .badge { background: rgba(74,159,212,0.15); color: #ffffff; border: 1px solid rgba(74,159,212,0.28); }
+    .theme-sky .cta-link { color: #5ab0e0; }
+    .theme-sky .status-tag { background: rgba(74,159,212,0.1); color: #5ab0e0; border: 1px solid rgba(74,159,212,0.2); }
 
-/* ── STATS BAR ── */
-.stats-bar {
-  display: grid;
-  background: var(--forest-deep);
-  grid-template-columns: repeat(4,1fr);
-  border-top: 3px solid var(--moss);
-}
-.stat-item {
-  padding: 2rem 1.5rem;
-  text-align: center;
-  border-right: 1px solid rgba(90,122,58,0.2);
-  position: relative;
-  overflow: hidden;
-}
-.stat-item::before {
-  content: '';
-  position: absolute; inset:0;
-  background: radial-gradient(ellipse at center bottom, rgba(90,122,58,0.12), transparent 70%);
-}
-.stat-item:last-child { border-right: none; }
-.stat-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #e8f4f8;
-  line-height:1;
-  margin-bottom: 0.35rem;
-}
-.stat-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #e8f4f8;
-}
+    /* UPCOMING SLOT */
+    .card-upcoming { border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1); background: rgba(255,255,255,0.015); padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; min-height: 220px; opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
+    .card-upcoming.visible { opacity: 1; transform: translateY(0); }
+    .card-upcoming .up-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .card-upcoming .up-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; opacity: 0.3; }
+    .card-upcoming .up-note { font-size: 0.72rem; opacity: 0.25; margin-top: 0.2rem; }
 
-/* ── LAYOUT ── */
-.container { max-width:800px; margin:0 auto; padding:0 2rem; }
-.container-wide { max-width:1120px; margin:0 auto; padding:0 2rem; }
+    /* FOOTER */
+    footer { padding: 4rem 6vw 0; background: #080808; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+    .ft-brand-name { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+    .ft-brand-name em { font-style: italic; color: #6bbb82; }
+    footer p, footer a { font-size: 0.75rem; line-height: 1.8; color:#dedddd ; }
+    .ft-col h4 { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(241, 240, 237, 0.62); margin-bottom: 1.1rem; }
+    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .ft-col ul a:hover { color: var(--mycolour) }
+    .ft-bottom { margin-top: 3rem; padding: 1.4rem 6vw; background: #080808; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .ft-bottom p { font-size: 0.63rem; letter-spacing: 0.1em; color: var(--mycolour); }
 
-/* ── DECORATIVE DIVIDER ── */
-.leaf-divider {
-  text-align: center;
-  color: var(--sage);
-  font-size: 1.4rem;
-  letter-spacing: 0.5rem;
-  margin: 1.5rem 0;
-  opacity: 0.5;
-}
-
-/* ── INTRO ── */
-.intro-section { padding: 6rem 0 2rem; }
-
-.section-eyebrow {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.68rem; font-weight:500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 1.2rem;
-  display: flex; align-items: center; gap: 0.7rem;
-}
-.section-eyebrow::before {
-  content: '';
-  width: 28px; height: 1px;
-  background: var(--fern);
-  display: inline-block;
-}
-
-.drop-cap::first-letter {
-  font-family: 'Playfair Display', serif;
-  font-size: 5.5rem; font-weight:900;
-  float: left;
-  line-height: 0.72;
-  margin: 0.1em 0.1em 0 0;
-  color: var(--forest-light);
-  text-shadow: 2px 4px 12px rgba(45,74,45,0.2);
-}
-
-p { margin-bottom:1.6rem; color: var(--body-text); }
-
-/* ── PULL QUOTE ── */
-.pull-quote {
-  position: relative;
-  margin: 3.5rem 0;
-  padding: 1.8rem 2.5rem 1.8rem 3rem;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.35rem;
-  line-height: 1.55;
-  color: var(--forest-mid);
-  background: linear-gradient(135deg, rgba(90,122,58,0.07), rgba(168,196,144,0.1));
-  border-left: 4px solid var(--moss);
-  border-radius: 0 8px 8px 0;
-}
-.pull-quote::before {
-  content: '❝';
-  position: absolute;
-  left: 0.8rem; top: 0.5rem;
-  font-size: 2.5rem;
-  color: var(--moss);
-  opacity: 0.35;
-  line-height: 1;
-}
-
-/* ── IMAGES ── */
-.full-bleed {
-  width: 100%;
-  margin: 4rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.full-bleed img {
-  width: 100%; height: 540px;
-  object-fit: cover;
-  display: block;
-  transition: transform 8s ease;
-}
-.full-bleed:hover img { transform: scale(1.02); }
-.full-bleed-tall img { height: 680px; }
-
-.img-caption {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.76rem;
-  color: var(--stone);
-  letter-spacing: 0.04em;
-  padding: 0.8rem 1.4rem;
-  background: var(--mist);
-  border-left: 3px solid var(--sage);
-  font-style: italic;
-}
-
-/* ── FLOAT ── */
-.img-float-right {
-  float: right;
-  margin: 0.5rem 0 2rem 2.5rem;
-  width: 330px;
-}
-.img-float-left {
-  float: left;
-  margin: 0.5rem 2.5rem 2rem 0;
-  width: 330px;
-}
-.img-float-right img,
-.img-float-left img {
-  width: 100%; height: 440px;
-  object-fit: cover; display:block;
-  border-radius: 2px;
-  box-shadow: 0 8px 32px rgba(26,46,26,0.18);
-}
-.clearfix::after { content:''; display:table; clear:both; }
-
-/* ── DAY HEADERS ── */
-.day-header {
-  display: flex; align-items: baseline; gap: 1.2rem;
-  margin: 5.5rem 0 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(90,122,58,0.25);
-}
-.day-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5rem; font-weight:900;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--sage);
-  line-height:1;
-  flex-shrink:0;
-}
-.day-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem; font-weight:700;
-  color: var(--forest-deep);
-  line-height:1.2;
-}
-.day-altitude {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.73rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--stone);
-  margin-top: 0.25rem;
-}
-
-/* ── GREEN NATURE BREAK ── */
-.nature-break {
-  background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest-mid) 50%, var(--forest-light) 100%);
-  padding: 5rem 0;
-  margin: 5rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.nature-break::before {
-  content: '';
-  position: absolute; inset:0;
-  background:
-    radial-gradient(ellipse at 15% 50%, rgba(122,170,82,0.15) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 20%, rgba(90,122,58,0.2) 0%, transparent 55%);
-}
-.nature-break::after {
-  content: '🌿';
-  position: absolute;
-  right: 5%; top: 50%;
-  transform: translateY(-50%);
-  font-size: 8rem;
-  opacity: 0.08;
-  pointer-events: none;
-}
-.nature-break .container { position: relative; z-index:1; }
-.nature-break .section-eyebrow { color: var(--fern); }
-.nature-break .section-eyebrow::before { background: var(--fern); }
-.nature-break h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem; font-weight:700;
-  color: #fff;
-  margin: 0.5rem 0 2rem;
-  line-height:1.25;
-}
-.nature-break p { color: rgba(200,221,176,0.85); }
-.nature-break .pull-quote {
-  border-left-color: var(--fern);
-  color: var(--meadow);
-  background: rgba(122,170,82,0.1);
-}
-.nature-break .pull-quote::before { color: var(--fern); }
-
-/* ── PHOTO MOSAIC ── */
-.photo-mosaic {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 1rem;
-  margin: 4rem 0;
-}
-.mosaic-main img {
-  width:100%; height: 720px;
-  object-fit:cover; display:block;
-}
-.mosaic-side { display:flex; flex-direction:column; gap:1rem; }
-.mosaic-side img {
-  width:100%; height: 352px;
-  object-position: left center;
-  object-fit:cover; display:block;
-}
-
-/* ── TWO COL GRID ── */
-.two-col-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin: 4rem 0;
-}
-.grid-img img {
-  width:100%; height: 340px;
-  object-fit:cover; display:block; object-position: center;
-  box-shadow: 0 6px 24px rgba(26,46,26,0.15);
-}
-
-/* ── SUMMIT BLOCK ── */
-.summit-block {
-  background: var(--ink);
-  padding: 6rem 0;
-  margin: 5rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.summit-block::before {
-  content: '15,073';
-  position: absolute;
-  right: -1rem; top: -2rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 11rem; font-weight:900;
-  color: rgba(90,122,58,0.06);
-  line-height:1; pointer-events:none;
-  white-space: nowrap;
-}
-.summit-block::after {
-  content:'';
-  position: absolute;
-  bottom: 0; left:0; right:0; height: 4px;
-  background: linear-gradient(to right, var(--forest-light), var(--fern), var(--forest-light));
-}
-.summit-block .section-eyebrow { color: var(--fern); }
-.summit-block .section-eyebrow::before { background: var(--fern); }
-.summit-block h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem; font-weight:700;
-  color: #fff;
-  margin: 0.5rem 0 2rem;
-  line-height:1.2;
-}
-.summit-block p { color: rgba(200,221,176,0.8); }
-.summit-block .pull-quote {
-  border-left-color: var(--fern);
-  color: var(--sage);
-  background: rgba(90,122,58,0.12);
-}
-.summit-block .pull-quote::before { color: var(--fern); }
-.summit-img { margin-top: 3rem; position: relative; }
-.summit-img img {
-  width:100%; height: 500px;
-  object-fit:cover; display:block;
-}
-.summit-badge {
-  position: absolute; bottom:1.5rem; right:1.5rem;
-  background: rgba(26,46,26,0.9);
-  border: 1px solid var(--fern);
-  padding: 0.8rem 1.3rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fern);
-}
-
-/* ── STARRY NIGHT ── */
-.stars-section {
-  position: relative;
-  min-height: 500px;
-  display: flex; align-items: center;
-  margin: 4rem 0;
-  overflow: hidden;
-}
-.stars-bg {
-  position: absolute; inset:0;
-  background: url(images/starrynight.JPG) center center / cover no-repeat;
-}
-.stars-overlay {
-  position: absolute; inset:0;
-  background: linear-gradient(to right, rgba(10,20,10,0.88) 0%, rgba(10,20,10,0.5) 100%);
-}
-.stars-content {
-  position: relative; z-index:2;
-  padding: 4rem 3.5rem;
-  max-width: 620px;
-}
-.stars-content .section-eyebrow { color: var(--fern); }
-.stars-content .section-eyebrow::before { background: var(--fern); }
-.stars-content h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; font-weight:700;
-  color: #fff;
-  margin: 0.5rem 0 1.5rem;
-  line-height:1.3;
-}
-.stars-content p { color: rgba(200,221,176,0.75); }
-
-/* ── ITINERARY ── */
-.itinerary-section {
-  background: var(--forest-deep);
-  padding: 5rem 0;
-  margin: 4rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.itinerary-section::before {
-  content:'';
-  position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse at 0% 0%, rgba(122,170,82,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 100%, rgba(61,107,61,0.15) 0%, transparent 50%);
-  pointer-events:none;
-}
-.itinerary-section .container { position:relative; z-index:1; }
-.itinerary-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; font-weight:700;
-  color: #fff;
-  margin-bottom: 0.3rem;
-}
-.iti-subtitle {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  color: rgba(168,196,144,0.55);
-  font-size: 0.95rem;
-  margin-bottom: 2.5rem;
-}
-.iti-cards { display:flex; flex-direction:column; gap:0.7rem; }
-.iti-card {
-  display: grid;
-  grid-template-columns: 90px 1fr 110px 90px;
-  align-items: center;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: default;
-}
-.iti-card:hover {
-  transform: translateX(5px);
-  box-shadow: -4px 0 0 var(--fern), 0 4px 20px rgba(0,0,0,0.3);
-}
-.iti-card-day {
-  padding: 1.1rem 0.8rem;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  display: flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  min-height: 80px;
-}
-.iti-card-day .day-num { font-size:1.5rem; font-weight:700; line-height:1; }
-.iti-card-day .day-word {
-  font-family:'DM Sans',sans-serif; font-size:0.58rem;
-  font-weight:500; letter-spacing:0.14em;
-  text-transform:uppercase; margin-top:0.15rem; opacity:0.7;
-}
-.iti-card-main {
-  padding: 1rem 1.4rem;
-  background: rgba(255,255,255,0.04);
-  border-left: 1px solid rgba(255,255,255,0.07);
-  border-right: 1px solid rgba(255,255,255,0.07);
-}
-.iti-card-route {
-  font-family:'DM Sans',sans-serif; font-size:0.88rem;
-  font-weight:600; color:#fff; margin-bottom:0.2rem;
-}
-.iti-card-highlight {
-  font-family:'Lora',serif; font-style:italic;
-  font-size:0.77rem; color:rgba(168,196,144,0.6); line-height:1.4;
-}
-.iti-card-alt {
-  padding:1rem; text-align:center;
-  font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:600;
-  border-left:1px solid rgba(255,255,255,0.07);
-  background:rgba(0,0,0,0.12);
-}
-.iti-card-km {
-  padding:1rem; text-align:center;
-  font-family:'DM Sans',sans-serif; font-size:0.78rem;
-  color:rgba(200,221,176,0.5);
-  border-left:1px solid rgba(255,255,255,0.07);
-  background:rgba(0,0,0,0.08);
-}
-.iti-card-0 .iti-card-day { background:#3b4a2e; color:#a8c490; }
-.iti-card-1 .iti-card-day { background:#2e5c32; color:#8ed68e; }
-.iti-card-1 .iti-card-alt { color:#6dbf6d; }
-.iti-card-2 .iti-card-day { background:#3a6b2e; color:#9dda7a; }
-.iti-card-2 .iti-card-alt { color:#8bcf65; }
-.iti-card-3 .iti-card-day { background:#2e5a50; color:#7dcfbf; }
-.iti-card-3 .iti-card-alt { color:#5ec4b0; }
-.iti-card-4 .iti-card-day { background:#2b4a6a; color:#80b4d8; }
-.iti-card-4 .iti-card-alt { color:#6aadd4; }
-.iti-card-summit {
-  border:1px solid rgba(201,168,76,0.4);
-  box-shadow: 0 0 0 1px rgba(201,168,76,0.1), 0 8px 32px rgba(0,0,0,0.3);
-}
-.iti-card-summit .iti-card-day { background:linear-gradient(160deg,#8a6520,#c9a84c); color:#fff; }
-.iti-card-summit .iti-card-main { background:rgba(201,168,76,0.07); }
-.iti-card-summit .iti-card-route { color:var(--gold); }
-.iti-card-summit .iti-card-highlight { color:rgba(201,168,76,0.65); }
-.iti-card-summit .iti-card-alt { color:var(--gold); }
-.iti-card-summit:hover { box-shadow:-4px 0 0 var(--gold), 0 8px 32px rgba(0,0,0,0.4); }
-.iti-card-6 .iti-card-day { background:#5a3e2b; color:#d4a06a; }
-.iti-card-6 .iti-card-alt { color:#c99060; }
-.iti-header {
-  display:grid; grid-template-columns:90px 1fr 110px 90px;
-  padding:0.3rem 0 0.7rem; margin-bottom:0.2rem;
-  border-bottom:1px solid rgba(90,122,58,0.25);
-}
-.iti-header span {
-  font-family:'DM Sans',sans-serif; font-size:0.6rem; font-weight:500;
-  letter-spacing:0.18em; text-transform:uppercase;
-  color:rgba(168,196,144,0.35); text-align:center;
-}
-.iti-header span:nth-child(2) { text-align:left; padding-left:1.4rem; }
-
-/* ── EXTRA PHOTO SLOTS ── */
-.add-photos {
-  padding: 5rem 0;
-  background: linear-gradient(170deg, #0e1a0e 0%, #162216 100%);
-  position: relative; overflow:hidden;
-}
-.add-photos::before {
-  content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(90,122,58,0.14) 0%, transparent 60%);
-  pointer-events:none;
-}
-.add-photos .container { position:relative; z-index:1; }
-.add-photos .section-eyebrow { color: var(--fern); }
-.add-photos .section-eyebrow::before { background: var(--fern); }
-.add-photos h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; font-weight:700;
-  color: #fff;
-  margin-bottom: 0.4rem;
-  line-height: 1.2;
-}
-.add-photos h2 em { color: var(--fern); font-style: italic; }
-.add-photos .hint {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.84rem;
-  color: rgba(168,196,144,0.5);
-  margin-bottom: 2.5rem;
-  font-style: italic;
-}
-.photo-slots {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 1rem;
-}
-.photo-slot {
-  height: 280px;
-  display: flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  color: var(--stone);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  text-align:center; padding:1rem;
-  background: rgba(255,255,255,0.6);
-  transition: border-color 0.25s, background 0.25s, transform 0.2s;
-  position: relative; overflow:hidden;
-  border-radius: 3px;
-}
-.photo-slot:hover {
-  background: rgba(90,122,58,0.05);
-  transform: translateY(-2px);
-}
-.photo-slot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  position: absolute;
-  top: 0; left: 0;
-  z-index: 0;
-}
-.slot-icon { font-size:2rem; margin-bottom:0.5rem; opacity:0.4; }
-.slot-label { font-style:italic; opacity:0.55; margin-top:0.25rem; font-size:0.72rem; }
-
-/* ── AUTHOR ── */
-.author-section {
-  background: linear-gradient(160deg, var(--forest-deep) 0%, #0f1e0f 100%);
-  padding: 6rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.author-section::before {
-  content:'';
-  position: absolute; inset:0;
-  background:
-    radial-gradient(ellipse at 0% 100%, rgba(90,122,58,0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 0%, rgba(61,107,61,0.15) 0%, transparent 50%);
-}
-.author-inner {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 5rem; align-items: start;
-  position: relative; z-index:1;
-}
-.author-photo { position:relative; }
-.author-photo img {
-  width:100%; height: 400px;
-  object-fit:cover; object-position: center top;
-  display:block;
-  filter: saturate(0.9);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
-}
-.author-photo::after {
-  content:'';
-  position:absolute;
-  inset: 10px -10px -10px 10px;
-  border: 1px solid var(--moss);
-  z-index:-1;
-}
-.author-text .section-eyebrow { color: var(--fern); }
-.author-text .section-eyebrow::before { background: var(--fern); }
-.author-text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem; font-weight:700;
-  color: #fff;
-  margin: 0.5rem 0 1.5rem;
-  line-height:1.25;
-}
-.author-text p { color: rgba(200,221,176,0.75); font-size:0.95rem; }
-.treks-done {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(90,122,58,0.25);
-}
-.treks-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.65rem; letter-spacing:0.2em;
-  text-transform: uppercase;
-  color: var(--fern);
-  margin-bottom: 0.8rem; display:block;
-}
-.trek-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
-.trek-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.74rem;
-  padding: 0.3rem 0.9rem;
-  background: rgba(90,122,58,0.12);
-  border: 1px solid rgba(90,122,58,0.35);
-  color: var(--sage);
-  border-radius: 2px;
-}
-.dreams-label {
-  display:block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.65rem; letter-spacing:0.2em;
-  text-transform: uppercase;
-  color: var(--ice);
-  margin: 1.2rem 0 0.6rem;
-}
-.future-tag {
-  border-color: rgba(184,212,224,0.25);
-  color: rgba(184,212,224,0.7);
-  background: rgba(184,212,224,0.05);
-}
-
-/* ── FOOTER ── */
-footer {
-  background: #080e08;
-  padding: 4rem 0;
-  text-align: center;
-}
-.footer-brand {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  color: var(--fern);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.hillary-quote {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  color: rgba(200,221,176,0.45);
-  font-size: 0.95rem;
-  margin: 1.5rem auto;
-  max-width: 500px;
-  line-height: 1.65;
-}
-footer p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.1em; margin:0;
-}
-
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity:0;
-  transform: translateY(30px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
-}
-.reveal.visible { opacity:1; transform:none; }
-.reveal-delay { transition-delay: 0.15s; }
-
-/* ════════════════════════════════════════
-   MOBILE  (≤ 768px)
-   ════════════════════════════════════════ */
-@media (max-width: 768px) {
-
-  /* ── Nav: show hamburger, hide links ── */
-  nav { padding: 0 1.2rem; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .mobile-menu { display: block; }
-
-  /* ── Hero ── */
-  .hero-content { padding: 2rem 1.4rem 4rem; }
-  .hero-title { font-size: clamp(2.4rem, 8vw, 3.4rem); }
-  .hero-sub { font-size: 1rem; line-height: 1.7; }
-  .hero-meta {
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-  .meta-pill {
-    font-size: 0.7rem;
-    background: rgba(0,0,0,0.25);
-    padding: 0.4rem 0.75rem;
-    border-radius: 20px;
-    backdrop-filter: blur(4px);
-  }
-  .hero-vine { display: none; }
-
-  /* ── Stats bar: 2×2 ── */
-  .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .stat-item {
-    padding: 1.6rem 1rem;
-    border-right: 1px solid rgba(90,122,58,0.2);
-    border-bottom: 1px solid rgba(90,122,58,0.2);
-  }
-  .stat-item:nth-child(2n) { border-right: none; }
-  .stat-item:nth-child(3),
-  .stat-item:nth-child(4) { border-bottom: none; }
-  .stat-number { font-size: 2rem; }
-  .stat-label { font-size: 0.62rem; letter-spacing: 0.1em; }
-
-  /* ── Layout ── */
-  .container, .container-wide { padding: 0 1.2rem; }
-
-  /* ── Intro ── */
-  .intro-section { padding: 3.5rem 0 1rem; }
-  .drop-cap::first-letter {
-    font-size: 4rem;
-    line-height: 0.75;
-  }
-  p { font-size: 1rem; line-height: 1.85; margin-bottom: 1.3rem; }
-
-  /* ── Pull quote ── */
-  .pull-quote {
-    font-size: 1.08rem;
-    padding: 1.4rem 1.4rem 1.4rem 2.2rem;
-    margin: 2rem 0;
-    line-height: 1.6;
-  }
-  .pull-quote::before { font-size: 2rem; }
-
-  /* ── Section eyebrow ── */
-  .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.18em; }
-
-  /* ── Full-bleed images ── */
-  .full-bleed { margin: 2rem 0; }
-  .full-bleed img { height: 260px; }
-  .full-bleed-tall img { height: 300px; }
-  .img-caption { font-size: 0.72rem; padding: 0.65rem 1rem; line-height: 1.5; }
-
-  /* ── Float → stack ── */
-  .img-float-right,
-  .img-float-left {
-    float: none;
-    width: 100%;
-    margin: 0 0 1.5rem 0;
-  }
-  .img-float-right img,
-  .img-float-left img { height: 260px; }
-
-  /* ── Day headers ── */
-  .day-header {
-    margin: 3rem 0 1.2rem;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .day-number {
-    font-size: 3.2rem;
-    -webkit-text-stroke: 1.5px var(--sage);
-  }
-  .day-name { font-size: 1.25rem; }
-  .day-altitude {
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
-    width: 100%;
-    padding-top: 0.1rem;
-  }
-
-  /* ── Nature break ── */
-  .nature-break { padding: 3.5rem 0; margin: 3rem 0; }
-  .nature-break h2 { font-size: 1.75rem; line-height: 1.3; }
-  .nature-break::after { display: none; }
-
-  /* ── Photo mosaic: stacked ── */
-  .photo-mosaic { grid-template-columns: 1fr; margin: 2rem 0; gap: 0.8rem; }
-  .mosaic-main img { height: 280px; }
-  .mosaic-side { gap: 0.8rem; }
-  .mosaic-side img { height: 220px; object-position: center; }
-
-  /* ── Two-col grid ── */
-  .two-col-grid { grid-template-columns: 1fr; gap: 0.8rem; margin: 2rem 0; }
-  .grid-img img { height: 240px; }
-
-  /* ── Summit block ── */
-  .summit-block { padding: 3.5rem 0; margin: 3rem 0; }
-  .summit-block h2 { font-size: 1.9rem; }
-  .summit-block::before { display: none; }
-  .summit-img img { height: 260px; }
-
-  /* ── Stars section ── */
-  .stars-section { min-height: 360px; margin: 2.5rem 0; }
-  .stars-content { padding: 2.5rem 1.4rem; max-width: 100%; }
-  .stars-content h2 { font-size: 1.7rem; }
-  .stars-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(10,20,10,0.72) 0%,
-      rgba(10,20,10,0.88) 100%
-    );
-  }
-
-  /* ── Itinerary: mobile reflow ── */
-  .iti-header { display: none; }
-  .iti-card {
-    grid-template-columns: 72px 1fr 1fr;
-    grid-template-rows: auto auto;
-  }
-  .iti-card-day {
-    grid-column: 1;
-    grid-row: 1 / 3;
-    min-height: 90px;
-    padding: 0.8rem 0.5rem;
-  }
-  .iti-card-day .day-num { font-size: 1.3rem; }
-  .iti-card-main {
-    grid-column: 2 / 4;
-    grid-row: 1;
-    padding: 0.8rem 1rem 0.3rem;
-    border-right: none;
-  }
-  .iti-card-route { font-size: 0.82rem; }
-  .iti-card-highlight { font-size: 0.72rem; }
-  .iti-card-alt {
-    grid-column: 2;
-    grid-row: 2;
-    padding: 0.3rem 0.6rem 0.8rem 1rem;
-    text-align: left;
-    font-size: 0.72rem;
-    border-left: none;
-    background: transparent;
-    display: block;
-    white-space: nowrap;
-  }
-  .iti-card-km {
-    grid-column: 3;
-    grid-row: 2;
-    padding: 0.3rem 0.6rem 0.8rem 0;
-    text-align: left;
-    font-size: 0.72rem;
-    border-left: 1px solid rgba(255,255,255,0.07);
-    background: transparent;
-    display: block;
-    white-space: nowrap;
-  }
-  .itinerary-section { padding: 3.5rem 0; margin: 2.5rem 0; }
-  .itinerary-section h2 { font-size: 1.8rem; }
-
-  /* ── Gallery slots: 2 per row ── */
-  .photo-slots { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-  .photo-slot { height: 190px; border-radius: 4px; }
-  .add-photos { padding: 3.5rem 0; }
-  .add-photos h2 { font-size: 1.8rem; }
-
-  /* ── Author ── */
-  .author-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .author-photo img { height: 320px; object-position: center center; }
-  .author-photo::after { display: none; } /* hide offset border on mobile — prevents horizontal overflow */
-  .author-text h2 { font-size: 1.6rem; }
-  .author-section { padding: 4rem 0; }
-  .trek-tags { gap: 0.4rem; }
-  .trek-tag { font-size: 0.7rem; padding: 0.28rem 0.75rem; }
-
-  /* ── Footer ── */
-  footer { padding: 3rem 1.2rem; }
-  .footer-brand { font-size: 1.2rem; }
-  .hillary-quote { font-size: 0.88rem; padding: 0 0.5rem; }
-}
-
-/* ── Extra small (≤ 420px) ── */
-@media (max-width: 420px) {
-  .hero-title { font-size: 2.1rem; }
-  .photo-slots { grid-template-columns: 1fr; }
-  .photo-slot { height: 230px; object-position: center center; }
-  .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .two-col-grid { grid-template-columns: 1fr; }
-  .meta-pill { font-size: 0.66rem; }
-  .iti-card-highlight { display: none; }
-  p { font-size: 0.97rem; }
-}
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 768px) { .nav-links{display:none;} .hamburger{display:flex;} footer{grid-template-columns:1fr; gap:2rem;} .grid{grid-template-columns:1fr;} }
+    @media (min-width:769px) and (max-width:1100px) { .grid{grid-template-columns:repeat(2,1fr);} }
+  </style>
 </head>
 <body>
-
-<!-- ═══ NAV ═══ -->
-<nav>
-  <a href="#" class="nav-brand">getting lost to find myself</a>
-  <ul class="nav-links">
-    <li><a href="#story">The Story</a></li>
-    <li><a href="#itinerary">Itinerary</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#author">About</a></li>
-  </ul>
-  <!-- Hamburger button (mobile only) -->
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
-
-<!-- Mobile drawer menu -->
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <ul>
-    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
-    <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
-    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
-    <li><a href="#author" class="mobile-nav-link">About</a></li>
-  </ul>
-  <p class="mobile-menu-footer">Buran Ghati · June 2025</p>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-vine"></div>
-  <div class="hero-content">
-    <span style="color: white;" class="hero-tag">Himachal Pradesh, India &nbsp;·&nbsp; June 2025</span>
-    <h1 class="hero-title">Buran <em>Ghati</em></h1>
-    <p class="hero-sub">Some mountains don't just test your legs — they rearrange your entire soul.</p>
-    <div class="hero-meta">
-      <div class="meta-pill">📅 <span>Jun 20 – 26, 2025</span></div>
-      <div class="meta-pill">🥾 <span>45 km on foot</span></div>
-      <div class="meta-pill">⛰️ <span>15,073 ft summit</span></div>
-      <div class="meta-pill">🌿 <span>6 days of raw living</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ STATS BAR ═══ -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-number">45</div>
-    <div class="stat-label">kilometres walked</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">15K</div>
-    <div class="stat-label">feet at the summit</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">24</div>
-    <div class="stat-label">strangers → family</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">6</div>
-    <div class="stat-label">days, zero network</div>
-  </div>
-</div>
-
-<!-- ═══ STORY ═══ -->
-<section id="story">
-
-  <div class="intro-section reveal">
-    <div class="container">
-      <span class="section-eyebrow">The Call</span>
-      <p class="drop-cap">We don't just call them the Himalayas… we call them the <em>Mighty</em> Himalayas for a reason. They don't need to shout — they <em>call</em> you. Quietly. Deeply. And when your heart is in the right place, with the purest of intentions, things just… come together. That's how it happened for me. No plans, no overthinking. Just a pull I couldn't ignore.</p>
-      <p>My journey began long before I stepped into the mountains. It started with 5 km every day — a test of discipline, not just fitness. But nothing truly prepares you for what's to come.</p>
-      <p>When I finally reached Himachal, even the bumpy roads, the bone-chilling breeze, and the river flowing beside me felt like a blessing.</p>
-      <div class="pull-quote">
-        The trek began amidst golden wheat fields, with a rucksack alongside 23 strangers. Strangers who, over time, became my tribe.
+ 
+    <!-- ── NAV ───────────────────────────────────────── -->
+    <nav class="nav" id="nav">
+      <div class="nav-logo">She <em>Explores</em></div>
+      <ul class="nav-links">
+        <li><a href="#treks">Treks</a></li>
+        <!-- ADD NEW NAV LINK: <li><a href="#treks">Trek Name</a></li> -->
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
       </div>
+    </nav>
+   
+    <div class="mob-menu" id="mobMenu">
+      <a href="#treks" onclick="toggleMenu()">Treks</a>
     </div>
-  </div>
-
-  <div class="full-bleed reveal">
-    <img src="images/Meditating_Mount_H.JPG" alt="meditating in mountain">
-    <div class="img-caption container">Janglik valley at dusk — the moment the mountains first started speaking to me</div>
-  </div>
-
-  <div class="container reveal">
-    <div class="day-header">
-      <div class="day-number">01</div>
-      <div class="day-info">
-        <div class="day-name">Janglik to Dayara Meadows</div>
-        <div class="day-altitude">Drive from Rohru + First Trek &nbsp;·&nbsp; 9,415 ft → 11,115 ft &nbsp;·&nbsp; 7.5 km</div>
+   
+    <!-- ── HERO ──────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Adventures · Stories · Wild Places</p>
+        <h1 class="hero-title">She <em>Ex</em>plores</h1>
+        <p class="hero-sub">Himalayas &nbsp;·&nbsp; Forests &nbsp;·&nbsp; Trails Untaken</p>
       </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+   
+    <!-- ── QUOTE ─────────────────────────────────────── -->
+    <div class="quote-wrap">
+      <span class="quote-rule"></span>
+      <blockquote>"Not all those who wander are lost — some of us are just finding ourselves, one trail at a time."</blockquote>
+      <cite>She Explores</cite>
+      <span class="quote-rule-bottom"></span>
     </div>
-    <div class="clearfix">
-      <div class="img-float-right">
-        <img src="images/letter.JPG" alt="letter from mountain">
-        <div class="img-caption" style="font-family:'DM Sans',sans-serif;font-size:0.73rem;color:var(--stone);padding:0.6rem 0.9rem;background:var(--mist);border-left:3px solid var(--sage);font-style:italic;">A postcard from the forest — words that find you at the right altitude</div>
-      </div>
-      <p>We walked through wild paths, across crazy ascents, tiny flowers blooming at our feet, and grasslands scattered with boulders. Streams gushed by our side. And somehow, through the hardship, laughter, and silence… we became a family.</p>
-      <p>Every campsite felt <em>earned</em>. When we reached our first campsite, Dayara — meadows filled with flowers — every trail looked like it was pulled straight out of a Windows wallpaper. Surreal. There were cows, goats, horses, and a dog that followed us everywhere.</p>
-      <p>I felt like the main character in a story — no network, no distractions. Just me, nature, and the peace of true solitude.</p>
-    </div>
-  </div>
-
-  <div class="nature-break reveal">
-    <div class="container">
-      <span class="section-eyebrow">Day 2 · Litham</span>
-      <h2>The Sacred River.<br>The Shift I Didn't Expect.</h2>
-      <p>Then came DIY day. A day where we did everything — cooked, cleaned, navigated using maps, read contour lines, and answered questions like: <em>"Still how far?"</em>, <em>"When's the next break?"</em>, <em>"Can I rest now?"</em> It was real, raw, and deeply humbling.</p>
-      <p>We pushed through rocks and heat and finally reached Litham — our second campsite. There, I sat beside the sacred Chandranahan river and meditated. When I opened my eyes to see the snow-capped peaks, I felt something shift. A kind of happiness that can't be explained. Only felt.</p>
-      <div class="pull-quote">
-        We lived in the same clothes for days, shared food, played crazy games, survived on the bare minimum. And in that simplicity, I learned something profound — you don't need much to be content.
-      </div>
-      <p>No complaints. No demands. Just a peaceful, symbiotic rhythm with nature.</p>
-    </div>
-  </div>
-
-  <div class="full-bleed full-bleed-tall reveal">
-    <img src="images/mountain_house_H.jpg" alt="Mountain house">
-    <div class="img-caption container">A shepherd's stone hut at Litham — prayer flags dancing, a horse grazing at golden hour. This is someone's whole life.</div>
-  </div>
-
-  <div class="container reveal">
-    <div class="day-header">
-      <div class="day-number">03</div>
-      <div class="day-info">
-        <div class="day-name">Chandranahan Lake — The Glacial Dream</div>
-        <div class="day-altitude">Acclimatisation hike &nbsp;·&nbsp; 11,485 ft → 13,020 ft &nbsp;·&nbsp; 6.9 km round trip</div>
-      </div>
-    </div>
-    <p>Then came the Chandranahan Lake — a one-day, 2,000 ft ascent and descent. Tough, yes. But the beauty? Unmatched. The lake, glowing in the sun, fed by glacial melt… and a pawed companion walking loyally beside me. It was cinematic.</p>
-    <p>Nights were magical. We'd lie under the stars, learning about constellations, silent… until that moment — <em>my first shooting star</em>. I'll never forget that. 💫</p>
-  </div>
-
-  <div id="gallery" class="container-wide reveal">
-    <div class="photo-mosaic">
-      <div class="mosaic-main">
-        <img src="images/newfriends.JPG" alt="friends on mountain">
-        <div class="img-caption">Snowfield smiles near Chandranahan — 23 strangers, one family. These faces became home at 12,000 ft.</div>
-      </div>
-      <div class="mosaic-side">
+   
+    <!-- ── TREKS ─────────────────────────────────────── -->
+    <section class="treks-section" id="treks">
+      <div class="treks-header">
         <div>
-          <img src="images/natrajasana.JPG" alt="Natraja on mountain">
-          <div class="img-caption">Nataraja on snow — even the mountains need yoga energy ✨</div>
+          <p class="treks-label">All Adventures</p>
+          <h2 class="treks-title">The <em>Journeys</em></h2>
         </div>
-        <div>
-          <img src="images/starrynight.JPG" alt="starry night">
-          <div class="img-caption">The sky above Litham — where I saw my first shooting star.</div>
-        </div>
+        <span class="treks-count">4 Stories</span>
       </div>
-    </div>
-  </div>
+   
+      <div class="grid">
+        <!-- ══ KEDARKANTHA — SNOW WHITE ══ -->
+        <a href="kedarkanta.html" class="card theme-snow">
+            <div class="card-img">
+              <!-- ADD IMAGE: src="images_kedarkanta/cover.jpg" -->
+              <img src="images_kedarkanta/Nirmalasitting.jpg" alt="Kedarkantha Peak" onerror="this.style.display='none'" />
+              <span class="badge">Uttarakhand</span>
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="meta-item">📍 Uttarakhand</span>
+                <span class="meta-item">🏔 3800m</span>
+                <span class="meta-item">❄️ Snow Trek</span>
+              </div>
+              <h3 class="card-title">The Unfinished Business</h3>
+              <p class="card-desc">The mountain has been calling for a while now. Snow-covered meadows, frozen lakes, a summit that promises a sky unlike any other — some journeys begin long before the first step.</p>
+              <div class="card-cta">
+                <span class="cta-link">Read Story <span class="arrow">→</span></span>
+                <span class="status-tag">Published</span>
+              </div>
+            </div>
+        </a>
 
-  <div class="container reveal">
-    <div class="day-header">
-      <div class="day-number">04</div>
-      <div class="day-info">
-        <div class="day-name">Dhunda — Where the Fog Swallows Everything</div>
-        <div class="day-altitude">Litham → Dhunda &nbsp;·&nbsp; 11,485 ft → 13,425 ft &nbsp;·&nbsp; 4.6 km</div>
-      </div>
-    </div>
-    <p>Acclimatization at 13,000 ft followed, at a place called <em>Dhunda</em> — which literally means "foggy." And believe me, you couldn't see a soul standing in front of you. That fog swallowed everything. Every tent, every voice, every footstep — absorbed into silence.</p>
-    <p>It should have been unsettling. Instead, it was the most at peace I had ever felt. Sitting in that cloud, knowing tomorrow was the big one.</p>
-  </div>
-
-</section>
-
-<!-- ═══ SUMMIT BLOCK ═══ -->
-<div class="summit-block reveal">
-  <div class="container">
-    <span class="section-eyebrow">Summit Day — Day 5</span>
-    <h2>3 AM. Headlamps on.<br>Into the Unknown.</h2>
-    <p>We woke up at 1:30 AM. Outside, it was pitch dark. 0 degrees. At 3 AM, our headlamps flickered on, and we began our silent ascent into the unknown.</p>
-    <p>The trail was brutal. Rocks, boulders, black ice. One wrong step and you'd fall 1,000 feet straight back to camp. But then, there were butterflies — dancing around us like the universe was cheering us on.</p>
-    <div class="pull-quote">
-      Just when my body said, "Enough," I looked up… and saw the summit. 15,000 feet. I made it. I felt proud. Really proud.
-    </div>
-    <p>I patted myself on the back, picked up a rock as a memory, and began the descent — 8 km of pure test. Steep slopes, a narrow 2-foot-wide rockfall section, and icy slides — some intentional, some not. We laughed, we screamed, we slipped, and we held on.</p>
-    <p>At one point, we were so exhausted, we just dropped. Right there on the grass and rocks. In the rain. Sleeping like babies.</p>
-    <div class="summit-img">
-      <img src="images/meonmountain.JPG" alt="summit">
-    </div>
-  </div>
-</div>
-
-<div class="container-wide reveal">
-  <div class="two-col-grid">
-    <div class="grid-img">
-      <img src="images/15000ft_garmin.JPG" alt="garmin">
-      <div class="img-caption">15,073 ft. The Garmin doesn't lie. This number changed something in me forever.</div>
-    </div>
-    <div class="grid-img">
-      <img src="images/me_packed_h.JPG" alt="final summit pic">
-      <div class="img-caption">At the top of Buran Ghati Pass — windswept, breathless, magnificently alive. My first 15,000 ft summit.</div>
-    </div>
-  </div>
-</div>
-
-<div class="container reveal" style="padding-top:4.5rem; padding-bottom:3rem;">
-  <div class="day-header">
-    <div class="day-number">06</div>
-    <div class="day-info">
-      <div class="day-name">River Campsite — The Last Night</div>
-      <div class="day-altitude">After the pass &nbsp;·&nbsp; 10,745 ft &nbsp;·&nbsp; The final camp before Barua</div>
-    </div>
-  </div>
-  <p>And finally, we reached River Campsite. The last one. That night, we celebrated the toughest day of the trek. The sound of the river, the mountain air, and the people around me… we weren't strangers anymore. We were something more.</p>
-  <p>That journey stripped us of ego. It made space for self-reflection, gratitude, and growth.</p>
-  <div class="pull-quote">
-    Mountains make people realize how small our problems and fears really are — and there is so much left to explore in this world.
-  </div>
-  <p>Because it wasn't just a trek. It's the way of life for me now.</p>
-</div>
-
-<div class="stars-section reveal">
-  <div class="stars-bg"></div>
-  <div class="stars-overlay"></div>
-  <div class="stars-content">
-    <span class="section-eyebrow">A Night to Remember</span>
-    <h2>My First<br>Shooting Star</h2>
-    <p>We lay under the Himalayan sky, learning constellations, speaking softly, then not at all. And then — a streak of light across the darkness. In that one moment, everything I had ever worried about dissolved completely into stardust.</p>
-    <p>Some experiences can't be photographed. Only lived.</p>
-  </div>
-</div>
-
-<!-- ═══ ITINERARY ═══ -->
-<section id="itinerary" class="itinerary-section">
-  <div class="container">
-    <span class="section-eyebrow">The Route</span>
-    <h2>Complete Itinerary</h2>
-    <p class="iti-subtitle">7 days. 45 km. One summit that changes everything.</p>
-    <div class="iti-header">
-      <span>Day</span><span>Route &amp; Highlight</span><span>Altitude</span><span>Distance</span>
-    </div>
-    <div class="iti-cards">
-      <div class="iti-card iti-card-0">
-        <div class="iti-card-day"><span class="day-num">0</span><span class="day-word">Drive</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">Rohru → Janglik</div>
-          <div class="iti-card-highlight">Pabbar River drive, ancient village life begins</div>
-        </div>
-        <div class="iti-card-alt">9,415 ft</div>
-        <div class="iti-card-km">40 km drive</div>
-      </div>
-      <div class="iti-card iti-card-1">
-        <div class="iti-card-day"><span class="day-num">1</span><span class="day-word">Trek</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">Janglik → Dayara Meadows</div>
-          <div class="iti-card-highlight">Golden wheat fields, jaw-dropping meadow arrival</div>
-        </div>
-        <div class="iti-card-alt">11,115 ft</div>
-        <div class="iti-card-km">7.5 km</div>
-      </div>
-      <div class="iti-card iti-card-2">
-        <div class="iti-card-day"><span class="day-num">2</span><span class="day-word">Trek</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">Dayara → Litham</div>
-          <div class="iti-card-highlight">Silver birch forest, Chandranahan stream meditation</div>
-        </div>
-        <div class="iti-card-alt">11,485 ft</div>
-        <div class="iti-card-km">5.9 km</div>
-      </div>
-      <div class="iti-card iti-card-3">
-        <div class="iti-card-day"><span class="day-num">3</span><span class="day-word">Hike</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">Acclimatisation → Chandranahan Lake</div>
-          <div class="iti-card-highlight">Glacial lake, first snow underfoot, loyal dog companion</div>
-        </div>
-        <div class="iti-card-alt">13,020 ft</div>
-        <div class="iti-card-km">6.9 km round</div>
-      </div>
-      <div class="iti-card iti-card-4">
-        <div class="iti-card-day"><span class="day-num">4</span><span class="day-word">Trek</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">Litham → Dhunda</div>
-          <div class="iti-card-highlight">Into the fog — alpine zone, butterflies, pre-summit nerves</div>
-        </div>
-        <div class="iti-card-alt">13,425 ft</div>
-        <div class="iti-card-km">4.6 km</div>
-      </div>
-      <div class="iti-card iti-card-summit">
-        <div class="iti-card-day"><span class="day-num">5</span><span class="day-word">★ Summit</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">Dhunda → Buran Ghati Pass → River Camp</div>
-          <div class="iti-card-highlight">3 AM start · black ice · 15,073 ft · rappel descent · sleeping on rain-soaked grass</div>
-        </div>
-        <div class="iti-card-alt">15,073 ft</div>
-        <div class="iti-card-km">8.4 km</div>
-      </div>
-      <div class="iti-card iti-card-6">
-        <div class="iti-card-day"><span class="day-num">6</span><span class="day-word">Descent</span></div>
-        <div class="iti-card-main">
-          <div class="iti-card-route">River Camp → Barua Village → Shimla</div>
-          <div class="iti-card-highlight">Apple orchards, Hobbiton-like village, strangers no more</div>
-        </div>
-        <div class="iti-card-alt">7,725 ft</div>
-        <div class="iti-card-km">7.15 km + drive</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ GALLERY ═══ -->
-<section class="add-photos reveal">
-  <div class="container">
-    <span class="section-eyebrow">The Frames I Lived</span>
-    <h2>Every Frame<br><em>Tells a Story</em></h2>
-    <p class="hint">These are the moments that don't fit neatly into words. The mountains deserve to be seen.</p>
-    <div class="photo-slots">
-      <figure class="photo-slot">
-        <img src="images/doggiee.jpeg" alt="Group shot">
-      </figure>
-      <figure class="photo-slot">
-        <img src="images/Goat.JPG" alt="Sunrise / sunset">
-      </figure>
-      <figure class="photo-slot">
-        <img src="images/meanddog.jpeg" alt="Trail companions">
-      </figure>
-      <figure class="photo-slot" object-position: center bottom>
-        <img src="images/embracingmountains.JPG" alt="Campsite life">
-      </figure>
-      <figure class="photo-slot">
-        <img src="images/dogandstones.JPG" alt="Mountain moments">
-      </figure>
-      <figure class="photo-slot">
-        <img src="images/shoesandflowers.JPG" alt="Favourite frame">
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ABOUT ═══ -->
-<section id="author" class="author-section">
-  <div class="container">
-    <div class="author-inner">
-      <div class="author-photo">
-        <img src="images/nirmala.jpeg" alt="Author at Buran Ghati summit" loading="lazy">
-      </div>
-      <div class="author-text">
-        <span class="section-eyebrow">About the Author</span>
-        <h2>Getting Lost<br>to Find Myself</h2>
-        <p>I am someone who believes the mountains don't ask for your résumé — they ask for your presence. This blog is my honest, unfiltered story of the trails I walk, the fears I face, and the version of myself I discover every time I lace up my boots and head up.</p>
-        <p style="margin-top:1rem;">Buran Ghati was my first high-altitude trek to 15,000 ft. It won't be the last.</p>
-        <div class="treks-done">
-          <span class="treks-label">Summits done</span>
-          <div class="trek-tags">
-            <span class="trek-tag">Pangarchula</span>
-            <span class="trek-tag">Kedarkantha</span>
-            <span class="trek-tag">Kuari Pass</span>
-            <span class="trek-tag">Buran Ghati ★</span>
+        <!-- ══ BURANGHATI — GREEN ══ -->
+        <a href="buranghati.html" class="card theme-green">
+          <div class="card-img">
+            <!-- ADD IMAGE: src="images/buranghati.jpg" -->
+            <img src="images/meonmountain.JPG" alt="Buranghati Trek" onerror="this.style.display='none'" />
+            <span class="badge">Himachal Pradesh</span>
           </div>
-          <span class="dreams-label">On the dream list</span>
-          <div class="trek-tags">
-            <span class="trek-tag future-tag">Annapurna Base Camp</span>
-            <span class="trek-tag future-tag">Manaslu Circuit</span>
-            <span class="trek-tag future-tag">Everest Base Camp</span>
-            <span class="trek-tag future-tag">K2 Base Camp</span>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-item">📍 Himachal Pradesh</span>
+              <span class="meta-item">🏔 3700m</span>
+              <span class="meta-item">🌿 Forest Trek</span>
+            </div>
+            <h3 class="card-title">Getting Lost to Find Myself</h3>
+            <p class="card-desc">The trail began before dawn. The forest swallowed the path whole and I walked into a silence so complete it felt like a second skin — unfamiliar at first, and then, somehow, like coming home.</p>
+            <div class="card-cta">
+              <span class="cta-link">Read Story <span class="arrow">→</span></span>
+              <span class="status-tag">Published</span>
+            </div>
           </div>
+        </a>
+   
+        <!-- ══ PANGARCHULA — SKY BLUE ══ -->
+        <a href="pangarchulla.html" class="card theme-sky">
+            <div class="card-img">
+              <!-- ADD IMAGE: src="images/pangarchula.jpg" -->
+              <img src="images_pangarchulla/IMG_1036.jpg" alt="Pangarchula Peak" onerror="this.style.display='none'" />
+              <span class="badge">Chamoli, Uttarakhand</span>
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="meta-item">📍 Chamoli, Uttarakhand</span>
+                <span class="meta-item">🏔 4700m</span>
+                <span class="meta-item">🩵 Summit</span>
+              </div>
+              <h3 class="card-title">The Sky at Your Feet</h3>
+              <p class="card-desc">A peak that demands everything and returns it tenfold. Pangarchula isn't just a climb — it's a reckoning. The kind that leaves you quieter, and somehow fuller, on the other side.</p>
+              <div class="card-cta">
+                <span class="cta-link">Read Story <span class="arrow">→</span></span>
+                <span class="status-tag">published</span>
+              </div>
+            </div>
+        </a>
+   
+        <!-- ══ KUARI PASS — SKY BLUE ══ -->
+        <a href="kuari.html" class="card theme-sky">
+          <div class="card-img">
+            <!-- ADD IMAGE: src="images/kuari.jpg" -->
+            <img src="images_kuari/IMG_4060.jpg" alt="Kuari Pass" onerror="this.style.display='none'" style="object-position:center;" />
+            <span class="badge">Chamoli, Uttarakhand</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-item">📍 Chamoli, Uttarakhand</span>
+              <span class="meta-item">🏔 3640m</span>
+              <span class="meta-item">🩵 Alpine</span>
+            </div>
+            <h3 class="card-title">Where the Himalayas Open Up</h3>
+            <p class="card-desc">The Curzon Trail. Nanda Devi. Dronagiri. Kamet. The Kuari Pass offers a panorama so vast it feels less like a view and more like a conversation with the sky itself.</p>
+            <div class="card-cta">
+              <span class="cta-link">Read Story <span class="arrow">→</span></span>
+              <span class="status-tag">On the Horizon</span>
+            </div>
+          </div>
+        </a>
+   
+   
+        <!--
+          ════════════════════════════════════════════════
+          HOW TO ADD A NEW TREK CARD
+          ════════════════════════════════════════════════
+          1. Copy any card block above
+          2. Change href to your new file e.g. "hampta-pass.html"
+          3. Pick a theme class:
+               theme-green  = forest / jungle / monsoon
+               theme-snow   = snow / winter
+               theme-sky    = high altitude / alpine
+          4. Add your image src
+          5. Update badge, meta-items, card-title, card-desc
+          6. status-tag: "Published" | "Coming Soon" | "On the Horizon"
+          7. Paste right above THIS comment block
+          8. Update the "4 Stories" count in .treks-count
+          ════════════════════════════════════════════════
+        -->
+   
+        <div class="card-upcoming">
+          <span class="up-label">Next Adventure</span>
+          <p class="up-title">More trails ahead…</p>
+          <p class="up-note">New stories will appear here as the journeys unfold.</p>
         </div>
+   
       </div>
+    </section>
+   
+    <!-- ── FOOTER ─────────────────────────────────────── -->
+    <footer>
+      <div>
+        <p class="ft-brand-name">She <em>Explores</em></p>
+        <p>One trail at a time. Raw, honest stories from the wild edges of the Himalayas and beyond.</p>
+      </div>
+      <div class="ft-col">
+        <h5>Treks</h5>
+        <ul>
+          <li><a href="buranghati.html">Buranghati Trek</a></li>
+          <li><a href="kedarkanta.html">Kedarkantha Peak</a></li>
+          <li><a href="kuari.html">Kuari Pass</a></li>
+          <li><a href="pangarchula.html">Pangarchula Peak</a></li>
+          <!-- ADD NEW TREK LINKS HERE -->
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="https://instagram.com/she_explores.wild" target="_blank">Instagram:@she_explores.wild</a></li>
+          <li><a href="#">Quote:Somewhere between the bottom of the climb and the summit is the answer to the mystery why we climb.</a></li>
+          <li><a href="mailto:nimisheetravels@gmail.com">email:nimisheetravels@gmail.com</a></li>
+        </ul>
+      </div>
+    </footer>
+   
+    <div class="ft-bottom">
+      <p>© 2025 She Explores. All rights reserved.</p>
+      <p>Made with love & altitude sickness ♥</p>
     </div>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <span class="footer-brand">getting lost to find myself</span>
-  <p class="hillary-quote">
-    "It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary
-  </p>
-  <p>Buran Ghati Trek · Himachal Pradesh · June 20 – 26, 2025</p>
-  <p class="insta-link">
-    Follow the journey →
-    <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a>
-  </p>
-  <p>© 2025 Mountain Stories</p>
-</footer>
-
-<script>
-  // ── Scroll reveal ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+   
+    <!-- ── SCRIPTS ────────────────────────────────────── -->
+    <script>
+      /* Mobile menu */
+      function toggleMenu() {
+        document.getElementById('mobMenu').classList.toggle('open');
       }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ── Hamburger menu ──
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  function openMenu() {
-    hamburger.classList.add('open');
-    mobileMenu.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', () => {
-    if (hamburger.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  // Close when a nav link is tapped
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Close when tapping outside the menu
-  document.addEventListener('click', (e) => {
-    if (
-      mobileMenu.classList.contains('open') &&
-      !mobileMenu.contains(e.target) &&
-      !hamburger.contains(e.target)
-    ) {
-      closeMenu();
-    }
-  });
-
-  // Close on resize back to desktop
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) closeMenu();
-  });
-</script>
-</body>
+   
+      /* Sticky nav background */
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+          nav.style.background = 'rgba(12,11,10,0.96)';
+          nav.style.padding    = '1rem 3.5rem';
+          nav.style.backdropFilter = 'blur(12px)';
+        } else {
+          nav.style.background = 'transparent';
+          nav.style.padding    = '1.6rem 3.5rem';
+          nav.style.backdropFilter = 'none';
+        }
+      });
+   
+      /* Scroll-triggered card reveals */
+      const items = document.querySelectorAll('.card, .card-upcoming');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06 });
+   
+      items.forEach((el, i) => {
+        el.style.transitionDelay = `${i * 0.1}s`;
+        io.observe(el);
+      });
+    </script>
+   
+  </body>
 </html>

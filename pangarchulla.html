@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pangarchulla Peak — The Sky at Your Feet · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:         #080c10;
+      --card:         #0d1117;
+      --midnight:     #0a0e14;
+      --alpine:       #3e6f94;
+      --alpine-lt:    #6a9fbd;
+      --alpine-glow:  #f0a443;
+      --snow:         #eef2f5;
+      --frost:        #c8dbe8;
+      --stone:        #7a8a96;
+      --border:       rgba(255,255,255,0.06);
+      --amber:        #d4924a;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; }
+
+    /* NAV */
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(8,12,16,0); transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(8,12,16,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(238,242,245,.45); transition:color .3s; }
+    .nav-links a:hover { color:var(--alpine-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(8,12,16,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.8rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--alpine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+    /* HERO */
+    .hero { position:relative; height:100svh; min-height:620px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:url('images_pangarchulla/top3.jpg') center 55%/cover no-repeat; animation:zoomBg 22s ease-out forwards; }
+    @keyframes zoomBg { from{transform:scale(1.07)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(8,12,16,.1) 0%,rgba(8,12,16,.3) 45%,rgba(8,12,16,.98) 100%); }
+    .hero-content { position:relative; z-index:2; padding:0 3.5rem 5.5rem; max-width:920px; opacity:0; animation:riseIn 1.5s .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:var(--alpine); }
+    .hero-title { font-family:var(--font-display); font-size:clamp(4rem,10vw,10rem); font-weight:300; line-height:.9; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--alpine-glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.5rem); font-style:italic; font-weight:300; color:rgba(238,242,245,.55); max-width:620px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(106,159,189,.22); background:rgba(106,159,189,.06); color:var(--frost); backdrop-filter:blur(8px); }
+
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
+
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .container-wide { max-width:1300px; margin:0 auto; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--alpine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(238,242,245,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--alpine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--alpine); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
+
+    /* FULL BLEED */
+    .full-bleed { width:100%; height:65vh; min-height:380px; position:relative; overflow:hidden; }
+    .full-bleed-tall { height:80vh; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.9) saturate(1); }
+    .img-caption { font-family:var(--font-body); font-size:.72rem; color:var(--stone); font-style:italic; padding:.75rem 0; line-height:1.6; border-top:1px solid var(--border); }
+
+    /* DAY HEADERS */
+    .day-header { display:flex; align-items:flex-start; gap:1.8rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .day-number { font-family:var(--font-display); font-size:4.5rem; font-weight:300; line-height:1; color:rgba(255, 255, 255, 0.18); flex-shrink:0; min-width:80px; text-align:right; }
+    .day-info { padding-top:.6rem; }
+    .day-name { font-family:var(--font-display); font-size:1.55rem; font-weight:400; color:var(--snow); margin-bottom:.25rem; }
+    .day-altitude { font-size:.72rem; color:var(--alpine-lt); letter-spacing:.06em; }
+
+    /* FLOAT IMAGES */
+    .clearfix::after { content:''; display:table; clear:both; }
+    .img-float-right { float:right; width:46%; margin:0 0 2rem 2.5rem; }
+    .img-float-left { float:left; width:44%; margin:0 2.5rem 2rem 0; }
+    .img-float-right img, .img-float-left img { width:100%; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .img-float-right:hover img, .img-float-left:hover img { filter:brightness(.92) saturate(1); }
+
+    /* SPECIAL BLOCKS */
+    .birthday-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(212,146,74,.05); border:1px solid rgba(212,146,74,.18); border-left:3px solid var(--amber); }
+    .birthday-block p { color:rgba(238,242,245,.7); font-family:var(--font-display); font-size:1.05rem; font-style:italic; line-height:1.8; margin:0; }
+    .blackice-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(62,111,148,.06); border:1px solid rgba(62,111,148,.2); border-left:3px solid var(--alpine); }
+    .blackice-block p { color:rgba(238,242,245,.7); margin:0; }
+    .alpine-section { background:var(--card); padding:6rem 0; }
+    .alpine-section .container { padding-top:0; padding-bottom:0; }
+
+    /* SUMMIT STATS */
+    .summit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin:3rem 0; }
+    .summit-cell { background:var(--card); padding:2rem 2.2rem; display:flex; flex-direction:column; gap:.3rem; }
+    .summit-cell-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); }
+    .summit-cell-value { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1.1; color:var(--snow); }
+    .summit-cell-note { font-size:.75rem; color:var(--stone); line-height:1.6; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ITINERARY */
+    .itinerary-section { background:var(--midnight); padding:6rem 0; }
+    .itinerary-section .container { padding-top:0; padding-bottom:0; }
+    .iti-subtitle { font-size:.85rem; color:var(--stone); margin-bottom:3rem; margin-top:-.8rem; }
+    .iti-header { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:.9rem 1.4rem; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); border-bottom:1px solid var(--border); }
+    .iti-cards { display:flex; flex-direction:column; }
+    .iti-card { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:1.6rem 1.4rem; border-bottom:1px solid var(--border); transition:background .3s; }
+    .iti-card:hover { background:rgba(255,255,255,.02); }
+    .iti-card-day { display:flex; flex-direction:column; gap:.15rem; }
+    .day-num { font-family:var(--font-display); font-size:1.6rem; font-weight:400; color:var(--snow); line-height:1; }
+    .day-word { font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--alpine-lt); }
+    .iti-card-route { font-size:.9rem; color:var(--snow); margin-bottom:.3rem; }
+    .iti-card-highlight { font-size:.75rem; color:var(--stone); line-height:1.6; }
+    .iti-card-alt, .iti-card-km { font-size:.78rem; color:var(--stone); padding-top:.2rem; }
+    .iti-card-summit { background:rgba(62,111,148,.06); }
+    .iti-card-summit .day-num { color:var(--alpine-lt); }
+
+    /* GALLERY */
+    .add-photos { padding:6rem 0; }
+    .add-photos .container { padding-top:0; padding-bottom:0; }
+    .hint { font-size:.82rem; color:var(--stone); margin-bottom:3rem; }
+    .photo-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .photo-slot { aspect-ratio:4/3; overflow:hidden; margin:0; background:var(--card); }
+    .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.85); transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s; }
+    .photo-slot:hover img { transform:scale(1.06); filter:brightness(.92) saturate(1); }
+    .photo-mosaic { display:grid; grid-template-columns:2fr 1fr; gap:4px; }
+    .mosaic-main { overflow:hidden; }
+    .mosaic-main img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.88); transition:filter .5s; }
+    .mosaic-main:hover img { filter:brightness(.9) saturate(1); }
+    .mosaic-side { display:flex; flex-direction:column; gap:4px; }
+    .mosaic-side > div { flex:1; overflow:hidden; }
+    .mosaic-side img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.88); transition:filter .5s; }
+    .mosaic-side > div:hover img { filter:brightness(.9) saturate(1); }
+    
+    /* AUTHOR */
+    .author-section {
+      background: var(--deep);
+      padding: 6rem 0;
+      border-top: 1px solid rgba(143,184,216,0.08);
+    }
+    .author-inner { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; }
+    .author-photo {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+    }
+    .author-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(.85) saturate(.85);
+}
+    .treks-done { margin-top:2rem; }
+    .treks-label, .dreams-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); display:block; margin-bottom:.8rem; }
+    .dreams-label { margin-top:1.6rem; }
+    .trek-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .trek-tag { font-size:.72rem; padding:.3em .9em; border:1px solid rgba(106,159,189,.22); color:var(--frost); }
+    .trek-tag.current { background:rgba(106,159,189,.1); border-color:var(--alpine-lt); color:var(--alpine-lt); }
+    .future-tag { border-style:dashed; color:var(--stone); }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--alpine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; } nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; } .hamburger { display:flex; }
+      .hero-content { padding:0 1.5rem 4rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .img-float-right, .img-float-left { float:none; width:100%; margin:1.5rem 0; }
+      .photo-slots { grid-template-columns:repeat(2,1fr); }
+      .photo-mosaic { grid-template-columns:1fr; }
+      .iti-header, .iti-card { grid-template-columns:70px 1fr; }
+      .iti-card-alt, .iti-card-km, .iti-header span:nth-child(3), .iti-header span:nth-child(4) { display:none; }
+      .author-inner {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+      .author-photo { height: 320px; }
+      footer { padding:3rem 1.5rem 2.5rem; }
+    }
+    .author-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(212,148,58,0.2);
+      pointer-events: none;
+    }
+    @media (max-width:520px) {
+      .photo-slots { grid-template-columns:1fr; }
+      .summit-grid { grid-template-columns:1fr; }
+      .hero-title { font-size:clamp(3.5rem,18vw,6rem); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#author">About</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Pangarchulla · Dec 19–26, 2025</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Chamoli, Uttarakhand &nbsp;·&nbsp; Dec 19–26, 2025</span>
+    <h1 class="hero-title">Pangar<em>chulla</em></h1>
+    <p class="hero-sub">Nobody planned it. The mountain just appeared — and asked if I was brave enough. I said yes before I had the sense to think about it.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🎂 <span>My birthday on a summit</span></div>
+      <div class="meta-pill">🏔️ <span>4,700m · 15,200 ft</span></div>
+      <div class="meta-pill">❄️ <span>Black ice. −10°C.</span></div>
+      <div class="meta-pill">👁️ <span>1 girl. 25 boys.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">1st</div>
+    <div class="stat-label">birthday on a summit<br>Not the last.</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1/26</div>
+    <div class="stat-label">only girl in the entire group<br>one of 6 who reached the top</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">−10°</div>
+    <div class="stat-label">black ice. no looking down.<br>the only way was up.</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+
+  <!-- PROLOGUE -->
+  <div class="intro-section reveal">
+    <div class="container">
+      <span class="section-eyebrow">The Beginning</span>
+      <p class="drop-cap">I had planned for Kuari Pass. That's what I had booked, what I had packed for, what I had told everyone back home. But somewhere between Rishikesh and the mountains, the plan dissolved — and something better took its place.</p>
+      <p>We started in Rishikesh. December Rishikesh. The kind of cold that makes you want to stay inside, and somehow also makes you want to jump into a river. We sat by the ghats that first evening and watched the Ganga Aarti — the flames, the chanting, the river carrying everything forward. There were hundreds of people around me and I barely noticed any of them.</p>
+      <div class="pull-quote">
+        So many people, so much noise — and somehow the quiet found me anyway. The Ganga does that. It just keeps going, and something about watching it makes all your noise go quiet too.
+      </div>
+      <p>The next morning, rafting. December water. Cold as hell. The guide said jump in. I looked at the Ganga, took a long breath, and jumped. Freezing, euphoric, chilled and alive and laughing — all at the same time. And then getting out of the water in December with the wind on your wet clothes and all of us standing there laughing like it was the best thing that had ever happened. It kind of was.</p>
+    </div>
+  </div>
+
+  <!-- GANGA IMAGE -->
+  <div class="full-bleed reveal">
+    <!-- ★ images_pangarchulla/ganga_aarti.jpg — Ganga Aarti or rafting photo ★ -->
+    <img src="images_pangarchulla/ganga_arthi.jpg" alt="Ganga Aarti Rishikesh" style="object-position:center center;" onerror="this.style.display='none'" />
+    <div class="img-caption container">Ganga Aarti, Rishikesh — flames on water and a feeling something in you is about to change</div>
+  </div>
+
+  <!-- DAY 0 — JOSHIMATH -->
+  <div class="container reveal" style="padding-bottom:2rem;">
+    <div class="clearfix">
+      <div class="img-float-right">
+        <!-- ★ images_pangarchulla/dronagiri_morning.jpg ★ -->
+        <img src="images_pangarchulla/dronagiri_eve.jpg" alt="Mt Dronagiri at sunrise" style="height:340px; object-fit:cover;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Mt Dronagiri at first light — huge, unhurried, entirely unbothered</div>
+      </div>
+      <span class="section-eyebrow">Dec 21 — Karchi, Tugasi Village</span>
+      <h2>Ten Hours on a Mountain Road.<br>Then <em>Dronagiri.</em></h2>
+      <p>Rishikesh to Karchi village near Joshimath is ten hours in a tempo traveller. Winding roads, music, the slow kind of conversation that only happens when you're going somewhere together. We arrived at night, dark and tired. Slept immediately.</p>
+      <p>Then morning came — and with it, Mt Dronagiri. Standing exactly where it had always stood, lit by the first sun, enormous and completely still. It asked for nothing. It announced nothing. It was simply <em>there</em>. That felt like enough.</p>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="container reveal" style="padding-top:1rem;">
+    <div class="day-header">
+      <div class="day-number">01</div>
+      <div class="day-info">
+        <div class="day-name">Karchi → Gulling Campsite</div>
+        <div class="day-altitude">Dec 22 · 2,875m &nbsp;·&nbsp; Alpine glow on my vision board for a whole year. Finally.</div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="img-float-left">
+        <!-- ★ images_pangarchulla/trail_village.jpg ★ -->
+        <img src="images_pangarchulla/womenandchild.PNG" alt="Trail through mountain village" style="height:320px; object-fit:cover;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The trail through small mountain homes — slow, humble, gorgeous</div>
+      </div>
+      <p>The trail started in a village. Small homes, narrow paths, tiny shops, and more dogs than I could count. Children jumping around with joy that doesn't need a reason. Women working in farms, children on their backs, utterly unbothered. The most grounded people I have ever met anywhere.</p>
+      <p>December meant no snow — dry sand and dried leaves underfoot instead. We reached Gulling campsite and I did what I always do: found a spot. My speciality, wherever I go. Not to do anything, just to sit. Just to be quiet with the mountain for a while.</p>
+      <p>Then the thing I had been waiting for the whole year happened. Alpine glow. I had it on my vision board — a photograph of mountain light going orange. And there it was, the sun falling on Dronagiri, the rocks going amber, the snow catching fire without burning. I sat there and could not look away. It feels like the mountains are smiling at you, sharing something they don't share often.</p>
+    </div>
+  </div>
+
+  <!-- ALPINE GLOW IMAGE -->
+  <div class="full-bleed full-bleed-tall reveal">
+    <!-- ★ images_pangarchulla/alpine_glow.jpg ★ -->
+    <img src="images_pangarchulla/alpine_dronagiri.PNG" alt="Alpine glow on Dronagiri" onerror="this.style.display='none'" />
+    <div class="img-caption container">Alpine glow on Dronagiri — I had this on my vision board for a whole year. It was everything.</div>
+  </div>
+
+  <!-- STARGAZING -->
+  <div class="alpine-section reveal">
+    <div class="container">
+      <span class="section-eyebrow">Gulling · Night One</span>
+      <h2>Lying on a Mountain Rock<br><em>Under the Stars</em></h2>
+      <p>After the alpine glow, the stars came out. I lay down on a mountain rock and looked up. I could point out constellations. I watched them moving — all in one direction, slow and certain. Temperature dropped to zero. My hands were freezing. I didn't move. The sky was too important.</p>
+      <p>Morning came and I sat opposite Dronagiri with my sketching pad and scribbled something. It didn't look like the mountain. I think that's fine.</p>
+    </div>
+  </div>
+
+  <!-- STARS IMAGE -->
+  <div class="full-bleed reveal">
+    <!-- ★ images_pangarchulla/stars_gulling.jpg ★ -->
+    <img src="images_pangarchulla/night.jpg" alt="Starry sky over Gulling" onerror="this.style.display='none'" />
+    <div class="img-caption container">Gulling campsite, 0°C, hands freezing — some experiences cannot be photographed, only lived</div>
+  </div>
+
+  <!-- DAY 2 — THE DECISION -->
+  <div class="container reveal">
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-name">Gulling → Khullara + The Decision</div>
+        <div class="day-altitude">Dec 23 · 3,378m &nbsp;·&nbsp; Dense forest. The pine tree photo. Then the news.</div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="img-float-right">
+        <!-- ★ images_pangarchulla/pine_tree.jpg ★ -->
+        <img src="images_pangarchulla/tree.jpg" alt="The epic pine tree on the trail" style="height:380px; object-fit:cover;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The pine tree — the photos we took here became some of my all-time favourites</div>
+      </div>
+      <p>Day 2 was dense forest and steep climb. Streams crossing the trail. Rucksack getting heavier with every switchback. The fluffy trek dog walking beside me like we had always known each other.</p>
+      <p>There was a broken tree that looked exactly like the Iron Throne from Game of Thrones. I sat on it immediately. Then one pine tree caught my eye on the way through the forest, and we stopped — the photographs from that spot ended up being some of the best of the entire trip. Sometimes the trail gives you things you didn't plan for.</p>
+      <p>Then the news at Khullara camp. Kuari Pass had no snow this year. That was the buzz kill. But then — Pangarchulla had snow. Nobody had planned for Pangarchulla. It wasn't even in the consideration when I took the flight.</p>
+      <div class="pull-quote">
+        A crazy idea. The group looked at each other. We said yes. That's it. That's all it took.
+      </div>
+      <p>That evening the alpine glow hit the Hathi-Ghoda peaks and Dronagiri from Khullara camp. Views in every direction. I sat there sipping soup, watching the mountains go dark, talking to new friends from Bangalore, laughing at nothing in particular.</p>
+    </div>
+  </div>
+
+  <!-- HATHI GHODA IMAGE -->
+  <div class="full-bleed reveal">
+    <!-- ★ images_pangarchulla/hathi_ghoda_glow.jpg ★ -->
+    <img src="images_pangarchulla/hatigoda_alpine_glow.PNG" alt="Alpine glow on Hathi-Ghoda peaks" onerror="this.style.display='none'" />
+    <div class="img-caption container">Hathi-Ghoda peaks from Khullara — the mountains lit up like they were celebrating the decision we had just made</div>
+  </div>
+
+  <!-- BIRTHDAY MIDNIGHT -->
+  <div class="container reveal" style="padding-bottom:2rem;">
+    <span class="section-eyebrow">Midnight · My Birthday</span>
+    <h2>A Cupcake at 3,378m.<br><em>A Wish. Then the Summit.</em></h2>
+    <p>I woke up at midnight. December midnight at Khullara campsite, 3,378m, temperature well below zero. And then I realised — it was my birthday.</p>
+    <p>My friends had carried a cupcake all the way from Rishikesh. They lit the candle. I blew it out. Made a wish — which is a secret. And then we got ready to go climb a mountain we had not planned to climb.</p>
+    <div class="birthday-block">
+      <p>I had wanted this for years — a birthday on a mountain. It happened. Not at the summit I planned for. At a different summit entirely, one I didn't know existed when I boarded that flight. I think that's the best kind of gift the universe gives you.</p>
+    </div>
+    <!-- ★ images_pangarchulla/birthday_cupcake.jpg ★ -->
+    <!-- <div class="full-bleed reveal" style="height:35vh; margin:2.5rem 0 0;">
+      <img src="images_pangarchulla/cake_with_candles.jpg" style="object-position: bottom;" alt="Birthday cupcake at Khullara" onerror="this.style.display='none'" />
+    </div>
+    <div class="img-caption">Midnight birthday at Khullara — a cupcake, a candle the cake was just a detail. The real magic was still waiting, somewhere higher.</div> -->
+  </div>
+
+</section>
+
+<!-- THE SUMMIT -->
+<div class="alpine-section reveal">
+  <div class="container">
+    <span class="section-eyebrow">Summit Day — Day 3</span>
+    <h2>One Step<br><em>at a Time.</em></h2>
+    <p>We left at 1 AM. 26 people. 25 boys. One girl — me. The cold air hit my face like a wall and didn't stop. The incline started gentle and got less gentle very fast.</p>
+    <p>Midway, we hit Mini Pangarchulla — the checkpoint where the guide said if the group doesn't move fast enough, we all turn back from here. I already knew I wasn't turning back. I said it to myself, quietly: <em>one step at a time.</em> And then I just took those steps.</p>
+
+    <div class="summit-grid">
+      <div class="summit-cell">
+        <span class="summit-cell-label">Departed</span>
+        <span class="summit-cell-value">1:00 AM</span>
+        <span class="summit-cell-note">From Khullara basecamp, in the dark</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Summit Reached</span>
+        <span class="summit-cell-value">9:15 AM</span>
+        <span class="summit-cell-note">Pangarchulla Peak · 4,700m</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Temperature</span>
+        <span class="summit-cell-value">−10°C</span>
+        <span class="summit-cell-note">Water bottle frozen solid in my hand</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Made the Top</span>
+        <span class="summit-cell-value">6 of 26</span>
+        <span class="summit-cell-note">I was one of the six</span>
+      </div>
+    </div>
+
+    <p>Where the snow started, we put on microspikes. The water I had filled was frozen — I shook the bottle, broke it loose, sipped in small amounts, then kept walking. The headlamp was blinking. Cold air going through my lungs. My mind said: <em>nope, you are not giving up.</em></p>
+
+    <div class="blackice-block">
+      <p>The final stretch wasn't snow — it was black ice. 70–80 degrees steep. Rock climbing in places. There were sections where if you slipped even a little, you didn't just fall. I knew it. I climbed it anyway. My summit partner was a packet of Skittles. The sugar rush hit at exactly the right moment. I will never underestimate candy again.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMIT CLIMB IMAGE -->
+<div class="full-bleed full-bleed-tall reveal" style="height:110vh;" > 
+  <!-- ★ images_pangarchulla/summit_climb.jpg ★ -->
+  <img src="images_pangarchulla/nimonpeakback.jpg" style="object-position: 50% 45% !important;" alt="Climbing Pangarchulla in the dark" onerror="this.style.display='none'"  />
+  <div class="img-caption container">The climb — headlamp, ice, cold air flooding the lungs, and one thought: one step at a time</div>
+</div>
+
+<!-- SUNRISE + TOP -->
+<div class="container reveal" style="padding-top:4rem; padding-bottom:2rem;">
+  <div class="clearfix">
+    <div class="img-float-right">
+      <!-- ★ images_pangarchulla/summit_sunrise.jpg ★ -->
+      <img src="images_pangarchulla/Animated.PNG" alt="Sunrise on Pangarchulla" style="height:380px; object-fit:cover;" onerror="this.style.display='none'" />
+      <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Sunrise on the climb — I turned back and felt like the main character of the movie</div>
+    </div>
+    <span class="section-eyebrow">The Summit · 9:15 AM</span>
+    <h2>A Dog at<br><em>15,200 Feet.</em></h2>
+    <p>As it was getting brighter I looked back — orange and purple sky, mountains in a row catching the first light, snow peaks going golden one after another. It looked animated. Too good to be real. I felt like the main character of a movie except this wasn't a movie, I was just <em>living</em>.</p>
+    <p>Then I reached the top. A tiny temple built for Lord Shiva. Red and orange prayer flags flying in the wind. And — I am still not over this — a dog. At 15,200 feet. Just sitting there, perfectly calm, completely unbothered, like it was the most normal place to be.</p>
+    <p>The trek lead knew it was my birthday. He handed me a Parle-G biscuit and said happy birthday. No gift will ever top that.</p>
+    <div class="pull-quote">
+      I turned in a full circle. Nanda Devi. Kamet. Hathi-Ghoda. Dronagiri. Trishul. Chaukamba Massif. 360 degrees of the Himalayas at sunrise, on my birthday. Out of 26, only 6 of us made it. I was one of them. I love myself for that.
+    </div>
+    <p>The descent was the knees' problem. Sharp mountain air making sounds like someone whispering in your ear. Dehydration headache. Sun after hours of dark. At one point I slid down a stretch on purpose, hurt my bum a bit, and laughed. There will always be one person in the group with the crazy ideas. I am that person.</p>
+  </div>
+</div>
+
+<!-- PANORAMA -->
+<div class="full-bleed reveal" style="height:75vh;">
+  <!-- ★ images_pangarchulla/panorama_summit.jpg ★ -->
+  <img src="images_pangarchulla/top.jpg" alt="360 panorama Pangarchulla summit" onerror="this.style.display='none'" />
+  <div class="img-caption container">The 360° view — Nanda Devi, Kamet, Dronagiri, Trishul, Chaukamba. Everything all at once.</div>
+</div>
+
+<!-- DAY 4 — KUARI + DESCENT -->
+<div class="container reveal">
+  <div class="day-header">
+    <div class="day-number">04</div>
+    <div class="day-info">
+      <div class="day-name">Kuari Pass + The Long Way Down</div>
+      <div class="day-altitude">Dec 25 · 3,640m → Karchi &nbsp;·&nbsp; Christmas on the mountain. We came this far — so we did Kuari too.</div>
+    </div>
+  </div>
+  <p>We had come all this way. So the next morning we woke up early and did Kuari Pass too — the trek we had originally planned. Then started the descent with full rucksacks. Heavy legs. Knee pain. That sharp mountain air making sounds in my ears like someone was there. People asked if they could carry my bag. I said no. Some things you carry yourself.</p>
+  <p>We made it back to Karchi just in time. And on the way back — a bunch of puppies on the trail. Tiny, warm, completely unbothered. The mountains give you a near-death experience on black ice and then immediately show you puppies. That feels very accurate to me.</p>
+  <div class="pull-quote">
+    Not all treasures are gold and silver, mate. For me, they’ve always been the mountains.
+  </div>
+</div>
+
+<!-- MID PAGE MOSAIC -->
+<div class="container-wide reveal" style="padding:0 2rem 4rem;">
+  <div class="photo-mosaic">
+    <div class="mosaic-main" >
+      <!-- ★ images_pangarchulla/nimi_summit_top.jpg ★ -->
+      <img src="images_pangarchulla/hero_image.PNG"  alt="At the Pangarchulla summit" style="height:420px; object-position: 50% 20% !important;" onerror="this.style.display='none'"  />
+      <div class="img-caption">At the top · Pangarchulla Peak · 4,700m · My birthday · The moment I'll carry always</div>
+    </div>
+  
+    
+    <div class="mosaic-side">
+      <div>
+        <!-- ★ images_pangarchulla/nanda_devi_view.jpg ★ -->
+        <img src="images_pangarchulla/trishul2.jpg"style="height:420px;" alt="Nanda Devi from summit" onerror="this.style.display='none'" />
+        <div class="img-caption">Trishul — Standing in the presence of ultimate strength.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="itinerary-section">
+  <div class="container">
+    <span class="section-eyebrow">The Route</span>
+    <h2>Complete Itinerary</h2>
+    <p class="iti-subtitle">8 days. One unplanned summit. A birthday nobody expected. A peak that asked everything.</p>
+    <div class="iti-header">
+      <span>Day</span><span>Route &amp; Highlight</span><span>Altitude</span><span>Distance</span>
+    </div>
+    <div class="iti-cards">
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">19</span><span class="day-word">Dec · Arrive</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Arrive Rishikesh</div>
+          <div class="iti-card-highlight">Ganga Aarti at the ghats · the river welcoming me in · something already shifting</div>
+        </div>
+        <div class="iti-card-alt">1,360 ft</div>
+        <div class="iti-card-km">—</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">20</span><span class="day-word">Dec · Rishikesh</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">River Rafting · Ganga</div>
+          <div class="iti-card-highlight">December water · the guide said jump · I jumped · freezing, euphoric, all at once</div>
+        </div>
+        <div class="iti-card-alt">1,360 ft</div>
+        <div class="iti-card-km">Rafting</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">21</span><span class="day-word">Dec · Drive</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Rishikesh → Karchi, Tugasi Village</div>
+          <div class="iti-card-highlight">~10 hours in a tempo traveller · arrived near Joshimath (Karchi, Tugasi) · woke to Dronagiri at first light</div>
+        </div>
+        <div class="iti-card-alt">~6,200 ft</div>
+        <div class="iti-card-km">~310 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">22</span><span class="day-word">Dec · Trek</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Karchi → Gulling Campsite</div>
+          <div class="iti-card-highlight">Village trail, mountain dogs, humble people · alpine glow on Dronagiri · stargazing at 0°C</div>
+        </div>
+        <div class="iti-card-alt">2,875m / 9,400 ft</div>
+        <div class="iti-card-km">~5 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">23</span><span class="day-word">Dec · Trek</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Gulling → Khullara + The Decision</div>
+          <div class="iti-card-highlight">Dense forest · pine tree photo · Hathi-Ghoda peaks · Kuari has no snow → we choose Pangarchulla</div>
+        </div>
+        <div class="iti-card-alt">3,378m / 11,070 ft</div>
+        <div class="iti-card-km">~6 km</div>
+      </div>
+      <div class="iti-card iti-card-summit">
+        <div class="iti-card-day"><span class="day-num">24</span><span class="day-word">Dec ★ Summit</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Khullara → Pangarchulla Peak → Base</div>
+          <div class="iti-card-highlight">Midnight birthday · left 1 AM · black ice · −10°C · Skittles · summit 9:15 AM · 6 of 26 made it</div>
+        </div>
+        <div class="iti-card-alt">4,700m / 15,200 ft</div>
+        <div class="iti-card-km">~14 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">25</span><span class="day-word">Dec · Bonus</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Kuari Pass + Return to Karchi</div>
+          <div class="iti-card-highlight">Came this far, did Kuari too · long descent with full pack · refused to give my bag to anyone · Christmas on the mountain</div>
+        </div>
+        <div class="iti-card-alt">3,640m / 11,900 ft</div>
+        <div class="iti-card-km">~10 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">26</span><span class="day-word">Dec · Return</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Karchi → Rishikesh</div>
+          <div class="iti-card-highlight">Long drive back · puppies on the trail · carrying everything the mountain gave me</div>
+        </div>
+        <div class="iti-card-alt">1,360 ft</div>
+        <div class="iti-card-km">~310 km</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="add-photos reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Lived</span>
+    <h2>Every Frame<br><em>Tells a Story</em></h2>
+    <p class="hint">Some moments deserve to be seen, not just read about. These are mine.</p>
+    <div class="photo-slots">
+      <!-- ★ Replace each src — all go in images_pangarchulla/ ★ -->
+      <figure class="photo-slot">
+        <img src= "images_pangarchulla/kid.PNG" alt="Alpine glow" onerror="this.style.display='none'" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_pangarchulla/dronagiriand forest.jpg"  alt="Forest trail Day 2" onerror="this.style.display='none'" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_pangarchulla/peakclean.jpg" alt="Sliding the descent" onerror="this.style.display='none'" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_pangarchulla/aurafarm.jpg"style="object-position:center;"  alt="Birthday at basecamp" onerror="this.style.display='none'" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_pangarchulla/pangarchula steap.jpg" alt="The black ice section" onerror="this.style.display='none'" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_pangarchulla/dogontrail.jpg"  style="object-position:left ;" alt="Prayer flags Shiva temple" onerror="this.style.display='none'" />
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<div class="container reveal" style="text-align:center; padding:5rem 2rem;">
+  <p style="font-family:var(--font-display); font-style:italic; font-size:clamp(1.4rem,3vw,2.2rem); color:var(--frost); line-height:1.45; max-width:700px; margin:0 auto 1.5rem;">"Mountains teach that not everything in this world can be rationally explained."</p>
+</div>
+
+<!-- ABOUT -->
+<section id="author" class="author-section" style="padding-bottom: 0;">
+  <div class="container">
+    <div class="author-inner">
+      <div class="author-photo">
+        <!-- ★ Same author photo as Kedarkantha — images/nirmala.jpeg ★ -->
+        <img src="images/nirmala.jpeg" style="object-fit: cover; object-position: center !important;" alt="Nirmala — She Explores" loading="lazy"
+  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>Getting Lost<br>to Find Myself</h2>
+        <p>I'm someone who believes the mountains don't ask for your résumé — they ask for your presence. This blog is my honest, unfiltered story of the trails I walk, the fears I face, and the version of myself I discover every time I lace up my boots and head up.</p>
+        <p style="margin-top:1rem;">Pangarchulla came out of nowhere. It wasn't on the plan. It showed up and asked if I was brave enough. I said yes before I had the sense to think about it. That is, I think, the only right way to answer a mountain.</p>
+        <div class="treks-done">
+          <span class="treks-label">Treks done</span>
+          <div class="trek-tags">
+            <span class="trek-tag current">Pangarchulla ★</span>
+            <span class="trek-tag">Kedarkantha ❄️</span>
+            <span class="trek-tag">Kuari Pass</span>
+            <span class="trek-tag">Buranghati</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+            <span class="trek-tag future-tag">K2 Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">the sky at your feet</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary</p>
+  <p>Pangarchulla Peak &nbsp;·&nbsp; Chamoli, Uttarakhand &nbsp;·&nbsp; Dec 19–26, 2025</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2025 She Explores</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() { hamburger.classList.add('open'); mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => { if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+
+</body>
+</html>
