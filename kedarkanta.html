@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kedarkantha — Where the Mountain Said, Not Yet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════
+       TOKENS
+    ═══════════════════════════════════════ */
+    :root {
+      --night:    #080c18;
+      --deep:     #0e1525;
+      --ink:      #141d2e;
+      --frost:    #e8eef8;
+      --snow:     #f5f8ff;
+      --mist:     #c8d4e8;
+      --stone:    #7a8ba8;
+      --amber:    #d4943a;
+      --amber-lt: #e8b870;
+      --ice:      #8fb8d8;
+      --ice-lt:   #b8d4ec;
+      --sage:     #6a8f7a;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+      --font-italic:  'Cormorant', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--night);
+      color: var(--frost);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(8, 12, 24, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(143, 184, 216, 0.12);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ice-lt);
+      text-decoration: none;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber-lt); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--frost);
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(8, 12, 24, 0.97);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu ul { list-style: none; text-align: center; }
+    .mobile-menu li { margin: 1.2rem 0; }
+
+    .mobile-nav-link {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--frost);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .mobile-menu-footer {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-top: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images_kedarkanta/Mountain.jpg') bottom/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.00); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8,12,24,0.96) 0%,
+        rgba(8,12,24,0.55) 45%,
+        rgba(8,12,24,0.15) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 2.5rem 5rem;
+      max-width: 860px;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ice-lt);
+      margin-bottom: 1rem;
+      border: 1px solid rgba(143,184,216,0.35);
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--snow);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--amber-lt);
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mist);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.73rem;
+      font-weight: 400;
+      color: var(--frost);
+      background: rgba(143,184,216,0.10);
+      border: 1px solid rgba(143,184,216,0.18);
+      padding: 0.38rem 0.9rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ═══════════════════════════════════════
+       STATS BAR
+    ═══════════════════════════════════════ */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--deep);
+      border-top: 1px solid rgba(143,184,216,0.10);
+      border-bottom: 1px solid rgba(143,184,216,0.10);
+    }
+
+    .stat-item {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid rgba(143,184,216,0.08);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--amber-lt);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ═══════════════════════════════════════
+       CONTAINERS
+    ═══════════════════════════════════════ */
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .container-wide {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ═══════════════════════════════════════
+       REVEAL
+    ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION EYEBROW
+    ═══════════════════════════════════════ */
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.9rem;
+    }
+
+    /* ═══════════════════════════════════════
+       STORY SECTIONS
+    ═══════════════════════════════════════ */
+    .intro-section {
+      padding: 6rem 0 4rem;
+    }
+
+    .intro-section h2,
+    .nature-break h2,
+    .summit-block h2,
+    .stars-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--snow);
+      margin-bottom: 1.5rem;
+    }
+
+    .drop-cap {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--frost);
+      margin-bottom: 1.4rem;
+    }
+
+    .drop-cap::first-letter {
+      float: left;
+      font-size: 4.2rem;
+      line-height: 0.78;
+      font-weight: 300;
+      color: var(--amber-lt);
+      margin-right: 0.12em;
+      margin-top: 0.08em;
+      font-family: var(--font-display);
+    }
+
+    p {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--mist);
+      margin-bottom: 1.3rem;
+    }
+
+    p em {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.08em;
+      color: var(--frost);
+    }
+
+    .pull-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ice-lt);
+      line-height: 1.5;
+      padding: 2rem 0 2rem 2rem;
+      border-left: 3px solid var(--amber);
+      margin: 2.5rem 0;
+    }
+
+    /* ═══════════════════════════════════════
+       FULL-BLEED IMAGES
+    ═══════════════════════════════════════ */
+    .full-bleed {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 420px;
+      margin: 4rem 0;
+      overflow: hidden;
+    }
+
+    .full-bleed-tall { height: 80vh; }
+
+    .full-bleed img {
+     width: 100%;
+    height: 540px;
+    object-fit: cover;
+    display: block;
+    transition: transform 8s ease;
+    }
+    
+
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem 2rem;
+      background: linear-gradient(transparent, rgba(8,12,24,0.85));
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--mist);
+      letter-spacing: 0.03em;
+    }
+
+    /* ═══════════════════════════════════════
+       FLOAT IMAGE
+    ═══════════════════════════════════════ */
+    .img-float-right {
+      float: right;
+      width: 42%;
+      margin: 0 0 1.8rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-float-right img {
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .img-float-left {
+      float: left;
+      width: 42%;
+      margin: 0 2rem 1.8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-float-left img {
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .clearfix::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    /* ═══════════════════════════════════════
+       DAY HEADERS
+    ═══════════════════════════════════════ */
+    .day-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.4rem;
+      margin: 4rem 0 2rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(143,184,216,0.12);
+    }
+
+    .day-number {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--amber);
+      opacity: 0.6;
+      min-width: 3.5rem;
+    }
+
+    .day-info {
+      padding-top: 0.5rem;
+    }
+
+    .day-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--snow);
+      margin-bottom: 0.3rem;
+    }
+
+    .day-altitude {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+    }
+
+    /* ═══════════════════════════════════════
+       NATURE BREAK
+    ═══════════════════════════════════════ */
+    .nature-break {
+      background: var(--deep);
+      padding: 5rem 0;
+      margin: 3rem 0;
+      border-top: 1px solid rgba(143,184,216,0.08);
+      border-bottom: 1px solid rgba(143,184,216,0.08);
+    }
+
+    /* ═══════════════════════════════════════
+       PHOTO MOSAIC
+    ═══════════════════════════════════════ */
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .mosaic-main {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+    }
+
+    .mosaic-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mosaic-side > div {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .mosaic-side .img-caption {
+      position: absolute;
+    }
+
+    /* ═══════════════════════════════════════
+       TWO COL GRID
+    ═══════════════════════════════════════ */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .grid-img {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════
+       SNOW BLOCK — replaces summit block
+    ═══════════════════════════════════════ */
+    .snow-block {
+      background: linear-gradient(135deg, #0a1628 0%, #111e38 50%, #0d1520 100%);
+      padding: 5.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snow-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(143,184,216,0.07) 0%, transparent 60%);
+    }
+
+    .snow-block .container { position: relative; z-index: 1; }
+
+    .snow-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--snow);
+      margin-bottom: 1.5rem;
+    }
+
+    .snow-img {
+      margin: 2.5rem 0 0;
+      position: relative;
+      height: 480px;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════
+       STARS SECTION
+    ═══════════════════════════════════════ */
+    .stars-section {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin: 3rem 0;
+    }
+
+    .stars-bg {
+      position: absolute;
+      inset: 0;
+      /* Replace with: background: url('images/stars.jpg') ... once converted */
+      background: linear-gradient(180deg, #020610 0%, #081020 50%, #060e1c 100%);
+    }
+
+    .stars-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,12,24,0.55);
+    }
+
+    .stars-content {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 2rem;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stars-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--snow);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .stars-content p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ice-lt);
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════
+       BUNGEE SECTION
+    ═══════════════════════════════════════ */
+    .bungee-block {
+      background: var(--ink);
+      border: 1px solid rgba(212,148,58,0.15);
+      border-radius: 2px;
+      padding: 2.5rem 2.5rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .bungee-block::before {
+      content: '⚡';
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      font-size: 1.4rem;
+    }
+
+    .bungee-block p {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--frost);
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════
+       PLACEHOLDER IMAGE
+    ═══════════════════════════════════════ */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--ink), var(--deep));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px dashed rgba(143,184,216,0.18);
+    }
+
+    .img-placeholder span {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════
+       ITINERARY
+    ═══════════════════════════════════════ */
+    .itinerary-section {
+      background: var(--deep);
+      padding: 6rem 0;
+      border-top: 1px solid rgba(143,184,216,0.08);
+    }
+
+    .itinerary-section h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--snow);
+      margin-bottom: 0.5rem;
+    }
+
+    .iti-subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--stone);
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .iti-header {
+      display: grid;
+      grid-template-columns: 80px 1fr 120px 100px;
+      gap: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--stone);
+      border-bottom: 1px solid rgba(143,184,216,0.12);
+      margin-bottom: 0.5rem;
+    }
+
+    .iti-cards { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .iti-card {
+      display: grid;
+      grid-template-columns: 80px 1fr 120px 100px;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.2rem;
+      background: rgba(20,29,46,0.6);
+      border: 1px solid rgba(143,184,216,0.07);
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .iti-card:hover { background: rgba(20,29,46,0.95); }
+
+    .iti-card-day {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .day-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .day-word {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .iti-card-route {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--frost);
+      margin-bottom: 0.2rem;
+    }
+
+    .iti-card-highlight {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--stone);
+    }
+
+    .iti-card-alt {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--ice);
+      text-align: center;
+    }
+
+    .iti-card-km {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--mist);
+      text-align: right;
+    }
+
+    .iti-card-snow {
+      border-color: rgba(143,184,216,0.25);
+      background: rgba(143,184,216,0.05);
+    }
+
+    .iti-card-snow .day-num { color: var(--ice-lt); }
+
+    /* ═══════════════════════════════════════
+       GALLERY
+    ═══════════════════════════════════════ */
+    .add-photos {
+      padding: 5rem 0;
+    }
+
+    .add-photos h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--snow);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .add-photos h2 em { color: var(--amber-lt); font-style: italic; }
+
+    .hint {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--stone);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .photo-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    .photo-slot {
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .photo-slot:hover img { transform: scale(1.04); }
+
+    /* ═══════════════════════════════════════
+       AUTHOR
+    ═══════════════════════════════════════ */
+    .author-section {
+      background: var(--deep);
+      padding: 6rem 0;
+      border-top: 1px solid rgba(143,184,216,0.08);
+    }
+
+    .author-inner {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .author-photo {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+    }
+
+    .author-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(212,148,58,0.2);
+      pointer-events: none;
+    }
+
+    .author-text h2 {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--snow);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .treks-done { margin-top: 2rem; }
+
+    .treks-label,
+    .dreams-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .trek-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .trek-tag {
+      font-family: var(--font-body);
+      font-size: 0.73rem;
+      color: var(--frost);
+      background: rgba(143,184,216,0.10);
+      border: 1px solid rgba(143,184,216,0.18);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .trek-tag.current {
+      background: rgba(212,148,58,0.12);
+      border-color: rgba(212,148,58,0.3);
+      color: var(--amber-lt);
+    }
+
+    .future-tag {
+      background: rgba(106,143,122,0.08);
+      border-color: rgba(106,143,122,0.2);
+      color: var(--sage);
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--night);
+      border-top: 1px solid rgba(143,184,216,0.08);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ice-lt);
+      margin-bottom: 1.2rem;
+    }
+
+    .hillary-quote {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--stone);
+      margin-bottom: 1rem;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+      margin-bottom: 0.4rem;
+    }
+
+    .insta-link a {
+      color: var(--ice);
+      text-decoration: none;
+    }
+
+    .insta-link a:hover { color: var(--amber-lt); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.4rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-content { padding: 0 1.4rem 3.5rem; }
+
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { border-bottom: 1px solid rgba(143,184,216,0.08); }
+
+      .container { padding: 0 1.4rem; }
+      .container-wide { padding: 0 1.4rem; }
+
+      .img-float-right,
+      .img-float-left {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .img-float-right img,
+      .img-float-left img { height: 260px; }
+
+      .photo-mosaic { grid-template-columns: 1fr; }
+      .mosaic-main { height: 320px; }
+      .mosaic-side { flex-direction: row; }
+      .mosaic-side > div { height: 200px; }
+
+      .two-col-grid { grid-template-columns: 1fr; }
+      .grid-img { height: 280px; }
+
+      .author-inner { grid-template-columns: 1fr; }
+      .author-photo { height: 320px; }
+
+      .iti-header { display: none; }
+      .iti-card {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+      }
+      .iti-card-alt, .iti-card-km {
+        display: none;
+      }
+
+      .photo-slots { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 3.2rem; }
+      .photo-slots { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="#" class="nav-brand">getting lost to find myself</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#author">About</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Kedarkantha · February 2025</p>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Uttarkashi, Uttarakhand &nbsp;·&nbsp; February 2025</span>
+    <h1 class="hero-title">Kedar<em>kantha</em></h1>
+    <p class="hero-sub">The mountain didn't let me reach the top this time. But it gave me something far greater the peace I had been searching for.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">📅 <span>Feb 21 – 26, 2025</span></div>
+      <div class="meta-pill">❄️ <span>First snow ever</span></div>
+      <div class="meta-pill">⛰️ <span>12,500 ft base camp</span></div>
+      <div class="meta-pill">✈️ <span>First flight too</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">1st</div>
+    <div class="stat-label">Himalayan trek</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1st</div>
+    <div class="stat-label">time seeing snow</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">0°</div>
+    <div class="stat-label">degrees — and beyond</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">∞</div>
+    <div class="stat-label">strangers → friends</div>
+  </div>
+</div>
+
+<!-- ═══ STORY ═══ -->
+<section id="story">
+
+  <!-- PROLOGUE -->
+  <div class="intro-section reveal">
+    <div class="container">
+      <span class="section-eyebrow">The Beginning</span>
+      <p class="drop-cap">This was my first Himalayan trek my first snow, my first flight completely unexpected and unplanned. Nothing in my life had prepared me for it, and yet somehow, everything had. I arrived two days early, which gave me time to breathe, to slow down, and to let the mountains begin their quiet work on me.</p>
+      <p>Rishikesh welcomed me the way it welcomes everyone who comes with an open heart with the sound of the Ganga, the smell of incense, and the feeling that something in you is about to change. Watching the Ganga Aarti for the first time was nothing short of divine. The flames, the chanting, the river carrying it all forward I just stood there, completely still.</p>
+      <div class="pull-quote">
+        Witnessing the sacred confluence of two rivers at Dev Prayag was surreal. Two rivers — two separate journeys — merging into one. I didn't know it then, but that's exactly what this trip was about to do to me.
+      </div>
+    </div>
+  </div>
+
+  <!-- DEV PRAYAG FULL BLEED -->
+  <div class="full-bleed reveal" style="height: auto;">
+    <img src="images_kedarkanta/devprayag.jpg" alt="Dev Prayag confluence"  style="height:20%; object-fit: cover;"/>
+    <div class="img-caption container">Dev Prayag — where the Bhagirathi and Alaknanda meet, and the Ganga is born. Standing here, everything felt like a blessing.</div>
+  </div>
+
+  <!-- RISHIKESH + BUNGEE -->
+  <div class="container reveal" style="padding: 4rem 0 2rem;">
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_kedarkanta/sunrise.jpg" alt="Ganga at Rishikesh" style="height:340px; object-fit:cover;" />
+        <div class="img-caption" style="position:relative; background: var(--deep); padding: 0.6rem 0.9rem; font-family: var(--font-body); font-size:0.72rem; color: var(--stone); font-style:italic; border-left: 3px solid var(--amber);">The Ganga at dawn — the light that told me I was exactly where I needed to be</div>
+      </div>
+      <p>The next morning, I rented a bike and rode alone to the bungee jumping point — just me, the road, and the mountains watching. There's something about riding solo through Uttarakhand that strips you of every excuse you've ever given yourself.</p>
+      <p>Bungee jumping had been on my bucket list for years. I finally checked it off — jumping over the Ganga, the river roaring below me, the world momentarily upside down.</p>
+      <div class="bungee-block">
+        <p>Some moments are too alive to photograph. Bungee jumping over the Ganga was one of them. When you fall like that — with everything below you and nothing holding you — you find out very quickly what you're made of.</p>
+      </div>
+      <p>Then, the journey to Kedarkantha began — filled with music, laughter, incredible places, and the most amazing people. The food was incredible, the roads were winding, and somewhere in the middle of it all, I stopped thinking and just started <em>feeling</em>.</p>
+    </div>
+  </div>
+
+  <!-- PEBBLES IMAGE -->
+  <div class="full-bleed reveal" style="height:auto;">
+    <img src="images_kedarkanta/pebbles.JPG" alt="Pebbles at Rishikesh Ganga" style="object-position: center center;"  />
+    <div class="img-caption container">Rishikesh riverbank — stacked stones, still water, a mind beginning to quiet down</div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="container reveal">
+    <div class="day-header">
+      <div class="day-number">01</div>
+      <div class="day-info">
+        <div class="day-name">Sankri — Where It All Begins</div>
+        <div class="day-altitude">Base Camp &nbsp;·&nbsp; 6,400 ft &nbsp;·&nbsp; The first step into the Himalayas</div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="img-float-left">
+        <img src="images_kedarkanta/flower.JPG" alt="Small flower on the trail" style="height:300px; object-fit:cover;" />
+        <div class="img-caption" style="position:relative; background: var(--deep); padding: 0.6rem 0.9rem; font-family: var(--font-body); font-size:0.72rem; color: var(--stone); font-style:italic; border-left: 3px solid var(--amber);">A tiny bloom on the trail — the mountains' way of saying hello</div>
+      </div>
+      <p>We set off from Sankri base camp, trekking through rocky paths lined with vibrant red rhododendrons. Dancing on the mountain trails, enjoying every breath of crisp air, made the journey feel less like effort and more like celebration.</p>
+      <p>For the first time, I experienced 0-degree and minus temperatures. And in those conditions — shivering, fingers cold, breath fogging in the air — seeing those sunsets was something else entirely. The sky would turn amber and rose over the snow-capped peaks, and I remember thinking: <em>this is why people come here</em>. This is why they keep coming back.</p>
+    </div>
+  </div>
+
+  <!-- RHODODENDRONS -->
+  <div class="full-bleed reveal" style="height:60vh;">
+    <img src="images_kedarkanta/IMG_3285.JPG" alt="Red rhododendrons on trail" />
+    <div class="img-caption container">Red rhododendrons lining the trail to Juda Ka Talab — nature's welcome committee, in full bloom</div>
+  </div>
+
+  <!-- DAY 2 - JUDA KA TALAB -->
+  <div class="nature-break reveal">
+    <div class="container">
+      <span class="section-eyebrow">Day 2 · Juda Ka Talab</span>
+      <h2>My First Snow.<br>The Peace I Was Searching For.</h2>
+      <p>As we made our way to Juda Ka Talab, I saw snow for the first time in my life. I want you to think about that for a second — the first time. There are some experiences that can only happen once, and this was mine.</p>
+      <p>The view of the mountains, the golden oak trees glowing in the sunset, fluffy dogs wandering around, the crisp mountain air, the peace of stargazing under a clear sky — it was magical. And the people I met made it even more fun, playing games and sharing stories. That night, I had my first experience sleeping in a sleeping bag. Freezing. Absolutely unforgettable.</p>
+      <div class="pull-quote">
+        I found a fallen oak tree, and I lay down on it for a while — completely at peace, free from every constraint that life had ever put on me. It was like I had been searching for this feeling, and I finally found it. Just for a moment. Just right there.
+      </div>
+      <p>I thought the food would be bland at high altitude, but every meal felt earned and tasted better for it. The dogs that wandered through camp were our protectors, our companions — one in particular was so beautiful, so fluffy, that if I could have, I would have packed it in my bag and brought it home.</p>
+    </div>
+  </div>
+
+  <!-- SITTING IN SNOW FOREST -->
+  <div class="full-bleed full-bleed-tall reveal" style="height: auto;">
+    <img src="images_kedarkanta/Nirmalasitting.jpg" alt="Sitting in snowy forest" style="object-position: center bottom;" />
+    <div class="img-caption container">Juda Ka Talab — sitting still in the snow, the bare oak trees all around me, the silence so full it felt like company</div>
+  </div>
+
+  <!-- DOG MOMENT -->
+  <div class="container reveal" style="padding: 4rem 0 2rem;">
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-name">Juda Ka Talab — The Dog That Found Me</div>
+        <div class="day-altitude">9,100 ft &nbsp;·&nbsp; First snow · Golden oaks · A trek buddy I'll never forget</div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_kedarkanta/nimianddog.jpg" alt="Nimi with mountain dog" style="height:380px; object-fit:cover;" />
+        <div class="img-caption" style="position:relative; background: var(--deep); padding: 0.6rem 0.9rem; font-family: var(--font-body); font-size:0.72rem; color: var(--stone); font-style:italic; border-left: 3px solid var(--amber);">The fluffiest soul on the mountain — I would have carried it home if I could</div>
+      </div>
+      <p>Climbing the snowy trail, I tried to throw snow at my friends — and hilariously slipped and fell instead. I lost count of how many times I fell that day. Every single time, I laughed harder than the time before. There's something about falling in the snow that makes you feel like a child again.</p>
+      <p>And then — this dog. My trek buddy. The most beautiful, fluffy mountain dog, walking right beside me like we had known each other for years. It was so pretty that I genuinely stopped mid-trail just to take it in. If I had a chance, I would have packed it up and brought it home without a second thought.</p>
+      <p>The mountains were showing me things. The lake at Juda Ka Talab — the way it sat there, completely still, surrounded by snow and pine and silence — was simply breathtaking. I stood at the edge of it and felt, without any doubt, that I truly belonged there.</p>
+    </div>
+  </div>
+
+  <!-- MOUNTAIN PEAKS -->
+  <div class="full-bleed reveal"  style="height: auto;">
+    <img src="images_kedarkanta/Mountain.jpg" alt="Snow capped Himalayan peaks" style="object-position: center bottom;"  />
+    <div class="img-caption container">Snow-capped peaks above Sankri — clouds wrapping the mountains like they were being kept secret. This view made every cold, every ache, worth it entirely.</div>
+  </div>
+
+  <!-- MOSAIC GALLERY -->
+  <div id="gallery" class="container-wide reveal" style="padding: 3rem 2rem;">
+    <div class="photo-mosaic">
+      <div class="mosaic-main">
+        <img src="images_kedarkanta/nimpacked.jpg" alt="Nirmala on the trail" style="object-position: center;" />
+        <div class="img-caption">Day 1 on the trail — somewhere between climb and the clarity</div>
+      </div>
+      <div class="mosaic-side">
+        <div>
+          <img src="images_kedarkanta/stars.jpg" alt="Base camp at sunset"  style="object-position: center bottom;" />
+          <div class="img-caption">Base camp at dusk — glowing sky that felt painted just for us</div>
+        </div>
+        <div>
+          <img src="images_kedarkanta/legs.jpg" alt="All our boots in the snow" />
+          <div class="img-caption">Boots in a circle on summit night — every pair a different story, all pointing the same way</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ SNOWFALL / BASE CAMP BLOCK ═══ -->
+<div class="snow-block reveal">
+  <div class="container">
+    <span class="section-eyebrow">Base Camp — Day 3</span>
+    <h2>The Tent Zipper.<br>The First Snowfall.</h2>
+    <p>We arrived at Kedarkantha base camp. And at that moment — standing there with snow-covered mountains stretching endlessly before me — I just stood still. Mesmerized. Feeling like I truly belonged to this place, like it had been waiting for me.</p>
+    <p>We were inside the tent, playing games, laughing, warm in that thin nylon shell against the cold. And then a voice from outside. Someone unzipped the tent — and there it was. Snowfall. Real, silent, beautiful snowfall.</p>
+    <div class="pull-quote">
+      I still smile like a child when I think about it. Snow touching the golden oak trees. Snowflakes landing on my face. We built a snowman. I fell in the snow so many times I stopped counting — and every single fall made me laugh harder than the last.
+    </div>
+    <p>That night, the snow kept falling. The whole night, the tent filled under its weight, the path outside became invisible, the wind picked up. We waited. We hoped. The campsite had more prayers going up than I could count.</p>
+    <div class="snow-img">
+      <img src="images_kedarkanta/campsite2.jpg" alt="Base camp after overnight snowfall" style="width:100%; height:480px; object-fit:cover; border-radius:4px; margin-top:2rem;" />
+      <div class="img-caption" style="font-family:var(--font-body); font-size:0.75rem; color:var(--stone); padding:0.6rem 0; font-style:italic;">Base camp after the snowfall — colourful tents against endless white, mountains keeping their secrets in the clouds</div>
+    </div>
+  </div>
+</div>
+
+<!-- STARS SECTION -->
+<div class="stars-section reveal" style="height: auto;">
+  <div class="stars-bg" style="background-image: url('images_kedarkanta/stars.jpg'); object-fit: unset;">
+  </div>
+  <div class="stars-overlay"></div>
+  <div class="stars-content">
+    <span class="section-eyebrow">A Night to Remember</span>
+    <h2>Stargazing at<br>12,000 Feet</h2>
+    <p>We lay under the Himalayan sky, learning constellations, speaking softly, then not at all. The cold didn't matter anymore. The ache in my legs didn't matter. Up there, under that sky, everything that had ever felt heavy simply dissolved.</p>
+    <p>Some experiences can't be photographed. Only lived.</p>
+  </div>
+</div>
+
+<!-- ═══ THE SUMMIT THAT WASN'T ═══ -->
+<div class="container reveal" style="padding: 5rem 0 4rem;">
+  <span class="section-eyebrow">Summit Day — The Mountain Decides</span>
+  <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--snow); margin-bottom: 1.5rem; line-height: 1.2;">The Summit That<br><em>Wasn't Meant to Be.</em></h2>
+  <p>Morning came. The snow had fallen all night. The path was gone — buried under white. The wind was still there. The conditions hadn't cleared. We waited for the signal that it was safe to go, that the mountain would let us pass.</p>
+  <p>It didn't come.</p>
+  <p>The summit attempt was called off. We stood there — all of us — looking up at Kedarkantha above us, hidden somewhere in the cloud and snowfall. And here's the thing: I wasn't crushed. Not even close. Because somewhere between Rishikesh and that snowy base camp, something had shifted in me.</p>
+  <div class="pull-quote">
+    What happens, happens for good reasons. The mountain calls you when you are ready. And it will call me again — I know it will. It reminded me, once more, that it is not the summit. It is never just the summit. It's the path. The journey. The people you meet along the way.
+  </div>
+  <p>I couldn't complete the summit this time. But I left Kedarkantha with something I had been searching for far longer than any trek — a kind of peace that doesn't leave you when you come back down.</p>
+  <p style="font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--frost);">I'll be back, Kedarkantha. I'll be back.</p>
+</div>
+
+<!-- TWO COL FINAL IMAGES -->
+<div class="container-wide reveal" style="padding-bottom: 4rem;">
+  <div class="two-col-grid">
+    <div class="grid-img">
+      <img src="images_kedarkanta/IMG_0088.JPG" alt="Looking at the mountains"style="object-position: center top;" />
+      <div class="img-caption">Somewhere on the trail — back to the camera, face to the Himalayas. This is the version of me I came to find.</div>
+    </div>
+    <div class="grid-img">
+      <img src="images_kedarkanta/legs.jpg" alt="Boots circled on summit night" />
+      <div class="img-caption">Summit night — all our boots in a circle, all our poles meeting in the middle. We were ready. The mountain wasn't.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ITINERARY ═══ -->
+<section id="itinerary" class="itinerary-section">
+  <div class="container">
+    <span class="section-eyebrow">The Route</span>
+    <h2>Complete Itinerary</h2>
+    <p class="iti-subtitle">6 days. First Himalayas. A summit that said — not yet.</p>
+    <div class="iti-header">
+      <span>Day</span><span>Route &amp; Highlight</span><span>Altitude</span><span>Distance</span>
+    </div>
+    <div class="iti-cards">
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">–2</span><span class="day-word">Arrive</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Land → Rishikesh</div>
+          <div class="iti-card-highlight">First flight, Ganga Aarti, the river welcoming me in</div>
+        </div>
+        <div class="iti-card-alt">1,360 ft</div>
+        <div class="iti-card-km">—</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">–1</span><span class="day-word">Explore</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Dev Prayag + Bungee</div>
+          <div class="iti-card-highlight">Sacred river confluence · solo bike ride · jumping over the Ganga</div>
+        </div>
+        <div class="iti-card-alt">2,100 ft</div>
+        <div class="iti-card-km">Solo ride</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">0</span><span class="day-word">Drive</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Rishikesh → Sankri</div>
+          <div class="iti-card-highlight">Winding mountain roads, music, strangers becoming friends</div>
+        </div>
+        <div class="iti-card-alt">6,400 ft</div>
+        <div class="iti-card-km">220 km drive</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">1</span><span class="day-word">Trek</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Sankri → Juda Ka Talab</div>
+          <div class="iti-card-highlight">Red rhododendrons, pine forest, first snowflakes underfoot</div>
+        </div>
+        <div class="iti-card-alt">9,100 ft</div>
+        <div class="iti-card-km">4.5 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">2</span><span class="day-word">Trek</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Juda Ka Talab → KK Base Camp</div>
+          <div class="iti-card-highlight">Snow in all directions · fallen oak tree moment · fluffy dog companion</div>
+        </div>
+        <div class="iti-card-alt">11,250 ft</div>
+        <div class="iti-card-km">4 km</div>
+      </div>
+      <div class="iti-card iti-card-snow">
+        <div class="iti-card-day"><span class="day-num">3</span><span class="day-word">★ Snow</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Base Camp — First Snowfall Night</div>
+          <div class="iti-card-highlight">Tent zipper moment · snowman · stargazing · the night everything fell silent</div>
+        </div>
+        <div class="iti-card-alt">11,250 ft</div>
+        <div class="iti-card-km">0 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">4</span><span class="day-word">Return</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Base Camp → Sankri → Dehradun</div>
+          <div class="iti-card-highlight">Summit called off · descent in snow · the mountain says not yet</div>
+        </div>
+        <div class="iti-card-alt">6,400 ft</div>
+        <div class="iti-card-km">4 km + drive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="add-photos reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Lived</span>
+    <h2>Every Frame<br><em>Tells a Story</em></h2>
+    <p class="hint">Some moments deserve to be seen, not just read about. These are mine.</p>
+    <div class="photo-slots">
+      <figure class="photo-slot">
+        <img src="images_kedarkanta/nimianddog.jpg" alt="Nimi and mountain dog" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_kedarkanta/nimpacked.jpg" alt="Ganga sunrise Rishikesh" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_kedarkanta/camsite.PNG" alt="Tiny flower on trail" style="object-position: center bottom;" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_kedarkanta/cutiee.PNG" alt="Sitting in snowy forest" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_kedarkanta/nimsnowfall.PNG" alt="Dev Prayag confluence" />
+      </figure>
+      <figure class="photo-slot">
+        <img src="images_kedarkanta/nimshoes.JPG" alt="Red rhododendrons" />
+      </figure>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="author" class="author-section">
+  <div class="container">
+    <div class="author-inner">
+      <div class="author-photo">
+        <!-- ★ AUTHOR PHOTO — use the same image across all your blogs for a consistent brand look ★ -->
+        <!-- Replace 'images/your-author-photo.jpg' with your chosen consistent photo -->
+        <img src="images/nirmala.jpeg" alt="Nirmala — getting lost to find myself" loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>Getting Lost<br>to Find Myself</h2>
+        <p>I'm someone who believes the mountains don't ask for your résumé — they ask for your presence. This blog is my honest, unfiltered story of the trails I walk, the fears I face, and the version of myself I discover every time I lace up my boots and head up.</p>
+        <p style="margin-top: 1rem;">Kedarkantha was my first Himalayan trek — my first snow, my first flight. The summit didn't happen this time. But I came back a different person. That's enough. That's everything.</p>
+        <div class="treks-done">
+          <span class="treks-label">Summits done</span>
+          <div class="trek-tags">
+            <span class="trek-tag">Pangarchula</span>
+            <span class="trek-tag current">Kedarkantha ❄️</span>
+            <span class="trek-tag">Kuari Pass</span>
+            <span class="trek-tag">Buran Ghati ★</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+            <span class="trek-tag future-tag">K2 Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="footer-brand">getting lost to find myself</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary</p>
+  <p>Kedarkantha Trek · Uttarkashi, Uttarakhand · February 21 – 26, 2025</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2025 Mountain Stories</p>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Hamburger ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+</script>
+
+</body>
+</html>

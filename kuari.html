@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuari Pass — She Explores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0c0c;
+      --text: #f0ece4;
+      --muted: #7a7570;
+      --accent: #5ab0e0;
+      --accent-dim: rgba(74,159,212,0.18);
+      --border: rgba(255,255,255,0.07);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-ui: 'Josefin Sans', sans-serif;
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      font-weight: 300;
+      overflow-x: hidden;
+      min-height: 100svh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 66px; padding: 0 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12,12,12,0.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.85rem); font-weight: 300; letter-spacing: 0.05em; }
+    .nav-logo em { font-style: italic; color: #6bbb82; }
+    .nav-back { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text); }
+    .nav-back .arr { display: inline-block; transition: transform 0.2s; }
+    .nav-back:hover .arr { transform: translateX(-3px); }
+
+    /* BACKGROUND ATMOSPHERE */
+    .bg-layer {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(10,40,80,0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(5,20,50,0.3) 0%, transparent 60%),
+        #0a0e14;
+    }
+    .bg-layer::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* MOUNTAIN SVG SILHOUETTE */
+    .mountain-wrap {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1;
+      pointer-events: none;
+    }
+    .mountain-wrap svg { display: block; width: 100%; }
+
+    /* MAIN */
+    main {
+      position: relative; z-index: 2;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 120px 6vw 6rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 0.63rem; font-weight: 600; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: rise 0.9s 0.1s var(--ease) forwards;
+    }
+
+    .peak-name {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 300; line-height: 0.92;
+      letter-spacing: -0.01em;
+      opacity: 0; animation: rise 0.9s 0.22s var(--ease) forwards;
+    }
+    .peak-name em {
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(90,176,224,0.5);
+    }
+
+    .tagline {
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(240,236,228,0.45);
+      max-width: 520px;
+      line-height: 1.55;
+      opacity: 0; animation: rise 0.9s 0.34s var(--ease) forwards;
+    }
+
+    /* DIVIDER */
+    .divider {
+      margin: 2.8rem auto;
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0; animation: rise 0.9s 0.44s var(--ease) forwards;
+    }
+
+    /* STATS ROW */
+    .stats {
+      display: flex; gap: clamp(2rem,5vw,4rem);
+      flex-wrap: wrap; justify-content: center;
+      opacity: 0; animation: rise 0.9s 0.52s var(--ease) forwards;
+    }
+    .stat { text-align: center; }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300; color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.58rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    /* COMING SOON BADGE */
+    .cs-badge {
+      margin-top: 3rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid rgba(90,176,224,0.25);
+      border-radius: 100px;
+      background: rgba(74,159,212,0.06);
+      backdrop-filter: blur(8px);
+      opacity: 0; animation: rise 0.9s 0.62s var(--ease) forwards;
+    }
+    .cs-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+    .cs-text {
+      font-size: 0.62rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    /* BACK LINK */
+    .back-link {
+      margin-top: 2.2rem;
+      font-size: 0.63rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+      opacity: 0; animation: rise 0.9s 0.72s var(--ease) forwards;
+    }
+    .back-link:hover { color: var(--text); }
+    .back-link .arr { transition: transform 0.2s; }
+    .back-link:hover .arr { transform: translateX(-3px); }
+
+    /* QUOTE at bottom */
+    .bottom-quote {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 3; text-align: center;
+      opacity: 0; animation: rise 0.9s 0.9s var(--ease) forwards;
+      width: 90vw; max-width: 520px;
+    }
+    .bottom-quote p {
+      font-family: var(--font-display);
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+      font-style: italic;
+      color: rgba(240,236,228,0.22);
+      line-height: 1.6;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .stats { gap: 1.5rem; }
+      .bottom-quote { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BG -->
+  <div class="bg-layer"></div>
+
+  <!-- MOUNTAIN SILHOUETTE -->
+  <div class="mountain-wrap">
+    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="mtnGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(74,159,212,0.07)"/>
+          <stop offset="100%" stop-color="rgba(74,159,212,0.02)"/>
+        </linearGradient>
+      </defs>
+      <!-- Far range -->
+      <path d="M0,280 L80,220 L180,240 L280,170 L360,195 L460,140 L560,165 L660,120 L760,145 L860,100 L940,130 L1040,90 L1120,115 L1200,80 L1300,105 L1380,70 L1440,90 L1440,320 L0,320 Z"
+            fill="rgba(74,159,212,0.04)" />
+      <!-- Mid range -->
+      <path d="M0,300 L60,265 L140,280 L240,240 L320,255 L420,210 L500,230 L580,195 L680,215 L780,180 L860,200 L960,165 L1060,185 L1160,155 L1260,175 L1360,150 L1440,165 L1440,320 L0,320 Z"
+            fill="rgba(74,159,212,0.06)" />
+      <!-- Near range -->
+      <path d="M0,320 L100,295 L200,305 L320,275 L420,288 L540,260 L640,272 L740,248 L840,265 L940,240 L1040,258 L1140,235 L1240,252 L1340,230 L1440,245 L1440,320 L0,320 Z"
+            fill="rgba(74,159,212,0.09)" />
+    </svg>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">She <em>Explores</em></a>
+    <a href="index.html" class="nav-back"><span class="arr">←</span> All Adventures</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <p class="eyebrow">Chamoli, Uttarakhand &nbsp;·&nbsp; 3,640m &nbsp;·&nbsp; Alpine</p>
+
+    <h1 class="peak-name">Kuari <em>Pass</em></h1>
+
+    <p class="tagline">Where the Himalayas open up — Nanda Devi, Dronagiri, Kamet, all at once.</p>
+
+    <div class="divider"></div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">3,640m</div>
+        <div class="stat-label">Altitude</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">5 days</div>
+        <div class="stat-label">Duration</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">Curzon</div>
+        <div class="stat-label">The Trail</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">360°</div>
+        <div class="stat-label">Panorama</div>
+      </div>
+    </div>
+
+    <div class="cs-badge">
+      <div class="cs-dot"></div>
+      <span class="cs-text">Story Coming Soon</span>
+    </div>
+
+    <a href="index.html" class="back-link">
+      <span class="arr">←</span> Back to All Adventures
+    </a>
+  </main>
+
+  <!-- BOTTOM QUOTE -->
+  <div class="bottom-quote">
+    <p>"The Curzon Trail. A panorama so vast it feels less like a view and more like a conversation with the sky itself."</p>
+  </div>
+
+</body>
+</html>

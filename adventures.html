@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>She Explores — Adventure Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0c0c; --text: #f0ece4; --muted: #7a7570; --mycolour:#ffff;
+      --border: rgba(255,255,255,0.07);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-ui: 'Josefin Sans', sans-serif;
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-ui); font-weight: 300; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 2px; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 66px; padding: 0 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12,12,12,0.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); transition: background 0.4s;
+    }
+    .nav-logo { font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.85rem); font-weight: 300; letter-spacing: 0.05em; }
+    .nav-logo em { font-style: italic; color: #6bbb82; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+    .mob-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); padding: 2rem 6vw 2.5rem; flex-direction: column; gap: 1.5rem; border-bottom: 1px solid var(--border); }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    /* HERO */
+    .hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 6vw; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 55% at 50% 35%, rgba(20,55,32,0.28) 0%, transparent 65%), radial-gradient(ellipse 50% 70% at 75% 75%, rgba(10,30,55,0.22) 0%, transparent 55%), #0c0c0c; }
+    .hero-bg::after { content:''; position:absolute; inset:0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+    .hero-eyebrow { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: #6bbb82; margin-bottom: 1.6rem; animation: up 0.9s ease both; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(4.5rem,13vw,11rem); font-weight: 300; line-height: 0.9; animation: up 0.9s 0.12s ease both; }
+    .hero-title em { font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(240,236,228,0.45); }
+    .hero-sub { margin-top: 1.8rem; font-size: clamp(0.68rem,1.4vw,0.8rem); letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); animation: up 0.9s 0.24s ease both; }
+    .hero-scroll { position: absolute; bottom: 2.8rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: up 0.9s 0.5s ease both; }
+    .hero-scroll span { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom,var(--muted),transparent); animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:0.35;} 50%{opacity:1;} }
+    @keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+
+    /* QUOTE */
+    .quote-wrap { padding: 5.5rem 6vw; text-align: center; background: #090909; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .quote-wrap blockquote { font-family: var(--font-display); font-size: clamp(1.5rem,3.8vw,2.6rem); font-weight: 300; font-style: italic; line-height: 1.5; color: rgba(240,236,228,0.7); max-width: 840px; margin: 0 auto 1.1rem; }
+    .quote-wrap cite { font-size: 0.63rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); font-style: normal; }
+
+    /* TREKS SECTION */
+    .treks-section { padding: clamp(5rem,9vw,8rem) 6vw; }
+    .treks-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem; padding-bottom: 1.8rem; border-bottom: 1px solid var(--border); }
+    .treks-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+    .treks-title { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,4rem); font-weight: 300; line-height: 1; }
+    .treks-title em { font-style: italic; }
+    .treks-count { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding-bottom: 0.3rem; }
+
+    /* GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%,340px),1fr)); gap: 1.8rem; }
+
+    /* CARD BASE */
+    .card { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--border); cursor: pointer; transition: transform 0.38s var(--ease), box-shadow 0.38s var(--ease), border-color 0.38s var(--ease); text-decoration: none; color: inherit; opacity: 0; transform: translateY(28px); }
+    .card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease), box-shadow 0.38s var(--ease), border-color 0.38s var(--ease); }
+    .card:hover { transform: translateY(-7px); }
+    .card-img { position: relative; height: 250px; overflow: hidden; }
+    .card-img img { transition: transform 0.55s var(--ease); }
+    .card:hover .card-img img { transform: scale(1.07); }
+    .placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
+    .placeholder svg { opacity: 0.2; }
+    .placeholder p { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.25; }
+    .badge { position: absolute; top: 1rem; left: 1rem; font-size: 0.56rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.28rem 0.75rem; border-radius: 100px; backdrop-filter: blur(8px); }
+    .card-body { padding: 1.5rem 1.7rem 1.8rem; display: flex; flex-direction: column; flex: 1; }
+    .card-meta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.9rem; }
+    .meta-item { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
+    .card-title { font-family: var(--font-display); font-size: clamp(1.35rem,3vw,1.65rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.7rem; }
+    .card-desc { font-size: 0.79rem; line-height: 1.75; opacity: 0.5; flex: 1; }
+    .card-cta { margin-top: 1.4rem; display: flex; align-items: center; justify-content: space-between; }
+    .cta-link { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 0.45rem; transition: gap 0.25s; }
+    .card:hover .cta-link { gap: 0.85rem; }
+    .arrow { display: inline-block; transition: transform 0.25s; }
+    .card:hover .arrow { transform: translateX(4px); }
+    .status-tag { font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 100px; opacity: 0.65; }
+
+    /* GREEN (Buranghati) */
+    .theme-green { background: linear-gradient(145deg,#0e2218,#0c1b13); border-color: rgba(74,158,96,0.15); }
+    .theme-green:hover { border-color: rgba(74,158,96,0.42); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(74,158,96,0.2); }
+    .theme-green .placeholder { background: linear-gradient(145deg,#0e2218,#162d1e); }
+    .theme-green .badge { background: rgba(74,158,96,0.18); color: #ffffff; border: 1px solid rgba(74,158,96,0.3); }
+    .theme-green .cta-link { color: #6bbb82; }
+    .theme-green .status-tag { background: rgba(74,158,96,0.1); color: #6bbb82; border: 1px solid rgba(74,158,96,0.2); }
+
+    /* SNOW (Kedarkanta) */
+    .theme-snow { background:  #466985; color: #ffffff; border-color: rgba(0,0,0,0.08); box-shadow: 0 2px 18px rgba(245, 244, 244, 0.06); }
+    .theme-snow:hover { border-color: rgba(0,0,0,0.18); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.15), 0 0 38px -14px rgba(180,195,210,0.4); }
+    .theme-snow .placeholder { background: linear-gradient(145deg,#e0e0da,#eaeae4); }
+    .theme-snow .badge { background: rgba(42,42,38,0.07); color: #ffffff; border: 1px solid rgba(42,42,38,0.15); }
+    .theme-snow .meta-item { color: #ffffff; opacity: 1; }
+    .theme-snow .card-title { color: #ffffff; }
+    .theme-snow .card-desc { color: #ffffff; opacity: 1; }
+    .theme-snow .cta-link { color: #e1e1d8; }
+    .theme-snow .status-tag { background: rgba(42,42,38,0.06); color: #e1e1d8; border: 1px solid rgba(42,42,38,0.12); }
+
+    /* SKY (Kuari & Pangarchula) */
+    .theme-sky { background: linear-gradient(145deg,#071626,#08121e); border-color: rgba(74,159,212,0.15); }
+    .theme-sky:hover { border-color: rgba(74,159,212,0.42); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(74,159,212,0.2); }
+    .theme-sky .placeholder { background: linear-gradient(145deg,#071626,#0e2035); }
+    .theme-sky .badge { background: rgba(74,159,212,0.15); color: #ffffff; border: 1px solid rgba(74,159,212,0.28); }
+    .theme-sky .cta-link { color: #5ab0e0; }
+    .theme-sky .status-tag { background: rgba(74,159,212,0.1); color: #5ab0e0; border: 1px solid rgba(74,159,212,0.2); }
+
+    /* UPCOMING SLOT */
+    .card-upcoming { border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1); background: rgba(255,255,255,0.015); padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; min-height: 220px; opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
+    .card-upcoming.visible { opacity: 1; transform: translateY(0); }
+    .card-upcoming .up-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .card-upcoming .up-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; opacity: 0.3; }
+    .card-upcoming .up-note { font-size: 0.72rem; opacity: 0.25; margin-top: 0.2rem; }
+
+    /* FOOTER */
+    footer { padding: 4rem 6vw 0; background: #080808; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+    .ft-brand-name { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+    .ft-brand-name em { font-style: italic; color: #6bbb82; }
+    footer p, footer a { font-size: 0.75rem; line-height: 1.8; color:#dedddd ; }
+    .ft-col h4 { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(241, 240, 237, 0.62); margin-bottom: 1.1rem; }
+    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .ft-col ul a:hover { color: var(--mycolour) }
+    .ft-bottom { margin-top: 3rem; padding: 1.4rem 6vw; background: #080808; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .ft-bottom p { font-size: 0.63rem; letter-spacing: 0.1em; color: var(--mycolour); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) { .nav-links{display:none;} .hamburger{display:flex;} footer{grid-template-columns:1fr; gap:2rem;} .grid{grid-template-columns:1fr;} }
+    @media (min-width:769px) and (max-width:1100px) { .grid{grid-template-columns:repeat(2,1fr);} }
+  </style>
+</head>
+<body>
+ 
+    <!-- ── NAV ───────────────────────────────────────── -->
+    <nav class="nav" id="nav">
+      <div class="nav-logo">She <em>Explores</em></div>
+      <ul class="nav-links">
+        <li><a href="#treks">Treks</a></li>
+        <!-- ADD NEW NAV LINK: <li><a href="#treks">Trek Name</a></li> -->
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+   
+    <div class="mob-menu" id="mobMenu">
+      <a href="#treks" onclick="toggleMenu()">Treks</a>
+    </div>
+   
+    <!-- ── HERO ──────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Adventures · Stories · Wild Places</p>
+        <h1 class="hero-title">She <em>Ex</em>plores</h1>
+        <p class="hero-sub">Himalayas &nbsp;·&nbsp; Forests &nbsp;·&nbsp; Trails Untaken</p>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+   
+    <!-- ── QUOTE ─────────────────────────────────────── -->
+    <div class="quote-wrap">
+      <span class="quote-rule"></span>
+      <blockquote>"Not all those who wander are lost — some of us are just finding ourselves, one trail at a time."</blockquote>
+      <cite>She Explores</cite>
+      <span class="quote-rule-bottom"></span>
+    </div>
+   
+    <!-- ── TREKS ─────────────────────────────────────── -->
+    <section class="treks-section" id="treks">
+      <div class="treks-header">
+        <div>
+          <p class="treks-label">All Adventures</p>
+          <h2 class="treks-title">The <em>Journeys</em></h2>
+        </div>
+        <span class="treks-count">4 Stories</span>
+      </div>
+   
+      <div class="grid">
+        <!-- ══ KEDARKANTHA — SNOW WHITE ══ -->
+        <a href="kedarkanta.html" class="card theme-snow">
+            <div class="card-img">
+              <!-- ADD IMAGE: src="images_kedarkanta/cover.jpg" -->
+              <img src="images_kedarkanta/Nirmalasitting.jpg" alt="Kedarkantha Peak" onerror="this.style.display='none'" />
+              <span class="badge">Uttarakhand</span>
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="meta-item">📍 Uttarakhand</span>
+                <span class="meta-item">🏔 3800m</span>
+                <span class="meta-item">❄️ Snow Trek</span>
+              </div>
+              <h3 class="card-title">The Unfinished Business</h3>
+              <p class="card-desc">The mountain has been calling for a while now. Snow-covered meadows, frozen lakes, a summit that promises a sky unlike any other — some journeys begin long before the first step.</p>
+              <div class="card-cta">
+                <span class="cta-link">Read Story <span class="arrow">→</span></span>
+                <span class="status-tag">Published</span>
+              </div>
+            </div>
+        </a>
+
+        <!-- ══ BURANGHATI — GREEN ══ -->
+        <a href="buranghati.html" class="card theme-green">
+          <div class="card-img">
+            <!-- ADD IMAGE: src="images/buranghati.jpg" -->
+            <img src="images/meonmountain.JPG" alt="Buranghati Trek" onerror="this.style.display='none'" />
+            <span class="badge">Himachal Pradesh</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-item">📍 Himachal Pradesh</span>
+              <span class="meta-item">🏔 3700m</span>
+              <span class="meta-item">🌿 Forest Trek</span>
+            </div>
+            <h3 class="card-title">Getting Lost to Find Myself</h3>
+            <p class="card-desc">The trail began before dawn. The forest swallowed the path whole and I walked into a silence so complete it felt like a second skin — unfamiliar at first, and then, somehow, like coming home.</p>
+            <div class="card-cta">
+              <span class="cta-link">Read Story <span class="arrow">→</span></span>
+              <span class="status-tag">Published</span>
+            </div>
+          </div>
+        </a>
+   
+        <!-- ══ PANGARCHULA — SKY BLUE ══ -->
+        <a href="pangarchulla.html" class="card theme-sky">
+            <div class="card-img">
+              <!-- ADD IMAGE: src="images/pangarchula.jpg" -->
+              <img src="images_pangarchulla/IMG_1036.jpg" alt="Pangarchula Peak" onerror="this.style.display='none'" />
+              <span class="badge">Chamoli, Uttarakhand</span>
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="meta-item">📍 Chamoli, Uttarakhand</span>
+                <span class="meta-item">🏔 4700m</span>
+                <span class="meta-item">🩵 Summit</span>
+              </div>
+              <h3 class="card-title">The Sky at Your Feet</h3>
+              <p class="card-desc">A peak that demands everything and returns it tenfold. Pangarchula isn't just a climb — it's a reckoning. The kind that leaves you quieter, and somehow fuller, on the other side.</p>
+              <div class="card-cta">
+                <span class="cta-link">Read Story <span class="arrow">→</span></span>
+                <span class="status-tag">published</span>
+              </div>
+            </div>
+        </a>
+   
+        <!-- ══ KUARI PASS — SKY BLUE ══ -->
+        <a href="kuari.html" class="card theme-sky">
+          <div class="card-img">
+            <!-- ADD IMAGE: src="images/kuari.jpg" -->
+            <img src="images_kuari/IMG_4060.jpg" alt="Kuari Pass" onerror="this.style.display='none'" style="object-position:center;" />
+            <span class="badge">Chamoli, Uttarakhand</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-item">📍 Chamoli, Uttarakhand</span>
+              <span class="meta-item">🏔 3640m</span>
+              <span class="meta-item">🩵 Alpine</span>
+            </div>
+            <h3 class="card-title">Where the Himalayas Open Up</h3>
+            <p class="card-desc">The Curzon Trail. Nanda Devi. Dronagiri. Kamet. The Kuari Pass offers a panorama so vast it feels less like a view and more like a conversation with the sky itself.</p>
+            <div class="card-cta">
+              <span class="cta-link">Read Story <span class="arrow">→</span></span>
+              <span class="status-tag">On the Horizon</span>
+            </div>
+          </div>
+        </a>
+   
+   
+        <!--
+          ════════════════════════════════════════════════
+          HOW TO ADD A NEW TREK CARD
+          ════════════════════════════════════════════════
+          1. Copy any card block above
+          2. Change href to your new file e.g. "hampta-pass.html"
+          3. Pick a theme class:
+               theme-green  = forest / jungle / monsoon
+               theme-snow   = snow / winter
+               theme-sky    = high altitude / alpine
+          4. Add your image src
+          5. Update badge, meta-items, card-title, card-desc
+          6. status-tag: "Published" | "Coming Soon" | "On the Horizon"
+          7. Paste right above THIS comment block
+          8. Update the "4 Stories" count in .treks-count
+          ════════════════════════════════════════════════
+        -->
+   
+        <div class="card-upcoming">
+          <span class="up-label">Next Adventure</span>
+          <p class="up-title">More trails ahead…</p>
+          <p class="up-note">New stories will appear here as the journeys unfold.</p>
+        </div>
+   
+      </div>
+    </section>
+   
+    <!-- ── FOOTER ─────────────────────────────────────── -->
+    <footer>
+      <div>
+        <p class="ft-brand-name">She <em>Explores</em></p>
+        <p>One trail at a time. Raw, honest stories from the wild edges of the Himalayas and beyond.</p>
+      </div>
+      <div class="ft-col">
+        <h5>Treks</h5>
+        <ul>
+          <li><a href="buranghati.html">Buranghati Trek</a></li>
+          <li><a href="kedarkanta.html">Kedarkantha Peak</a></li>
+          <li><a href="kuari.html">Kuari Pass</a></li>
+          <li><a href="pangarchula.html">Pangarchula Peak</a></li>
+          <!-- ADD NEW TREK LINKS HERE -->
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="https://instagram.com/she_explores.wild" target="_blank">Instagram:@she_explores.wild</a></li>
+          <li><a href="#">Quote:Somewhere between the bottom of the climb and the summit is the answer to the mystery why we climb.</a></li>
+          <li><a href="mailto:nimisheetravels@gmail.com">email:nimisheetravels@gmail.com</a></li>
+        </ul>
+      </div>
+    </footer>
+   
+    <div class="ft-bottom">
+      <p>© 2025 She Explores. All rights reserved.</p>
+      <p>Made with love & altitude sickness ♥</p>
+    </div>
+   
+    <!-- ── SCRIPTS ────────────────────────────────────── -->
+    <script>
+      /* Mobile menu */
+      function toggleMenu() {
+        document.getElementById('mobMenu').classList.toggle('open');
+      }
+   
+      /* Sticky nav background */
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+          nav.style.background = 'rgba(12,11,10,0.96)';
+          nav.style.padding    = '1rem 3.5rem';
+          nav.style.backdropFilter = 'blur(12px)';
+        } else {
+          nav.style.background = 'transparent';
+          nav.style.padding    = '1.6rem 3.5rem';
+          nav.style.backdropFilter = 'none';
+        }
+      });
+   
+      /* Scroll-triggered card reveals */
+      const items = document.querySelectorAll('.card, .card-upcoming');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06 });
+   
+      items.forEach((el, i) => {
+        el.style.transitionDelay = `${i * 0.1}s`;
+        io.observe(el);
+      });
+    </script>
+   
+  </body>
+</html>
