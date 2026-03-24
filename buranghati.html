@@ -210,10 +210,11 @@ nav {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url(images/meonmountain.JPG) center center / cover no-repeat;
+  background: url(images/meonmountain.JPG) center / cover no-repeat;
   transform: scale(1.04);
   animation: slowZoom 18s ease-out forwards;
 }
+
 @keyframes slowZoom {
   from { transform: scale(1.04); }
   to   { transform: scale(1.0); }
@@ -1123,7 +1124,7 @@ footer p {
 
   /* ── Author ── */
   .author-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .author-photo img { height: 320px; object-position: center top; }
+  .author-photo img { height: 320px; object-position: center; }
   .author-photo::after { display: none; } /* hide offset border on mobile — prevents horizontal overflow */
   .author-text h2 { font-size: 1.6rem; }
   .author-section { padding: 4rem 0; }

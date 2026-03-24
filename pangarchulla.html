@@ -210,15 +210,19 @@
       .photo-mosaic { grid-template-columns:1fr; }
       .iti-header, .iti-card { grid-template-columns:70px 1fr; }
       .iti-card-alt, .iti-card-km, .iti-header span:nth-child(3), .iti-header span:nth-child(4) { display:none; }
-      .author-inner {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-      .author-photo { height: 320px; }
-      footer { padding:3rem 1.5rem 2.5rem; }
-    }
+      @media (max-width: 600px) {
+  .author-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .author-photo {
+    height: 260px;
+    width: 100%;
+  }
+  .trek-tags {
+    flex-wrap: wrap;   /* stops tags from overflowing too */
+  }
+}
     .author-photo::after {
       content: '';
       position: absolute;
