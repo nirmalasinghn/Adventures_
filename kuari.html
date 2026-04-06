@@ -3,277 +3,638 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kuari Pass — She Explores</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <title>Kuari Pass — You Can Stare at Mountains and Still Not Be Done · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #0c0c0c;
-      --text: #f0ece4;
-      --muted: #7a7570;
-      --accent: #5ab0e0;
-      --accent-dim: rgba(74,159,212,0.18);
-      --border: rgba(255,255,255,0.07);
-      --font-display: 'Cormorant Garamond', serif;
-      --font-ui: 'Josefin Sans', sans-serif;
-      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+      --deep:       #0c0608;
+      --card:       #140a0d;
+      --midnight:   #0a0507;
+      --wine:       #7a1f30;
+      --wine-lt:    #b04a5e;
+      --glow:       #d4a43a;
+      --snow:       #f5ede8;
+      --frost:      #e0c5b5;
+      --stone:      #8a7870;
+      --border:     rgba(255,255,255,0.06);
+      --amber:      #c49030;
+      --amber-lt:   #e0b84a;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-ui);
-      font-weight: 300;
-      overflow-x: hidden;
-      min-height: 100svh;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { text-decoration: none; color: inherit; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; }
 
     /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 66px; padding: 0 6vw;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(12,12,12,0.82); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.85rem); font-weight: 300; letter-spacing: 0.05em; }
-    .nav-logo em { font-style: italic; color: #6bbb82; }
-    .nav-back { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
-    .nav-back:hover { color: var(--text); }
-    .nav-back .arr { display: inline-block; transition: transform 0.2s; }
-    .nav-back:hover .arr { transform: translateX(-3px); }
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(12,6,8,0); transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(12,6,8,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,237,232,.4); transition:color .3s; }
+    .nav-links a:hover { color:var(--wine-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(12,6,8,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.8rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--wine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
 
-    /* BACKGROUND ATMOSPHERE */
-    .bg-layer {
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(10,40,80,0.55) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(5,20,50,0.3) 0%, transparent 60%),
-        #0a0e14;
-    }
-    .bg-layer::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
+    /* HERO */
+    .hero { position:relative; height:100svh; min-height:620px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:url('images_kuari/HERO_IMAGE.jpg') center 40%/cover no-repeat; animation:zoomBg 22s ease-out forwards; }
+    /* ★ REPLACE HERO_IMAGE.jpg with your actual hero image filename ★ */
+    @keyframes zoomBg { from{transform:scale(1.07)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(7,13,9,.15) 0%,rgba(7,13,9,.35) 40%,rgba(7,13,9,.97) 100%); }
+    .hero-content { position:relative; z-index:2; padding:0 3.5rem 5.5rem; max-width:960px; opacity:0; animation:riseIn 1.5s .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--frost); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:var(--wine); }
+    .hero-title { font-family:var(--font-display); font-size:clamp(3.5rem,9vw,9.5rem); font-weight:300; line-height:.9; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.45rem); font-style:italic; font-weight:300; color:rgba(238,242,236,.55); max-width:660px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(176,74,94,.22); background:rgba(176,74,94,.06); color:var(--frost); backdrop-filter:blur(8px); }
 
-    /* MOUNTAIN SVG SILHOUETTE */
-    .mountain-wrap {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1;
-      pointer-events: none;
-    }
-    .mountain-wrap svg { display: block; width: 100%; }
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
 
-    /* MAIN */
-    main {
-      position: relative; z-index: 2;
-      min-height: 100svh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 120px 6vw 6rem;
-      text-align: center;
-    }
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .container-wide { max-width:1300px; margin:0 auto; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--wine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--wine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(238,242,236,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--wine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--amber); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
 
-    .eyebrow {
-      font-size: 0.63rem; font-weight: 600; letter-spacing: 0.35em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 1.8rem;
-      opacity: 0; animation: rise 0.9s 0.1s var(--ease) forwards;
-    }
+    /* FULL BLEED */
+    .full-bleed { width:100%; height:65vh; min-height:380px; position:relative; overflow:hidden; }
+    .full-bleed-tall { height:80vh; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.9); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.92) saturate(1); }
+    .img-caption { font-family:var(--font-body); font-size:.72rem; color:var(--stone); font-style:italic; padding:.75rem 0; line-height:1.6; border-top:1px solid var(--border); }
 
-    .peak-name {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 12vw, 9rem);
-      font-weight: 300; line-height: 0.92;
-      letter-spacing: -0.01em;
-      opacity: 0; animation: rise 0.9s 0.22s var(--ease) forwards;
-    }
-    .peak-name em {
-      font-style: italic;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(90,176,224,0.5);
-    }
+    /* FLOAT IMAGES */
+    .clearfix::after { content:''; display:table; clear:both; }
+    .img-float-right { float:right; width:46%; margin:0 0 2rem 2.5rem; }
+    .img-float-left { float:left; width:44%; margin:0 2.5rem 2rem 0; }
+    .img-float-right img, .img-float-left img { width:100%; display:block; filter:brightness(.84) saturate(.9); transition:filter .5s; }
+    .img-float-right:hover img, .img-float-left:hover img { filter:brightness(.92) saturate(1); }
 
-    .tagline {
-      margin-top: 2rem;
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(240,236,228,0.45);
-      max-width: 520px;
-      line-height: 1.55;
-      opacity: 0; animation: rise 0.9s 0.34s var(--ease) forwards;
-    }
+    /* DAY HEADERS */
+    .day-header { display:flex; align-items:flex-start; gap:1.8rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .day-number { font-family:var(--font-display); font-size:4.5rem; font-weight:300; line-height:1; color:rgba(255,255,255,0.14); flex-shrink:0; min-width:80px; text-align:right; }
+    .day-info { padding-top:.6rem; }
+    .day-name { font-family:var(--font-display); font-size:1.55rem; font-weight:400; color:var(--snow); margin-bottom:.25rem; }
+    .day-altitude { font-size:.72rem; color:var(--wine-lt); letter-spacing:.06em; }
 
-    /* DIVIDER */
-    .divider {
-      margin: 2.8rem auto;
-      width: 1px; height: 60px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      opacity: 0; animation: rise 0.9s 0.44s var(--ease) forwards;
-    }
+    /* SPECIAL BLOCKS */
+    .trail-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(122,31,48,.06); border:1px solid rgba(122,31,48,.2); border-left:3px solid var(--wine); }
+    .trail-block p { color:rgba(238,242,236,.7); font-family:var(--font-display); font-size:1.05rem; font-style:italic; line-height:1.8; margin:0; }
+    .summit-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(212,146,74,.05); border:1px solid rgba(212,146,74,.15); border-left:3px solid var(--amber); }
+    .summit-block p { color:rgba(238,242,236,.7); margin:0; }
 
-    /* STATS ROW */
-    .stats {
-      display: flex; gap: clamp(2rem,5vw,4rem);
-      flex-wrap: wrap; justify-content: center;
-      opacity: 0; animation: rise 0.9s 0.52s var(--ease) forwards;
-    }
-    .stat { text-align: center; }
-    .stat-value {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 300; color: var(--accent);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.58rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--muted);
-      margin-top: 0.4rem;
-    }
+    /* FOREST SECTION */
+    .story-section { background:var(--card); padding:6rem 0; }
+    .story-section .container { padding-top:0; padding-bottom:0; }
 
-    /* COMING SOON BADGE */
-    .cs-badge {
-      margin-top: 3rem;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.6rem 1.5rem;
-      border: 1px solid rgba(90,176,224,0.25);
-      border-radius: 100px;
-      background: rgba(74,159,212,0.06);
-      backdrop-filter: blur(8px);
-      opacity: 0; animation: rise 0.9s 0.62s var(--ease) forwards;
-    }
-    .cs-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent);
-      animation: blink 2s infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
-    .cs-text {
-      font-size: 0.62rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--accent);
-    }
+    /* MOUNTAIN PANORAMA */
+    .panorama-section { position:relative; width:100%; overflow:hidden; }
+    .panorama-img { width:100%; height:70vh; min-height:440px; position:relative; }
+    .panorama-img img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.78) saturate(.85); }
+    .panorama-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(7,13,9,.95) 0%, rgba(7,13,9,.3) 50%, transparent 100%); }
+    .panorama-labels { position:absolute; bottom:0; left:0; right:0; padding:2rem 3rem; }
+    .panorama-title { font-family:var(--font-display); font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--wine-lt); margin-bottom:.8rem; display:flex; align-items:center; gap:.9rem; }
+    .panorama-title::after { content:''; display:block; width:36px; height:1px; background:var(--wine); }
+    .peaks-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+    .peak-tag { font-family:var(--font-body); font-size:.7rem; color:var(--frost); background:rgba(45,90,61,.25); border:1px solid rgba(77,138,101,.3); padding:.28em .85em; letter-spacing:.04em; }
+    .peak-tag.highlight { background:rgba(212,146,74,.15); border-color:rgba(212,146,74,.35); color:var(--amber-lt); }
 
-    /* BACK LINK */
-    .back-link {
-      margin-top: 2.2rem;
-      font-size: 0.63rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--muted);
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: color 0.2s;
-      opacity: 0; animation: rise 0.9s 0.72s var(--ease) forwards;
-    }
-    .back-link:hover { color: var(--text); }
-    .back-link .arr { transition: transform 0.2s; }
-    .back-link:hover .arr { transform: translateX(-3px); }
+    /* STARS SECTION */
+    .stars-section { position:relative; min-height:460px; display:flex; align-items:center; overflow:hidden; margin:3rem 0; }
+    .stars-bg { position:absolute; inset:0; }
+    .stars-bg img { width:100%; height:100%; object-fit:cover; filter:brightness(.5) saturate(.6); }
+    .stars-overlay { position:absolute; inset:0; background:rgba(7,13,9,.55); }
+    .stars-content { position:relative; z-index:2; padding:5rem 2rem; max-width:660px; margin:0 auto; text-align:center; }
+    .stars-content h2 { font-family:var(--font-display); font-size:clamp(2.2rem,4.5vw,3.5rem); font-weight:300; color:var(--snow); line-height:1.15; margin-bottom:1.5rem; }
+    .stars-content p { font-family:var(--font-display); font-style:italic; font-size:1.05rem; color:var(--frost); line-height:1.75; }
 
-    /* QUOTE at bottom */
-    .bottom-quote {
-      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      z-index: 3; text-align: center;
-      opacity: 0; animation: rise 0.9s 0.9s var(--ease) forwards;
-      width: 90vw; max-width: 520px;
-    }
-    .bottom-quote p {
-      font-family: var(--font-display);
-      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-      font-style: italic;
-      color: rgba(240,236,228,0.22);
-      line-height: 1.6;
-    }
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
 
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    /* GALLERY */
+    .gallery-section { padding:6rem 0; }
+    .gallery-section .container { padding-top:0; padding-bottom:0; }
+    .hint { font-size:.82rem; color:var(--stone); margin-bottom:3rem; }
+    .photo-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .photo-slot { aspect-ratio:4/3; overflow:hidden; background:var(--card); border:1px dashed rgba(77,138,101,.15); display:flex; align-items:center; justify-content:center; }
+    .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.88); transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s; }
+    .photo-slot:hover img { transform:scale(1.06); filter:brightness(.92) saturate(1); }
+    .photo-slot-placeholder { font-family:var(--font-body); font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--stone); text-align:center; padding:1rem; }
+
+    /* LIGHTBOX */
+    .lb-wrap { display:none; border-radius:10px; overflow:hidden; background:#140a0d; flex-direction:column; margin-top:2rem; }
+    .lb-wrap.open { display:flex; }
+    .lb-top { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#1a0d10; }
+    .lb-counter { font-size:12px; color:#7a5058; }
+    .lb-close { background:none; border:none; color:var(--stone); font-size:22px; cursor:pointer; }
+    .lb-img-area { flex:1; display:flex; align-items:center; justify-content:center; padding:16px; min-height:360px; position:relative; }
+    .lb-img-area img { max-width:100%; max-height:360px; border-radius:6px; object-fit:contain; transition:opacity 0.2s; }
+    .lb-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.08); border:none; color:#fff; font-size:20px; padding:10px 14px; cursor:pointer; border-radius:6px; }
+    .lb-arrow:hover { background:rgba(255,255,255,.15); }
+    .lb-arrow.left { left:8px; }
+    .lb-arrow.right { right:8px; }
+    .lb-bottom { padding:10px 16px 14px; background:#1a0d10; }
+    .lb-caption { color:#b08880; font-size:13px; margin:0; font-style:italic; }
+    .lb-dots { display:flex; gap:6px; justify-content:center; padding:8px 0 0; }
+    .lb-dot { width:6px; height:6px; border-radius:50%; background:#3d1a22; cursor:pointer; border:none; padding:0; }
+    .lb-dot.active { background:var(--wine-lt); }
+
+    /* AUTHOR */
+    .author-section { background:var(--deep); padding:6rem 0; border-top:1px solid var(--border); }
+    .author-inner { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; }
+    .author-photo { position:relative; height:420px; overflow:hidden; }
+    .author-photo img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.85) saturate(.85); }
+    .treks-done { margin-top:2rem; }
+    .treks-label, .dreams-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--wine-lt); display:block; margin-bottom:.8rem; }
+    .dreams-label { margin-top:1.6rem; }
+    .trek-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .trek-tag { font-size:.72rem; padding:.3em .9em; border:1px solid rgba(176,74,94,.22); color:var(--frost); }
+    .trek-tag.current { background:rgba(176,74,94,.1); border-color:var(--wine-lt); color:var(--wine-lt); }
+    .future-tag { border-style:dashed; color:var(--stone); }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--wine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
 
     /* RESPONSIVE */
-    @media (max-width: 480px) {
-      .stats { gap: 1.5rem; }
-      .bottom-quote { display: none; }
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 1.5rem 4rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .container-wide { padding:0 1.5rem; }
+      .img-float-right, .img-float-left { float:none; width:100%; margin:1.5rem 0; }
+      .img-float-right img, .img-float-left img { height:260px; width:100%; }
+      .full-bleed { height:50vh; }
+      .full-bleed-tall { height:60vh; }
+      .panorama-img { height:55vh; }
+      .panorama-labels { padding:1.2rem 1.5rem; }
+      .peaks-row { gap:.3rem; }
+      .peak-tag { font-size:.62rem; }
+      .photo-slots { grid-template-columns:repeat(2,1fr); }
+      .author-inner { grid-template-columns:1fr; gap:2rem; }
+      .author-photo { height:280px; width:100%; }
+      .trek-tags { flex-wrap:wrap; }
+      .stars-content { padding:3.5rem 1.5rem; }
+      .day-header { gap:1rem; }
+      .day-number { font-size:3rem; min-width:55px; }
+      footer { padding:2rem 1.5rem 3rem; }
+    }
+    @media (max-width:600px) {
+      .hero-sub { font-size:1rem; }
+      .hero-meta { gap:.6rem; }
+      .meta-pill { font-size:.65rem; padding:.35em .8em; }
+      .pull-quote { padding:1rem 0 1rem 1.2rem; font-size:1.1rem; }
+      .trail-block, .summit-block { padding:1.4rem 1.4rem; }
+      .panorama-img { height:45vh; min-height:280px; }
+      .panorama-labels { padding:1rem; }
+      .peak-tag { font-size:.58rem; padding:.22em .6em; }
+    }
+    @media (max-width:520px) {
+      .photo-slots { grid-template-columns:1fr; }
+      .hero-title { font-size:clamp(3rem,18vw,5.5rem); }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { padding:1.6rem 1.2rem; }
+      .stat-number { font-size:2.4rem; }
+      .full-bleed { height:40vh; min-height:240px; }
+      .stars-section { min-height:360px; }
+      .lb-img-area { min-height:260px; }
+      .lb-img-area img { max-height:260px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BG -->
-  <div class="bg-layer"></div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#panorama">The Peaks</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#author">About</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- MOUNTAIN SILHOUETTE -->
-  <div class="mountain-wrap">
-    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="mtnGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="rgba(74,159,212,0.07)"/>
-          <stop offset="100%" stop-color="rgba(74,159,212,0.02)"/>
-        </linearGradient>
-      </defs>
-      <!-- Far range -->
-      <path d="M0,280 L80,220 L180,240 L280,170 L360,195 L460,140 L560,165 L660,120 L760,145 L860,100 L940,130 L1040,90 L1120,115 L1200,80 L1300,105 L1380,70 L1440,90 L1440,320 L0,320 Z"
-            fill="rgba(74,159,212,0.04)" />
-      <!-- Mid range -->
-      <path d="M0,300 L60,265 L140,280 L240,240 L320,255 L420,210 L500,230 L580,195 L680,215 L780,180 L860,200 L960,165 L1060,185 L1160,155 L1260,175 L1360,150 L1440,165 L1440,320 L0,320 Z"
-            fill="rgba(74,159,212,0.06)" />
-      <!-- Near range -->
-      <path d="M0,320 L100,295 L200,305 L320,275 L420,288 L540,260 L640,272 L740,248 L840,265 L940,240 L1040,258 L1140,235 L1240,252 L1340,230 L1440,245 L1440,320 L0,320 Z"
-            fill="rgba(74,159,212,0.09)" />
-    </svg>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#panorama" class="mobile-nav-link">The Peaks</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Kuari Pass · December 2025</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <!-- ★ Replace HERO_IMAGE.jpg in the CSS .hero-bg above with your actual hero filename ★ -->
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Chamoli, Uttarakhand &nbsp;·&nbsp; December 2025</span>
+    <h1 class="hero-title">Kuari<em>Pass</em></h1>
+    <p class="hero-sub">You can stare at mountains for so long and still not be done. Mt Dronagiri taught me that — standing there, huge and unhurried, entirely unbothered.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🏔️ <span>12,516 ft · The Grand Amphitheatre</span></div>
+      <div class="meta-pill">🌅 <span>Alpine glow I'll never forget</span></div>
+      <div class="meta-pill">⭐ <span>Bedsheet of stars moving above me</span></div>
+      <div class="meta-pill">🐕 <span>summit sniffers.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">12,516</div>
+    <div class="stat-label">feet above sea level<br>the pass that opens into everything</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">180°</div>
+    <div class="stat-label">mountain panorama at camp<br>Dronagiri to Nanda Devi — all of it</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">∞</div>
+    <div class="stat-label">the time you could spend<br>just staring at these mountains</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+
+  <!-- PROLOGUE — DRONAGIRI AT DAWN -->
+  <div class="reveal">
+    <div class="container">
+      <span class="section-eyebrow">The Beginning</span>
+      <h2>Shiny Rays on<br><em>Dronagiri.</em></h2>
+      <p class="drop-cap">It started with the shiny rays hitting Mt Dronagiri early in the morning. And then the smiles of the villagers. The mooo on the path. The puppies — sniffers, friendly, completely unbothered — following us wagging its tail. The trail was brown. There was a slight breeze, a chill that pressed gently against your face and stayed there.</p>
+      <p>And then came the alpine glow. There is a quote about mountains — that you can look at mountains for so long and still not be done. Which is exactly it. You can stare at Mt Dronagiri for so much time that it simply passes, quietly, without your permission. It stands there, strong and grounded, and the time just goes.</p>
+      <div class="pull-quote">
+        You can stare at mountains for so long and still not be done. Mt Dronagiri standing strong and grounded — and the time just passes when you look at mountains.
+      </div>
+    </div>
   </div>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">She <em>Explores</em></a>
-    <a href="index.html" class="nav-back"><span class="arr">←</span> All Adventures</a>
-  </nav>
+  <!-- DRONAGIRI HERO IMAGE -->
+  <div class="full-bleed reveal">
+    <!-- ★ Replace with your Dronagiri morning/alpine glow photo ★ -->
+    <img src="images_kuari/DRONAGIRI_MORNING.PNG" alt="Mt Dronagiri at first light" onerror="this.style.display='none'" />
+    <div class="img-caption container">Mt Dronagiri at dawn — huge, unhurried, entirely unbothered. I could not look away.</div>
+  </div>
 
-  <!-- MAIN -->
-  <main>
-    <p class="eyebrow">Chamoli, Uttarakhand &nbsp;·&nbsp; 3,640m &nbsp;·&nbsp; Alpine</p>
+  <!-- STARS SECTION -->
+  <div class="stars-section reveal">
+    <div class="stars-bg">
+      <!-- ★ Replace with your night / stars photo from camp ★ -->
+      <img src="images_kuari/STARS_CAMP.jpg" alt="Stars over the campsite" onerror="this.style.background='linear-gradient(180deg,#020810 0%,#071020 100%)'" />
+    </div>
+    <div class="stars-overlay"></div>
+    <div class="stars-content">
+      <span class="section-eyebrow">First Night at Camp</span>
+      <h2>A Bedsheet<br>Filled with <em>Stars.</em></h2>
+      <p>The night starts. The stars appear in the open sky. You might have seen the sky moving — but have you ever seen a bedsheet filled with stars moving above your head, filled with constellations, the dark sky with the brightest stars, the cold breeze freezing your body meanwhile?</p>
+      <p>Lying under the stars will always be my favourite thing to do.</p>
+    </div>
+  </div>
 
-    <h1 class="peak-name">Kuari <em>Pass</em></h1>
-
-    <p class="tagline">Where the Himalayas open up — Nanda Devi, Dronagiri, Kamet, all at once.</p>
-
-    <div class="divider"></div>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value">3,640m</div>
-        <div class="stat-label">Altitude</div>
+  <!-- DAY 2 — THE TRAIL -->
+  <div class="container reveal">
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-name">The Trail Goes Deeper</div>
+        <div class="day-altitude">Streams · Temples · Mules · Dogs · A forest that felt unreal</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">5 days</div>
-        <div class="stat-label">Duration</div>
+    </div>
+    <div class="clearfix">
+      <div class="img-float-right">
+        <!-- ★ Replace with a trail photo — dogs, mules, forest ★ -->
+        <img src="images_kuari/IMG_1369.jpg" alt="Trail through pine forest" style="height:360px; object-fit:cover;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--wine);">Olive green grass, mosses, pine trees standing still — it felt genuinely unreal</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">Curzon</div>
-        <div class="stat-label">The Trail</div>
+      <p>Woke up the next morning excited to see mountains again. I feel lucky to see that. And then the journey began to the next campsite — and on this path, so many things. The small streams of water crossing the trail. The tiny temples. The mules carrying luggage, unbothered, doing what they have always done. The dogs following us, tails wagging.</p>
+      <p>Me handing out biscuits to those dogs—by then, I was convinced this humble snack had quietly earned its place as the unofficial treat of the Himalayas.</p>
+
+      <div class="trail-block">
+        <p>Then the steep path — it was like a sliding in the sand competition. It was genuinely fun. And then the forest area filled with olive green grass and mosses and the tall pine trees standing there in stillness, and the breeze with it. It felt unreal. I was just walking and I found a spot — there was something about the trees there. It was fascinating.</p>
       </div>
-      <div class="stat">
-        <div class="stat-value">360°</div>
-        <div class="stat-label">Panorama</div>
+
+      <p>The path next was with boulders. It's just the process of loving the path you're on — on the way to reaching the campsite. And then, the first glimpse: Hathi Parvat and Ghoda Parvat. Both of them appearing at the same time, like they had been waiting to be noticed.</p>
+    </div>
+  </div>
+
+  <!-- FOREST IMAGE -->
+  <div class="full-bleed reveal">
+    <!-- ★ Replace with your pine forest / boulder path photo ★ -->
+    <img src="images_kuari/PINE_FOREST.jpg" alt="Pine forest on the Kuari trail" onerror="this.style.display:'none'" />
+    <div class="img-caption container">Tall pine trees in stillness, olive green mosses underfoot, a breeze that felt like it had been there forever</div>
+  </div>
+
+  <!-- PANORAMA CAMPSITE -->
+  <div class="story-section reveal">
+    <div class="container">
+      <span class="section-eyebrow">The Campsite · Evening</span>
+      <h2>180 Degrees<br><em>of Mountains.</em></h2>
+      <p>We reached the campsite. And it was like — 180 degrees, filled with mountains. Including Hathi Parvat, Ghoda Parvat, Pangarchulla, Dronagiri, Kamet, Trishul, Nanda Devi. All of them, right there, just standing.</p>
+      <p>That evening I got to witness an epic alpine glow on all these mountains. The orange colour turning into light purple in the sky. That feeling cannot be expressed. At that time you feel free. You feel alive. You are living. You are present. It's just one of the most fascinating things to witness in your life.</p>
+      <div class="pull-quote">
+        The orange colour turning into light purple in the sky. That feeling cannot be expressed. At that time you feel free. You feel alive. You are living. You are present.
+      </div>
+    </div>
+  </div>
+
+  <!-- ALPINE GLOW IMAGE -->
+  <div class="full-bleed full-bleed-tall reveal">
+    <!-- ★ Replace with your alpine glow / campsite panorama photo ★ -->
+    <img src="images_kuari/ALPINE_GLOW.jpg" alt="Alpine glow on the mountains from camp" onerror="this.style.display='none'" />
+    <div class="img-caption container">Alpine glow at camp — orange turning to light purple, mountains lit from within. Everything going quiet.</div>
+  </div>
+
+  <!-- NIGHT AT CAMP -->
+  <div class="container reveal" style="padding-top:3rem; padding-bottom:2rem;">
+    <span class="section-eyebrow">Night · The Temperatures Drop</span>
+    <h2>Water Freezing.<br><em>The Moon. Then the Stars.</em></h2>
+    <p>At night the water started freezing at these temperatures. The streams started freezing. The only things you were able to see in the dawn were the moon and the pine trees. Then the stars appeared later to accompany the moon — staying up and playing around in the dark, talking to strangers who very quickly stop feeling like strangers at all.</p>
+  </div>
+
+</section>
+
+<!-- PANORAMA — THE PEAKS -->
+<section id="panorama" class="panorama-section reveal">
+  <div class="panorama-img">
+    <!-- ★ Replace with your widest landscape photo — the one showing multiple peaks ★ -->
+    <img src="images_kuari/allpeaks.JPG" alt="Panorama of Himalayan peaks from Kuari Pass" onerror="this.style.display:'none'" />
+    <div class="panorama-overlay"></div>
+    <div class="panorama-labels">
+      <div class="panorama-title">The peaks visible from Kuari Pass</div>
+      <div class="peaks-row">
+        <span class="peak-tag highlight">Nanda Devi · 7,816m</span>
+        <span class="peak-tag highlight">Kamet · 7,756m</span>
+        <span class="peak-tag">Chaukhamba Massif · 7,138m</span>
+        <span class="peak-tag">Trishul · 7,120m</span>
+        <span class="peak-tag">Dronagiri · 7,066m</span>
+        <span class="peak-tag">Neelkanth · 6,596m</span>
+        <span class="peak-tag">Hathi Parvat · 6,727m</span>
+        <span class="peak-tag">Ghoda Parvat · 6,127m</span>
+        <span class="peak-tag">Pangarchulla · 4,700m</span>
+      </div>
+    </div>
+  </div>
+  <div class="img-caption container">The view from camp — 180 degrees of the Garhwal Himalayas. Every peak I had only ever seen in photographs, right there.</div>
+</section>
+
+<!-- SUMMIT DAY -->
+<div class="story-section reveal">
+  <div class="container">
+    <span class="section-eyebrow">Summit Day</span>
+    <h2>The Fire That<br><em>Kept Me Going.</em></h2>
+    <p>The next morning I woke up, got ready, and just started the trek. The path was familiar now. And the fire in me — that kept me pushing, kept me going.</p>
+    <p>There was so much crowd. But the path was clear. The views were amazing. The trail was filled with grass, black ice, and an epic bridge which had frozen water — the flowing water, which was frozen. It looked like something I would have only imagined. A frozen waterfall, starting from the bridge.</p>
+
+    <div class="summit-block">
+      <p>The path on the ridge — wherever you go, the tiny stones and the accompanied dogs. And there we could see the peak. Filled with cairns — the piles of rocks which people worship as temples — and the flags flying high. A steady feeling. The present feeling that I am living.</p>
+    </div>
+
+    <p>On the way up I got to know why it is called Kuari Pass and not the peak. The two mountains merge together there — from that pass it leads to other peaks. That's how it gets its name. And the story that our trek lead told: Mata Parvathi, before getting married to Lord Shiva, used to come to that peak to meditate. <em>Kuari</em> means unmarried in Sanskrit. The mountains carry their histories quietly, and sometimes they share them with you.</p>
+
+    <div class="pull-quote">
+      And on the summit — Kamet, Nanda Devi, Pangarchulla, Hathi Parvat, Ghoda Parvat, Dronagiri, Trishul, Mt Neelkanth, Chaukhamba Massif. All of them, all at once. Right there.
+    </div>
+  </div>
+</div>
+
+<!-- SUMMIT IMAGE -->
+<div class="full-bleed full-bleed-tall reveal">
+  <!-- ★ Replace with your summit / ridge photo ★ -->
+  <img src="images_kuari/top4.jpg" alt="Summit ridge Kuari Pass" onerror="this.style.display='none'" />
+  <div class="img-caption container">The ridge to Kuari Pass — cairns, prayer flags, dogs, the whole Himalayan skyline waiting</div>
+</div>
+
+<!-- DESCENT -->
+<div class="container reveal" style="padding-top:4rem;">
+  <span class="section-eyebrow">The Way Down</span>
+  <h2>Powered by Skittles<br><em> and Cookies</em></h2>
+  <p>We finally began the descent—legs slightly questionable, energy even more so. Skittles and cookies? Absolutely, faithfully riding along in the rucksack and showing up right when morale dropped faster than our altitude. By this point, the knee had also decided to join the adventure—not dramatically, just as a constant, mildly annoying background commentary.</p>
+  <p style="font-family:var(--font-display); font-style:italic; font-size:1.1rem; color:var(--frost);">The mountains gave me everything I came for. And a few things I didn't even know I needed.</p>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Carried Home</span>
+    <h2>Through My<br><em>Lens</em></h2>
+    <p class="hint">Every photo a feeling. Every frame a memory I'll carry forever.</p>
+
+    <div id="gallery-view">
+      <div class="photo-slots" id="gal-grid-wrapper">
+        <!-- Static photo slots — shown before JS lightbox loads -->
+        <!-- ★ Replace each src with your actual image filenames ★ -->
+        <figure class="photo-slot"><img src="images_kuari/HERO_IMAGE.jpg" alt=""  /></figure>
+        <figure class="photo-slot"><img src="images_kuari/menbag.jpg" alt=""  /></figure>
+        <figure class="photo-slot"><img src="images_kuari/Nimbackpose.jpg" alt="" /></figure>
+        <figure class="photo-slot"><img src="images_kuari/IMG_1369.jpg" alt=""  /></figure>
+        <figure class="photo-slot"><img src="images_kuari/nimandalpine.jpg" alt=""  /></figure>
+        <figure class="photo-slot"><img src="images_kuari/SUMMIT_RIDGE.jpg" alt=""  /></figure>
       </div>
     </div>
 
-    <div class="cs-badge">
-      <div class="cs-dot"></div>
-      <span class="cs-text">Story Coming Soon</span>
+    <div class="lb-wrap" id="lightbox">
+      <div class="lb-top">
+        <span class="lb-counter" id="lb-counter"></span>
+        <button class="lb-close" id="lb-close">×</button>
+      </div>
+      <div class="lb-img-area">
+        <button class="lb-arrow left" id="lb-prev">‹</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-arrow right" id="lb-next">›</button>
+      </div>
+      <div class="lb-bottom">
+        <p class="lb-caption" id="lb-caption"></p>
+        <div class="lb-dots" id="lb-dots"></div>
+      </div>
     </div>
-
-    <a href="index.html" class="back-link">
-      <span class="arr">←</span> Back to All Adventures
-    </a>
-  </main>
-
-  <!-- BOTTOM QUOTE -->
-  <div class="bottom-quote">
-    <p>"The Curzon Trail. A panorama so vast it feels less like a view and more like a conversation with the sky itself."</p>
   </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<div class="container reveal" style="text-align:center; padding:4rem 2rem;">
+  <p style="font-family:var(--font-display); font-style:italic; font-size:clamp(1.4rem,3vw,2.2rem); color:var(--frost); line-height:1.45; max-width:700px; margin:0 auto 1.5rem;">"The mountains are calling and I must go."</p>
+  <p style="font-size:.72rem; letter-spacing:.1em; color:var(--stone);">— John Muir</p>
+</div>
+
+<!-- AUTHOR -->
+<section id="author" class="author-section">
+  <div class="container">
+    <div class="author-inner">
+      <div class="author-photo">
+        <img src="images/nirmala.jpeg" style="object-position:center;" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>Getting Lost<br>to Find Myself</h2>
+        <p>I'm someone who believes the mountains don't ask for your résumé — they ask for your presence. This blog is my honest, unfiltered story of the trails I walk, the fears I face, and the version of myself I discover every time I lace up my boots and head up.</p>
+        <p style="margin-top:1rem;">Kuari Pass gave me that 180-degree view I will never stop thinking about. Mountains that just stand there — Dronagiri, Nanda Devi, Kamet — entirely unbothered by everything below them. I want to be more like that.</p>
+        <div class="treks-done">
+          <span class="treks-label">Treks done</span>
+          <div class="trek-tags">
+            <span class="trek-tag current">Kuari Pass 🌿</span>
+            <span class="trek-tag">Pangarchulla ★</span>
+            <span class="trek-tag">Kedarkantha ❄️</span>
+            <span class="trek-tag">Buranghati</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+            <span class="trek-tag future-tag">K2 Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">you can stare at mountains and still not be done</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary</p>
+  <p>Kuari Pass &nbsp;·&nbsp; Chamoli, Uttarakhand &nbsp;·&nbsp; December 2025</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2025 She Explores</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll style
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() { hamburger.classList.add('open'); mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => { if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+
+<script>
+  // ★ ADD YOUR GALLERY IMAGES HERE — replace filenames and captions ★
+  const photos = [
+    { src: "images_kuari/HERO_IMAGE.jpg", caption: "Add your caption here" },
+    { src: "images_kuari/menbag.jpg", caption: "Add your caption here" },
+    { src: "images_kuari/Nimbackpose.jpg", caption: "Add your caption here" },
+    { src: "images_kuari/IMG_1369.jpg", caption: "Add your caption here" },
+    { src: "images_kuari/nimandalpine.jpg", caption: "Add your caption here" },
+    { src: "images_kuari/SUMMIT_RIDGE.jpg", caption: "Add your caption here" },
+  ];
+
+  const galleryWrap = document.getElementById('gal-grid-wrapper');
+  const lightbox    = document.getElementById('lightbox');
+  const lbImg       = document.getElementById('lb-img');
+  const lbCaption   = document.getElementById('lb-caption');
+  const lbCounter   = document.getElementById('lb-counter');
+  const lbDots      = document.getElementById('lb-dots');
+  const lbClose     = document.getElementById('lb-close');
+  const lbPrev      = document.getElementById('lb-prev');
+  const lbNext      = document.getElementById('lb-next');
+  let current = 0;
+
+  // Build clickable grid replacing the static slots
+  galleryWrap.innerHTML = '';
+  galleryWrap.className = 'photo-slots';
+  photos.forEach(function(photo, index) {
+    const fig = document.createElement('figure');
+    fig.className = 'photo-slot';
+    fig.style.cursor = 'pointer';
+    fig.innerHTML = '<img src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy">';
+    fig.addEventListener('click', function() { openLightbox(index); });
+    galleryWrap.appendChild(fig);
+    const dot = document.createElement('button');
+    dot.className = 'lb-dot';
+    dot.dataset.index = index;
+    dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); });
+    lbDots.appendChild(dot);
+  });
+
+  function openLightbox(i) { current = i; galleryWrap.style.display = 'none'; lightbox.classList.add('open'); updateLightbox(); }
+  function closeLightbox() { lightbox.classList.remove('open'); galleryWrap.style.display = 'grid'; }
+  function goTo(i) { current = i; updateLightbox(); }
+  function updateLightbox() {
+    lbImg.style.opacity = 0;
+    setTimeout(function() {
+      lbImg.src = photos[current].src;
+      lbImg.alt = photos[current].caption;
+      lbCaption.textContent = photos[current].caption;
+      lbCounter.textContent = (current + 1) + ' / ' + photos.length;
+      lbImg.style.opacity = 1;
+    }, 150);
+    document.querySelectorAll('.lb-dot').forEach(function(dot, i) { dot.classList.toggle('active', i === current); });
+  }
+  lbClose.addEventListener('click', closeLightbox);
+  lbNext.addEventListener('click', function() { current = (current + 1) % photos.length; updateLightbox(); });
+  lbPrev.addEventListener('click', function() { current = (current - 1 + photos.length) % photos.length; updateLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') { current = (current + 1) % photos.length; updateLightbox(); }
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + photos.length) % photos.length; updateLightbox(); }
+    if (e.key === 'Escape')     { closeLightbox(); }
+  });
+</script>
 
 </body>
 </html>

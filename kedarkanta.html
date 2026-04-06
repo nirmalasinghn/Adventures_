@@ -7,7 +7,52 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* GALLERY STYLES */
+    /* force gallery to show */
+#gallery-view {
+  display: block !important;
+}
 
+.gal-grid {
+  columns: 3 !important;
+  column-gap: 6px !important;
+}
+
+.gal-item {
+  display: block !important;
+  break-inside: avoid !important;
+  margin-bottom: 6px !important;
+}
+
+.gal-item img {
+  width: 100% !important;
+  display: block !important;
+  height: auto !important;
+}
+    .gal-item:hover img { transform: scale(1.04); }
+    .gal-item .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.3s; display: flex; align-items: flex-end; padding: 10px; }
+    .gal-item:hover .overlay { background: rgba(0,0,0,0.3); }
+    .gal-item .caption { color: #fff; font-size: 11px; opacity: 0; transition: opacity 0.3s; }
+    .gal-item:hover .caption { opacity: 1; }
+  
+    /* LIGHTBOX STYLES */
+    .lb-wrap { display: none; border-radius: 10px; overflow: hidden; background: #111; flex-direction: column; }
+    .lb-wrap.open { display: flex; }
+    .lb-top { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1a1a1a; }
+    .lb-counter { font-size: 12px; color: #888; }
+    .lb-close { background: none; border: none; color: #aaa; font-size: 22px; cursor: pointer; }
+    .lb-img-area { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px; min-height: 360px; position: relative; }
+    .lb-img-area img { max-width: 100%; max-height: 360px; border-radius: 6px; object-fit: contain; transition: opacity 0.2s; }
+    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 20px; padding: 10px 14px; cursor: pointer; border-radius: 6px; }
+    .lb-arrow.left { left: 8px; }
+    .lb-arrow.right { right: 8px; }
+    .lb-bottom { padding: 10px 16px 14px; background: #1a1a1a; }
+    .lb-caption { color: #ccc; font-size: 13px; margin: 0; }
+    .lb-dots { display: flex; gap: 6px; justify-content: center; padding: 8px 0 0; }
+    .lb-dot { width: 6px; height: 6px; border-radius: 50%; background: #444; cursor: pointer; border: none; padding: 0; }
+    .lb-dot.active { background: #aaa; }
+  </style>
   <style>
     /* ═══════════════════════════════════════
        TOKENS
@@ -1418,6 +1463,36 @@
     </div>
   </div>
 </section>
+<!-- GALLERY SECTION -->
+<section class="gallery-section">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Carried Home</span>
+    <h2>Through My<br><em>Lens</em></h2>
+    <p class="hint">Every photo a feeling. Every frame a memory I'll carry forever.</p>
+  </div>
+
+  <div class="container-wide">
+    <div id="gallery-view">
+      <div class="gal-grid" id="gal-grid"></div>
+    </div>
+
+    <div class="lb-wrap" id="lightbox">
+      <div class="lb-top">
+        <span class="lb-counter" id="lb-counter"></span>
+        <button class="lb-close" id="lb-close">×</button>
+      </div>
+      <div class="lb-img-area">
+        <button class="lb-arrow left" id="lb-prev">‹</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-arrow right" id="lb-next">›</button>
+      </div>
+      <div class="lb-bottom">
+        <p class="lb-caption" id="lb-caption"></p>
+        <div class="lb-dots" id="lb-dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ ABOUT ═══ -->
 <section id="author" class="author-section">
@@ -1513,6 +1588,32 @@
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) closeMenu();
   });
+</script>
+<script>
+  // ↓ REPLACE THESE with your actual image filenames + captions
+  const photos = [
+    { src: "images_kedarkanta/devprayag.jpg",       caption: "Dev Prayag — the sacred confluence" },
+    { src: "images_kedarkanta/sunrise.jpg",          caption: "Sunrise at Rishikesh" },
+    { src: "images_kedarkanta/flower.JPG",           caption: "Red rhododendrons on the trail" },
+    { src: "images_kedarkanta/nimianddog.png",      caption: "The fluffy mountain dog" },
+    { src: "images_kedarkanta/Mountain.jpg",         caption: "Kedarkantha peaks" },
+    { src: "images_kedarkanta/Nirmalasitting.jpg",   caption: "Snowy forest campsite" },
+    { src: "images_kedarkanta/nirmala1.JPG",         caption: "At base camp" },
+    { src: "images_kedarkanta/pebbles.JPG",          caption: "Ganga pebbles, Rishikesh" },
+  ];
+
+  // Everything below this line — don't touch it!
+  const gallery=document.getElementById('gal-grid'),galleryView=document.getElementById('gallery-view'),lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCaption=document.getElementById('lb-caption'),lbCounter=document.getElementById('lb-counter'),lbDots=document.getElementById('lb-dots'),lbClose=document.getElementById('lb-close'),lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
+  let current=0;
+  photos.forEach(function(photo,index){const item=document.createElement('div');item.className='gal-item';item.innerHTML=`<img src="${photo.src}" alt="${photo.caption}" loading="lazy"><div class="overlay"><span class="caption">${photo.caption}</span></div>`;item.addEventListener('click',function(){openLightbox(index);});gallery.appendChild(item);const dot=document.createElement('button');dot.className='lb-dot';dot.dataset.index=index;dot.addEventListener('click',function(){goTo(parseInt(this.dataset.index));});lbDots.appendChild(dot);});
+  function openLightbox(i){current=i;galleryView.style.display='none';lightbox.classList.add('open');updateLightbox();}
+  function closeLightbox(){lightbox.classList.remove('open');galleryView.style.display='block';}
+  function goTo(i){current=i;updateLightbox();}
+  function updateLightbox(){lbImg.style.opacity=0;setTimeout(function(){lbImg.src=photos[current].src;lbImg.alt=photos[current].caption;lbCaption.textContent=photos[current].caption;lbCounter.textContent=(current+1)+' / '+photos.length;lbImg.style.opacity=1;},150);document.querySelectorAll('.lb-dot').forEach(function(dot,i){dot.classList.toggle('active',i===current);});}
+  lbClose.addEventListener('click',closeLightbox);
+  lbNext.addEventListener('click',function(){current=(current+1)%photos.length;updateLightbox();});
+  lbPrev.addEventListener('click',function(){current=(current-1+photos.length)%photos.length;updateLightbox();});
+  document.addEventListener('keydown',function(e){if(!lightbox.classList.contains('open'))return;if(e.key==='ArrowRight'){current=(current+1)%photos.length;updateLightbox();}if(e.key==='ArrowLeft'){current=(current-1+photos.length)%photos.length;updateLightbox();}if(e.key==='Escape'){closeLightbox();}});
 </script>
 
 </body>
