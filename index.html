@@ -10,11 +10,11 @@
     gtag('config', 'G-RKN6X0WFC2');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>She Explores — Adventure Blog</title>
+  <title>She Explores Wild | Nirmala Singh</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0c0c0c; --text: #f0ece4; --muted: #7a7570; --mycolour:#ffff;
+      --bg: #0c0c0c; --text: #f0ece4; --muted: #7a7570; --mycolour:#ffff ; --nimcolor:#d0cbcb;
       --border: rgba(255,255,255,0.07);
       --font-display: 'Cormorant Garamond', serif;
       --font-ui: 'Josefin Sans', sans-serif;
@@ -42,6 +42,43 @@
     .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
+
+    /* ── NAV DROPDOWN ────────────────────────────── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger { display: flex; align-items: center; gap: 0.3rem; }
+    .nav-chevron { font-size: 0.75rem; line-height: 1; opacity: 0.55; display: inline-block; transition: transform 0.25s; }
+    .nav-dropdown:hover .nav-chevron,
+    .nav-dropdown.open .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 1.1rem); right: -1rem;
+      min-width: 200px;
+      background: rgba(14,14,14,0.97); backdrop-filter: blur(18px);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.5rem 0; z-index: 200;
+      opacity: 0; transform: translateY(-6px); pointer-events: none;
+      transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown.open .nav-dropdown-menu {
+      opacity: 1; transform: translateY(0); pointer-events: auto;
+    }
+    .nav-dd-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.65rem 1.1rem;
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.18s, background 0.18s;
+    }
+    .nav-dd-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .dd-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .dd-gold  { background: #c8a04a; }
+    .dd-green { background: #6bbb82; }
+    .dd-sky   { background: #5ab0e0; }
+    .dd-soon {
+      margin-left: auto; font-size: 0.5rem; letter-spacing: 0.15em;
+      padding: 0.15rem 0.5rem; border-radius: 100px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(240,236,228,0.35);
+    }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
     .mob-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); padding: 2rem 6vw 2.5rem; flex-direction: column; gap: 1.5rem; border-bottom: 1px solid var(--border); }
@@ -56,12 +93,28 @@
     .hero-eyebrow { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: #6bbb82; margin-bottom: 1.6rem; animation: up 0.9s ease both; }
     .hero-title { font-family: var(--font-display); font-size: clamp(4.5rem,13vw,11rem); font-weight: 300; line-height: 0.9; animation: up 0.9s 0.12s ease both; }
     .hero-title em { font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(240,236,228,0.45); }
-    .hero-sub { margin-top: 1.8rem; font-size: clamp(0.68rem,1.4vw,0.8rem); letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); animation: up 0.9s 0.24s ease both; }
-    .hero-scroll { position: absolute; bottom: 2.8rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: up 0.9s 0.5s ease both; }
-    .hero-scroll span { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
-    .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom,var(--muted),transparent); animation: pulse 2.2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:0.35;} 50%{opacity:1;} }
+    .hero-sub { margin-top: 1.8rem; font-size: clamp(0.68rem,1.4vw,0.8rem); letter-spacing: 0.3em; text-transform: uppercase; color: rgba(240,236,228,0.82); animation: up 0.9s 0.24s ease both; }
     @keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+
+    /* ── HERO EXPLORES ANIMATION ────────────────────── */
+    @keyframes blurToSharp {
+      from { filter: blur(14px); opacity: 0; transform: translateY(10px); }
+      to   { filter: blur(0);    opacity: 1; transform: translateY(0); }
+    }
+    .hero-explores {
+      display: inline-block;
+      animation: blurToSharp 2s 0.55s cubic-bezier(0.25,0.46,0.45,0.94) both;
+    }
+
+    /* ── HERO FIREFLIES CANVAS ──────────────────────── */
+    #hero-particles {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     /* QUOTE */
     .quote-wrap { padding: 5.5rem 6vw; text-align: center; background: #090909; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -129,19 +182,37 @@
     .theme-sky .cta-link { color: #5ab0e0; }
     .theme-sky .status-tag { background: rgba(74,159,212,0.1); color: #5ab0e0; border: 1px solid rgba(74,159,212,0.2); }
 
-     /* Kuari Pass — burgundy + gold, dark blue base */
+    /* Kuari Pass — burgundy + gold, dark blue base */
     .theme-kuari { background: linear-gradient(145deg,#0d0d1a,#1a0d12); border-color: rgba(162,38,70,0.18); }
     .theme-kuari:hover { border-color: rgba(196,145,50,0.45); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(162,38,70,0.22); }
     .theme-kuari .placeholder { background: linear-gradient(145deg,#0d0d1a,#1f0f18); }
     .theme-kuari .badge { background: rgba(196,145,50,0.12); color: #e8c97a; border: 1px solid rgba(196,145,50,0.28); }
     .theme-kuari .cta-link { color: #c8884a; }
     .theme-kuari .status-tag { background: rgba(162,38,70,0.1); color: #d4706a; border: 1px solid rgba(162,38,70,0.22); }
+
     /* UPCOMING SLOT */
     .card-upcoming { border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1); background: rgba(255,255,255,0.015); padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; min-height: 220px; opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
     .card-upcoming.visible { opacity: 1; transform: translateY(0); }
     .card-upcoming .up-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
     .card-upcoming .up-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; opacity: 0.3; }
     .card-upcoming .up-note { font-size: 0.72rem; opacity: 0.25; margin-top: 0.2rem; }
+
+    /* ── BACK TO TOP ──────────────────────────────── */
+    .back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--nimcolor); background: rgba(12,12,12,0.75); border: 1px solid var(--border);
+      backdrop-filter: blur(12px); padding: 0.55rem 1rem; border-radius: 100px; cursor: pointer;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), color 0.2s, border-color 0.2s;
+      pointer-events: none;
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-to-top:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .back-to-top .btt-arrow { display: inline-block; transition: transform 0.25s; }
+    .back-to-top:hover .btt-arrow { transform: translateY(-3px); }
+    @media (max-width: 480px) { .back-to-top { bottom: 1.4rem; right: 1.2rem; font-size: 0.55rem; padding: 0.5rem 0.85rem; } }
 
     /* FOOTER */
     footer { padding: 4rem 6vw 0; background: #080808; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
@@ -157,244 +228,600 @@
     /* RESPONSIVE */
     @media (max-width: 768px) { .nav-links{display:none;} .hamburger{display:flex;} footer{grid-template-columns:1fr; gap:2rem;} .grid{grid-template-columns:1fr;} }
     @media (min-width:769px) and (max-width:1100px) { .grid{grid-template-columns:repeat(2,1fr);} }
+
+    /* INTRO STYLES */
+    .intro {
+      position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;
+      z-index: 9999; background: radial-gradient(circle at 50% 40%, rgba(107,187,130,0.18), transparent 60%), radial-gradient(circle at 30% 80%, rgba(107,187,130,0.08), transparent 70%), #0c0c0c;
+      opacity: 1; transition: opacity 1.2s ease;
+    }
+    body.intro-active { overflow: hidden; }
+    .mountain { width: 240px; animation: float 6s ease-in-out infinite; }
+    .mountain path.main { fill: none; stroke: url(#mountainGrad); stroke-width: 2.2; stroke-dasharray: 500; stroke-dashoffset: 500; animation: draw 2.2s ease forwards; }
+    .mountain path.snow { stroke: rgba(255,255,255,0.4); stroke-width: 1; fill: none; opacity: 0; animation: fadeSnow 1s ease forwards 2s; }
+    .fade-out { opacity: 0; pointer-events: none; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fadeSnow { to { opacity: 1; } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .brand { font-family: var(--font-display); font-size: 32px; margin-top: 20px; opacity: 0; animation: fadeIn 1.6s ease forwards 1s; }
+    .brand span { color: #6bbb82; font-style: italic; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .fog-layer { position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.06), transparent 60%), radial-gradient(circle at 70% 40%, rgba(255,255,255,0.05), transparent 60%); animation: fogMove 25s linear infinite; pointer-events: none; }
+    @keyframes fogMove { from { transform: translateX(0); } to { transform: translateX(-120px); } }
+
+    /* ── GUIDES SECTION ─────────────────────────── */
+    .guides-section {
+      padding: clamp(5rem,9vw,7.5rem) 6vw;
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .guides-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .guides-eyebrow { font-size: 0.63rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #6bbb82; margin-bottom: 1rem; }
+    .guides-title { font-family: var(--font-display); font-size: clamp(2.4rem,6vw,4rem); font-weight: 300; line-height: 1; margin-bottom: 1rem; }
+    .guides-title em { font-style: italic; }
+    .guides-sub { font-size: 0.8rem; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 3.5rem; }
+    .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 768px) { .guides-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) and (max-width: 1000px) { .guides-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* guide card base */
+    .guide-card {
+      display: flex; flex-direction: column; align-items: flex-start;
+      text-align: left; padding: 2rem 2rem 1.8rem;
+      border-radius: 14px; border: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      cursor: pointer; position: relative; overflow: hidden;
+      transition: transform 0.38s var(--ease), box-shadow 0.38s var(--ease), border-color 0.38s var(--ease);
+    }
+    .guide-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s var(--ease); pointer-events: none; }
+    .guide-card:hover { transform: translateY(-6px); }
+    .guide-card:hover::before { opacity: 1; }
+    .gc-gold { background: linear-gradient(145deg,#1a150a,#160f07); }
+    .gc-gold:hover { border-color: rgba(200,160,74,0.4); box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 0 40px -16px rgba(200,160,74,0.16); }
+    .gc-gold::before { background: radial-gradient(ellipse at top left, rgba(200,160,74,0.07), transparent 70%); }
+    .gc-gold .gc-icon { color: #c8a04a; }
+    .gc-gold .gc-tag { background: rgba(200,160,74,0.1); color: #c8a04a; border: 1px solid rgba(200,160,74,0.22); }
+    .gc-gold .gc-cta { color: #c8a04a; }
+    .gc-green { background: linear-gradient(145deg,#0d1f15,#0c1a11); }
+    .gc-green:hover { border-color: rgba(107,187,130,0.4); box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 0 40px -16px rgba(107,187,130,0.18); }
+    .gc-green::before { background: radial-gradient(ellipse at top left, rgba(107,187,130,0.07), transparent 70%); }
+    .gc-green .gc-icon { color: #6bbb82; }
+    .gc-green .gc-tag { background: rgba(107,187,130,0.1); color: #6bbb82; border: 1px solid rgba(107,187,130,0.22); }
+    .gc-green .gc-cta { color: #6bbb82; }
+    .gc-sky { background: linear-gradient(145deg,#07151f,#07111a); }
+    .gc-sky:hover { border-color: rgba(90,176,224,0.4); box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 0 40px -16px rgba(90,176,224,0.18); }
+    .gc-sky::before { background: radial-gradient(ellipse at top left, rgba(90,176,224,0.07), transparent 70%); }
+    .gc-sky .gc-icon { color: #5ab0e0; }
+    .gc-sky .gc-tag { background: rgba(90,176,224,0.1); color: #5ab0e0; border: 1px solid rgba(90,176,224,0.22); }
+    .gc-sky .gc-cta { color: #5ab0e0; }
+    .gc-icon { width: 44px; height: 44px; margin-bottom: 1.3rem; opacity: 0.88; }
+    .gc-tag { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.22rem 0.7rem; border-radius: 100px; margin-bottom: 0.9rem; }
+    .gc-title { font-family: var(--font-display); font-size: clamp(1.3rem,2.5vw,1.6rem); font-weight: 400; margin-bottom: 0.6rem; line-height: 1.2; }
+    .gc-desc { font-size: 0.78rem; line-height: 1.75; color: var(--muted); flex: 1; margin-bottom: 1.4rem; }
+    .gc-cta { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 0.45rem; }
+
+    /* ── COMING SOON STATE ──────────────────────── */
+    .guide-card.coming-soon {
+      cursor: default;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .gc-soon-badge {
+      position: absolute; top: 1.1rem; right: 1.1rem;
+      font-size: 0.52rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 0.22rem 0.7rem;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(240,236,228,0.5);
+    }
+
   </style>
 </head>
+
 <body>
- 
-    <!-- ── NAV ───────────────────────────────────────── -->
-    <nav class="nav" id="nav">
-      <div class="nav-logo">She <em>Explores</em></div>
-      <ul class="nav-links">
-        <li><a href="#treks">Treks</a></li>
-        <!-- ADD NEW NAV LINK: <li><a href="#treks">Trek Name</a></li> -->
-      </ul>
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-   
-    <div class="mob-menu" id="mobMenu">
-      <a href="#treks" onclick="toggleMenu()">Treks</a>
-    </div>
-   
-    <!-- ── HERO ──────────────────────────────────────── -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-inner">
-        <p class="hero-eyebrow">Adventures · Stories · Wild Places</p>
-        <h1 class="hero-title">She <em>Ex</em>plores</h1>
-        <p class="hero-sub">Himalayas &nbsp;·&nbsp; Forests &nbsp;·&nbsp; Trails Untaken</p>
-      </div>
-      <div class="hero-scroll">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
-   
-    <!-- ── QUOTE ─────────────────────────────────────── -->
-    <div class="quote-wrap">
-      <span class="quote-rule"></span>
-      <blockquote>"Not all those who wander are lost — some of us are just finding ourselves, one trail at a time."</blockquote>
-      <cite>She Explores</cite>
-      <span class="quote-rule-bottom"></span>
-    </div>
-   
-    <!-- ── TREKS ─────────────────────────────────────── -->
-    <section class="treks-section" id="treks">
-      <div class="treks-header">
-        <div>
-          <p class="treks-label">All Adventures</p>
-          <h2 class="treks-title">The <em>Journeys</em></h2>
-        </div>
-        <span class="treks-count">4 Stories</span>
-      </div>
-   
-      <div class="grid">
-        <!-- ══ KEDARKANTHA — SNOW WHITE ══ -->
-        <a href="kedarkanta.html" class="card theme-snow">
-            <div class="card-img">
-              <!-- ADD IMAGE: src="images_kedarkanta/cover.jpg" -->
-              <img src="images_kedarkanta/Nirmalasitting.jpg" alt="Kedarkantha Peak" onerror="this.style.display='none'" />
-              <span class="badge">Uttarakhand</span>
-            </div>
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="meta-item">📍 Uttarakhand</span>
-                <span class="meta-item">🏔 3800m</span>
-                <span class="meta-item">❄️ Snow Trek</span>
-              </div>
-              <h3 class="card-title">The Unfinished Business</h3>
-              <p class="card-desc">The mountain has been calling for a while now. Snow-covered meadows, frozen lakes, a summit that promises a sky unlike any other — some journeys begin long before the first step.</p>
-              <div class="card-cta">
-                <span class="cta-link">Read Story <span class="arrow">→</span></span>
-                <span class="status-tag">Published</span>
-              </div>
-            </div>
-        </a>
 
-        <!-- ══ BURANGHATI — GREEN ══ -->
-        <a href="buranghati.html" class="card theme-green">
-          <div class="card-img">
-            <!-- ADD IMAGE: src="images/buranghati.jpg" -->
-            <img src="images/meonmountain.JPG" alt="Buranghati Trek" onerror="this.style.display='none'" />
-            <span class="badge">Himachal Pradesh</span>
-          </div>
-          <div class="card-body">
-            <div class="card-meta">
-              <span class="meta-item">📍 Himachal Pradesh</span>
-              <span class="meta-item">🏔 3700m</span>
-              <span class="meta-item">🌿 Forest Trek</span>
-            </div>
-            <h3 class="card-title">Getting Lost to Find Myself</h3>
-            <p class="card-desc">The trail began before dawn. The forest swallowed the path whole and I walked into a silence so complete it felt like a second skin — unfamiliar at first, and then, somehow, like coming home.</p>
-            <div class="card-cta">
-              <span class="cta-link">Read Story <span class="arrow">→</span></span>
-              <span class="status-tag">Published</span>
-            </div>
-          </div>
+<!-- INTRO OVERLAY -->
+<div id="intro" class="intro" style="display:none;">
+  <div class="fog-layer"></div>
+  <svg class="mountain" viewBox="0 0 200 100">
+    <defs>
+      <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#dfe7e2"/>
+        <stop offset="100%" stop-color="#6bbb82"/>
+      </linearGradient>
+    </defs>
+    <path class="main" d="M10 90 L60 20 L100 70 L130 30 L180 90"/>
+    <path class="snow" d="M60 20 L100 70 L130 30"/>
+  </svg>
+  <div class="brand">She <span>Explores</span></div>
+</div>
+
+<!-- ── BACK TO TOP ─────────────────────────────── -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <span class="btt-arrow">↑</span> Climb back up
+</button>
+
+<!-- ── NAV ───────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">She <em>Explores</em></div>
+  <ul class="nav-links">
+    <li><a href="#treks">Treks</a></li>
+    <li class="nav-dropdown">
+      <a href="#guides" class="nav-dropdown-trigger">Guides <span class="nav-chevron">&#8964;</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="packing-list.html" class="nav-dd-item">
+          <span class="dd-dot dd-gold"></span> Packing List
+          <span class="dd-soon">Soon</span>
         </a>
-   
-        <!-- ══ PANGARCHULA — SKY BLUE ══ -->
-        <a href="pangarchulla.html" class="card theme-sky">
-            <div class="card-img">
-              <!-- ADD IMAGE: src="images/pangarchula.jpg" -->
-              <img src="images_pangarchulla/IMG_1036.jpg" alt="Pangarchula Peak" onerror="this.style.display='none'" />
-              <span class="badge">Chamoli, Uttarakhand</span>
-            </div>
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="meta-item">📍 Chamoli, Uttarakhand</span>
-                <span class="meta-item">🏔 4700m</span>
-                <span class="meta-item">🩵 Summit</span>
-              </div>
-              <h3 class="card-title">The Sky at Your Feet</h3>
-              <p class="card-desc">A peak that demands everything and returns it tenfold. Pangarchula isn't just a climb — it's a reckoning. The kind that leaves you quieter, and somehow fuller, on the other side.</p>
-              <div class="card-cta">
-                <span class="cta-link">Read Story <span class="arrow">→</span></span>
-                <span class="status-tag">published</span>
-              </div>
-            </div>
+        <a href="beginner.html" class="nav-dd-item">
+          <span class="dd-dot dd-green"></span> Beginner's Guide
+          <span class="dd-soon">Soon</span>
         </a>
-   
-        <!-- ══ KUARI PASS — SKY BLUE ══ -->
-        <a href="kuari.html" class="card theme-kuari">
-          <div class="card-img">
-            <!-- ADD IMAGE: src="images/kuari.jpg" -->
-            <img src="images_kuari/menbag.jpg" alt="Kuari Pass" onerror="this.style.display='none'" style="object-position:center;" />
-            <span class="badge">Chamoli, Uttarakhand</span>
-          </div>
-          <div class="card-body">
-            <div class="card-meta">
-              <span class="meta-item">📍 Chamoli, Uttarakhand</span>
-              <span class="meta-item">🏔 3640m</span>
-              <span class="meta-item">🩵 Alpine</span>
-            </div>
-            <h3 class="card-title">Where the Himalayas Open Up</h3>
-            <p class="card-desc">The Curzon Trail. Nanda Devi. Dronagiri. Kamet. The Kuari Pass offers a panorama so vast it feels less like a view and more like a conversation with the sky itself.</p>
-            <div class="card-cta">
-              <span class="cta-link">Read Story <span class="arrow">→</span></span>
-              <span class="status-tag">Published</span>
-            </div>
-          </div>
+        <a href="fitness.html" class="nav-dd-item">
+          <span class="dd-dot dd-sky"></span> Fitness Guide
+          <span class="dd-soon">Soon</span>
         </a>
-   
-   
-        <!--
-          ════════════════════════════════════════════════
-          HOW TO ADD A NEW TREK CARD
-          ════════════════════════════════════════════════
-          1. Copy any card block above
-          2. Change href to your new file e.g. "hampta-pass.html"
-          3. Pick a theme class:
-               theme-green  = forest / jungle / monsoon
-               theme-snow   = snow / winter
-               theme-sky    = high altitude / alpine
-          4. Add your image src
-          5. Update badge, meta-items, card-title, card-desc
-          6. status-tag: "Published" | "Coming Soon" | "On the Horizon"
-          7. Paste right above THIS comment block
-          8. Update the "4 Stories" count in .treks-count
-          ════════════════════════════════════════════════
-        -->
-   
-        <div class="card-upcoming">
-          <span class="up-label">Next Adventure</span>
-          <p class="up-title">More trails ahead…</p>
-          <p class="up-note">New stories will appear here as the journeys unfold.</p>
-        </div>
-   
       </div>
-    </section>
-   
-    <!-- ── FOOTER ─────────────────────────────────────── -->
-    <footer>
-      <div>
-        <p class="ft-brand-name">She <em>Explores</em></p>
-        <p>One trail at a time. Raw, honest stories from the wild edges of the Himalayas and beyond.</p>
-      </div>
-      <div class="ft-col">
-        <h5>Treks</h5>
-        <ul>
-          <li><a href="buranghati.html">Buranghati Trek</a></li>
-          <li><a href="kedarkanta.html">Kedarkantha Peak</a></li>
-          <li><a href="kuari.html">Kuari Pass</a></li>
-          <li><a href="pangarchula.html">Pangarchula Peak</a></li>
-          <!-- ADD NEW TREK LINKS HERE -->
-        </ul>
-      </div>
-      <div class="ft-col">
-        <h5>Connect</h5>
-        <ul>
-          <li><a href="https://instagram.com/she_explores.wild" target="_blank">Instagram:@she_explores.wild</a></li>
-          <li><a href="#">Quote:Somewhere between the bottom of the climb and the summit is the answer to the mystery why we climb.</a></li>
-          <li><a href="mailto:nimisheetravels@gmail.com">email:nimisheetravels@gmail.com</a></li>
-        </ul>
-      </div>
-    </footer>
-   
-    <div class="ft-bottom">
-      <p>© 2025 She Explores. All rights reserved.</p>
-      <p>Made with love & altitude sickness ♥</p>
+    </li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#treks" onclick="toggleMenu()">Treks</a>
+  <a href="#guides" onclick="toggleMenu()">Guides</a>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <canvas id="hero-particles" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Adventures · Stories · Wild Places</p>
+    <h1 class="hero-title">She <span class="hero-explores"><em>Ex</em>plores</span></h1>
+    <p class="hero-sub">Himalayas &nbsp;·&nbsp; Forests &nbsp;·&nbsp; Trails Untaken</p>
+  </div>
+</section>
+
+<!-- ── QUOTE ─────────────────────────────────────── -->
+<div class="quote-wrap">
+  <span class="quote-rule"></span>
+  <blockquote>"Not all those who wander are lost — some of us are just finding ourselves, one trail at a time."</blockquote>
+  <cite>She Explores</cite>
+  <span class="quote-rule-bottom"></span>
+</div>
+
+<!-- ── TREKS ─────────────────────────────────────── -->
+<section class="treks-section" id="treks">
+  <div class="treks-header">
+    <div>
+      <p class="treks-label">All Adventures</p>
+      <h2 class="treks-title">The <em>Journeys</em></h2>
     </div>
-   
-    <!-- ── SCRIPTS ────────────────────────────────────── -->
-    <script>
-      /* Mobile menu */
-      function toggleMenu() {
-        document.getElementById('mobMenu').classList.toggle('open');
+    <span class="treks-count">4 Stories</span>
+  </div>
+
+  <div class="grid">
+    <!-- ══ KEDARKANTHA — SNOW WHITE ══ -->
+    <a href="kedarkanta.html" class="card theme-snow">
+      <div class="card-img">
+        <img src="images_kedarkanta/Nirmalasitting.jpg" alt="Kedarkantha Peak" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(160deg,#466985 0%,#2a4a62 50%,#1a3045 100%)'; this.parentElement.innerHTML+='<div style=\'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px\'><div style=\'font-size:2.5rem\'>❄️</div><p style=\'font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;color:#fff\'>Kedarkantha · 3800m</p></div>'" />
+        <span class="badge">Uttarakhand</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="meta-item">📍 Uttarakhand</span>
+          <span class="meta-item">🏔 3800m</span>
+          <span class="meta-item">❄️ Snow Trek</span>
+        </div>
+        <h3 class="card-title">The Unfinished Business</h3>
+        <p class="card-desc">The mountain has been calling for a while now. Snow-covered meadows, frozen lakes, a summit that promises a sky unlike any other — some journeys begin long before the first step.</p>
+        <div class="card-cta">
+          <span class="cta-link">Read Story <span class="arrow">→</span></span>
+          <span class="status-tag">Published</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ══ BURANGHATI — GREEN ══ -->
+    <a href="buranghati.html" class="card theme-green">
+      <div class="card-img">
+        <img src="images/meonmountain.JPG" alt="Buranghati Trek" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(160deg,#0e2218 0%,#1a3d25 50%,#0c1b13 100%)'; this.parentElement.innerHTML+='<div style=\'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px\'><div style=\'font-size:2.5rem\'>🌲</div><p style=\'font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;color:#fff\'>Buranghati · 3700m</p></div>'" />
+        <span class="badge">Himachal Pradesh</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="meta-item">📍 Himachal Pradesh</span>
+          <span class="meta-item">🏔 3700m</span>
+          <span class="meta-item">🌿 Forest Trek</span>
+        </div>
+        <h3 class="card-title">Getting Lost to Find Myself</h3>
+        <p class="card-desc">The trail began before dawn. The forest swallowed the path whole and I walked into a silence so complete it felt like a second skin — unfamiliar at first, and then, somehow, like coming home.</p>
+        <div class="card-cta">
+          <span class="cta-link">Read Story <span class="arrow">→</span></span>
+          <span class="status-tag">Published</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ══ PANGARCHULA — SKY BLUE ══ -->
+    <a href="pangarchulla.html" class="card theme-sky">
+      <div class="card-img">
+        <img src="images_pangarchulla/IMG_1036.jpg" alt="Pangarchula Peak" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(160deg,#071626 0%,#0d2a42 50%,#08121e 100%)'; this.parentElement.innerHTML+='<div style=\'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px\'><div style=\'font-size:2.5rem\'>🩵</div><p style=\'font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;color:#fff\'>Pangarchula · 4700m</p></div>'" />
+        <span class="badge">Chamoli, Uttarakhand</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="meta-item">📍 Chamoli, Uttarakhand</span>
+          <span class="meta-item">🏔 4700m</span>
+          <span class="meta-item">🩵 Summit</span>
+        </div>
+        <h3 class="card-title">The Sky at Your Feet</h3>
+        <p class="card-desc">A peak that demands everything and returns it tenfold. Pangarchula isn't just a climb — it's a reckoning. The kind that leaves you quieter, and somehow fuller, on the other side.</p>
+        <div class="card-cta">
+          <span class="cta-link">Read Story <span class="arrow">→</span></span>
+          <span class="status-tag">Published</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ══ KUARI PASS ══ -->
+    <a href="kuari.html" class="card theme-kuari">
+      <div class="card-img">
+        <img src="images_kuari/menbag.jpg" alt="Kuari Pass" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(160deg,#0d0d1a 0%,#1f1020 50%,#1a0d12 100%)'; this.parentElement.innerHTML+='<div style=\'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px\'><div style=\'font-size:2.5rem\'>🏔️</div><p style=\'font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;color:#fff\'>Kuari Pass · 3640m</p></div>'" style="object-position:center;" />
+        <span class="badge">Chamoli, Uttarakhand</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="meta-item">📍 Chamoli, Uttarakhand</span>
+          <span class="meta-item">🏔 3640m</span>
+          <span class="meta-item">🩵 Alpine</span>
+        </div>
+        <h3 class="card-title">Where the Himalayas Open Up</h3>
+        <p class="card-desc">The Curzon Trail. Nanda Devi. Dronagiri. Kamet. The Kuari Pass offers a panorama so vast it feels less like a view and more like a conversation with the sky itself.</p>
+        <div class="card-cta">
+          <span class="cta-link">Read Story <span class="arrow">→</span></span>
+          <span class="status-tag">Published</span>
+        </div>
+      </div>
+    </a>
+
+    <!--
+      ════════════════════════════════════════════════
+      HOW TO ADD A NEW TREK CARD
+      ════════════════════════════════════════════════
+      1. Copy any card block above
+      2. Change href to your new file e.g. "hampta-pass.html"
+      3. Pick a theme class:
+           theme-green  = forest / jungle / monsoon
+           theme-snow   = snow / winter
+           theme-sky    = high altitude / alpine
+      4. Add your image src
+      5. Update badge, meta-items, card-title, card-desc
+      6. status-tag: "Published" | "Coming Soon" | "On the Horizon"
+      7. Paste right above THIS comment block
+      8. Update the "4 Stories" count in .treks-count
+      ════════════════════════════════════════════════
+    -->
+
+    <div class="card-upcoming">
+      <span class="up-label">Next Adventure</span>
+      <p class="up-title">More trails ahead…</p>
+      <p class="up-note">New stories will appear here as the journeys unfold.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── GUIDES SECTION ─────────────────────────── -->
+<section class="guides-section" id="guides">
+  <div class="guides-inner">
+    <p class="guides-eyebrow">Before You Go</p>
+    <h2 class="guides-title">The <em>Essentials</em></h2>
+    <p class="guides-sub">Everything you need to know before your boots hit the trail.</p>
+
+    <div class="guides-grid">
+
+      <!-- PACKING LIST -->
+      <div class="guide-card gc-gold coming-soon">
+        <span class="gc-soon-badge">Coming Soon</span>
+        <div class="gc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+            <rect x="12" y="14" width="16" height="17" rx="3" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <path d="M16 14 Q16 10 20 10 Q24 10 24 14" stroke="currentColor" stroke-width="1.3" fill="none"/>
+            <rect x="15" y="22" width="10" height="6" rx="1.5" stroke="currentColor" stroke-width="1.1" fill="none"/>
+          </svg>
+        </div>
+        <span class="gc-tag">Gear &amp; Kit</span>
+        <h3 class="gc-title">Packing List</h3>
+        <p class="gc-desc">What actually goes in the bag. Gear that's earned its weight on real trails — nothing more, nothing less.</p>
+        <span class="gc-cta">Coming Soon <span class="gc-arrow">·</span></span>
+      </div>
+
+      <!-- BEGINNER -->
+      <div class="guide-card gc-green coming-soon">
+        <span class="gc-soon-badge">Coming Soon</span>
+        <div class="gc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+            <path d="M10 30 L20 12 L30 30" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+            <path d="M20 12 L17 19 L23 19 Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round" fill="none"/>
+            <circle cx="20" cy="30" r="1.5" fill="currentColor" opacity="0.6"/>
+          </svg>
+        </div>
+        <span class="gc-tag">First Steps</span>
+        <h3 class="gc-title">Beginner's Guide</h3>
+        <p class="gc-desc">New to trekking? Start here. The things no one tells you before your first mountain — honest, practical, from the trail itself.</p>
+        <span class="gc-cta">Coming Soon <span class="gc-arrow">·</span></span>
+      </div>
+
+      <!-- FITNESS GUIDE -->
+      <div class="guide-card gc-sky coming-soon">
+        <span class="gc-soon-badge">Coming Soon</span>
+        <div class="gc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+            <polyline points="8,22 13,22 16,15 19,27 22,18 25,22 32,22" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span class="gc-tag">Training</span>
+        <h3 class="gc-title">Fitness Guide</h3>
+        <p class="gc-desc">Build the legs, lungs, and grit to reach summits comfortably. A training plan built around real trekking — not a gym routine.</p>
+        <span class="gc-cta">Coming Soon <span class="gc-arrow">·</span></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div>
+    <p class="ft-brand-name">She <em>Explores</em></p>
+    <p>One trail at a time. Raw, honest stories from the wild edges of the Himalayas and beyond.</p>
+  </div>
+  <div class="ft-col">
+    <h5>Treks</h5>
+    <ul>
+      <li><a href="buranghati.html">Buranghati Trek</a></li>
+      <li><a href="kedarkanta.html">Kedarkantha Peak</a></li>
+      <li><a href="kuari.html">Kuari Pass</a></li>
+      <li><a href="pangarchula.html">Pangarchula Peak</a></li>
+    </ul>
+  </div>
+  <div class="ft-col">
+    <h5>Connect</h5>
+    <ul>
+      <li><a href="https://instagram.com/she_explores.wild" target="_blank">Instagram: @she_explores.wild</a></li>
+      <li><a href="#">Quote: Somewhere between the bottom of the climb and the summit is the answer to the mystery why we climb.</a></li>
+      <li><a href="mailto:nimisheetravels@gmail.com">email: nimisheetravels@gmail.com</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="ft-bottom">
+  <p>© 2025 She Explores Wild - Nirmala Singh. All rights reserved.</p>
+  <p>Made with love & altitude sickness ♥</p>
+</div>
+
+<!-- ── SCRIPTS ────────────────────────────────────── -->
+<script>
+  /* Mobile menu */
+  function toggleMenu() {
+    document.getElementById('mobMenu').classList.toggle('open');
+  }
+
+  /* Nav dropdown — click to toggle on touch devices */
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      const parent = this.closest('.nav-dropdown');
+      const isOpen = parent.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+      if (!isOpen) { e.preventDefault(); parent.classList.add('open'); }
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  /* Sticky nav background */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(12,11,10,0.96)';
+      nav.style.padding    = '1rem 3.5rem';
+      nav.style.backdropFilter = 'blur(12px)';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.padding    = '1.6rem 3.5rem';
+      nav.style.backdropFilter = 'none';
+    }
+  });
+
+  /* Back to top */
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight * 0.8) {
+      btt.classList.add('visible');
+    } else {
+      btt.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  /* Scroll-triggered card reveals */
+  const items = document.querySelectorAll('.card, .card-upcoming');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
       }
-   
-      /* Sticky nav background */
-      const nav = document.getElementById('nav');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-          nav.style.background = 'rgba(12,11,10,0.96)';
-          nav.style.padding    = '1rem 3.5rem';
-          nav.style.backdropFilter = 'blur(12px)';
-        } else {
-          nav.style.background = 'transparent';
-          nav.style.padding    = '1.6rem 3.5rem';
-          nav.style.backdropFilter = 'none';
-        }
-      });
-   
-      /* Scroll-triggered card reveals */
-      const items = document.querySelectorAll('.card, .card-upcoming');
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.06 });
-   
-      items.forEach((el, i) => {
-        el.style.transitionDelay = `${i * 0.1}s`;
-        io.observe(el);
-      });
-    </script>
-   
-  </body>
-</html>
+    });
+  }, { threshold: 0.06 });
 
+  items.forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+    io.observe(el);
+  });
+</script>
+
+<!-- ── FIREFLIES (HERO PARTICLES) ─────────────────── -->
+<script>
+(function () {
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let W, H, particles;
+  const COUNT = 70;
+  let tick = 0;
+
+  function resize() {
+    const hero = canvas.parentElement;
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+
+  function randomParticle(spawnMode) {
+    // spawnMode: 'random' = anywhere in canvas, 'bottom' = from bottom, 'side' = from edges
+    const lifeMax = 140 + Math.random() * 220;
+    let x, y;
+
+    if (spawnMode === 'bottom') {
+      x = Math.random() * W;
+      y = H + 8;
+    } else if (spawnMode === 'left') {
+      x = -8;
+      y = Math.random() * H;
+    } else if (spawnMode === 'right') {
+      x = W + 8;
+      y = Math.random() * H;
+    } else {
+      // 'random' — anywhere in the canvas (used at init and for mid-air spawns)
+      x = Math.random() * W;
+      y = Math.random() * H;
+    }
+
+    return {
+      x, y,
+      r:       Math.random() * 2.2 + 0.6,
+      vx:      (Math.random() - 0.5) * 0.14,
+      vy:      -(Math.random() * 0.18 + 0.04),  // gentle upward drift
+      baseAlpha: Math.random() * 0.55 + 0.3,
+      alpha:   0,
+      phase:   Math.random() * Math.PI * 2,
+      wobbleAmp:  Math.random() * 0.3 + 0.1,
+      wobbleFreq: Math.random() * 0.018 + 0.008,
+      pulseFreq:  Math.random() * 0.025 + 0.012,
+      life:    spawnMode === 'random' ? Math.floor(Math.random() * (lifeMax * 0.7)) : 0,
+      lifeMax: lifeMax,
+    };
+  }
+
+  function init() {
+    resize();
+    // Seed all particles at random positions across the full canvas
+    particles = Array.from({ length: COUNT }, () => randomParticle('random'));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    tick++;
+
+    for (const p of particles) {
+      p.life++;
+
+      // sine-wave horizontal drift
+      p.x += p.vx + Math.sin(tick * p.wobbleFreq + p.phase) * p.wobbleAmp;
+      p.y += p.vy;
+
+      // pulsing alpha
+      const pulse = 0.5 + 0.5 * Math.sin(tick * p.pulseFreq + p.phase);
+      const lifeFade = Math.min(p.life / 40, 1) * Math.min((p.lifeMax - p.life) / 40, 1);
+      p.alpha = p.baseAlpha * pulse * lifeFade;
+
+      // glow bloom
+      ctx.save();
+      ctx.shadowBlur  = 10 + pulse * 12;
+      ctx.shadowColor = `rgba(255, 210, 60, ${p.alpha * 0.9})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 218, 70, ${p.alpha})`;
+      ctx.fill();
+      ctx.restore();
+
+      // respawn — distribute randomly across the full hero, not just the bottom
+      if (p.y < -10 || p.x < -10 || p.x > W + 10 || p.life >= p.lifeMax) {
+        const roll = Math.random();
+        let mode;
+        if (roll < 0.45) {
+          mode = 'bottom';   // rise from bottom (classic firefly feel)
+        } else if (roll < 0.60) {
+          mode = 'random';   // pop in anywhere — keeps upper half alive
+        } else if (roll < 0.80) {
+          mode = 'left';     // drift in from left edge
+        } else {
+          mode = 'right';    // drift in from right edge
+        }
+        const np = randomParticle(mode);
+        Object.assign(p, np);
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    for (const p of particles) {
+      if (p.x > W) p.x = Math.random() * W;
+      if (p.y > H) p.y = Math.random() * H;
+    }
+  }, { passive: true });
+
+  init();
+  draw();
+})();
+</script>
+
+<!-- ── INTRO — shows once per browser session ─────── -->
+<script>
+  window.addEventListener("load", function () {
+    const intro = document.getElementById("intro");
+    if (!intro) return;
+
+    // Only show if this is the very first visit this session
+    if (sessionStorage.getItem("introSeen")) {
+      intro.style.display = "none";
+      return;
+    }
+
+    // First visit — show the intro
+    intro.style.display = "flex";
+    document.body.classList.add("intro-active");
+
+    function dismissIntro() {
+      intro.classList.add("fade-out");
+      sessionStorage.setItem("introSeen", "yes");
+      setTimeout(() => {
+        intro.style.display = "none";
+        document.body.classList.remove("intro-active");
+      }, 1200);
+    }
+
+    intro.addEventListener("click", dismissIntro);
+
+    // Mountain draws in 2.2s · brand fades in from 1s · auto-dismiss at 3s
+    setTimeout(dismissIntro, 3000);
+  });
+</script>
+
+</body>
+</html>
