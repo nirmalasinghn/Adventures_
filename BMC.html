@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mountain Doesn't Differentiate — NIM BMC 293 · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --deep:        #0c0c0a;
+      --surface:     #141412;
+      --card:        #1c1c19;
+      --accent:      #c94b1e;
+      --accent-lt:   #e06540;
+      --mycolour:   #1c365e;
+      --olive:       #7a8a5a;
+      --text:        #f0ede6;
+      --muted:       #6a6a5e;
+      --frost:       #d8d4cc;
+      --border:      rgba(255,255,255,0.07);
+      --rule:        rgba(255,255,255,0.11);
+      --font-display:'Bebas Neue', Impact, sans-serif;
+      --font-body:   'IBM Plex Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth;max-width: 100%; overflow-x: hidden; }
+    body { background: var(--deep); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.72; max-width: 100%;  overflow-x: hidden; }
+    * {
+  min-width: 0;
+}
+    body::after { content:''; position:fixed; inset:0; background-image: linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px); background-size:48px 48px; pointer-events:none; z-index:9000; }
+    a { color:inherit; text-decoration:none; }
+    em { font-style:italic; }
+    .progress-wrap { position:fixed; top:0; left:0; width:100%; height:3px; background:rgba(255,255,255,0.05); z-index:9999; }
+    .progress-bar { height:100%; width:0%; background:var(--accent); box-shadow:0 0 8px rgba(201,75,30,.6); }
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(12,12,10,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .nav-brand { font-family:var(--font-display); font-size:1.3rem; letter-spacing:0.12em; color:var(--text); }
+    .nav-links { list-style:none; display:flex; gap:2.4rem; }
+    .nav-links a { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; color:rgba(240,237,230,.4); transition:color .3s; }
+    .nav-links a:hover { color:var(--accent-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--text); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(12,12,10,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:3.5rem; letter-spacing:0.08em; color:var(--text); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--accent); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); font-weight:400; }
+
+    
+    .hero { 
+  position: relative; 
+  height: 100dvh; 
+  min-height: 640px; 
+  display: flex; 
+  align-items: flex-end; 
+  overflow: hidden; 
+  width: 100%; 
+}
+    .hero-bg { 
+  position: absolute; 
+  inset: 0; 
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center 30% !important; 
+  animation: none;
+  width: 100%; 
+  filter: brightness(0.70) saturate(0.8); 
+  z-index: 1;
+}
+    @keyframes zoomBg { from{transform:scale(1.06)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(12,12,10,0.0) 0%,rgba(12,12,10,0.2) 40%,rgba(12,12,10,1.0) 100%); }
+    .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); z-index:3; }
+    .hero-content { position:relative; z-index:2; padding:6rem 3.5rem 4rem; max-width:650px; opacity:0; animation:riseIn 1.2s .2s cubic-bezier(.16,1,.3,1) forwards; display:flex; flex-direction:column; justify-content:flex-end; min-height:100%; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem;
+  font-size: .65rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--mycolour);
+  margin-bottom: 1.2rem;
+  max-width: 100%;
+}
+.hero-tag::before {
+  flex-shrink: 0;
+}
+    .hero-title { font-family:var(--font-display); font-size:clamp(3rem,6vw,6.5rem); font-weight:400; line-height:0.9; letter-spacing:0.02em; color:var(--text); margin-bottom:1.4rem; text-transform:uppercase; }
+    .hero-title .accent { color:var(--accent); }
+    .hero-sub { font-family:var(--font-body); font-size:clamp(0.9rem,1.6vw,1.15rem); font-weight:300; font-style:italic; color:rgba(240,237,230,.5); max-width:520px; line-height:1.6; margin-bottom:2.4rem; letter-spacing:0.02em; }
+    .hero-meta { display:flex; gap:.8rem; flex-wrap:wrap; }
+    .meta-pill { font-size:.68rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:.45em 1em; border:1px solid rgba(201,75,30,.35); background:rgba(201,75,30,.07); color:var(--frost); }
+
+    .stats-bar { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+    .stat-item { padding:2.4rem 2.5rem; border-right:1px solid var(--rule); display:flex; flex-direction:column; gap:.4rem; position:relative; }
+    .stat-item:last-child { border-right:none; }
+    .stat-item::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--accent); opacity:0; transition:opacity .3s; }
+    .stat-item:hover::before { opacity:1; }
+    .stat-number { font-family:var(--font-display); font-size:3.2rem; font-weight:400; line-height:1; color:var(--text); letter-spacing:0.02em; }
+    .stat-label { font-size:.68rem; font-weight:400; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; line-height:1.6; }
+
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .section-eyebrow::before { content:'●'; font-size:.45rem; color:var(--accent); }
+    h2 { font-family:var(--font-display); font-size:clamp(2.8rem,6vw,5rem); font-weight:400; line-height:0.95; letter-spacing:0.03em; text-transform:uppercase; color:var(--text); margin-bottom:2rem; }
+    h2 em { color:var(--accent); font-style:normal; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(240,237,230,.62); margin-bottom:1.4rem; font-weight:300; }
+    p:last-child { margin-bottom:0; }
+
+    .phase-header { position:relative; margin-bottom:2.8rem; padding-bottom:2rem; border-bottom:1px solid var(--rule); overflow:hidden; }
+    .phase-ghost { font-family:var(--font-display); font-size:clamp(7rem,20vw,16rem); font-weight:400; line-height:1; color:rgba(255,255,255,0.04); letter-spacing:0.02em; position:absolute; right:-1rem; top:-1rem; user-select:none; pointer-events:none; }
+
+    .phase-label { font-size:.6rem; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); display:flex; align-items:center; gap:.6rem; margin-bottom:.6rem; }
+    .phase-label::before { content:''; display:block; width:20px; height:2px; background:var(--accent); }
+    .phase-name { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.5rem); font-weight:400; letter-spacing:0.04em; text-transform:uppercase; color:var(--text); line-height:1; margin-bottom:.4rem; }
+    .phase-sub { font-size:.72rem; font-weight:400; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:5rem; font-weight:400; line-height:.8; float:left; margin:.05em .12em 0 0; color:var(--accent); }
+    .pull-quote { margin:2.8rem 0; padding:1.8rem 2rem; border-top:2px solid var(--accent); border-bottom:2px solid var(--accent); background:rgba(201,75,30,.04); font-family:var(--font-body); font-size:clamp(1.05rem,2.2vw,1.35rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.65; }
+
+    .full-bleed {
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* replaces height:55vh */
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.full-bleed-tall {
+  aspect-ratio: 21 / 9;      /* or whatever ratio you actually want for the "tall" variant */
+}
+.full-bleed img { display: none; }
+.full-bleed:hover { filter: brightness(1); transition: filter .5s; }
+    .img-caption { font-size:.7rem; font-weight:400; color:var(--muted); font-style:italic; padding:.7rem 0; line-height:1.6; border-top:1px solid var(--border); letter-spacing:.03em; }
+
+    .clearfix::after { content:''; display:table; clear:both; }
+    .img-float-right { float:right; width:46%; margin:0 0 2rem 2.5rem; }
+    .img-float-left  { float:left;  width:44%; margin:0 2.5rem 2rem 0; }
+    .img-float-right img,.img-float-left img { width:100%; display:block; filter:brightness(1) saturate(1); transition:filter .5s; }
+    .img-float-right:hover img,.img-float-left:hover img { filter:brightness(1) saturate(1); }
+
+    .highlight-block { margin:2.5rem 0; padding:1.8rem 2rem; background:rgba(201,75,30,.05); border-left:3px solid var(--accent); }
+    .highlight-block p { color:rgba(240,237,230,.75); font-size:.95rem; font-style:italic; line-height:1.85; margin:0; }
+    .note-block { margin:2.5rem 0; padding:1.8rem 2rem; background:rgba(122,138,90,.06); border-left:3px solid var(--olive); }
+    .note-block p { color:rgba(240,237,230,.68); margin:0; }
+    .note-block p::before { content:'▸  '; color:var(--olive); font-style:normal; }
+
+    /* award block */
+    .award-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(201,75,30,.08); border:1px solid rgba(201,75,30,.3); text-align:center; }
+    .award-block .award-title { font-family:var(--font-display); font-size:1.8rem; letter-spacing:0.08em; color:var(--accent-lt); margin-bottom:.5rem; }
+    .award-block p { color:rgba(240,237,230,.72); font-style:italic; margin:0; font-size:.92rem; }
+
+    /* technique list */
+    .technique-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); margin:2.5rem 0; }
+    .technique-cell { background:var(--card); padding:1.4rem 1.6rem; }
+    .technique-cell-label { font-size:.58rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; display:block; }
+    .technique-cell ul { list-style:none; padding:0; }
+    .technique-cell li { font-size:.82rem; color:rgba(240,237,230,.6); padding:.25rem 0; border-bottom:1px solid var(--border); line-height:1.5; }
+    .technique-cell li:last-child { border-bottom:none; }
+    .technique-cell li::before { content:'— '; color:var(--accent); font-size:.7rem; }
+
+    .surface-section { background:var(--surface); padding:6rem 0; }
+    .surface-section .container { padding-top:0; padding-bottom:0; }
+
+    .summit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); margin:3rem 0; }
+    .summit-cell { background:var(--card); padding:2rem 2.2rem; display:flex; flex-direction:column; gap:.35rem; transition:background .3s; }
+    .summit-cell:hover { background:#212119; }
+    .summit-cell-label { font-size:.6rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); }
+    .summit-cell-value { font-family:var(--font-display); font-size:2.4rem; font-weight:400; letter-spacing:0.04em; line-height:1; color:var(--text); }
+    .summit-cell-note { font-size:.75rem; color:var(--muted); line-height:1.65; }
+
+    /* altitude bar */
+    .altitude-bar { display:flex; align-items:flex-end; gap:0; background:var(--card); margin:2.5rem 0; overflow:hidden; border:1px solid var(--rule); }
+    .alt-stop { flex:1; display:flex; flex-direction:column; align-items:center; border-right:1px solid var(--rule); padding:1.2rem .8rem .8rem; }
+    .alt-stop:last-child { border-right:none; }
+    .alt-num { font-family:var(--font-display); font-size:1.5rem; color:var(--text); letter-spacing:0.04em; }
+    .alt-name { font-size:.6rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:.3rem; text-align:center; }
+    .alt-ft { font-size:.7rem; color:var(--accent); font-weight:500; margin-top:.15rem; }
+
+    /* bliss block */
+    .bliss-block { margin:3rem 0; padding:2.5rem 2.4rem; background:var(--card); border-top:3px solid var(--accent); text-align:center; }
+    .bliss-block p { font-family:var(--font-body); font-size:clamp(1.1rem,2.2vw,1.45rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.7; margin:0; }
+
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .8s ease,transform .8s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    .itinerary-section { background:var(--card); padding:6rem 0; }
+    .itinerary-section .container { padding-top:0; padding-bottom:0; }
+    .iti-subtitle { font-size:.85rem; color:var(--muted); margin-bottom:3rem; margin-top:-.6rem; }
+    .iti-header { display:grid; grid-template-columns:80px 1fr 110px 80px; gap:1rem; padding:.9rem 1.4rem; font-size:.6rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--rule); }
+    .iti-cards { display:flex; flex-direction:column; }
+    .iti-card { display:grid; grid-template-columns:80px 1fr 110px 80px; gap:1rem; padding:1.6rem 1.4rem; border-bottom:1px solid var(--border); transition:background .3s; }
+    .iti-card:hover { background:rgba(255,255,255,.02); }
+    .iti-card-day { display:flex; flex-direction:column; gap:.15rem; }
+    .day-num { font-family:var(--font-display); font-size:1.8rem; font-weight:400; letter-spacing:0.04em; color:var(--text); line-height:1; }
+    .day-word { font-size:.58rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); }
+    .iti-card-route { font-size:.9rem; font-weight:400; color:var(--text); margin-bottom:.3rem; }
+    .iti-card-highlight { font-size:.75rem; color:var(--muted); line-height:1.65; }
+    .iti-card-alt,.iti-card-km { font-size:.76rem; color:var(--muted); padding-top:.2rem; }
+    .iti-card-key { background:rgba(201,75,30,.06); border-left:2px solid var(--accent); }
+    .iti-card-key .day-num { color:var(--accent); }
+
+    .add-photos { padding:6rem 0; }
+    .add-photos .container { padding-top:0; padding-bottom:0; }
+    .hint { font-size:.82rem; color:var(--muted); margin-bottom:3rem; }
+    .photo-slots { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; }
+    .photo-slot { aspect-ratio:16/9; overflow:hidden; margin:0; background:var(--card); cursor:pointer; display:block; }
+    .photo-slot:hover img { transform:scale(1.04); filter:brightness(.9) saturate(1); }
+    .photo-slot img { 
+  width:100%; height:100%; object-fit:cover; object-position:center; display:block; 
+  filter:brightness(1) saturate(1); 
+  transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s; 
+}
+    .lb-wrap { display:none; position:fixed; inset:0; z-index:8000; background:rgba(0,0,0,0.96); flex-direction:column; align-items:center; justify-content:center; margin:0; border:none; border-radius:0; }
+    .lb-wrap.open { display:flex; }
+    .lb-top { 
+  position:absolute; top:0; left:0; right:0; z-index:2; 
+  display:flex; justify-content:space-between; align-items:center; 
+  padding:1.2rem 1.8rem; 
+  background:linear-gradient(to bottom,rgba(0,0,0,0.75),transparent); 
+}
+.lb-caption { 
+  color:rgba(255,255,255,.55); 
+  font-size:.82rem; 
+  margin:0 0 .7rem; 
+  font-style:italic; 
+  line-height:1.6; 
+  text-align:left; 
+}
+    .lb-counter { font-size:11px; font-weight:500; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; }
+    .lb-close { background:none; border:none; color:var(--muted); font-size:20px; cursor:pointer; line-height:1; }
+    .lb-close:hover { color:var(--accent); }
+    .lb-img-area { position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:0; overflow:hidden; }
+    .lb-img-area img { 
+  max-width:100%; 
+  max-height: calc(100vh - 130px); 
+  width:auto; 
+  height:auto; 
+  object-fit:contain; 
+  display:block; 
+  transition:opacity .4s; 
+  position:relative; 
+  z-index:1; 
+}
+    .lb-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.07); border:none; color:var(--text); font-size:20px; padding:10px 14px; cursor:pointer; border-radius:2px; transition:background .2s; }
+    .lb-arrow:hover { background:var(--accent); }
+    .lb-arrow.left { left:8px; }
+    .lb-arrow.right { right:8px; }
+    .lb-bottom { 
+  position:absolute; 
+  bottom:0; left:0; right:0; 
+  padding:.8rem 1.5rem 1.2rem; 
+  background:rgba(0,0,0,0.75); 
+}
+    .lb-dots { display:flex; gap:6px; }
+    .lb-dot { width:6px; height:6px; border-radius:0; background:rgba(255,255,255,.1); cursor:pointer; border:none; padding:0; transition:background .2s; }
+    .lb-dot.active { background:var(--accent); }
+
+    .closing-quote { text-align:center; padding:5rem 2rem 6rem; border-top:1px solid var(--rule); }
+    .closing-quote p { font-family:var(--font-body); font-size:clamp(1.1rem,2.5vw,1.65rem); font-style:italic; font-weight:300; color:var(--frost); max-width:620px; margin:0 auto 1.5rem; line-height:1.65; }
+    .closing-quote-label { font-size:.62rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); }
+
+    .author-section { background:var(--deep); padding:6rem 0; border-top:1px solid var(--rule); }
+    .author-inner { display:grid; grid-template-columns:320px 1fr; gap:5rem; align-items:start; }
+    .author-photo { position:relative; height:340px;  width: 100%; overflow:hidden; }
+    .author-photo img { width:100%; height:100%; object-fit:cover; object-position:center 25%; display:block; filter:brightness(1) saturate(1); }
+    .author-photo::after { content:''; position:absolute; inset:0; border:1px solid rgba(201,75,30,0.25); pointer-events:none; }
+    .author-photo::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--accent); z-index:1; }
+    .treks-done { margin-top:2rem; }
+    .treks-label,.dreams-label { font-size:.6rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:.8rem; }
+    .dreams-label { margin-top:1.6rem; color:var(--muted); }
+    .trek-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .trek-tag { font-size:.7rem; font-weight:400; letter-spacing:.06em; padding:.3em 1em; border:1px solid rgba(240,237,230,.12); color:var(--frost); text-transform:uppercase; }
+    .trek-tag.current { background:rgba(201,75,30,.12); border-color:var(--accent); color:var(--accent-lt); }
+    .future-tag { border-style:dashed; color:var(--muted); }
+
+    footer { border-top:3px solid var(--accent); padding:2.5rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:2rem; letter-spacing:0.1em; color:var(--text); text-transform:uppercase; }
+    footer p { font-size:.76rem; color:var(--muted); margin:0; }
+    .hillary-quote { font-family:var(--font-body); font-size:1rem !important; font-style:italic; color:var(--frost) !important; max-width:520px; }
+    .insta-link a { color:var(--accent-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--text); }
+
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 1.5rem 4rem; }
+      .stats-bar { grid-template-columns:1fr 1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--rule); padding:1.8rem 1.5rem; }
+      .stat-item:nth-child(odd) { border-right:1px solid var(--rule); }
+      .container { padding:4rem 1.5rem; }
+      .img-float-right,.img-float-left { float:none; width:100%; margin:1.5rem 0; }
+      .img-float-right img,.img-float-left img { height:auto; object-fit:contain; }
+      .summit-grid,.technique-grid { grid-template-columns:1fr; }
+      .altitude-bar { flex-wrap:wrap; }
+      .alt-stop { min-width:50%; border-bottom:1px solid var(--rule); }
+      .photo-slots { grid-template-columns:repeat(2,1fr); }
+      .iti-header,.iti-card { grid-template-columns:70px 1fr; }
+      .iti-card-alt,.iti-card-km,.iti-header span:nth-child(3),.iti-header span:nth-child(4) { display:none; }
+      .author-inner { grid-template-columns:1fr; gap:2rem; }
+      .author-photo { height:260px; width:100%; }
+      .phase-ghost { font-size:clamp(5rem,22vw,9rem); }
+    }
+    @media (max-width:520px) {
+      .photo-slots { grid-template-columns:1fr; }
+      .hero-title { font-size:clamp(4rem,20vw,7rem); }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item:nth-child(odd) { border-right:none; }
+      .lb-img-area { min-height:240px; }
+      .lb-img-area img { max-height:240px; }
+    }
+    .insta-block { padding:5rem 0; text-align:center; border-top:1px solid var(--rule); }
+    .insta-block p { max-width:480px; margin:0 auto 2.2rem; }
+    .insta-block h2 { font-size:clamp(2rem,4.5vw,3.2rem); margin-bottom:1rem; }
+    .insta-cta { display:inline-block; font-size:.78rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; padding:.9em 2em; border:1px solid var(--accent); color:var(--accent-lt); transition:all .3s; }
+    .insta-cta:hover { background:var(--accent); color:var(--text); }
+    .lb-bg-blur { position:absolute; inset:-30px; background-size:cover; background-position:center; filter:blur(40px) brightness(0.25) saturate(1.8); transform:scale(1.1); z-index:0; transition:background-image .3s; }
+
+    .share-story { text-align:center; padding:0 2rem 6rem; }
+.share-story-label { display:inline-flex; align-items:center; gap:.6rem; font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:1.6rem; }
+.share-line { width:20px; height:2px; background:var(--accent); display:block; }
+.share-story-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.share-story-btn { display:inline-flex; align-items:center; gap:.6rem; font-family:var(--font-body); font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:.9em 1.8em; border:1px solid rgba(240,237,230,.18); background:none; color:var(--frost); cursor:pointer; transition:all .3s; text-decoration:none; }
+.share-story-btn:hover { border-color:var(--accent); color:var(--accent-lt); background:rgba(201,75,30,.06); }
+.share-story-btn.whatsapp { border-color:rgba(122,138,90,.4); background:rgba(122,138,90,.07); color:#9fb377; }
+.share-story-btn.whatsapp:hover { background:rgba(122,138,90,.14); border-color:var(--olive); }
+
+@media (max-width:520px) {
+  .share-story-buttons { flex-direction:column; align-items:center; }
+  .share-story-btn { width:100%; max-width:280px; justify-content:center; }
+}
+
+.back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--nimcolor); background: rgba(12,12,12,0.75); border: 1px solid var(--border);
+  backdrop-filter: blur(12px); padding: 0.55rem 1rem; border-radius: 100px; cursor: pointer;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), color 0.2s, border-color 0.2s;
+  pointer-events: none;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+.back-to-top .btt-arrow { display: inline-block; transition: transform 0.25s; }
+.back-to-top:hover .btt-arrow { transform: translateY(-3px); }
+
+.intro {
+  position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;
+  z-index: 9999;
+  background: radial-gradient(circle at 50% 40%, rgba(201,75,30,0.18), transparent 60%),
+              radial-gradient(circle at 30% 80%, rgba(201,75,30,0.08), transparent 70%),
+              var(--deep);
+  opacity: 1; transition: opacity 1.2s ease;
+}
+body.intro-active { overflow: hidden; }
+
+.fade-out { opacity: 0; pointer-events: none; }
+
+.trail-scene { width: 280px; max-width: 70vw; height: auto; display: block; }
+
+.trail-scene .contour {
+  fill: none; stroke: var(--olive); stroke-width: 0.6; opacity: 0;
+  animation: breathe 6s ease-in-out infinite;
+}
+.trail-scene .c2 { animation-delay: .5s; }
+@keyframes breathe { 0%{opacity:0;} 30%{opacity:.28;} 70%{opacity:.28;} 100%{opacity:0;} }
+
+.trail-scene .trail {
+  fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round;
+  stroke-dasharray: 420; stroke-dashoffset: 420;
+  animation: draw 2s cubic-bezier(.65,0,.35,1) forwards .3s;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.marker { opacity: 0; animation: travel 2s cubic-bezier(.65,0,.35,1) forwards .3s, show .1s linear forwards .3s; }
+@keyframes show { to { opacity: 1; } }
+@keyframes travel { 0%{ offset-distance:0%; } 100%{ offset-distance:100%; } }
+.marker-dot { offset-path: path('M20,130 C60,105 75,135 110,110 C140,88 155,120 185,98 C215,78 230,100 260,82'); }
+
+.brand { margin-top: 22px; text-align: center; opacity: 0; animation: fadeIn 1.2s ease forwards 1.9s; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.brand-line1 { display: block; font-family: var(--font-display); font-size: 34px; letter-spacing: .02em; color: var(--text); }
+.brand-line1 span { color: var(--accent-lt); font-style: italic; }
+
+.brand-line2 { display: block; margin-top: 8px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--frost); opacity: .6; }
+.brand-line2::before, .brand-line2::after {
+  content: ""; display: inline-block; width: 20px; height: 1px; background: var(--accent);
+  vertical-align: middle; margin: 0 10px 3px; opacity: .8;
+}
+
+.fog-layer {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.06), transparent 60%),
+              radial-gradient(circle at 70% 40%, rgba(255,255,255,0.05), transparent 60%);
+  animation: fogMove 25s linear infinite;
+  pointer-events: none;
+}
+/* ===== MOBILE-ONLY HERO FIX (doesn't touch desktop) ===== */
+@media (max-width: 900px) {
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .hero-tag {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+  .hero-tag::before { flex-shrink: 0; }
+
+  .hero-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.6rem, 11vw, 5rem);
+  }
+
+  .hero-sub {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* THIS is "the bar" — the pills row */
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    gap: .6rem;
+  }
+  .meta-pill {
+    white-space: normal;
+    flex-shrink: 1;
+  }
+
+  /* stats-bar below hero, same fix pattern */
+  .stats-bar {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@keyframes fogMove { from { transform: translateX(0); } to { transform: translateX(-120px); } }
+    @media (max-width: 480px) { .back-to-top { bottom: 1.4rem; right: 1.2rem; font-size: 0.55rem; padding: 0.5rem 0.85rem; } }
+  </style>
+</head>
+<body>
+
+<div id="intro" class="intro">
+  <div class="fog-layer"></div>
+  <svg class="trail-scene" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+    <path class="contour c1" d="M-10,40 C60,20 110,55 180,35 C230,20 270,45 310,30"/>
+    <path class="contour c2" d="M-10,140 C70,155 120,130 190,145 C240,155 270,135 310,148"/>
+    <path class="trail" d="M20,130 C60,105 75,135 110,110 C140,88 155,120 185,98 C215,78 230,100 260,82"/>
+    <g class="marker"><circle class="marker-dot" r="4" fill="#0c0c0a" stroke="#c94b1e" stroke-width="1.6"/></g>
+  </svg>
+  <div class="brand">
+    <span class="brand-line1">She <span>Explores</span></span>
+    <span class="brand-line2">BMC</span>
+  </div>
+</div>
+
+  <!-- ── BACK TO TOP ─────────────────────────────── -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <span class="btt-arrow">↑</span> Climb back up
+</button>
+
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div> 
+<nav id="nav">
+  <a href="#" class="nav-brand">SHE EXPLORES</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#course">The Course</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#author">About</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#course" class="mobile-nav-link">The Course</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+  </ul>
+  <p class="mobile-menu-footer">BMC 293 Ladies Batch · NIM Uttarkashi · June 2026</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images_bmc/hero.jpg'); background-position:center 50%;"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">BMC 293 Ladies Batch · Nehru Institute of Mountaineering · Uttarkashi · June 2026</div>
+    <h1 class="hero-title">THE MOUNTAIN<br>DOESN'T<br><span class="accent">DIFFERENTIATE.</span></h1>
+    <p class="hero-sub">The mountain doesn't care who you are. It just asks what you're made of.<br><span style="opacity:0.6;font-size:0.9em;">I came back and couldn't explain it. This is my attempt.</span></p>
+    <div class="hero-meta">
+      <span class="meta-pill">28 Days</span>
+      <span class="meta-pill">Uttarkashi, Uttarakhand</span>
+      <span class="meta-pill">NIM Basic Mountaineering Course</span>
+      <span class="meta-pill">Rope 9 · Best Rope 🏆</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">28</div>
+    <div class="stat-label">Days at NIM<br>Institute + Base Camp</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Crafts Mastered<br>Rock · Snow · Ice</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">15,100<span style="font-size:1.5rem;">ft</span></div>
+    <div class="stat-label">Highest Point<br>Height Gain Day</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">₹27,286</div>
+    <div class="stat-label">All-Inclusive Fee<br>Stay · Meals · Gear · Training</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+
+  <!-- PROLOGUE -->
+  <div class="container reveal">
+    <span class="section-eyebrow">Prologue</span>
+    <h2>I CAME BACK AND COULDN'T <em>EXPLAIN</em> IT.</h2>
+    <p class="drop-cap">I came back from 28 days in the mountains and couldn't explain to anyone what had happened to me. My body was in Bengaluru. My mind was still on a glacier, lying on a slope somewhere, staring at a snow peaked mountain with the sun on my face, not knowing what day it was. This is my attempt to write it down.</p>
+  </div>
+
+  <div class="full-bleed reveal" style="background-image:url('images_bmc/hero-wide.jpg');background-position:center 45%;filter:brightness(1) saturate(1);">
+    <img src="images_bmc/hero-wide.jpg" alt="The mountains at NIM" style="object-position:center 45%;" onerror="this.style.display='none'" />
+    <div class="img-caption container"></div>
+  </div>
+
+  <!-- PHASE 01 - ARRIVAL -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">01</div>
+      <div class="phase-label">Phase One</div>
+      <div class="phase-name">I Arrived at Night</div>
+      <div class="phase-sub">NIM Uttarkashi · Day 1</div>
+    </div>
+
+    <p>Couldn't see much. Just the outline of something large and the sound of my own bag hitting the floor of the hostel. There were six beds in the room — iron bunk beds, all connected. One person moves at night and all six creak together in a groaning chain. I found mine, set an alarm, and slept.</p>
+    <p>The next morning, I was three minutes late for the 5:15 fall-in.</p>
+    <p>Three minutes. That was how NIM introduced itself to me — with a jog. Not a conversation, not an orientation. A jog. I remember thinking: <em>okay then. So that's how it is.</em></p>
+    <p>That was day one. By day twenty-eight, three minutes late would have been unthinkable.</p>
+
+    <div class="highlight-block">
+      <p>I have always loved the mountains. This course was never impulsive — it was a question I had been carrying for years, waiting for the right answer. I wasn't scared when I arrived. I was excited, with a layer of nervous underneath. I am someone who holds herself to a high standard. Acing the course was always the side outcome. I wouldn't take less than that.</p>
+      <p style="font-family:var(--font-display);font-size:1.5rem;letter-spacing:0.06em;color:var(--accent-lt);margin-top:1.2rem;text-transform:uppercase;line-height:1.1;">If it's your calling — it will keep calling.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 02 - BEFORE YOU GO -->
+  <div class="surface-section">
+    <div class="container reveal">
+      <div class="phase-header">
+        <div class="phase-ghost">02</div>
+        <div class="phase-label">Phase Two</div>
+        <div class="phase-name">Before You Go</div>
+        <div class="phase-sub">The honest things nobody tells you</div>
+      </div>
+
+      <p>I have been active most of my life — running, yoga, gym on the days I showed up. I assumed that was enough. It wasn't.</p>
+      <p>The training you do before BMC doesn't make the course easier. What it does is let you <em>bear</em> the difficulty with ease. There is a difference. One is about surviving the day. The other is about having enough left to help your rope-mate carry the rope when her legs have nothing left.</p>
+
+      <div class="note-block">
+        <p>Run with a loaded rucksack — at least 15–20 kg. Walk with it, climb with it. I trained with 5 kg and thought I was ready. It took time to adapt that I didn't have to spare. If you have access to a wall gym, use it — rock craft will feel far less daunting.</p>
+      </div>
+
+      <p>Pack light. The things that truly saved me: Good quality trekking boots with high ankles — non-negotiable. High ankle support reduces the risk of twists on uneven, loose, or icy terrain and you will encounter all three. Woolen cap and a roll of dry tissue. Everything else was weight. As for snacks — bring something that gives you instant energy. For me it was skittles. Find your thing and pack it.</p>
+      <p>Avoid plastics. Carry them out if you bring them in. The mountains deserve that from us.</p>
+
+      <div class="highlight-block">
+        <p>The course costs ₹27,286 for 28 days — stay, three meals a day, equipment, and all training included. The government subsidises it to keep mountaineering accessible in India. Application is smooth with a step-by-step process on the NIM portal. The medical certificate must carry valid information and be signed by an authorised medical officer with seal and signature. Don't cut corners on that.</p>
+      </div>
+      <p style="text-align:center; margin-top:2rem; font-size:.82rem; color:var(--muted);">
+  Apply at 
+  <a href="https://www.nimindia.net" target="_blank" 
+  style="color:var(--accent-lt);">nimindia.net</a>
+</p>
+    </div>
+  </div>
+  
+  <!-- PHASE 03 - THE INSTITUTE -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">03</div>
+      <div class="phase-label">Phase Three</div>
+      <div class="phase-name">The Institute</div>
+      <div class="phase-sub">Uttarkashi · Days 1–7 · The routine that rebuilds you</div>
+    </div>
+
+    <p>NIM is in Uttarkashi. I expected cold. The first two days hit 28–30 degrees. Then the rains came in the evenings and didn't leave.</p>
+    <p>The hostel is not luxurious. It doesn't try to be. Hot water, clean spaces. Enough. More than enough, once you understand what <em>enough</em> means — which the mountains will teach you whether you ask or not.</p>
+
+    <div class="img-float-right">
+      <img src="images_bmc/poncho.jpeg" alt="NIM instructors" style="width:100%;height:auto;object-fit:contain;" onerror="this.style.display='none'" />
+      <div class="img-caption" style="padding:.6rem 0;font-size:.7rem;"></div>
+    </div>
+
+    <p>The day started at 4am. Chai. Not optional, not ceremonial — just chai, in the dark, before anything else. By 5:15am, backpacks on, fall-in at the campus. Then the walk to Tekhla for rock craft, or a hill walk on the days that called for it. Sport climbing on others. You returned by bus around 4pm.</p>
+    <p>Then: lectures from 4:30 to 8pm. A different subject every evening. Knots, navigation, mountain medicine, route-finding, map reading. The instructors are not teachers who know a subject — they are people who have <em>been inside</em> the situations they describe. You learn from them without realising you're learning. You watch how they move and something shifts in you.</p>
+
+    <div class="pull-quote">The fall-in is the process of breaking you as an individual and then assembling you back as a jigsaw puzzle.</div>
+
+    <p class="clearfix">There was a full moon one night. It hid behind clouds and then came through. I was walking in the campus and the mist was doing something to the light and I stopped and just stood there. Nobody tells you about the small unremarkable things that stay with you the longest.</p>
+
+    <div class="note-block">
+      <p>There is no network from Tela campsite onwards. Satellite phones are provided for emergency purposes only. Plan accordingly — tell the people who love you before you go in. They will be fine. So will you.</p>
+    </div>
+  </div>
+
+  <!-- FULL BLEED -->
+  <div class="full-bleed reveal" style="background-image:url('images_bmc/campus.jpg');background-position:center;filter:brightness(1) saturate(1);">
+    <img src="images_bmc/campus.jpg" alt="NIM campus Uttarkashi" style="object-position:center;" onerror="this.style.display='none'" />
+    <div class="img-caption container"></div>
+  </div>
+
+  <!-- PHASE 04 - ROPE 9 -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">04</div>
+      <div class="phase-label">Phase Four</div>
+      <div class="phase-name">Rope 9</div>
+      <div class="phase-sub">BMC 293 Ladies Batch · The people you didn't know you needed</div>
+    </div>
+
+    <p>The groups were put together across states, across backgrounds. You are tied to people you have just met and expected to trust them with your weight on a wall, and somehow it works.</p>
+
+    <p>Shaila was the youngest of us. It was her first time seeing the mountains. Her first time seeing snow. I watched her look at the peaks and the flowers and the sunshine hitting the glacier and her face said everything — the pure unfiltered wonder of someone encountering something for the first time and having no defences against it. She was mesmerised. You don't forget a face like that.</p>
+
+    <p>Tia was strong. There were things that needed tuning, and she tuned them through this course. That is not a small thing — not everyone arrives ready to be changed. She was.</p>
+
+    <p>Prathistha was quietly good at everything. The language of ropes and anchors and ice came naturally to her. She made it look easy without making anyone feel less.</p>
+
+    <p>Neha. Young, kind in a way that felt almost surprising. When she spoke to you it felt like being spoken to by someone the world hadn't reached yet. Funny and warm and genuine all at once.</p>
+
+    <p>Nisha. There is a child in all of us that we silence as we get older. We tell it to sit down and behave. Nisha had not done this. Her child was still running around, making everyone laugh, reminding me that the goal was never to grow up. The goal was always to keep that child happy.</p>
+
+    <p>Priya. There is a quiet strength in her. She observes, learns, and when the moment comes, she acts with precision and confidence. Her determination is inspiring.</p>
+
+    <div class="award-block">
+      <div class="award-title">🏆 BEST ROPE — ROPE 9</div>
+      <p>BMC 293 Ladies Batch. The award goes not to an individual but to the average — how well the group performed across all crafts, discipline, behaviour, marching, and how they treated the people around them. How they helped each other. Every one of us earned it.</p>
+    </div>
+  </div>
+
+  <!-- FULL BLEED ROPE TEAM -->
+  <div class="full-bleed reveal" style="background-image:url('images_bmc/rope-team.jpg');background-position:center;filter:brightness(1) saturate(1);">
+    <img src="images_bmc/rope-team.jpg" alt="Rope 9 team" style="object-position:center;" onerror="this.style.display='none'" />
+    <div class="img-caption container"></div>
+  </div>
+
+  <!-- PHASE 05 - ROCK CRAFT -->
+  <div class="surface-section">
+    <div class="container reveal">
+      <div class="phase-header">
+        <div class="phase-ghost">05</div>
+        <div class="phase-label">Phase Five</div>
+        <div class="phase-name">Rock Craft</div>
+        <div class="phase-sub">Tekhla · 4,690 ft · Days 8–14</div>
+      </div>
+
+      <div class="altitude-bar">
+        <div class="alt-stop">
+          <div class="alt-num">1,158</div>
+          <div class="alt-name">NIM Campus</div>
+          <div class="alt-ft">ft</div>
+        </div>
+        <div class="alt-stop">
+          <div class="alt-num">4,690</div>
+          <div class="alt-name">Tekhla</div>
+          <div class="alt-ft">ft · Rock Craft</div>
+        </div>
+        <div class="alt-stop">
+          <div class="alt-num">11,150</div>
+          <div class="alt-name">Gujjar Hut</div>
+          <div class="alt-ft">ft · En Route</div>
+        </div>
+        <div class="alt-stop">
+          <div class="alt-num">12,300</div>
+          <div class="alt-name">Base Camp</div>
+          <div class="alt-ft">ft · Snow & Ice</div>
+        </div>
+        <div class="alt-stop">
+          <div class="alt-num">15,100</div>
+          <div class="alt-name">Height Gain</div>
+          <div class="alt-ft">ft · Highest Point</div>
+        </div>
+      </div>
+
+      <p>We walked from NIM to Tekhla with packed rucksacks. That was deliberate. You needed to get used to the weight before the altitude and the real terrain arrived. I had trained with 5 kg. The rucksack at Tekhla was not 5 kg.</p>
+      <p>I had sport climbing experience from a wall gym in Bengaluru. It gave me real confidence here. The holds on actual rock read differently — there's no coloured tape, no set route, no instructions. But the body knowledge was already there. It went smooth. For those without climbing experience: the fear of heights is something the course addresses directly. The instructors work through it with you. Show up and trust the process.</p>
+
+      <div class="technique-grid">
+        <div class="technique-cell">
+          <span class="technique-cell-label">Climbing Techniques</span>
+          <ul>
+            <li>Boulder climbing and long pitch climbing</li>
+            <li>Hand grips and foot placements on rock</li>
+            <li>Overcoming fear of heights</li>
+            <li>Reading natural rock holds</li>
+          </ul>
+        </div>
+        <div class="technique-cell">
+          <span class="technique-cell-label">Equipment & Systems</span>
+          <ul>
+            <li>Anchoring — building secure protection</li>
+            <li>Belaying — protecting your climbing partner</li>
+            <li>Self anchor — securing yourself independently</li>
+            <li>Jummaring — ascending a fixed rope</li>
+            <li>Rappelling down a long pitch</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Rock craft is where you start to understand the language of the mountain. Not the romance of it — the actual grammar. Where to put your hand, where to trust your foot, when to move and when to stay still. The instructors have seen every mistake you are about to make. They let you make some of them.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 06 - THE APPROACH -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">06</div>
+      <div class="phase-label">Phase Six</div>
+      <div class="phase-name">The Approach</div>
+      <div class="phase-sub">Buki Village → Tela → Gujjar Hut 11,150 ft → Base Camp 12,300 ft</div>
+    </div>
+
+    <p>Leaving the institute felt like stepping off solid ground. The mountain section of BMC is a two-day walk before the real work begins — and those two days earn their place in the story.</p>
+
+    <p><strong style="color:var(--frost);font-weight:500;">Day 1 — Buki Village to Tela.</strong> Steep from the beginning. The path was wet and muddy, loose underfoot, the rain doing exactly what it wanted. This day reminded you fast that the rucksack you thought you'd adapted to still had something to say. You moved through it. You kept moving. One step, then another.</p>
+
+    <p><strong style="color:var(--frost);font-weight:500;">Day 2 — Tela to Gujjar Hut.</strong> Everything changed. The path opened into views that looked edited — the kind of mountain scenery that doesn't seem real even when you are standing inside it. Meadows, ridgelines, peaks. Wallpaper views, except you were breathing them in at altitude with 25kg on your back.</p>
+
+    <p>Then the hail came.</p>
+
+    <div class="pull-quote">Hailstorm. Poncho. 25 kg on your back. The wind making the poncho useless. Every step costing something that felt like it couldn't be spent. And still you moved. You kept moving. That is the only thing the mountain asks of you.</div>
+
+    <p>The mastin appeared in this section — your aluminium food box, issued and yours from this point until the last day. Breakfast at 6:30am: protein, carbs, fibre, balanced and warm. And fresh lychees. I had not had lychee like that in Bengaluru — cold in the morning, sweet in a way that felt earned by the walking. The conversations at those meals were childlike and easy in the best possible way.</p>
+
+    <p>Soup time became the anchor of each evening. Sun going down, mountains turning golden, hot cup of soup in hand, humming songs with Lakshmi, giggling about nothing in particular. Some days the clouds rolled in so thick you couldn't see the person in front of you. The next moment: completely bright and sharp and clear. The mountain does what it wants.</p>
+
+    <p>We washed the mastin in ice cold water three times a day. We disliked that intensely. And then somehow the mastin became the setting for every good conversation we had up there. Some of the most honest things I said in those 28 days were said over that cold aluminium box.</p>
+  </div>
+
+  <div class="full-bleed reveal" style="background-image:url('images_bmc/the_approach.jpg');background-position:center 40%;filter:brightness(1) saturate(1);">
+    <img src="images_bmc/the_approach.jpg" alt="Tela to Gujjar Hut approach" style="object-position:center 40%;" onerror="this.style.display='none'" />
+    <div class="img-caption container"></div>
+  </div>
+
+  <!-- PHASE 07 - SNOW & ICE CRAFT (5A/5B/5C) -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">07</div>
+      <div class="phase-label">Phase Seven</div>
+      <div class="phase-name">Three Crafts</div>
+      <div class="phase-sub">5A Rock · 5B Snow · 5C Ice · The full technical education</div>
+    </div>
+
+    <p>Snow and ice craft happen at base camp. Altitude changes everything. At lower levels your body is doing what it knows. At 12,300 feet, your lungs are already working overtime just to keep you upright. Then comes the walk to the glaciers. Then the technique work on top of all that.</p>
+
+    <p style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--accent);margin:2.5rem 0 .8rem;text-transform:uppercase;">5B — Snow Craft</p>
+    <p>Snow is deceptive. It looks still, even forgiving. It is neither. The first time you try to walk on a slope and feel your foot slide, your brain recalibrates fast.</p>
+
+    <div class="technique-grid">
+      <div class="technique-cell">
+        <span class="technique-cell-label">Movement on Snow</span>
+        <ul>
+          <li>Toe kicking — ascending steep snow</li>
+          <li>Side stepping — traversing slopes safely</li>
+          <li>Zigzag — managing gradient on ascent</li>
+          <li>Heel kicking — controlled descent technique</li>
+        </ul>
+      </div>
+      <div class="technique-cell">
+        <span class="technique-cell-label">Anchors & Arrest</span>
+        <ul>
+          <li>Snow stake — vertical anchor in snow</li>
+          <li>Deadboy / dead man — buried horizontal anchor</li>
+          <li>Ice axe as snow anchor</li>
+          <li>Self arrest — stopping your own fall</li>
+          <li>Team arrest — stopping a rope team fall</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--accent);margin:2.5rem 0 .8rem;text-transform:uppercase;">5C — Ice Craft</p>
+    <p>Ice is the hardest classroom. Everything must be precise — your foot placement, your axe angle, your weight distribution. There is no margin on a glacier.</p>
+
+    <div class="technique-grid">
+      <div class="technique-cell">
+        <span class="technique-cell-label">Climbing on Ice</span>
+        <ul>
+          <li>Wearing crampons correctly</li>
+          <li>Attaching ice axe and self harness</li>
+          <li>Pick position — primary climbing grip</li>
+          <li>Adze edge position — flat traversing</li>
+          <li>Support position — balance and rest</li>
+          <li>Getting down on ice safely</li>
+        </ul>
+      </div>
+      <div class="technique-cell">
+        <span class="technique-cell-label">Anchors & Leading</span>
+        <ul>
+          <li>Driving ice pitons into glacier wall</li>
+          <li>Building ice anchors</li>
+          <li>Hammering on ice — technique and force</li>
+          <li>Traversing on ice</li>
+          <li>Lead climbing role</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pull-quote">When you are sitting on an ice wall and the piton won't go in, your calves pump up and the battle becomes very simple: physical pain versus the mental intention to finish the thing. The mountain does not care how determined you felt when you signed up.</div>
+
+    <p>Driving ice pitons was the hardest thing for me. On the glacier wall, ice all around you. You drive the piton at the correct angle, correct pressure. Simple in theory. But pitons are not obedient. Sometimes there is rock beneath, or debris, or the tip has gone blunt. And it refuses. A very specific, unglamorous battle between your body and a small piece of metal. I won, eventually, most of the time.</p>
+
+    <p>There were also the navigation and academic tests — rope knot tests within a set time with marks allocated, map reading covering orientation with a service protractor, map to ground and ground to map, and a written exam for 100 marks. The navigation exercise was a rope activity: given a lat-long coordinate, navigate to that location on ground, get a signature from the instructor stationed there, return. Speed counted. It wasn't just a lesson. It was a race.</p>
+  </div>
+
+  <!-- FULL BLEED GLACIER -->
+  <div class="full-bleed full-bleed-tall reveal" style="background-image:url('images_bmc/glacier.jpg');background-position:center 40%;">
+    <img src="images_bmc/glacier.jpg" alt="Glacier at base camp" style="object-position:center 40%;" onerror="this.style.display='none'" />
+    <div class="img-caption container"></div>
+  </div>
+
+  <!-- PHASE 08 - A RANDOM MONDAY -->
+  <div class="surface-section">
+    <div class="container reveal">
+      <div class="phase-header">
+        <div class="phase-ghost">08</div>
+        <div class="phase-label">Phase Eight</div>
+        <div class="phase-name">A Random Monday</div>
+        <div class="phase-sub">The moment I understood everything</div>
+      </div>
+
+      <p>It was a crevasse crossing day. I was acting as lead climber — the one who had fallen into the crevasse on the slope. So I lay down on the mountain. Lay there. Free. Completely unbothered. After a while, I closed my eyes.</p>
+      <p>Then I opened them.</p>
+      <p>The sun was shining. A snow peaked mountain was directly in front of me, enormous and still. I didn't know what time it was. I didn't know what day. I didn't know the date. It did not matter at all. It was the most present I have ever been in my life.</p>
+      <p>Then I looked at my watch.</p>
+      <p>Monday.</p>
+
+      <div class="bliss-block">
+        <p>A random Monday can look like this. A random Monday can be you, lying on a glacier at 12,000 feet, staring at a mountain that has been there longer than language, with the sun on your face and nothing at all that needs doing. This is what I mean when I say something inside me has changed.</p>
+      </div>
+
+      <p style="text-align:center;font-family:var(--font-display);font-size:1.6rem;letter-spacing:0.07em;color:var(--frost);text-transform:uppercase;line-height:1.1;margin:2rem 0 2.5rem;">Some days feel like they have been waiting for you.</p>
+
+      <p>I found my spot at base camp too. I am good at finding spots — quiet places that nobody else is using, with the right angle of light. Mine had cold grass under my feet, cold air on my face, buttercup flowers in every direction, and a mountain view straight ahead. I brought a sketching book there. At one moment the sun was shining full on the page, then clouds rolled in and the cold breeze hit, then bright again — all of it happening at once, like the mountain couldn't decide. I sketched very little. Mostly I just sat.</p>
+      <p>There was another moment — Lakshmi and I, lying in the grass with the flowers all around, doing yoga poses, laughing at each other, completely ridiculous. And then the sky opened up. The clouds split apart and the full shape of the mountains came through, all at once, like a curtain being pulled back. That majestic, absurd, completely real view. You cannot prepare for it.</p>
+    </div>
+  </div>
+
+  <!-- FULL BLEED - SPOT / BUTTERCUPS -->
+  <div class="full-bleed reveal" style="background-image:url('images_bmc/buttercups.jpeg');background-position:center 55%;filter:brightness(1) saturate(1);">
+    <img src="images_bmc/buttercups.jpeg" alt="Buttercup flowers base camp" style="object-position:center 55%;" onerror="this.style.display='none'" />
+    <div class="img-caption container"></div>
+  </div>
+
+  <!-- PHASE 09 - HEIGHT GAIN -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">09</div>
+      <div class="phase-label">Phase Nine</div>
+      <div class="phase-name">The Height Gain Day</div>
+      <div class="phase-sub">15,100 ft · The day the mountain tested everything</div>
+    </div>
+
+    <p>The day after the written exam was height gain day. The steep sections began from the very first step. There was a small stream crossing where the mud was loose against the rocks — slippery, unstable, heavy underfoot. And then the long steep climb began.</p>
+
+    <p>On the way from Tela to Gujjar Hut there had already been a moment that hit my limits. After a steep section the hail came. Hailstorm, 25 kg backpack, poncho flapping in the wind, every step costing something. That was exhausting in a way that is hard to describe from a city. But you move. You keep moving. One step in front of the other.</p>
+
+    <p>On height gain day the altitude difference made itself known differently. The climb became tougher. The air thinner. There were moments of gasping — actual gasping — where the body is simply fighting for what it needs and you have to wait for it, trust it, keep going anyway.</p>
+
+    <div class="highlight-block">
+      <p>And then the steep section opened into a grassland. And there it was. DKD2 — Draupadi Ka Danda 2. A sharp mountain, 18,600 feet, enormous and precise against the sky. The shape of it was unreal. You could look at it and feel something in your chest that doesn't have a name. I looked at it with loving eyes. That is the only way I know how to describe it.</p>
+    </div>
+
+    <p>There was never a moment where I doubted myself. Never a thought of <em>I can't do this</em>. Whatever came, it would be done — at any cost. That is not ego. It is not overconfidence. It is self belief — the quiet, grounded conviction that I have in myself in these aspects. The mountain tested it. The mountain confirmed it.</p>
+
+    <div class="pull-quote">Moments like the hailstorm, gasping at altitude, the piton that won't go in — these are not the hard parts of the story. These are the parts that make us stronger to our core. I know that now. I felt it then.</div>
+  </div>
+
+  <!-- PHASE 10 - GRADUATION -->
+  <div class="surface-section">
+    <div class="container reveal">
+      <div class="phase-header">
+        <div class="phase-ghost">10</div>
+        <div class="phase-label">Phase Ten</div>
+        <div class="phase-name">Graduation Day</div>
+        <div class="phase-sub">The ice axe. The badge of honour.</div>
+      </div>
+  <div class="img-float-left">
+  <img src="images_bmc/graduation.jpg" alt="Graduation day NIM" style="width:100%;height:auto;object-fit:contain;" onerror="this.style.display='none'" />
+  <div class="img-caption" style="padding:.6rem 0;font-size:.7rem;">Earned. Not given.</div>
+</div>
+
+      <p>The last day was graduation day. Each person was given an ice axe — a badge of honour, earned by sweat and blood. Not given, not gifted, not symbolic. Earned.</p>
+      <p>It is a mark that says: <em>you are capable of more.</em> That is all it says. That is everything it says.</p>
+      <p>Mine is on my wall. It will be in my heart longer than that.</p>
+      <p>And Rope 9 won best rope. All of us. Not because of any one person — because of every person. Shaila's wonder, Tia's grit, Prathistha's knowledge, Neha's kindness, Nisha's joy. The average of what we were together was something the instructors recognised. I am proud of that more than anything else from those 28 days.</p>
+
+      <div class="award-block" style="margin-top:2.5rem;">
+        <div class="award-title">ROPE 9 · BEST ROPE</div>
+        <p>BMC 293 Ladies Batch. The average of discipline, craft, behaviour, marching, and how we treated each other — that is what won it. Collective, not individual. Every one of us carried the rope.</p>
+      </div>
+
+      <p style="margin-top:2rem;">The last evening, the sky went orange and then pink. The kind of sky that makes you stop walking. I stood at the campus entrance — the mountains ahead, everything behind me — and stayed there longer than I needed to. The next morning we left early. Before the campus could properly wake up, before the mountains could say anything else. The bag went on my back. The gate was behind me. I walked.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 11 - WHO IT'S FOR -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">11</div>
+      <div class="phase-label">Phase Eleven</div>
+      <div class="phase-name">Who This Is For</div>
+      <div class="phase-sub">And who should think twice</div>
+    </div>
+
+    <p>It is for someone who loves the mountains with something real behind the love. Not Instagram love — the kind where you are willing to be cold and tired and uncertain and still show up the next morning.</p>
+    <p>It is not for someone who expects their bag to be carried. Not for someone who thinks this is a trek with a nice view at the end. The beauty is real but it is not free. You earn it with your calves and your lungs and the quieter parts of your mind.</p>
+
+    <div class="highlight-block">
+      <p>The mountain does not differentiate. Male, female, young, old — it gives everyone the same conditions and asks the same questions. What you bring to those questions is entirely up to you. Come with true interest. Come for the love of the mountains, not for a certificate. Go with an open mind — not vague, but genuinely willing to learn from anyone around you regardless of age or experience. Some of the most useful things I learned at NIM came from people younger than me.</p>
+    </div>
+
+    <p>Train seriously. Pack lightly. Wake up early. And be kind to the people on your rope. You will need them and they will need you, often at the same moment.</p>
+  </div>
+
+  <!-- PHASE 12 - COMING BACK -->
+  <div class="container reveal">
+    <div class="phase-header">
+      <div class="phase-ghost">12</div>
+      <div class="phase-label">Phase Twelve</div>
+      <div class="phase-name">Coming Back</div>
+      <div class="phase-sub">Body here. Mind somewhere on a glacier.</div>
+    </div>
+
+    <p>I came home to a city. Traffic. Screens. Everyone moving fast toward things that felt important.</p>
+    <p>For five days, I was not fully present. My body was in Bengaluru. My mind was on a glacier somewhere, or lying in the buttercup field, or standing at soup time watching the clouds roll in. Zoning out for days. Those around me noticed before I did.</p>
+    <p>I have felt post-trek drops before — one day of strange quiet, then back to normal. This was different. Longer and heavier and harder to explain. It took five full working days to return to what I was before. And by then I understood: I wasn't returning to what I was before. That person was gone. Something else had come back in her place.</p>
+
+    <div class="pull-quote">Life is more than the desk, the corporate ladder, the financial planning. There are places on this earth that look like they were made up. I have sat in them. I have been cold in them and uncertain in them and completely, quietly, irreversibly happy in them.</div>
+
+    <p style="text-align:center;font-family:var(--font-body);font-size:clamp(1rem,2vw,1.25rem);font-style:italic;font-weight:300;color:rgba(240,237,230,.5);max-width:540px;margin:0 auto 2rem;line-height:1.7;">"In every walk with nature, one receives far more than he seeks."<br><span style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--muted);">— John Muir</span></p>
+
+    <p>We do not look up enough. We do not look at clouds, at sky, at the orange that happens when the sun decides to leave for the day. We are capable of taking ourselves to these places — our bodies are extraordinary, quietly capable things — and we forget to be grateful for that. NIM gave me back that knowledge. Not as an idea. As something I know in my body now.</p>
+    <p>There are places on this earth that people see in photographs and think <em>that can't be real.</em> It is real. Green mountains, yellow buttercup fields, snow peaks that have no business being that white, a sharp mountain at 18,600 feet called DKD2 that you can look at with loving eyes. I have been there. I carry it with me now.</p>
+    <p>Something inside me has changed. I am still understanding what. I suspect I always will be.</p>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing-quote reveal">
+    <p>Grade arrives by post. My instructor said: "You will do well when you come for AMC." I am choosing to sit with that for now. The ice axe is on my wall. That is enough.</p>
+    <span class="closing-quote-label">BMC 293 · Rope 9 · NIM Uttarkashi · June 2026</span>
+  </div>
+
+  <div class="share-story reveal">
+  <span class="share-story-label">
+    <span class="share-line"></span>
+    Share This Story
+    <span class="share-line"></span>
+  </span>
+  <div class="share-story-buttons">
+    <button class="share-story-btn" id="copyBtn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+      <span id="copyBtnText">Copy Link</span>
+    </button>
+    <a class="share-story-btn whatsapp" id="waBtn" href="#" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.24 14.03c-.22.62-1.29 1.19-1.78 1.24-.46.05-.9.24-3.04-.64-2.58-1.06-4.19-3.69-4.32-3.86-.13-.17-1.02-1.35-1.02-2.58 0-1.23.65-1.83.88-2.08.22-.25.48-.31.65-.31.16 0 .33.001.47.008.15.007.36-.056.56.43.22.53.74 1.83.8 1.96.07.14.11.29.02.47-.09.17-.14.28-.27.43-.14.16-.29.35-.41.47-.14.14-.28.29-.12.57.16.28.73 1.2 1.56 1.95 1.08.96 1.98 1.26 2.26 1.4.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.63-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.66-.15 1.28z"></path></svg>
+      Share on WhatsApp
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- COURSE OVERVIEW -->
+<section id="course" class="itinerary-section">
+  <div class="container reveal">
+    <span class="section-eyebrow">The Course</span>
+    <h2>28 DAYS, <em>PHASE BY PHASE</em></h2>
+    <p class="iti-subtitle">A map of what BMC at NIM actually looks like — so you know what you are walking into.</p>
+
+    <div class="iti-header">
+      <span>Phase</span><span>What Happens</span><span>Location</span><span>Duration</span>
+    </div>
+    <div class="iti-cards">
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">01</span><span class="day-word">Arrival</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Reporting & Orientation</div><div class="iti-card-highlight">You arrive, find your bunk, set an alarm. Don't be three minutes late for the 5:15 fall-in. Learn from my experience.</div></div>
+        <div class="iti-card-alt">NIM Uttarkashi</div><div class="iti-card-km">Days 1–2</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">02</span><span class="day-word">Foundation</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Physical Conditioning, Theory & Knot Training</div><div class="iti-card-highlight">Early mornings, exercise, lectures, knot practice. The schedule begins breaking you into shape. Fresh lychees at breakfast.</div></div>
+        <div class="iti-card-alt">NIM Campus</div><div class="iti-card-km">Days 3–7</div>
+      </div>
+      <div class="iti-card iti-card-key">
+        <div class="iti-card-day"><span class="day-num">03</span><span class="day-word">Rock</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Rock Craft — Tekhla · 4,690 ft</div><div class="iti-card-highlight">Walk from NIM to Tekhla with full rucksack. Boulder climbing, long pitch, belaying, rappelling, jummaring. Rock reads differently from a wall gym.</div></div>
+        <div class="iti-card-alt">Tekhla 4,690ft</div><div class="iti-card-km">Days 8–14</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">04</span><span class="day-word">Ascent</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Tela Campsite → Gujjar Hut → Base Camp</div><div class="iti-card-highlight">The approach. Steep sections, loose mud, hailstorms possible. No network from Tela onwards. Satellite phone for emergencies.</div></div>
+        <div class="iti-card-alt">Up to 12,300ft</div><div class="iti-card-km">Days 15–16</div>
+      </div>
+      <div class="iti-card iti-card-key">
+        <div class="iti-card-day"><span class="day-num">05</span><span class="day-word">Ice & Snow</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Snow & Ice Craft — Base Camp · 12,300 ft</div><div class="iti-card-highlight">Altitude takes over from here. Crampons, ice axe, pitons on glacier. Crevasse crossing. Navigation exercise. Written exam for 100 marks.</div></div>
+        <div class="iti-card-alt">BC 12,300ft</div><div class="iti-card-km">Days 17–24</div>
+      </div>
+      <div class="iti-card iti-card-key">
+        <div class="iti-card-day"><span class="day-num">06</span><span class="day-word">Summit</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Height Gain Day · 15,100 ft · View of DKD2</div><div class="iti-card-highlight">The steepest day. The highest point. Gasping at altitude, loose mud, hail. And then the grassland opens and DKD2 appears at 18,600ft. Worth every step.</div></div>
+        <div class="iti-card-alt">15,100ft</div><div class="iti-card-km">Day 25</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">07</span><span class="day-word">Graduation</span></div>
+        <div class="iti-card-main"><div class="iti-card-route">Return to Institute & Graduation Ceremony</div><div class="iti-card-highlight">The ice axe. The badge of honour. The best rope announcement. Grade arrives by post within 2 months. The sunset on the last evening is unreal.</div></div>
+        <div class="iti-card-alt">NIM Campus</div><div class="iti-card-km">Days 26–28</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="add-photos reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Carried Home</span>
+    <h2>THROUGH MY <em>LENS</em></h2>
+    <p class="hint">28 days. These are the ones I keep coming back to.</p>
+
+    <div id="gal-grid-wrapper" class="photo-slots">
+      <figure class="photo-slot"><img src="images_bmc/NIMcampus.jpeg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/sportclimbing.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/basecamp.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/buttercup.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/dkd2.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/evening_sunset.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/ropeee.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/unreal.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/ropeiceaxe.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/sunshine.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/rivercrossing.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/night.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/boots&flowers.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/nonveg.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/backbend.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/hailstorms.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+
+    </div>
+
+    </div>
+</section>
+
+<!-- AUTHOR -->
+<section id="author" class="author-section">
+  <div class="container">
+    <div class="author-inner reveal">
+      <div class="author-photo">
+        <img src="images_bmc/nirmala.jpg" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>GETTING LOST TO <em>FIND</em> MYSELF</h2>
+        <p>Nirmala is a solo female trekker and writer from Bengaluru who goes to the mountains not for the view, but for what the mountains do to the person who shows up. She runs She Explores — a quiet corner of the internet for women who want to go somewhere real.</p>
+        <p style="margin-top:1rem;">BMC wasn't a bucket list tick. It was a question she had been asking herself for years. 28 days at NIM, Rope 9, and a graduation ice axe on her wall later — she's still understanding the answer.</p>
+        <div class="treks-done">
+          <span class="treks-label">Treks & Courses</span>
+          <div class="trek-tags">
+            <span class="trek-tag current">NIM BMC 293 · Rope 9 🏆</span>
+            <span class="trek-tag">Kedarkantha</span>
+            <span class="trek-tag">Kuari Pass</span>
+            <span class="trek-tag">Pangarchulla</span>
+            <span class="trek-tag">Buranghati</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">NIM AMC</span>
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <section class="insta-block reveal">
+  <div class="container">
+    <span class="section-eyebrow">Beyond This Page</span>
+    <h2>SEE THE FRAMES I <em>DIDN'T</em> POST</h2>
+    <p>The ones that didn't make the cut. The reels, the raw clips, the in-between moments — still up there, waiting.</p>
+    <a href="https://instagram.com/she_explores.wild" target="_blank" class="insta-cta">@she_explores.wild →</a>
+  </div>
+  </section>
+</section>
+
+<footer>
+    <span class="footer-brand">THE MOUNTAIN DOESN'T DIFFERENTIATE.</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Edmund Hillary</p>
+  <p>NIM Basic Mountaineering Course · BMC 293 Ladies Batch · Rope 9 · Uttarkashi · June 2026</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2026 She Explores</p>
+
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() { hamburger.classList.add('open'); mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => { if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+ <div class="lb-wrap" id="lightbox">
+  <div class="lb-top">
+  <span class="lb-counter" id="lb-counter"></span>
+  <button class="lb-close" id="lb-close">×</button>
+</div>
+  <div class="lb-img-area">
+        <div class="lb-bg-blur" id="lb-bg"></div> 
+        <button class="lb-arrow left" id="lb-prev">‹</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-arrow right" id="lb-next">›</button>
+      </div>
+      <div class="lb-bottom"><div class="lb-dots" id="lb-dots"><p class="lb-caption" id="lb-caption"></p></div></div>
+      
+<script>
+  const photos = [
+    { src:"images_bmc/NIMcampus.jpeg", caption:"The campus at 5am. Mist, chai, and the sound of everyone figuring out what they signed up for." },
+    { src:"images_bmc/sportclimbing.jpg", caption:"sport climbing session at the campus,The holds are different when they're real." },
+    { src:"images_bmc/basecamp.jpg", caption:"Base camp at 12,300ft. The views are breathtaking and feels unreal." },
+    { src:"images_bmc/buttercup.jpg", caption:"Buttercups, a carefree dog, and snow-capped mountains—my kind of wealth." },
+    { src:"images_bmc/dkd2.jpg", caption:"DKD2 from the grassland on height gain day. 18,600ft. You look at it with loving eyes." },
+    { src:"images_bmc/evening_sunset.jpg", caption:"The last evening sky. Orange, then pink. The mountains said goodbye properly." },
+    { src:"images_bmc/ropeee.jpeg", caption:"Rope 9. The best rope. Every one of them earned it." },
+    { src:"images_bmc/unreal.jpg", caption:"Sunrise over the mountains. The sky painted in hues of pink and orange. Simply unreal." },
+    { src:"images_bmc/ropeiceaxe.jpg", caption:"Graduation day. The rope and ice axe. Earned, not given." },
+    { src:"images_bmc/sunshine.jpg", caption:"Sun rising early in the morning with snow-peaked mountains and the orange sky feels like magic." },
+    { src:"images_bmc/rivercrossing.jpg", caption:"River crossing session. Cold water, strong currents, and the thrill of adventure." },
+    { src:"images_bmc/night.jpg", caption:"Night at the base camp. Stars, cold air, and the quiet of the mountains." },
+    { src:"images_bmc/boots&flowers.jpg", caption:"Boots and flowers. The contrast of rugged and delicate." },
+    { src:"images_bmc/nonveg.jpg", caption:"Meal feast after a long trek. Simple joys." },
+    { src:"images_bmc/backbend.jpg", caption:"Stretches look like this at 12,300ft." },
+    { src:"images_bmc/hailstorms.jpg", caption:"Hailstorms at the camp. Nature's unpredictability." },
+  ];
+    window.addEventListener("load", function () {
+    const intro = document.getElementById("intro");
+    if (!intro) return;
+
+    if (sessionStorage.getItem("introSeen")) {
+      intro.style.display = "none";
+      return;
+    }
+
+    intro.style.display = "flex";
+    document.body.classList.add("intro-active");
+
+    function dismissIntro() {
+      intro.classList.add("fade-out");
+      sessionStorage.setItem("introSeen", "yes");
+      setTimeout(() => {
+        intro.style.display = "none";
+        document.body.classList.remove("intro-active");
+      }, 1200);
+    }
+
+    intro.addEventListener("click", dismissIntro);
+    setTimeout(dismissIntro, 3000);
+  });
+  const galleryWrap = document.getElementById('gal-grid-wrapper');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbDots = document.getElementById('lb-dots');
+  let current = 0;
+  galleryWrap.innerHTML = '';
+  photos.forEach(function(photo, index) {
+    const fig = document.createElement('figure');
+    fig.className = 'photo-slot';
+    fig.innerHTML = '<img src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy">';
+    fig.addEventListener('click', function() { openLightbox(index); });
+    galleryWrap.appendChild(fig);
+    const dot = document.createElement('button');
+    dot.className = 'lb-dot';
+    dot.dataset.index = index;
+    dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); });
+    lbDots.appendChild(dot);
+  });
+  function openLightbox(i) { current=i; document.body.style.overflow='hidden'; lightbox.classList.add('open'); updateLightbox(); }
+function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow=''; }
+  function goTo(i) { current=i; updateLightbox(); }
+  function updateLightbox() {
+    document.getElementById('lb-bg').style.backgroundImage = "url('" + photos[current].src + "')"; 
+    lbImg.style.opacity=0;
+    setTimeout(function() { lbImg.src=photos[current].src; lbImg.alt=photos[current].caption; lbCaption.textContent=photos[current].caption; lbCounter.textContent=(current+1)+' / '+photos.length; lbImg.style.opacity=1; },150);
+    document.querySelectorAll('.lb-dot').forEach(function(d,i){ d.classList.toggle('active',i===current); });
+  }
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-next').addEventListener('click', function() { current=(current+1)%photos.length; updateLightbox(); });
+  document.getElementById('lb-prev').addEventListener('click', function() { current=(current-1+photos.length)%photos.length; updateLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key==='ArrowRight') { current=(current+1)%photos.length; updateLightbox(); }
+    if (e.key==='ArrowLeft')  { current=(current-1+photos.length)%photos.length; updateLightbox(); }
+    if (e.key==='Escape') closeLightbox();
+  });
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  const pageUrl = window.location.href;
+  const shareText = "The Mountain Doesn't Differentiate — a story from NIM BMC 293";
+  document.getElementById('waBtn').href = 'https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + pageUrl);
+
+  document.getElementById('copyBtn').addEventListener('click', function() {
+    navigator.clipboard.writeText(pageUrl).then(function() {
+      const t = document.getElementById('copyBtnText');
+      const original = t.textContent;
+      t.textContent = 'Link Copied ✓';
+      setTimeout(function() { t.textContent = original; }, 2000);
+    });
+  });
+    /* Back to top */
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight * 0.8) {
+      btt.classList.add('visible');
+    } else {
+      btt.classList.remove('visible');
+    }
+  }, { passive: true });
+
+
+
+</script>
+</body>
+</html>
