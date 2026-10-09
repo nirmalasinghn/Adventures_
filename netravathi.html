@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Netravathi Peak — a monsoon trek through the Western Ghats, where a river is born in the mist and the grasslands feel like a world that shouldn't exist. By She Explores Wild." />
+  <title>Netravathi Peak — Where the River Is Born · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Western Ghats colour palette ──────────────────────────
+         Built around: monsoon grass · water-drop silver · river flow
+         ─────────────────────────────────────────────────────────── */
+
+      /* Backgrounds — deep forest dark, barely-there green tint */
+      --deep:         #060e09;
+      --card:         #0c1a0f;
+      --midnight:     #08110a;
+
+      /* Primary accent — canopy forest green */
+      --alpine:       #3a7a50;
+      /* Light accent — fresh leaf / dew-drop green */
+      --alpine-lt:    #68b882;
+      /* Hero em glow — bright monsoon grass (the "pop" colour) */
+      --alpine-glow:  #aadf70;
+
+      /* Text whites */
+      --snow:         #eef2f5;
+      /* Frost — misty green-white, like morning light on wet grass */
+      --frost:        #c4e8d0;
+
+      /* Neutral — mossy stone */
+      --stone:        #7a9480;
+      /* Border */
+      --border:       rgba(255,255,255,0.06);
+
+      /* Warm accent block colour — water-flow teal-moss */
+      --amber:        #5faa72;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: none; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; scrollbar-width: none; }
+    body::-webkit-scrollbar { display: none; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; }
+    strong {
+  color: #b9b9b9;   /* soft white */
+  font-weight: 600; /* slightly stronger */
+}
+    /* NAV */
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(6,14,9,0); transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(6,14,9,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(238,242,245,.45); transition:color .3s; }
+    .nav-links a:hover { color:var(--alpine-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(6,14,9,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.8rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--alpine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+    /* HERO */
+    .hero { position:relative; height:100svh; min-height:620px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background-size:cover; background-repeat:no-repeat; animation:zoomBg 22s ease-out forwards; }
+    @keyframes zoomBg { from{transform:scale(1.07)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(6,14,9,.1) 0%,rgba(6,14,9,.3) 45%,rgba(6,14,9,.98) 100%); }
+    .hero-content { position:relative; z-index:2; padding:0 3.5rem 5.5rem; max-width:920px; opacity:0; animation:riseIn 1.5s .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:var(--alpine); }
+    .hero-title { font-family:var(--font-display); font-size:clamp(4rem,10vw,10rem); font-weight:300; line-height:.9; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--alpine-glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.5rem); font-style:italic; font-weight:300; color:rgba(238,242,245,.55); max-width:620px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(104,184,130,.22); background:rgba(104,184,130,.06); color:var(--frost); backdrop-filter:blur(8px); }
+
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
+
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .container-wide { max-width:1300px; margin:0 auto; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--alpine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(238,242,245,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--alpine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--alpine); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
+
+    /* FULL BLEED */
+    .full-bleed { width:100%; height:65vh; min-height:380px; position:relative; overflow:hidden; }
+    .full-bleed-tall { height:80vh; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.9) saturate(1); }
+    .img-caption { font-family:var(--font-body); font-size:.72rem; color:var(--stone); font-style:italic; padding:.75rem 0; line-height:1.6; border-top:1px solid var(--border); }
+
+    /* DAY HEADERS */
+    .day-header { display:flex; align-items:flex-start; gap:1.8rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .day-number { font-family:var(--font-display); font-size:4.5rem; font-weight:300; line-height:1; color:rgba(255,255,255,0.18); flex-shrink:0; min-width:80px; text-align:right; }
+    .day-info { padding-top:.6rem; }
+    .day-name { font-family:var(--font-display); font-size:1.55rem; font-weight:400; color:var(--snow); margin-bottom:.25rem; }
+    .day-altitude { font-size:.72rem; color:var(--alpine-lt); letter-spacing:.06em; }
+
+    /* FLOAT IMAGES */
+    .clearfix::after { content:''; display:table; clear:both; }
+    .img-float-right { float:right; width:46%; margin:0 0 2rem 2.5rem; }
+    .img-float-left { float:left; width:44%; margin:0 2.5rem 2rem 0; }
+    .img-float-right img, .img-float-left img { width:100%; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .img-float-right:hover img, .img-float-left:hover img { filter:brightness(.92) saturate(1); }
+
+    /* SPECIAL BLOCKS */
+    .highlight-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(95,170,114,.05); border:1px solid rgba(95,170,114,.18); border-left:3px solid var(--amber); }
+    .highlight-block p { color:rgba(238,242,245,.7); font-family:var(--font-display); font-size:1.05rem; font-style:italic; line-height:1.8; margin:0; }
+    .note-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(58,122,80,.06); border:1px solid rgba(58,122,80,.2); border-left:3px solid var(--alpine); }
+    .note-block p { color:rgba(238,242,245,.7); margin:0; }
+    .alpine-section { background:var(--card); padding:6rem 0; }
+    .alpine-section .container { padding-top:0; padding-bottom:0; }
+
+    /* SUMMIT GRID */
+    .summit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin:3rem 0; }
+    .summit-cell { background:var(--card); padding:2rem 2.2rem; display:flex; flex-direction:column; gap:.3rem; }
+    .summit-cell-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); }
+    .summit-cell-value { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1.1; color:var(--snow); }
+    .summit-cell-note { font-size:.75rem; color:var(--stone); line-height:1.6; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ITINERARY */
+    .itinerary-section { background:var(--midnight); padding:6rem 0; }
+    .itinerary-section .container { padding-top:0; padding-bottom:0; }
+    .iti-subtitle { font-size:.85rem; color:var(--stone); margin-bottom:3rem; margin-top:-.8rem; }
+    .iti-header { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:.9rem 1.4rem; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); border-bottom:1px solid var(--border); }
+    .iti-cards { display:flex; flex-direction:column; }
+    .iti-card { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:1.6rem 1.4rem; border-bottom:1px solid var(--border); transition:background .3s; }
+    .iti-card:hover { background:rgba(255,255,255,.02); }
+    .iti-card-day { display:flex; flex-direction:column; gap:.15rem; }
+    .day-num { font-family:var(--font-display); font-size:1.6rem; font-weight:400; color:var(--snow); line-height:1; }
+    .day-word { font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--alpine-lt); }
+    .iti-card-route { font-size:.9rem; color:var(--snow); margin-bottom:.3rem; }
+    .iti-card-highlight { font-size:.75rem; color:var(--stone); line-height:1.6; }
+    .iti-card-alt, .iti-card-km { font-size:.78rem; color:var(--stone); padding-top:.2rem; }
+    .iti-card-summit { background:rgba(58,122,80,.06); }
+    .iti-card-summit .day-num { color:var(--alpine-lt); }
+
+    /* GALLERY */
+    .add-photos { padding:6rem 0; }
+    .add-photos .container { padding-top:0; padding-bottom:0; }
+    .hint { font-size:.82rem; color:var(--stone); margin-bottom:3rem; }
+    .photo-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .photo-slot { aspect-ratio:4/3; overflow:hidden; margin:0; background:var(--card); cursor:pointer; }
+    .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.85); transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s; }
+    .photo-slot:hover img { transform:scale(1.06); filter:brightness(.92) saturate(1); }
+
+    /* ── LIGHTBOX — fixed full-screen modal overlay ────────────── */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 6000;
+      background: rgba(6,14,9,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lb-overlay.open { display: flex; }
+
+    .lb-modal {
+      width: 100%;
+      max-width: 920px;
+      background: var(--card);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 92vh;
+      box-shadow: 0 32px 80px rgba(0,0,0,.72);
+    }
+
+    .lb-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: var(--midnight);
+      border-bottom: 1px solid var(--border);
+    }
+    .lb-counter { font-size:12px; color:var(--stone); font-family:var(--font-body); }
+    .lb-close { background:none; border:none; color:var(--stone); font-size:26px; cursor:pointer; line-height:1; padding:0 4px; transition:color .2s; }
+    .lb-close:hover { color:var(--snow); }
+
+    .lb-img-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 62px;
+      position: relative;
+      min-height: 320px;
+      max-height: 68vh;
+      background: var(--card);
+    }
+    .lb-img-area img {
+      max-width: 100%;
+      max-height: 62vh;
+      border-radius: 4px;
+      object-fit: contain;
+      transition: opacity .2s;
+      display: block;
+    }
+    .lb-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--snow);
+      font-size: 22px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background .2s, border-color .2s;
+      line-height: 1;
+    }
+    .lb-arrow:hover { background: rgba(104,184,130,.18); border-color: rgba(104,184,130,.35); }
+    .lb-arrow.left  { left: 10px; }
+    .lb-arrow.right { right: 10px; }
+
+    .lb-bottom {
+      padding: 12px 18px 16px;
+      background: var(--midnight);
+      border-top: 1px solid var(--border);
+    }
+    .lb-caption { color:var(--stone); font-size:.82rem; margin:0 0 10px; font-style:italic; font-family:var(--font-body); line-height:1.6; }
+    .lb-dots { display:flex; gap:7px; }
+    .lb-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.12); cursor:pointer; border:none; padding:0; transition:background .2s, transform .2s; }
+    .lb-dot.active { background:var(--alpine-lt); transform:scale(1.35); }
+
+    /* CLOSING QUOTE */
+    .closing-quote-section { padding:6rem 0; text-align:center; border-top:1px solid var(--border); }
+    .closing-quote-section blockquote { font-family:var(--font-display); font-size:clamp(1.6rem,3.5vw,2.8rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.4; max-width:700px; margin:0 auto; }
+    .closing-quote-section cite { display:block; margin-top:1.4rem; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); font-style:normal; }
+
+    /* AUTHOR */
+    .author-section { background:var(--deep); padding:6rem 0; border-top:1px solid rgba(104,184,130,0.08); }
+    .author-inner { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; }
+    .author-photo { position:relative; height:420px; overflow:hidden; }
+    .author-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:brightness(.85) saturate(.85); }
+    .author-photo::after { content:''; position:absolute; inset:0; border:1px solid rgba(95,170,114,0.2); pointer-events:none; }
+    .treks-done { margin-top:2rem; }
+    .treks-label, .dreams-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); display:block; margin-bottom:.8rem; }
+    .dreams-label { margin-top:1.6rem; }
+    .trek-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .trek-tag { font-size:.72rem; padding:.3em .9em; border:1px solid rgba(104,184,130,.22); color:var(--frost); }
+    .trek-tag.current { background:rgba(104,184,130,.1); border-color:var(--alpine-lt); color:var(--alpine-lt); }
+    .future-tag { border-style:dashed; color:var(--stone); }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--alpine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
+
+        /* LEAVE NO TRACE — horizontal strip */
+    .awareness-section { background:var(--midnight); padding:6rem 0 5rem; border-top:1px solid rgba(255,255,255,0.04); }
+    .awareness-inner { max-width:1200px; margin:0 auto; padding:0 2rem; }
+    .awareness-intro { font-family:var(--font-display); font-size:clamp(1rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.65; margin-bottom:2rem; border-left:3px solid var(--alpine); padding-left:1.5rem; max-width:680px; }
+    .scroll-hint { font-size:0.72rem; color:rgba(255,255,255,0.28); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+    .scroll-hint::after { content:'→'; font-size:0.9rem; color:var(--alpine); }
+    .awareness-strip-wrap { position:relative; }
+    .awareness-strip-wrap::after { content:''; position:absolute; top:0; right:0; width:80px; height:100%; background:linear-gradient(to left,var(--midnight),transparent); pointer-events:none; z-index:2; }
+    .awareness-strip { display:flex; gap:1rem; overflow-x:auto; padding-bottom:1.2rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--alpine) transparent; }
+    .awareness-strip::-webkit-scrollbar { height:4px; }
+    .awareness-strip::-webkit-scrollbar-track { background:transparent; }
+    .awareness-strip::-webkit-scrollbar-thumb { background:var(--alpine); border-radius:4px; }
+    .awareness-card { flex:0 0 240px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:1.6rem 1.4rem; display:flex; flex-direction:column; gap:0.55rem; scroll-snap-align:start; transition:border-color 0.25s,background 0.25s; }
+    .awareness-card:hover { border-color:rgba(58,122,80,0.45); background:rgba(58,122,80,0.06); }
+    .awareness-icon { font-size:1.5rem; line-height:1; }
+    .awareness-title { font-family:var(--font-display); font-size:1rem; font-weight:600; color:var(--snow); line-height:1.3; }
+    .awareness-body { font-size:0.82rem; color:rgba(238,242,245,0.60); line-height:1.75; margin:0; }
+    .awareness-close { font-family:var(--font-display); font-size:clamp(1.1rem,2vw,1.6rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; text-align:center; margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 1.5rem 4rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .img-float-right, .img-float-left { float:none; width:100%; margin:1.5rem 0; }
+      .img-float-right img, .img-float-left img { height:260px; }
+      .photo-slots { grid-template-columns:repeat(2,1fr); }
+      .iti-header, .iti-card { grid-template-columns:70px 1fr; }
+      .iti-card-alt, .iti-card-km, .iti-header span:nth-child(3), .iti-header span:nth-child(4) { display:none; }
+      .author-inner { grid-template-columns:1fr; gap:2rem; }
+      .author-photo { height:260px; width:100%; }
+      .full-bleed { height:50vh; min-height:280px; }
+      .day-header { gap:1rem; }
+      .day-number { font-size:3rem; min-width:56px; }
+      .lb-img-area { padding:16px 50px; }
+    }
+    @media (max-width:520px) {
+      .photo-slots { grid-template-columns:1fr; }
+      .summit-grid { grid-template-columns:1fr; }
+      .hero-title { font-size:clamp(3.5rem,18vw,6rem); }
+      .lb-img-area { padding:12px 44px; min-height:220px; max-height:52vh; }
+      .lb-img-area img { max-height:48vh; }
+      footer { padding:2rem 1.5rem 3rem; }
+      .pull-quote { padding:1rem 0 1rem 1.4rem; }
+    }
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  body {
+    -webkit-touch-callout: none;
+  }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#awareness">Trail Ethics</a></li>
+    <li><a href="#author">About</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Netravathi Peak &nbsp;·&nbsp; Western Ghats &nbsp;·&nbsp; June</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images_netravathi/hero.jpg'); background-position:center 45%;"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Western Ghats, Karnataka &nbsp;·&nbsp; June</span>
+    <h1 class="hero-title">Netra<em>vathi</em></h1>
+    <p class="hero-sub">Where a river is born in the mist, and the grasslands feel like a world that shouldn't exist.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🏔️ <span>1520 m · 4990 ft</span></div>
+      <div class="meta-pill">📍 <span>Samse Base, Karnataka</span></div>
+      <div class="meta-pill">🌿 <span>6.4 km one way</span></div>
+      <div class="meta-pill">🌧️ <span>Monsoon Season</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">1520<span style="font-size:1.4rem;color:var(--stone)"> m</span></div>
+    <div class="stat-label">Summit altitude<br>Western Ghats, Karnataka</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">12.8<span style="font-size:1.4rem;color:var(--stone)"> km</span></div>
+    <div class="stat-label">Total trail distance<br>Samse and back</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">7</div>
+    <div class="stat-label">stunning panorama of the Western Ghats<br>are visible from the peak</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container">
+    <span class="section-eyebrow">The Story</span>
+    <h2>Where the River<br><em>Begins</em></h2>
+
+    <!-- PROLOGUE -->
+    <p class="drop-cap">June in the Western Ghats is not for the faint-hearted. The trails are alive — wet, green, loud with rain and insects and the sound of water running where there was no water before. Everything is slippery. Everything is saturated. And everything is the most unreal shade of green you have ever seen in your life.</p>
+
+    <p>Netravathi Peak sits above Samse, a small base that you reach before the world is properly awake. The air already smells like wet earth and something floral you can't name. The mist moves through the trees like it has somewhere to be. You adjust your straps and you start walking.</p>
+
+    <div class="full-bleed reveal" style="margin:3rem 0;">
+      <img src="images_netravathi/tr.jpg" alt="The trail through the forest at Netravathi" style="object-position:center center;" onerror="this.style.display='none'" />
+      <div class="img-caption container">The first hour. Forest so dense the sky disappears.</div>
+    </div>
+
+    <!-- ASCENT -->
+    <div class="day-header" style="margin-top:3rem;">
+      <div class="day-number">01</div>
+      <div class="day-info">
+        <div class="day-name">Samse → Netravathi Peak</div>
+        <div class="day-altitude">June · 1520 m · Monsoon Trail, Full Green</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_netravathi/trailstreach.JPG" alt="Water droplets on grass blades, like pearls" style="height:340px; object-fit:cover; object-position:center;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Every grass blade holding its own small world.</div>
+      </div>
+
+      <p>The trail climbs steadily. Not brutal — but the kind of climb where your legs notice the grade before your brain does. The forest is thick at first, then slowly, with altitude, it starts to open. And when it opens, you stop walking.</p>
+
+      <p>The grass on either side of the trail is carrying the monsoon. Each blade holds a row of water droplets, perfect and round, catching whatever thin light exists. They look like pearls strung on green thread. You know you should keep moving. You stand there anyway.</p>
+
+      <p>Then you hear it — or rather, you see it before you hear it. A deer, at the edge of where the forest meets the open ridge. A silhouette. It stands still long enough for you to look, and then it doesn't.</p>
+    </div>
+
+    <div class="pull-quote">
+      The grasslands come for you slowly. You don't notice you've walked into a dreamland until you're already inside it.
+    </div>
+
+    <p>The Western Ghats does something that high Himalayan trails don't — the false peaks. You think you see the summit. You reach it. There is another ridge ahead. You climb that too. There is another one. It keeps doing this until you stop trusting your eyes entirely and just walk. It's almost funny, except your quads don't think so.</p>
+
+    <div class="clearfix">
+      <div class="img-float-left">
+        <img src="images_netravathi/bandekalufalls.PNG" alt="Open grasslands at Netravathi, trail stretching ahead" style="height:320px; object-fit:cover; object-position:center;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Another ridge. Another false promise. You walk anyway.</div>
+      </div>
+
+      <p>The Bande Kalu Waterfalls appears quietly along the trail, almost hidden within the forest. You hear it long before it comes into view — the roar of water crashing against the rocks growing louder with every step. As you get closer, a white sheet of water pours down the rock face with incredible force, the cold spray reaching your face before you even stand beside it. From there, the trail continues through dense forest, slippery boulders, and drenched boots, carrying you deeper into the wild until you finally find yourself standing above streams rushing beneath your feet.</p>
+      <P>As the dense forest slowly begins to open up, the trail leads you to the first flowing streams of the Netravathi River. The water here feels unbelievably pure — cold, fresh, and filled with minerals carried down through the mountains, rocks, and forests. After tasting it, even bottled water starts to feel artificial.
+
+Standing beside the stream, you begin to understand why both the river and the peak share the name Netravathi. This is where the river is born — emerging quietly from the rain-soaked land, the stone, and the endless greenery surrounding it.
+
+To continue the trail, trekkers cross the icy current with the help of a single rope stretched across the stream. One hand holds the rope tightly while the other searches carefully for stable footing on the slippery rocks beneath the water. The current is cold enough to make you pause, but the experience feels unforgettable.
+
+Surrounded by mist, flowing water, and the silence of the mountains, you can truly feel that this is not just another stream crossing — this is the birthplace of the Netravathi.</P>
+    </div>
+
+    <div class="highlight-block">
+      <p>The river you have seen running through cities, under bridges, past temples — it starts here. In a cleft of wet rock on a monsoon morning, thin and clear and cold. This is where it begins.  </p>
+    </div>
+
+    <div class="full-bleed reveal" style="margin:3rem 0;">
+      <img src="images_netravathi/wideshot.jpg" alt="Green monsoon grasslands below Netravathi Peak" style="object-position:center 40%;" onerror="this.style.display='none'" />
+      <div class="img-caption container">The grasslands open up near the top. Nothing prepares you for this shade of green.</div>
+    </div>
+
+    <!-- THE SUMMIT -->
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-name">The Summit Grasslands</div>
+        <div class="day-altitude">1520 m · The Green That Doesn't Seem Real</div>
+      </div>
+    </div>
+
+    <p>At the top, there are no dramatic rock faces or prayer flags or summit markers with altitude. There is just grass. Rolling, open, impossibly green grassland in every direction. The mist comes in and out of it like something breathing. When the clouds break, the Western Ghats drops away into the distance — ridge after ridge, green fading to blue fading to nothing.</p>
+
+    <p>You could be anywhere. You could be nowhere. It feels more like a dream than a mountain. You walk through it slowly, like you're afraid of waking something up.</p>
+    <p>
+      From Netravathi Peak, you can witness a stunning panorama of the Western Ghats, including peaks like 
+      <strong>Kudremukh,Kyatanmakki,Bandaje,Ranijhari, 
+      Ballalarayana Durga Fort,Yethina Bhuja, 
+      Gadaikallu (Jamalabad Fort),and Kumaraparvatha</strong>.
+    </p>
+
+    <div class="summit-grid">
+      <div class="summit-cell">
+        <span class="summit-cell-label">Summit</span>
+        <span class="summit-cell-value">1520 m</span>
+        <span class="summit-cell-note">No marker. No sign. Just grass and mist and the feeling of being somewhere you shouldn't be.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">River Source</span>
+        <span class="summit-cell-value">Netravathi</span>
+        <span class="summit-cell-note">The rope crossing below the summit is where the river begins. Cold, clear, serious about it.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Waterfall</span>
+        <span class="summit-cell-value">Bande Kalu</span>
+        <span class="summit-cell-note">Loud before you see it. Spray on your face first. Then you look up and understand.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Wildlife</span>
+        <span class="summit-cell-value">Deer</span>
+        <span class="summit-cell-note">At the forest edge, where the trees give way to open ridge. A silhouette. Then gone.</span>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      No summit sign. No marker. Just green, as far as the monsoon would let you see.
+    </div>
+
+    <!-- DESCENT -->
+    <div class="day-header">
+      <div class="day-number">03</div>
+      <div class="day-info">
+        <div class="day-name">The Descent — Back to Samse</div>
+        <div class="day-altitude">The Part Everyone Underestimates</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_netravathi/rivercrossing.jpg" alt="Rope crossing at Netravathi river source" style="height:340px; object-fit:cover; object-position:center;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The river's beginning. Cold, clear, and completely serious about it.</div>
+      </div>
+
+      <p>Many say the climb is the hardest part of a trek. But anyone who has descended a rain-soaked Western Ghats trail during the peak monsoon in June knows otherwise.</p>
+      <p>Summer and rain together turn the mud into something with no friction at all. One wrong step and you are not trekking anymore — you are sliding. Free. Unplanned. The trail becomes something Wonderla has probably patented. I skidded on one of these sections and landed in a full Spiderman pose — both hands splayed, one knee down, completely spread-eagled on a muddy slope. I stayed there for a moment. The mountain did not comment.</p>
+
+      <p>There is a technique for this. We call it penguin walk. You turn sideways and take small deliberate steps — side-stepping, traversing the slope instead of going straight down it. One conscious step, then the next. You move like a penguin, slowly and without dignity, and you don't fall. It works. It is not glamorous. It works.</p>
+    </div>
+
+    <div class="note-block">
+      <p>In monsoon and summer conditions, the descent is the real danger on Western Ghats trails. Use penguin walk — side-step traversal, small steps, never hurry downhill on wet grass. Full body awareness the whole way. Trekking poles help enormously.</p>
+    </div>
+
+    <p>The interesting thing about descending — the trail looks like a completely different path. What you climbed feels unfamiliar coming down. The angles change, the light hits differently, and the green grasslands catch you again from a new direction. It doesn't feel like the same walk. That part is a gift.</p>
+
+    <p>We made our way back down to the Netravathi river crossing, now glowing softly under the lower evening sun. This time, we stopped for a while — refilling our water bottles, sitting quietly on the rocks, and enjoying lunch beside the flowing stream. After hours of trekking, it was one of those rare moments where the body feels exhausted but the mind still lingers somewhere high in the mountains. The river continued to flow beside us, steady and peaceful, becoming the only sound that truly mattered in that moment.</p>
+    <p>Then back through the forest, back to Samse. Quiet all the way. The kind of tired that doesn't need to say anything.</p>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="closing-quote-section">
+  <div class="container">
+    <blockquote>
+      The path down felt like a different forest.<br>The same trees, the same mud — but I had become<br>a slightly different person since morning.
+    </blockquote>
+    <cite>— Netravathi Peak, June</cite>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="itinerary-section">
+  <div class="container">
+    <span class="section-eyebrow">Trail Breakdown</span>
+    <h2>How the Day<br><em>Unfolds</em></h2>
+    <p class="iti-subtitle">A day trek from Samse. Leave early — the forest is different in low light, and you want the grasslands before the cloud rolls in.</p>
+
+    <div class="iti-header">
+      <span>Phase</span>
+      <span>Route / Section</span>
+      <span>Altitude</span>
+      <span>Distance</span>
+    </div>
+
+    <div class="iti-cards">
+      <div class="iti-card">
+        <div class="iti-card-day">
+          <span class="day-num">Pre</span>
+          <span class="day-word">Dawn · Drive</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Drive to Samse Base Camp</div>
+          <div class="iti-card-highlight">Arrive before light if you can. The forest trail opens fresh in low mist.</div>
+        </div>
+        <div class="iti-card-alt">~780 m</div>
+        <div class="iti-card-km">—</div>
+      </div>
+
+      <div class="iti-card iti-card-summit">
+        <div class="iti-card-day">
+          <span class="day-num">A</span>
+          <span class="day-word">Ascent</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Samse → Bande Kalu Falls → Rope Crossing → Summit Grasslands</div>
+          <div class="iti-card-highlight">Dense canopy, pearl-drop grass, waterfall, the river's birthplace, open green ridge at the top.</div>
+        </div>
+        <div class="iti-card-alt">1520 m</div>
+        <div class="iti-card-km">6.4 km</div>
+      </div>
+
+      <div class="iti-card">
+        <div class="iti-card-day">
+          <span class="day-num">Mid</span>
+          <span class="day-word">Rest</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Lunch at the Netravathi River Source</div>
+          <div class="iti-card-highlight">Last water point on the trail. Fill bottles here. Sit. Let the river do the talking.</div>
+        </div>
+        <div class="iti-card-alt">~1100 m</div>
+        <div class="iti-card-km">—</div>
+      </div>
+
+      <div class="iti-card">
+        <div class="iti-card-day">
+          <span class="day-num">D</span>
+          <span class="day-word">Descent</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Summit Grasslands → Rope Crossing → Samse</div>
+          <div class="iti-card-highlight">Monsoon conditions: penguin walk essential. The trail looks like a different path on the way down. It is.</div>
+        </div>
+        <div class="iti-card-alt">780 m</div>
+        <div class="iti-card-km">6.4 km</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="add-photos reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Lived</span>
+    <h2>Every Frame<br><em>Tells a Story</em></h2>
+    <p class="hint">Monsoon turns every surface into a photograph. These are the ones that stayed with me.</p>
+    <div id="gal-grid-wrapper" class="photo-slots"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX — fixed overlay, outside all other sections -->
+<div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-modal">
+    <div class="lb-top">
+      <span class="lb-counter" id="lb-counter"></span>
+      <button class="lb-close" id="lb-close" aria-label="Close">×</button>
+    </div>
+    <div class="lb-img-area">
+      <button class="lb-arrow left"  id="lb-prev" aria-label="Previous photo">‹</button>
+      <img id="lb-img" src="" alt="" />
+      <button class="lb-arrow right" id="lb-next" aria-label="Next photo">›</button>
+    </div>
+    <div class="lb-bottom">
+      <p class="lb-caption" id="lb-caption"></p>
+      <div class="lb-dots" id="lb-dots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTHOR -->
+<section id="author" class="author-section">
+  <div class="container">
+    <div class="author-inner">
+      <div class="author-photo">
+        <img src="images_netravathi/nim.jpg" style="object-fit:cover; object-position:center top;" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>Getting Lost<br>to Find Myself</h2>
+        <p>I'm someone who feels most alive in places where the trail gets quieter, the rain gets heavier, and the mountains strip life down to its simplest form. This blog is my honest account of walking through the Western Ghats — the slippery descents, river crossings, soaked boots, and the kind of silence only the mountains can give. Every trek leaves me with muddy shoes, tired legs, and a version of myself I understand a little better.</p>
+        <p style="margin-top:1rem;">Netravathi was her first deep dive into the Western Ghats. It will not be her last.</p>
+        <div class="treks-done">
+          <span class="treks-label">Treks done</span>
+          <div class="trek-tags">
+            <span class="trek-tag current">Netravathi Peak ★</span>
+            <span class="trek-tag">Bandaje Falls Trek</span>
+            <span class="trek-tag">Kudremukha</span>
+            <span class="trek-tag">Kurinjal</span>
+            <span class="trek-tag">Kodachadri</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+            <span class="trek-tag future-tag">K2 Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAVE NO TRACE -->
+<section id="awareness" class="awareness-section reveal">
+  <div class="awareness-inner">
+    <span class="section-eyebrow">Leave No Trace</span>
+    <h2>The Trail Gives.<br><em>Don't Take More Than You Should.</em></h2>
+    <p class="awareness-intro">
+      The peak was everything I came for. What I didn't need was the foil wrapper wedged between the rocks at the summit cairn. I carry that image back every time I think about returning.
+    </p>
+    <div class="awareness-strip-wrap">
+      <div class="awareness-strip">
+        <div class="awareness-card">
+          <span class="awareness-icon">🎒</span>
+          <span class="awareness-title">What Goes Up, Comes Down</span>
+          <p class="awareness-body">Every wrapper you drop stays there for years — the mountain is not managing your waste. If it came up in your bag, it goes back down in your bag.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🧴</span>
+          <span class="awareness-title">Not One More Bisleri</span>
+          <p class="awareness-body">The rivers that start up here don't need your plastic. Carry a steel bottle — single-use has no place on this trail.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🍫</span>
+          <span class="awareness-title">The Wrapper Outlives You</span>
+          <p class="awareness-body">A biscuit takes a minute to eat. The wrapper takes 400 years. Bring a small zip-lock for your trash and take it all the way home.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🔇</span>
+          <span class="awareness-title">The Forest Has Its Own Sounds</span>
+          <p class="awareness-body">Loud music stresses wildlife and ruins the only thing most people came for. Use headphones — the forest is not background music for your Reel.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🌱</span>
+          <span class="awareness-title">One Shortcut, Ten Years of Erosion</span>
+          <p class="awareness-body">Shortcuts trample root systems that took decades to grow. A hundred trekkers taking the same one turns it into an erosion scar. Stay on the path.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🔥</span>
+          <span class="awareness-title">The Forest Floor Took Decades</span>
+          <p class="awareness-body">No fire unless there's a designated pit. The forest floor took years to build — your camping trip didn't. Pack a better layer if you're cold.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🪨</span>
+          <span class="awareness-title">You Are a Visitor Here</span>
+          <p class="awareness-body">The mosses, orchids, and stones belong here — you're passing through. Take a photo if you need to remember. Then leave them exactly where you found them.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🐾</span>
+          <span class="awareness-title">Your Photo Is Not Worth Their Fear</span>
+          <p class="awareness-body">Don't follow, don't chase, don't edge closer. Step back. Use your zoom. The wildlife here is not posing for you — it's surviving.</p>
+        </div>
+      </div>
+    </div>
+    <p class="awareness-close">
+      Netravathi will be here after you leave.<br>Help make sure it's still here after everyone leaves.
+    </p>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Where the river is born in the grass</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves."</p>
+  <p>Netravathi Peak &nbsp;·&nbsp; Western Ghats, Karnataka &nbsp;·&nbsp; June</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2025 She Explores Wild · Nirmala Singh. All rights reserved.</p>
+  <p>Made with love &amp; altitude sickness ♥</p>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); }, { passive: true });
+
+  // ── Hamburger / mobile menu ──
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => {
+    if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+  });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+
+<script>
+  // ── Gallery + Lightbox ──────────────────────────────────────────
+  const photos = [
+    { src: 'images_netravathi/sunrise.JPG',           caption: 'That light between the ridges. Worth waking up for ✨.' },
+    { src: 'images_netravathi/teaestate.JPG',          caption: 'Leaf your worries behind 🌿.' },
+    { src: 'images_netravathi/waterdroplets.jpeg',     caption: "Monsoon. That's a whole universe." },
+    { src: 'images_netravathi/nimwithkid.jpg',         caption: "The trail doesn't care how old you are." },
+    { src: 'images_netravathi/rivercrossing_ppl.jpeg', caption: 'One hand on the rope. The other finding the next foothold.' },
+    { src: 'images_netravathi/wideshot.jpg',           caption: 'Nothing prepares you for this shade of green.' },
+  ];
+
+  const grid      = document.getElementById('gal-grid-wrapper');
+  const overlay   = document.getElementById('lb-overlay');
+  const lbImg     = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbDots    = document.getElementById('lb-dots');
+  let current = 0;
+
+  // Build grid + dots
+  photos.forEach(function(photo, i) {
+    // Grid thumbnail
+    const fig = document.createElement('figure');
+    fig.className = 'photo-slot';
+    const img = document.createElement('img');
+    img.src     = photo.src;
+    img.alt     = photo.caption;
+    img.loading = 'lazy';
+    img.onerror = function() { this.style.display = 'none'; };
+    fig.appendChild(img);
+    fig.addEventListener('click', function() { openLightbox(i); });
+    grid.appendChild(fig);
+
+    // Dot
+    const dot = document.createElement('button');
+    dot.className = 'lb-dot';
+    dot.setAttribute('aria-label', 'Photo ' + (i + 1));
+    dot.dataset.index = i;
+    dot.addEventListener('click', function() { goTo(+this.dataset.index); });
+    lbDots.appendChild(dot);
+  });
+
+  function openLightbox(i) {
+    current = i;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateLightbox();
+  }
+  function closeLightbox() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function goTo(i) { current = i; updateLightbox(); }
+  function updateLightbox() {
+    lbImg.style.opacity = '0';
+    setTimeout(function() {
+      lbImg.src = photos[current].src;
+      lbImg.alt = photos[current].caption;
+      lbCaption.textContent = photos[current].caption;
+      lbCounter.textContent = (current + 1) + ' / ' + photos.length;
+      lbImg.style.opacity = '1';
+    }, 160);
+    document.querySelectorAll('.lb-dot').forEach(function(dot, i) {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-next').addEventListener('click', function() { current = (current + 1) % photos.length; updateLightbox(); });
+  document.getElementById('lb-prev').addEventListener('click', function() { current = (current - 1 + photos.length) % photos.length; updateLightbox(); });
+
+  // Close on backdrop click
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeLightbox(); });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') { current = (current + 1) % photos.length; updateLightbox(); }
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + photos.length) % photos.length; updateLightbox(); }
+    if (e.key === 'Escape')     { closeLightbox(); }
+  });
+
+  // Swipe
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  overlay.addEventListener('touchend', function(e) {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      current = diff > 0 ? (current + 1) % photos.length : (current - 1 + photos.length) % photos.length;
+      updateLightbox();
+    }
+  }, { passive: true });
+</script>
+
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+</script>
+</body>
+</html>

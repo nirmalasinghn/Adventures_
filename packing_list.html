@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The complete day-hike packing list for the Western Ghats — what actually earns a spot in your bag. By She Explores Wild." />
+  <title>The Packing List — Western Ghats Day Treks · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:         #060e09;
+      --card:         #0c1a0f;
+      --midnight:     #08110a;
+      --alpine:       #3a7a50;
+      --alpine-lt:    #68b882;
+      --alpine-glow:  #aadf70;
+      --snow:         #eef2f5;
+      --frost:        #c4e8d0;
+      --stone:        #7a9480;
+      --border:       rgba(255,255,255,0.06);
+      --amber:        #5faa72;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; scrollbar-width: none; }
+    body::-webkit-scrollbar { display: none; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; }
+    strong { color:#b9b9b9; font-weight:600; }
+
+    /* NAV */
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(6,14,9,0); transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(6,14,9,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(238,242,245,.45); transition:color .3s; }
+    .nav-links a:hover { color:var(--alpine-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(6,14,9,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.4rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--alpine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+    /* HERO — no photo, topographic contour motif */
+    .hero { position:relative; min-height:88svh; display:flex; align-items:flex-end; overflow:hidden; background:
+      radial-gradient(ellipse 90% 60% at 20% 0%, rgba(58,122,80,0.22), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 90% 10%, rgba(104,184,130,0.10), transparent 55%),
+      var(--deep); }
+    .contour-lines { position:absolute; inset:0; opacity:0.5; pointer-events:none; }
+    .hero-bg { position:absolute; inset:0; background-size:cover; background-repeat:no-repeat; animation:zoomBg 22s ease-out forwards; }
+    @keyframes zoomBg { from{transform:scale(1.07)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(6,14,9,.1) 0%,rgba(6,14,9,.35) 45%,rgba(6,14,9,.98) 100%); }
+
+    /* PHOTO SLOTS */
+    /* 64:27 frame shows ~3/4 of the height of the 16:9 photo used here */
+    .full-bleed { width:100%; aspect-ratio:64/27; position:relative; overflow:hidden; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.9) saturate(1); }
+    .full-bleed .img-caption { position:absolute; left:0; right:0; bottom:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(6,14,9,.85),transparent); font-size:.75rem; font-style:italic; color:var(--frost); text-align:center; }
+    .photo-pair { max-width:960px; margin:0 auto; padding:3rem 2rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .photo-pair figure { margin:0; }
+    .photo-pair img { width:100%; aspect-ratio:3/4; object-fit:cover; display:block; filter:brightness(.88) saturate(.9); }
+    .photo-pair figcaption { font-size:.72rem; font-style:italic; color:var(--stone); padding-top:.6rem; }
+    @media (max-width:520px) { .photo-pair { padding:2rem 1rem; gap:.6rem; } }
+    .hero-content { position:relative; z-index:2; padding:8rem 3.5rem 5rem; max-width:960px; opacity:0; animation:riseIn 1.3s .2s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:#f3e7cf; text-shadow:0 1px 6px rgba(0,0,0,.6); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:#f3e7cf; }
+    .hero-title { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:300; line-height:.95; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--alpine-glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.4rem); font-style:italic; font-weight:300; color:rgba(238,242,245,.55); max-width:600px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(104,184,130,.22); background:rgba(104,184,130,.06); color:var(--frost); backdrop-filter:blur(8px); }
+
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
+
+    /* PROGRESS METER — sticky signature element */
+    .progress-wrap { position:sticky; top:0; z-index:150; background:rgba(6,14,9,0.97); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); padding:0.9rem 3.5rem; display:flex; align-items:center; gap:1.4rem; transform:translateY(-100%); transition:transform .4s ease; }
+    .progress-wrap.visible { transform:translateY(0); }
+    .progress-track { flex:1; height:6px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden; position:relative; }
+    .progress-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--alpine),var(--alpine-glow)); border-radius:6px; transition:width .5s cubic-bezier(.16,1,.3,1); }
+    .progress-label { font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--frost); white-space:nowrap; min-width:150px; }
+    .progress-reset { font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--stone); background:none; border:1px solid var(--border); padding:.45em 1em; cursor:pointer; transition:color .3s,border-color .3s; white-space:nowrap; }
+    .progress-reset:hover { color:var(--alpine-lt); border-color:rgba(104,184,130,.3); }
+
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--alpine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(238,242,245,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--alpine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--alpine); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
+
+    .highlight-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(95,170,114,.05); border:1px solid rgba(95,170,114,.18); border-left:3px solid var(--amber); }
+    .highlight-block p { color:rgba(238,242,245,.7); font-family:var(--font-display); font-size:1.05rem; font-style:italic; line-height:1.8; margin:0; }
+    .note-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(58,122,80,.06); border:1px solid rgba(58,122,80,.2); border-left:3px solid var(--alpine); }
+    .note-block p { color:rgba(238,242,245,.7); margin:0; }
+
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* CHECKLIST SECTIONS */
+    .kit-section { background:var(--midnight); padding:5rem 0; }
+    .kit-section:nth-of-type(even) { background:var(--deep); }
+    .kit-section .container { padding-top:0; padding-bottom:0; }
+
+    .category-header { display:flex; align-items:flex-start; gap:1.6rem; margin-bottom:2.4rem; padding-bottom:1.8rem; border-bottom:1px solid var(--border); }
+    .category-icon { font-size:2.4rem; line-height:1; flex-shrink:0; opacity:.85; min-width:52px; }
+    .category-name { font-family:var(--font-display); font-size:1.7rem; font-weight:400; color:var(--snow); margin-bottom:.3rem; }
+    .category-note { font-size:.78rem; color:var(--stone); letter-spacing:.02em; }
+
+    .check-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); }
+    .check-item { background:var(--card); padding:1.4rem 1.6rem; display:flex; align-items:flex-start; gap:1rem; cursor:pointer; transition:background .3s; }
+    .check-item:hover { background:rgba(104,184,130,0.045); }
+    .check-item input { position:absolute; opacity:0; width:0; height:0; }
+    .check-box { flex-shrink:0; width:20px; height:20px; margin-top:.15rem; border:1.5px solid rgba(104,184,130,.4); border-radius:4px; position:relative; transition:background .25s,border-color .25s; }
+    .check-item input:checked ~ .check-box { background:var(--alpine); border-color:var(--alpine-lt); }
+    .check-item input:checked ~ .check-box::after { content:''; position:absolute; left:5px; top:1px; width:6px; height:11px; border:solid var(--deep); border-width:0 2px 2px 0; transform:rotate(45deg); }
+    .check-content { display:flex; flex-direction:column; gap:.3rem; }
+    .check-name { font-size:.92rem; color:var(--snow); transition:color .25s,opacity .25s; }
+    .check-item input:checked ~ .check-content .check-name { color:var(--alpine-lt); opacity:.7; text-decoration:line-through; text-decoration-color:rgba(104,184,130,.4); }
+    .check-note { font-size:.76rem; color:var(--stone); line-height:1.6; }
+
+    /* TIPS */
+    .tips-grid { display:flex; flex-direction:column; gap:1.4rem; margin-top:2rem; }
+
+    /* CLOSING QUOTE */
+    .closing-quote-section { padding:6rem 0; text-align:center; border-top:1px solid var(--border); }
+    .closing-quote-section blockquote { font-family:var(--font-display); font-size:clamp(1.6rem,3.5vw,2.8rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.4; max-width:700px; margin:0 auto; }
+    .closing-quote-section cite { display:block; margin-top:1.4rem; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); font-style:normal; }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--alpine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:7rem 1.5rem 3.5rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .check-grid { grid-template-columns:1fr 1fr; gap:1px; }
+      .check-item { padding:1rem 0.9rem; gap:.7rem; }
+      .check-name { font-size:.82rem; }
+      .check-note { font-size:.68rem; }
+      .check-box { width:17px; height:17px; }
+      .checklist-toolbar { padding:2rem 1.5rem 0; gap:1rem; }
+      .download-hint { font-size:.72rem; }
+      .progress-wrap { padding:0.8rem 1.5rem; gap:.9rem; }
+      .progress-label { min-width:auto; font-size:.62rem; }
+      .progress-reset { padding:.4em .7em; }
+    }
+    @media (max-width:520px) {
+      .hero-title { font-size:clamp(2.6rem,15vw,4.5rem); }
+      footer { padding:2rem 1.5rem 3rem; }
+      .pull-quote { padding:1rem 0 1rem 1.4rem; }
+      .category-header { gap:1rem; }
+      .category-icon { font-size:1.9rem; min-width:38px; }
+    }
+    @media (max-width:420px) {
+      .check-item { padding:0.85rem 0.7rem; gap:.55rem; }
+      .check-name { font-size:.76rem; }
+      .check-note { font-size:.64rem; line-height:1.5; }
+      .check-box { width:16px; height:16px; margin-top:.1rem; }
+    }
+    img { -webkit-user-drag: none; user-select: none; }
+    body { -webkit-touch-callout: none; }
+
+    /* CHECKLIST TOOLBAR — hint + icon download button, side by side */
+    .checklist-toolbar { max-width:820px; margin:0 auto; padding:2.5rem 2rem 0; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+    .download-hint { font-size:.8rem; color:var(--stone); line-height:1.6; max-width:520px; }
+    .icon-download-btn { flex-shrink:0; height:46px; padding:0 1.1rem 0 .7rem; gap:.65rem; border-radius:12px; background:#14191b; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .2s,border-color .3s,background .3s; }
+    .download-label { font-family:var(--font-body); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--snow); white-space:nowrap; }
+    .icon-download-btn:hover { transform:translateY(-2px); border-color:rgba(104,184,130,.35); background:#181f21; }
+    .icon-download-circle { width:26px; height:26px; border-radius:50%; background:#4f9eea; display:flex; align-items:center; justify-content:center; }
+    .icon-download-circle svg { width:14px; height:14px; }
+
+    /* PRINT-ONLY HEADER */
+    .print-header, .print-only { display:none; }
+
+    /* PRINT STYLES — clean one-to-two page checklist */
+    @media print {
+      @page {
+  size: A4;
+  margin: 14mm 12mm 16mm;
+
+  @top-left, @top-center, @top-right { content: none; }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 9pt;
+    color: #777;
+  }
+  @bottom-right {
+    content: "She Explores Wild";
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 9pt;
+    font-style: italic;
+    color: #3a7a50;
+  }
+}
+      .contour-lines, nav, .mobile-menu, .progress-wrap, .hero, .stats-bar, .full-bleed, .photo-pair, .checklist-toolbar,
+      .download-bar, .closing-quote-section, footer, body::after { display:none !important; }
+      /* sections not yet scrolled into view are still at opacity 0 */
+      .reveal { opacity:1 !important; transform:none !important; }
+      body { background:#fff !important; color:#111; }
+      #essentials, #tips { display:none; }
+
+      .print-header { display:block; padding:0 0 .8rem; border-bottom:2px solid #3a7a50; margin-bottom:.9rem; }
+      .print-header .pt { font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:#3a7a50; }
+      .print-header .pn { font-family:var(--font-display); font-size:1.9rem; font-style:italic; color:#111; line-height:1.1; }
+      .print-header .ps { font-size:.7rem; color:#555; margin-top:.2rem; }
+      .print-fields { display:grid; grid-template-columns:1fr 1fr; gap:0 1.6rem; margin-top:.6rem; }
+      .print-field { font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:#555; border-bottom:1px solid #999; padding:1rem 0 .15rem; }
+
+      .kit-section { background:#fff !important; padding:.5rem 0; page-break-inside:avoid; }
+      .kit-section .container { max-width:none; padding:0; }
+      .category-header { border-bottom:1px solid #3a7a50; margin-bottom:.3rem; padding-bottom:.25rem; gap:.5rem; align-items:center; }
+      .category-icon { font-size:1rem; min-width:0; }
+      .category-name { color:#111; font-size:1.15rem; margin:0; }
+      .category-note { color:#777; font-size:.62rem; }
+      .check-grid { background:none; gap:0 1.4rem; }
+      .check-item { background:#fff !important; padding:.3rem 0; gap:.55rem; border-bottom:1px solid #e5e5e5; break-inside:avoid; }
+      .check-box { display:block; width:13px; height:13px; margin-top:.15rem; border:1.5px solid #333; border-radius:2px; background:#fff !important; }
+      .check-box::after { display:none !important; }
+      .check-name { color:#111 !important; font-size:.8rem; opacity:1 !important; text-decoration:none !important; }
+      .check-note { color:#777; font-size:.64rem; line-height:1.35; }
+
+      .print-only { display:block; }
+      .print-extra { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:.8rem; page-break-inside:avoid; }
+      .print-block-title { font-family:var(--font-display); font-size:1.15rem; color:#111; border-bottom:1px solid #3a7a50; padding-bottom:.25rem; margin-bottom:.3rem; }
+      .print-list { list-style:none; }
+      .print-list li { display:flex; gap:.55rem; align-items:flex-start; font-size:.78rem; color:#111; padding:.3rem 0; border-bottom:1px solid #e5e5e5; }
+      .pbox { flex-shrink:0; width:13px; height:13px; margin-top:.15rem; border:1.5px solid #333; border-radius:2px; }
+      .print-lines span { display:block; height:1.55rem; border-bottom:1px solid #bbb; }
+      .print-footer { margin-top:.8rem; font-size:.62rem; color:#777; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-header">
+  <div class="pt">She Explores · Western Ghats Day Treks</div>
+  <div class="pn">The Packing List</div>
+  <div class="ps">31 essentials for a single-day hike. Tick each one as it goes into your bag.</div>
+  <div class="print-fields">
+    <div class="print-field">Trek</div>
+    <div class="print-field">Date &amp; start time</div>
+    <div class="print-field">Group leader / guide &amp; phone</div>
+    <div class="print-field">Emergency contact &amp; phone</div>
+  </div>
+</div>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#clothing">Clothing</a></li>
+    <li><a href="#footwear">Footwear</a></li>
+    <li><a href="#daypack">Daypack</a></li>
+    <li><a href="#ghats-kit">Ghats Kit</a></li>
+    <li><a href="#tips">Trail Tips</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#clothing" class="mobile-nav-link">Clothing</a></li>
+    <li><a href="#footwear" class="mobile-nav-link">Footwear</a></li>
+    <li><a href="#daypack" class="mobile-nav-link">Daypack</a></li>
+    <li><a href="#ghats-kit" class="mobile-nav-link">Ghats Kit</a></li>
+    <li><a href="#tips" class="mobile-nav-link">Trail Tips</a></li>
+  </ul>
+  <p class="mobile-menu-footer">The Packing List &nbsp;·&nbsp; Western Ghats &nbsp;·&nbsp; Day Treks</p>
+</div>
+
+<!-- PROGRESS METER -->
+<div class="progress-wrap" id="progressWrap">
+  <span class="progress-label" id="progressLabel">0 / 31 packed</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <button class="progress-reset" id="progressReset">Reset</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images_fitness/shoes_flowers.JPG'); background-position:center 55%;"></div>
+  <div class="hero-overlay"></div>
+  <svg class="contour-lines" viewBox="0 0 1200 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-50,600 C200,520 350,650 600,560 C850,470 950,600 1250,520" stroke="#3a7a50" stroke-width="1" fill="none" opacity="0.5"/>
+    <path d="M-50,650 C220,560 380,690 630,600 C880,510 980,640 1250,560" stroke="#3a7a50" stroke-width="1" fill="none" opacity="0.35"/>
+    <path d="M-50,550 C180,480 340,600 590,510 C840,420 940,550 1250,470" stroke="#68b882" stroke-width="1" fill="none" opacity="0.22"/>
+    <path d="M-50,700 C240,600 400,730 660,640 C900,550 1000,680 1250,600" stroke="#3a7a50" stroke-width="1" fill="none" opacity="0.25"/>
+  </svg>
+  <div class="hero-content">
+    <span class="hero-tag">Western Ghats &nbsp;·&nbsp; Day Treks</span>
+    <h1 class="hero-title">What You <em>Actually</em> Need</h1>
+    <p class="hero-sub">Everything that earns a place in your daypack for a Western Ghats day hike — and nothing that doesn't. Tap an item as you pack it.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🎒 <span>31 essentials</span></div>
+      <div class="meta-pill">⏱️ <span>5–8 hr treks</span></div>
+      <div class="meta-pill">🌧️ <span>Monsoon-ready</span></div>
+      <div class="meta-pill">🩹 <span>Leech-proofed</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">2.5–4<span style="font-size:1.4rem;color:var(--stone)"> kg</span></div>
+    <div class="stat-label">Ideal daypack weight<br>for a single-day trek</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">31</div>
+    <div class="stat-label">Items on the list<br>Nothing you won't use</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1</div>
+    <div class="stat-label">Trail rule<br>If you're unsure, it stays in the bag left behind</div>
+  </div>
+</div>
+
+<!-- DOWNLOAD TOOLBAR -->
+<div class="checklist-toolbar">
+  <p class="download-hint">Tick items as you pack — your progress saves on this device. Prefer paper? Download a blank checklist to print or keep offline.</p>
+  <button class="icon-download-btn" id="downloadBtn" aria-label="Download blank checklist as PDF">
+    <span class="icon-download-circle">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3v11m0 0l-4-4m4 4l4-4" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 17v2a2 2 0 002 2h10a2 2 0 002-2v-2" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="download-label">Download PDF</span>
+  </button>
+</div>
+
+<!-- INTRO -->
+<section id="essentials">
+  <div class="container">
+    <span class="section-eyebrow">Before You Zip the Bag</span>
+    <h2>Pack for the <em>Trail</em>,<br>Not for Fear</h2>
+    <p class="drop-cap">Most overpacked bags aren't carrying gear — they're carrying anxiety. A day trek in the Western Ghats rarely lasts more than eight hours, and the terrain doesn't call for half of what ends up strapped to a first-timer's back. What it does call for is the right things, packed with intention: quick-dry over cotton, function over "just in case," and a bag light enough that you're still enjoying the view at hour six.</p>
+    <p>This list is built specifically for single-day hikes in the Ghats — humid, sudden rain, leech territory, slippery rock underfoot. No tents, no stoves, no camping gear. Just what actually earns its weight.</p>
+    <div class="pull-quote">
+      A heavy bag doesn't make you more prepared. It just makes you slower on the one section where speed matters.
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO: what's in my bag -->
+<div class="full-bleed reveal">
+  <img src="images_fitness/packing.JPG" alt="Everything packed for a Western Ghats day trek, laid out before going into the bag" loading="lazy" onerror="this.parentElement.style.display='none'" />
+  <div class="img-caption">Everything that goes in my bag. Nothing that doesn't.</div>
+</div>
+
+<!-- CLOTHING -->
+<section id="clothing" class="kit-section reveal">
+  <div class="container">
+    <div class="category-header">
+      <span class="category-icon">👕</span>
+      <div>
+        <div class="category-name">Clothing &amp; Layers</div>
+        <div class="category-note">5 items · what covers you from sun, sweat and sudden rain</div>
+      </div>
+    </div>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox" data-id="cl-1"><span class="check-box"></span><span class="check-content"><span class="check-name">Quick-dry T-shirt</span><span class="check-note">Synthetic, not cotton — cotton stays wet and cold for hours.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="cl-2"><span class="check-box"></span><span class="check-content"><span class="check-name">Trekking pants or capris</span><span class="check-note">Not jeans — they double their weight the moment they get wet.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="cl-3"><span class="check-box"></span><span class="check-content"><span class="check-name">Lightweight rain poncho</span><span class="check-note">Covers you and your bag. Western Ghats weather turns fast.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="cl-4"><span class="check-box"></span><span class="check-content"><span class="check-name">Cap or buff</span><span class="check-note">Sun on the ridgelines, sweat everywhere else.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="cl-5"><span class="check-box"></span><span class="check-content"><span class="check-name">Light windcheater or fleece</span><span class="check-note">For the summit wind and the cooler post-monsoon evenings.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTWEAR -->
+<section id="footwear" class="kit-section reveal">
+  <div class="container">
+    <div class="category-header">
+      <span class="category-icon">🥾</span>
+      <div>
+        <div class="category-name">Footwear</div>
+        <div class="category-note">3 items · the difference between a trek and a slide</div>
+      </div>
+    </div>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox" data-id="fw-1"><span class="check-box"></span><span class="check-content"><span class="check-name">Trekking shoes with real grip</span><span class="check-note">Broken in beforehand — never debut new shoes on a wet trail.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="fw-2"><span class="check-box"></span><span class="check-content"><span class="check-name">Extra pair of dry socks</span><span class="check-note">Wet socks by the halfway point are non-negotiable — change them.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="fw-3"><span class="check-box"></span><span class="check-content"><span class="check-name">Gaiters or old socks over your cuffs</span><span class="check-note">Your first line of defence against leeches finding an entry point.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- DAYPACK ESSENTIALS -->
+<section id="daypack" class="kit-section reveal">
+  <div class="container">
+    <div class="category-header">
+      <span class="category-icon">🎒</span>
+      <div>
+        <div class="category-name">In Your Daypack</div>
+        <div class="category-note">13 items · fuel, first aid, and the non-negotiables</div>
+      </div>
+    </div>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox" data-id="dp-1"><span class="check-box"></span><span class="check-content"><span class="check-name">2 litres of water, minimum</span><span class="check-note">More for longer or hotter routes. Refill points aren't guaranteed.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-2"><span class="check-box"></span><span class="check-content"><span class="check-name">Trail snacks</span><span class="check-note">Dates, nuts, a banana, or dry fruit — small bites, eaten often.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-3"><span class="check-box"></span><span class="check-content"><span class="check-name">Energy bars</span><span class="check-note">Compact, don't melt or crush, and cover you when you're too tired to unpack real food.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-4"><span class="check-box"></span><span class="check-content"><span class="check-name">Glucose powder or biscuits</span><span class="check-note">Fastest fix for a sudden energy dip mid-climb.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-5"><span class="check-box"></span><span class="check-content"><span class="check-name">Electrolyte sachets (ORS)</span><span class="check-note">Humidity means you're losing more salt than you realise. Mix into your water.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-6"><span class="check-box"></span><span class="check-content"><span class="check-name">Personal medications</span><span class="check-note">Anything you take regularly, plus motion sickness or allergy tablets if you need them — carry your own, don't rely on the group's first aid kit.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-7"><span class="check-box"></span><span class="check-content"><span class="check-name">Basic first aid kit</span><span class="check-note">Crepe bandage, antiseptic, painkiller, blister plasters.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-8"><span class="check-box"></span><span class="check-content"><span class="check-name">Headlamp or torch + spare battery</span><span class="check-note">Every trek can run long. Never assume you'll be down by dusk.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-9"><span class="check-box"></span><span class="check-content"><span class="check-name">Power bank</span><span class="check-note">For your phone, your GPX track, and the one emergency call you hope not to make.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-10"><span class="check-box"></span><span class="check-content"><span class="check-name">Two ziplock or dry bags</span><span class="check-note">One for your phone, one for whatever ends up soaked.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-11"><span class="check-box"></span><span class="check-content"><span class="check-name">Sunscreen &amp; lip balm</span><span class="check-note">Open grassland ridges have no shade — even on a cloudy day.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-12"><span class="check-box"></span><span class="check-content"><span class="check-name">Tissues, wet wipes &amp; a trash bag</span><span class="check-note">No toilets on the trail. Everything you use comes back with you.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="dp-13"><span class="check-box"></span><span class="check-content"><span class="check-name">Cash in small notes</span><span class="check-note">For entry fees, guides and village tea stalls. No ATMs, no signal for UPI.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- WESTERN GHATS / MONSOON KIT -->
+<section id="ghats-kit" class="kit-section reveal">
+  <div class="container">
+    <div class="category-header">
+      <span class="category-icon">🌿</span>
+      <div>
+        <div class="category-name">The Western Ghats Kit</div>
+        <div class="category-note">5 items · specific to this terrain, this season</div>
+      </div>
+    </div>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox" data-id="gk-1"><span class="check-box"></span><span class="check-content"><span class="check-name">Anti-leech spray or a salt pouch</span><span class="check-note">Monsoon trails in the Ghats mean leeches — come prepared, not surprised.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="gk-2"><span class="check-box"></span><span class="check-content"><span class="check-name">Insect repellent</span><span class="check-note">Dense forest sections come with their own residents.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="gk-3"><span class="check-box"></span><span class="check-content"><span class="check-name">Rain cover for your backpack</span><span class="check-note">A soaked headlamp and first aid kit help no one.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="gk-4"><span class="check-box"></span><span class="check-content"><span class="check-name">Quick-dry towel or handkerchief</span><span class="check-note">For rain, sweat, and river crossings alike.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="gk-5"><span class="check-box"></span><span class="check-content"><span class="check-name">A dry change of clothes</span><span class="check-note">The most underrated item on this entire list.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY & NAVIGATION -->
+<section id="safety" class="kit-section reveal">
+  <div class="container">
+    <div class="category-header">
+      <span class="category-icon">🧭</span>
+      <div>
+        <div class="category-name">Safety &amp; Navigation</div>
+        <div class="category-note">5 items · so someone always knows where you are</div>
+      </div>
+    </div>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox" data-id="sf-1"><span class="check-box"></span><span class="check-content"><span class="check-name">Offline map or a downloaded GPX track</span><span class="check-note">Signal disappears fast once you're in the canopy.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="sf-2"><span class="check-box"></span><span class="check-content"><span class="check-name">Whistle</span><span class="check-note">Carries further than your voice ever will.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="sf-3"><span class="check-box"></span><span class="check-content"><span class="check-name">ID card and an emergency contact, written down</span><span class="check-note">Not just saved on a phone that might die.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="sf-4"><span class="check-box"></span><span class="check-content"><span class="check-name">Trekking pole</span><span class="check-note">Extra stability on wet rock — your knees will thank you on the descent.</span></span></label>
+      <label class="check-item"><input type="checkbox" data-id="sf-5"><span class="check-box"></span><span class="check-content"><span class="check-name">Trek permit or booking confirmation</span><span class="check-note">Many Ghats trails need online booking — keep a screenshot or printout.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- PRINT-ONLY: before you leave + notes -->
+<div class="print-only print-extra">
+  <div>
+    <div class="print-block-title">Before You Leave Home</div>
+    <ul class="print-list">
+      <li><span class="pbox"></span>Told someone my exact route and return time</li>
+      <li><span class="pbox"></span>Checked the weather the night before and at dawn</li>
+      <li><span class="pbox"></span>Confirmed trail is open and entry/exit timings</li>
+      <li><span class="pbox"></span>Phone and power bank fully charged</li>
+      <li><span class="pbox"></span>Ate a proper breakfast</li>
+      <li><span class="pbox"></span>Transport back from the trailhead sorted</li>
+    </ul>
+  </div>
+  <div>
+    <div class="print-block-title">Notes</div>
+    <div class="print-lines"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+</div>
+<p class="print-only print-footer">Pack light. Walk far. · She Explores Wild · @she_explores.wild</p>
+<!-- PHOTO PAIR -->
+<div class="photo-pair reveal">
+  <figure><img src="images_fitness/bandaje_V.jpg" alt="On the Bandaje trek" loading="lazy" onerror="this.parentElement.style.display='none'" /><figcaption>Bandaje. Light bag, long trail.</figcaption></figure>
+  <figure><img src="images_fitness/netravathi_V.JPG" alt="On the Netravathi trek" loading="lazy" onerror="this.parentElement.style.display='none'" /><figcaption>Netravathi. Rain cover earned its place that day.</figcaption></figure>
+</div>
+
+<!-- TRAIL TIPS -->
+<section id="tips">
+  <div class="container">
+    <span class="section-eyebrow">A Few Things I Learned the Hard Way</span>
+    <h2>Trail Tips <em>Worth</em><br>Packing Too</h2>
+    <div class="tips-grid">
+      <div class="highlight-block">
+        <p>Leeches don't hurt — that's the problem. You often won't feel one until you see the blood. Salt on a cotton swab makes them let go instantly. Don't pull; it leaves the head behind.</p>
+      </div>
+      <div class="note-block">
+        <p>Check the weather forecast the night before and again at dawn. Western Ghats monsoon systems can shift a clear morning into a washed-out trail by noon.</p>
+      </div>
+      <div class="highlight-block">
+        <p>Tell someone your exact route and your expected return time — not just "going for a trek." Specifics are what make a search easy if you're ever late.</p>
+      </div>
+      <div class="note-block">
+        <p>Start early. The first two hours of daylight are the driest, coolest, and least crowded — and they buy you a buffer if the trail takes longer than planned.</p>
+      </div>
+      <div class="highlight-block">
+        <p>Whatever you carry up, carry back down — wrappers included. The trail is not managing your waste; your daypack is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="closing-quote-section">
+  <div class="container">
+    <blockquote>
+      The lightest bag on the trail<br>usually belongs to the person<br>who's done this before.
+    </blockquote>
+    <cite>— She Explores, Packing Notes</cite>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Pack light. Walk far.</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves."</p>
+  <p>The Packing List &nbsp;·&nbsp; Western Ghats, Karnataka &nbsp;·&nbsp; Day Treks</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2026 She Explores Wild · Nirmala Singh. All rights reserved.</p>
+  <p>Made with love &amp; altitude sickness ♥</p>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); }, { passive: true });
+
+  // ── Hamburger / mobile menu ──
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => {
+    if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+  });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+
+  // ── Trail-Ready progress meter ──
+  const checkboxes    = Array.from(document.querySelectorAll('.check-item input[type="checkbox"]'));
+  const total         = checkboxes.length;
+  const progressFill  = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+  const progressWrap  = document.getElementById('progressWrap');
+  const progressReset = document.getElementById('progressReset');
+  const STORAGE_KEY    = 'she-explores-packing-list';
+
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      checkboxes.forEach(cb => { if (saved[cb.dataset.id]) cb.checked = true; });
+    } catch (e) { /* ignore corrupted state */ }
+  }
+
+  function saveState() {
+    const state = {};
+    checkboxes.forEach(cb => { state[cb.dataset.id] = cb.checked; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable */ }
+  }
+
+  function updateProgress() {
+    const checked = checkboxes.filter(cb => cb.checked).length;
+    const pct = total ? Math.round((checked / total) * 100) : 0;
+    progressFill.style.width = pct + '%';
+    let status = 'Just getting started';
+    if (pct >= 100) status = 'Fully trail ready ✓';
+    else if (pct >= 70) status = 'Almost trail ready';
+    else if (pct >= 35) status = 'Getting there';
+    progressLabel.textContent = checked + ' / ' + total + ' packed · ' + status;
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => { saveState(); updateProgress(); });
+  });
+
+  progressReset.addEventListener('click', () => {
+    checkboxes.forEach(cb => { cb.checked = false; });
+    saveState();
+    updateProgress();
+  });
+
+  loadState();
+  updateProgress();
+
+  // ── Download / Print a blank checklist (saved ticks are restored afterwards) ──
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const ticked = checkboxes.filter(cb => cb.checked);
+    ticked.forEach(cb => { cb.checked = false; });
+    window.addEventListener('afterprint', () => {
+      ticked.forEach(cb => { cb.checked = true; });
+    }, { once: true });
+    window.print();
+  });
+
+  // Show the sticky meter once the checklist begins
+  const meterObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { progressWrap.classList.toggle('visible', e.isIntersecting || window.scrollY > 600); });
+  }, { threshold: 0 });
+  const firstChecklist = document.getElementById('clothing');
+  if (firstChecklist) meterObserver.observe(firstChecklist);
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) progressWrap.classList.add('visible');
+    else progressWrap.classList.remove('visible');
+  }, { passive: true });
+</script>
+
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') { e.preventDefault(); }
+  });
+</script>
+</body>
+</html>
