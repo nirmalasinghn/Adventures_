@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kodachadri — Where the mist lives · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── DAWN RIDGE — Kodachadri ──────────────────────────── */
+    :root {
+  --deep:        #090c08;   /* wet forest floor at night */
+  --card:        #111a0e;   /* dark canopy green */
+  --midnight:    #0c1209;
+  --alpine:      #4a7a3a;   /* forest green borders */
+  --alpine-lt:   #7ab86a;   /* lighter green links */
+  --alpine-glow: #c86040;
+  --snow:        #f0eeea;
+  --frost:       #d8cfc0;   /* warm mist */
+  --stone:       #8a8470;   /* grey-green muted */
+  --border:      rgba(255,255,255,0.06);
+  --amber:       #a04830;   /* deep clay for highlight blocks */
+}
+
+    html { scroll-behavior: none; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; scrollbar-width: none; }
+    body::-webkit-scrollbar { display: none; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; }
+
+    /* NAV */
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(13,10,6,0); transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(13,10,6,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,.45); transition:color .3s; }
+    .nav-links a:hover { color:var(--alpine-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(13,10,6,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.8rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--alpine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+    /* HERO */
+    .hero { position:relative; height:100svh; min-height:620px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background-size:cover; background-repeat:no-repeat; animation:zoomBg 22s ease-out forwards; }
+    @keyframes zoomBg { from{transform:scale(1.07)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(13,10,6,.1) 0%,rgba(13,10,6,.3) 45%,rgba(13,10,6,.98) 100%); }
+    .hero-content { position:relative; z-index:2; padding:0 3.5rem 5.5rem; max-width:920px; opacity:0; animation:riseIn 1.5s .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--snow); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:var(--alpine); }
+    .hero-title { font-family:var(--font-display); font-size:clamp(3.5rem,10vw,10rem); font-weight:300; line-height:.9; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--alpine-glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.5rem); font-style:italic; font-weight:300; color:rgba(245,240,232,.55); max-width:620px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(196,144,64,.22); background:rgba(196,144,64,.06); color:var(--frost); backdrop-filter:blur(8px); }
+
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
+
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .container-wide { max-width:1300px; margin:0 auto; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--alpine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(245,240,232,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--alpine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--alpine); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
+
+    /* FULL BLEED */
+    .full-bleed { width:100%; height:65vh; min-height:380px; position:relative; overflow:hidden; }
+    .full-bleed-tall { height:80vh; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.9) saturate(1); }
+    .img-caption { font-family:var(--font-body); font-size:.72rem; color:var(--stone); font-style:italic; padding:.75rem 0; line-height:1.6; border-top:1px solid var(--border); }
+
+    /* DAY HEADERS */
+    .day-header { display:flex; align-items:flex-start; gap:1.8rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .day-number { font-family:var(--font-display); font-size:4.5rem; font-weight:300; line-height:1; color:rgba(255,255,255,0.18); flex-shrink:0; min-width:80px; text-align:right; }
+    .day-info { padding-top:.6rem; }
+    .day-name { font-family:var(--font-display); font-size:1.55rem; font-weight:400; color:var(--snow); margin-bottom:.25rem; }
+    .day-altitude { font-size:.72rem; color:var(--alpine-lt); letter-spacing:.06em; }
+
+    /* FLOAT IMAGES */
+    .clearfix::after { content:''; display:table; clear:both; }
+    .img-float-right { float:right; width:46%; margin:0 0 2rem 2.5rem; }
+    .img-float-left { float:left; width:44%; margin:0 2.5rem 2rem 0; }
+    .img-float-right img, .img-float-left img { width:100%; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .img-float-right:hover img, .img-float-left:hover img { filter:brightness(.92) saturate(1); }
+
+    /* SPECIAL BLOCKS */
+    .highlight-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(138,96,32,.05); border:1px solid rgba(138,96,32,.18); border-left:3px solid var(--amber); }
+    .highlight-block p { color:rgba(245,240,232,.7); font-family:var(--font-display); font-size:1.05rem; font-style:italic; line-height:1.8; margin:0; }
+    .note-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(138,96,32,.06); border:1px solid rgba(138,96,32,.2); border-left:3px solid var(--alpine); }
+    .note-block p { color:rgba(245,240,232,.7); margin:0; }
+    .alpine-section { background:var(--card); padding:6rem 0; }
+    .alpine-section .container { padding-top:0; padding-bottom:0; }
+
+    /* SUMMIT STATS GRID */
+    .summit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin:3rem 0; }
+    .summit-cell { background:var(--card); padding:2rem 2.2rem; display:flex; flex-direction:column; gap:.3rem; }
+    .summit-cell-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); }
+    .summit-cell-value { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1.1; color:var(--snow); }
+    .summit-cell-note { font-size:.75rem; color:var(--stone); line-height:1.6; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ITINERARY */
+    .itinerary-section { background:var(--midnight); padding:6rem 0; }
+    .itinerary-section .container { padding-top:0; padding-bottom:0; }
+    .iti-subtitle { font-size:.85rem; color:var(--stone); margin-bottom:3rem; margin-top:-.8rem; }
+    .iti-header { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:.9rem 1.4rem; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); border-bottom:1px solid var(--border); }
+    .iti-cards { display:flex; flex-direction:column; }
+    .iti-card { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:1.6rem 1.4rem; border-bottom:1px solid var(--border); transition:background .3s; }
+    .iti-card:hover { background:rgba(255,255,255,.02); }
+    .iti-card-day { display:flex; flex-direction:column; gap:.15rem; }
+    .day-num { font-family:var(--font-display); font-size:1.6rem; font-weight:400; color:var(--snow); line-height:1; }
+    .day-word { font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--alpine-lt); }
+    .iti-card-route { font-size:.9rem; color:var(--snow); margin-bottom:.3rem; }
+    .iti-card-highlight { font-size:.75rem; color:var(--stone); line-height:1.6; }
+    .iti-card-alt, .iti-card-km { font-size:.78rem; color:var(--stone); padding-top:.2rem; }
+    .iti-card-summit { background:rgba(138,96,32,.06); }
+    .iti-card-summit .day-num { color:var(--alpine-lt); }
+
+    /* GALLERY — 9 slots, 3×3 */
+    .add-photos { padding:6rem 0; }
+    .add-photos .container { padding-top:0; padding-bottom:0; }
+    .hint { font-size:.82rem; color:var(--stone); margin-bottom:3rem; }
+    .photo-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .photo-slot { aspect-ratio:4/3; overflow:hidden; margin:0; background:var(--card); cursor:pointer; }
+    .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.85); transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s; }
+    .photo-slot:hover img { transform:scale(1.06); filter:brightness(.92) saturate(1); }
+
+    /* LIGHTBOX */
+    .lb-wrap { display:none; border-radius:10px; overflow:hidden; background:var(--card); flex-direction:column; margin-top:2rem; }
+    .lb-wrap.open { display:flex; }
+    .lb-top { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:var(--midnight); }
+    .lb-counter { font-size:12px; color:var(--stone); font-family:var(--font-body); }
+    .lb-close { background:none; border:none; color:var(--stone); font-size:22px; cursor:pointer; line-height:1; }
+    .lb-close:hover { color:var(--snow); }
+    .lb-img-area { flex:1; display:flex; align-items:center; justify-content:center; padding:16px; min-height:360px; position:relative; }
+    .lb-img-area img { max-width:100%; max-height:360px; border-radius:4px; object-fit:contain; transition:opacity 0.2s; }
+    .lb-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.08); border:none; color:var(--snow); font-size:20px; padding:10px 14px; cursor:pointer; border-radius:4px; transition:background .2s; }
+    .lb-arrow:hover { background:rgba(255,255,255,.18); }
+    .lb-arrow.left { left:8px; }
+    .lb-arrow.right { right:8px; }
+    .lb-bottom { padding:10px 16px 14px; background:var(--midnight); }
+    .lb-caption { color:var(--stone); font-size:.82rem; margin:0 0 8px; font-style:italic; font-family:var(--font-body); line-height:1.6; }
+    .lb-dots { display:flex; gap:6px; flex-wrap:wrap; }
+    .lb-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.12); cursor:pointer; border:none; padding:0; transition:background .2s; }
+    .lb-dot.active { background:var(--alpine-lt); }
+
+    /* AUTHOR */
+    .author-section { background:var(--deep); padding:6rem 0; border-top:1px solid rgba(196,144,64,0.08); }
+    .author-inner { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; }
+    .author-photo { position:relative; height:420px; overflow:hidden; }
+    .author-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:brightness(.85) saturate(.85); }
+    .author-photo::after { content:''; position:absolute; inset:0; border:1px solid rgba(196,144,64,0.2); pointer-events:none; }
+    .treks-done { margin-top:2rem; }
+    .treks-label, .dreams-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); display:block; margin-bottom:.8rem; }
+    .dreams-label { margin-top:1.6rem; }
+    .trek-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .trek-tag { font-size:.72rem; padding:.3em .9em; border:1px solid rgba(196,144,64,.22); color:var(--frost); }
+    .trek-tag.current { background:rgba(196,144,64,.1); border-color:var(--alpine-lt); color:var(--alpine-lt); }
+    .future-tag { border-style:dashed; color:var(--stone); }
+
+    /* LEAVE NO TRACE — horizontal strip */
+    .awareness-section { background:var(--midnight); padding:6rem 0 5rem; border-top:1px solid rgba(255,255,255,0.04); }
+    .awareness-inner { max-width:1200px; margin:0 auto; padding:0 2rem; }
+    .awareness-intro { font-family:var(--font-display); font-size:clamp(1rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.65; margin-bottom:2rem; border-left:3px solid var(--alpine); padding-left:1.5rem; max-width:680px; }
+    .scroll-hint { font-size:0.72rem; color:rgba(255,255,255,0.28); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+    .scroll-hint::after { content:'→'; font-size:0.9rem; color:var(--alpine); }
+    .awareness-strip-wrap { position:relative; }
+    .awareness-strip-wrap::after { content:''; position:absolute; top:0; right:0; width:80px; height:100%; background:linear-gradient(to left,var(--midnight),transparent); pointer-events:none; z-index:2; }
+    .awareness-strip { display:flex; gap:1rem; overflow-x:auto; padding-bottom:1.2rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--alpine) transparent; }
+    .awareness-strip::-webkit-scrollbar { height:4px; }
+    .awareness-strip::-webkit-scrollbar-track { background:transparent; }
+    .awareness-strip::-webkit-scrollbar-thumb { background:var(--alpine); border-radius:4px; }
+    .awareness-card { flex:0 0 240px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:1.6rem 1.4rem; display:flex; flex-direction:column; gap:0.55rem; scroll-snap-align:start; transition:border-color 0.25s,background 0.25s; }
+    .awareness-card:hover { border-color:rgba(138,96,32,0.45); background:rgba(138,96,32,0.06); }
+    .awareness-icon { font-size:1.5rem; line-height:1; }
+    .awareness-title { font-family:var(--font-display); font-size:1rem; font-weight:600; color:var(--snow); line-height:1.3; }
+    .awareness-body { font-size:0.82rem; color:rgba(245,240,232,0.60); line-height:1.75; margin:0; }
+    .awareness-close { font-family:var(--font-display); font-size:clamp(1.1rem,2vw,1.6rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; text-align:center; margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border); }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--alpine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 1.5rem 4rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .img-float-right, .img-float-left { float:none; width:100%; margin:1.5rem 0; }
+      .img-float-right img, .img-float-left img { height:260px; }
+      .photo-slots { grid-template-columns:repeat(2,1fr); }
+      .iti-header, .iti-card { grid-template-columns:70px 1fr; }
+      .iti-card-alt, .iti-card-km, .iti-header span:nth-child(3), .iti-header span:nth-child(4) { display:none; }
+      .author-inner { grid-template-columns:1fr; gap:2rem; }
+      .author-photo { height:260px; width:100%; }
+      .awareness-section { padding:4rem 0 3rem; }
+      .awareness-card { flex:0 0 200px; }
+      .awareness-strip-wrap::after { width:40px; }
+    }
+    @media (max-width:520px) {
+      .photo-slots { grid-template-columns:1fr; }
+      .summit-grid { grid-template-columns:1fr; }
+      .hero-title { font-size:clamp(3rem,18vw,6rem); }
+      .lb-img-area { min-height:260px; }
+      .lb-img-area img { max-height:260px; }
+    }
+
+    img { -webkit-user-drag:none; user-select:none; }
+    body { -webkit-touch-callout:none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#author">About</a></li>
+    <li><a href="#awareness">Trail Ethics</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+    <li><a href="#awareness" class="mobile-nav-link">Trail Ethics</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Kodachadri · Mookambika Reserve · Shivamogga</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images_kodachadri/hero.jpg'); background-position:center 40%;"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Mookambika Reserve · Shivamogga District · Western Ghats</span>
+    <h1 class="hero-title">Koda<em>chadri</em></h1>
+    <p class="hero-sub">The mountain wakes you before you're ready. Mist in the trees, rain on the path, cold red mud that claims your shoes like it always meant to.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🌧️ <span>Best in monsoon</span></div>
+      <div class="meta-pill">🌊 <span>Hidlumane Falls</span></div>
+      <div class="meta-pill">🐍 <span>Vine snake territory</span></div>
+      <div class="meta-pill">🛕 <span>Sarvajna Peetha</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">1,343</div>
+    <div class="stat-label">metres<br>Kodachadri summit elevation</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">~14</div>
+    <div class="stat-label">kilometres<br>full day circuit, forest to summit</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">60 ft</div>
+    <div class="stat-label">Hidlumane Falls<br>the sound before you see it</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container reveal">
+    <span class="section-eyebrow">The Story</span>
+    <h2>The Mountain<br>That <em>Starts Wet</em></h2>
+
+    <p class="drop-cap">Kodachadri mornings hit different. You wake up and the mist is already in the trees. The birds are already going. The roads are wet from rain that came in the night and the plants have dew on them — every leaf, every blade of grass — like the mountain pressed its cold face against all of them in the dark. You start your trek from the forest checking camp at the base. You sign in. You go.</p>
+
+    <p>Within minutes, the forest takes you. Not gradually — immediately. The path is mud and water and drizzle all at once. The water enters your shoes with the confidence of something that belongs there. The mud is the good kind, the deep kind — red and mineral-rich, the colour of old iron. Your feet find it and it finds you back.</p>
+
+    <p>And then the leeches. If you haven't trekked Kodachadri in monsoon, you don't fully know what leeches mean yet. They cover your shoes the moment you slow down, finding every seam, every gap. They are not aggressive. They are simply thorough. The forest is their territory. You are the visitor. You learn to keep moving.</p>
+  </div>
+
+  <!-- FULL BLEED 1 -->
+  <div class="full-bleed reveal">
+    <img src="images_kodachadri/forest_entry.jpg" alt="Monsoon forest entry at Kodachadri — mud and mist and the canopy closing over" style="object-position:center center;" onerror="this.style.display='none'" />
+    <div class="img-caption container">The forest checking camp is behind you. The forest is in front of you. There is no middle ground.</div>
+  </div>
+
+  <div class="container reveal">
+
+    <div class="day-header">
+      <div class="day-number">01</div>
+      <div class="day-info">
+        <div class="day-name">Into the Green</div>
+        <div class="day-altitude">Forest checking camp → Slippery descent → First open view</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_kodachadri/mud_path.jpg" alt="Muddy monsoon trail at Kodachadri with water running through the roots" style="height:360px; object-fit:cover; object-position:center;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The path doesn't hold water. It becomes water.</div>
+      </div>
+
+      <p>The forest section is fully enclosed — canopy over everything, roots underfoot, the drizzle finding its way down through the layers. You pass through it slowly. Not by choice. The trail is slippery in the way only monsoon trails are: not obviously, not all at once, but constantly and without warning. At least once, everyone goes down. The algae on the rocks is the responsible party. It has been there longer than the trail.</p>
+
+      <p>Walk through it anyway. The mud is part of it. The wet socks, the water in the treads, the leeches you don't notice until the rest stop — this is not the unpleasant part of the trek. This is the trek. Kodachadri in monsoon is this. The discomfort is the point of entry.</p>
+
+      <p>Then the forest opens. Not all the way — just enough. The view that comes through is the kind you don't expect from inside a forest. Farmlands. Coconut trees standing tall in the valley below, the kind of green that only exists when a cloud just passed. Cows. Buffaloes. Birds calling from tree lines you can't see into. The rain still coming down soft. For a moment the trail looks less like a trek and more like someone's morning.</p>
+    </div>
+
+    <div class="pull-quote">
+      The view through the trees looked like someone had hung a painting there. Farmland and coconut trees and grey rain and green hills. The mountains beyond were in cloud. So was I.
+    </div>
+
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-name">The Slippery Ascent</div>
+        <div class="day-altitude">Algae rock section · Rope crossing · The vine snake</div>
+      </div>
+    </div>
+
+    <p>Here is where it gets serious. The trail shifts from mud to exposed rock, and in monsoon the rock is a different surface entirely. Smooth from water flow, green with algae, cold and indifferent. At least once, everyone slips. There is no avoiding it. The rocks have been polished by water for centuries — they are not interested in your grip. You find your footing and you lose it and you find it again. That is how this section works.</p>
+
+    <div class="note-block">
+      <p>Trekking poles or a stick help significantly on the algae section — not for balance so much as for confidence. Slow down before you think you need to. The rock looks manageable until it doesn't. Small waterfalls appear out of the hillside in monsoon, born from nowhere, running across the path. They are beautiful. They are also slippery. Both things.</p>
+    </div>
+
+    <p>There is a rope crossing on one of the ascending sections — a short rock climb, maybe five minutes, pulling yourself up with the fixed rope. It is steep enough to feel like climbing and short enough to not be afraid of. Do it in the order you're told. Everyone gets up.</p>
+  </div>
+
+  <!-- FULL BLEED 2 -->
+  <div class="full-bleed full-bleed-tall reveal">
+    <img src="images_kodachadri/rocky_trail.jpg" alt="Slippery algae-covered rocks on the Kodachadri monsoon trail" style="object-position:center 50%;" onerror="this.style.display='none'" />
+    <div class="img-caption container">Smooth rock, monsoon algae, and the kind of surface that rewards patience over speed.</div>
+  </div>
+
+  <div class="container reveal">
+
+    <div class="highlight-block">
+      <p>Past the rope section, I looked at what I thought was a leaf hanging across the trail. It wasn't a leaf. It was a vine snake — green, the exact green of the forest it was draped in, with a pointed head and those strange forward-facing eyes. Binocular vision, like an owl. It was completely still. It had been there the whole time and I had nearly walked through it. Non-venomous to humans, but that felt beside the point. I stood and looked at it until it moved first.</p>
+    </div>
+
+    <p>The Western Ghats does this in monsoon. It wakes up completely. The green gets brighter — not just more of it, but a different quality of green, the kind that exists only when the forest is fully saturated with water. The leaf litter is dark and heavy. The slopes run with water in thin silver lines. The moss on the rocks puffs up. Being drenched in all of it, cold and tired and walking uphill — there is something in that. You feel very alive and you cannot explain it to anyone who has not been there.</p>
+
+    <div class="summit-grid">
+      <div class="summit-cell">
+        <span class="summit-cell-label">The Snake</span>
+        <span class="summit-cell-value">Vine snake</span>
+        <span class="summit-cell-note">Non-venomous, binocular vision, perfect camouflage — the most startling thing I have ever not seen</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">The Forest</span>
+        <span class="summit-cell-value">Mookambika Reserve</span>
+        <span class="summit-cell-note">Protected. Part of the most biodiverse region on earth. It earned the protection.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">The Crossing</span>
+        <span class="summit-cell-value">Rope ascent</span>
+        <span class="summit-cell-note">5 minutes of actual rock climbing. Everyone makes it up. No one forgets it.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">The Flowers</span>
+        <span class="summit-cell-value">Kutaja blooms</span>
+        <span class="summit-cell-note">Hill jasmine — girimallika — the reason Kodachadri is called the jasmine of hills</span>
+      </div>
+    </div>
+
+    <div class="day-header">
+      <div class="day-number">03</div>
+      <div class="day-info">
+        <div class="day-name">Hidlumane Falls</div>
+        <div class="day-altitude">~60 ft · Mookambika Reserve · You hear it before you see it</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-left">
+        <img src="images_kodachadri/hidlumane_falls.PNG" alt="Hidlumane Falls seen through the monsoon forest canopy" style="height:400px; object-fit:cover; object-position:center top;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The sound arrives before the falls do. Then the trees part and there it is.</div>
+      </div>
+
+      <p>You hear Hidlumane before you see it. The sound reaches you first through the canopy — low, continuous, unignorable. Then the trees part just enough and the falls appear between the leaves and branches: white and vertical, sixty feet of monsoon water coming off the rocky ledge with the kind of force that feels personal. In the dry season it is quieter. Right now it is not quiet at all.</p>
+
+      <p>Stand close enough to feel the mist on your face. This is not the polished viewpoint experience. The trail ends near it and you get as close as the rocks allow and you stand there with nowhere to be and the sound fills in all the space in your head that you came here to empty. That is what it does. That is why it is worth the slipping and the leeches and the mud in your socks.</p>
+
+      <p>In monsoon, the force is different — the water arrives faster and harder and the spray radius doubles. The pool at the base churns white. This is the falls as it was meant to be seen, full and serious and powerful in a way that makes the word waterfall feel too small for it.</p>
+    </div>
+
+    <div class="pull-quote">
+      The sound fills you before the view does. By the time you see it, you have already arrived.
+    </div>
+
+    <div class="day-header">
+      <div class="day-number">04</div>
+      <div class="day-info">
+        <div class="day-name">The Summit & Sarvajna Peetha</div>
+        <div class="day-altitude">1,343 m · Throne of Wisdom · Mookambika Temple · The flowers</div>
+      </div>
+    </div>
+
+    <p>The top of Kodachadri is not just a summit. It holds things. The Sarvajna Peetha — the Throne of Wisdom — sits here, where Adi Shankaracharya is said to have meditated and reached enlightenment. The plateau is often completely in cloud. The fog wraps around you and the shrine is ahead of you and the two together make for a particular kind of quiet that you don't find elsewhere. Pilgrims come here. Trekkers come here. The mountain holds both.</p>
+  </div>
+
+  <!-- FULL BLEED 3 -->
+  <div class="full-bleed reveal" style="height:320px; background:#0c1209;">
+    <img src="images_kodachadri/summit_ridge.jpg" alt="Kodachadri summit plateau in cloud — Sarvajna Peetha in the mist" style="object-position:center top;"  onerror="this.style.display='none'" />
+    <div class="img-caption container">The summit in cloud. The shrine in the mist. The pilgrims and the trekkers sharing the same fog.</div>
+  </div>
+
+  <div class="container reveal">
+
+    <p>Below the summit, the Mookambika Devi temple draws people from all over the country. The story goes back centuries: the goddess Mookambika killed the demon Mookasura here, and the temple was built where it happened. Inside, the weapon said to have been used in that battle is kept — a metal that researchers have documented as centuries old, showing no rust, no decay. Make of that what you do. The temple is real. The devotion inside it is real. Whether you go for the mythology or the architecture or just the shelter from the rain — you go.</p>
+
+    <div class="note-block">
+      <p>Kodachadri is named partly for its flowers. The kutaja — hill jasmine, girimallika — blooms across the hillside and gives the mountain its other name: the jasmine of hills. Thunbergia mysorensis hangs from the trees in long yellow and red cascades. Monsoon is peak bloom. The flowers don't care about the rain. They open wider for it.</p>
+    </div>
+
+    <div class="day-header">
+      <div class="day-number">05</div>
+      <div class="day-info">
+        <div class="day-name">The Jeep Descent</div>
+        <div class="day-altitude">Red clay roads · The ride down · One of the best and worst things</div>
+      </div>
+    </div>
+
+    <p>The descent options are on foot through the forest or by jeep on the clay roads. The jeep is something you have to experience. On paper it is a vehicle on a mountain road. In practice it is a roller coaster that someone built on a cliff and forgot to finish. The red clay soil that covers most of the hill gets into everything — your clothes, your bag, your mouth if you sit near the driver's window. Sit there anyway. The views from that side are worth it.</p>
+
+    <p>The jeep lurches and tilts and the driver takes the corners with a confidence that looks, from the passenger side, like the confidence of someone who does not think about consequences. He has done this road more times than you can calculate. Trust him. Hold the handle. Look out at the red-clay hillside and the mist coming up from the valley and the forest closing behind you as you descend.</p>
+
+    <div class="highlight-block">
+      <p>By 5 pm, Kodachadri in monsoon feels like night. The cold increases as the wet clothes stay wet. The trail and the roads go dark early. Reach base camp before the light goes. The mountain is generous in daylight. After dark, it belongs to something else.</p>
+    </div>
+  </div>
+
+  <!-- FULL BLEED 4 -->
+  <div class="full-bleed reveal">
+    <img src="images_kodachadri/trees1.jpg" alt="Mist rising through the Kodachadri valley in late afternoon monsoon light" style="object-position:center 40%;" onerror="this.style.display='none'" />
+    <div class="img-caption container">Late afternoon. The valley fills with mist faster than you expect. Time to go down.</div>
+  </div>
+
+  <div class="container reveal">
+    <p>The mist comes back in the evening the way it came in the morning — on its own schedule, without asking. By the time you reach the base camp the hill behind you is already gone, swallowed back into cloud, the falls silent at this distance and the flowers closed and the vine snake back in its leaf. The mountain packed itself away. You carry your version of it home in your wet shoes and your red-stained clothes and whatever version of quiet the falls put in your head.</p>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="alpine-section reveal">
+  <div class="container">
+    <div class="pull-quote" style="font-size:clamp(1.4rem,3vw,2.2rem); border-left-width:3px; padding-left:2.5rem;">
+      Kodachadri in monsoon is not comfortable. The mud is real, the cold is real, the leeches are absolutely real. And none of it matters once you are standing at Hidlumane with the water loud in your ears and the green forest behind you and the mist doing what it does. You forget you were cold. You forget everything. That is the trade the mountain offers. It is a good trade.
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="itinerary-section reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Route</span>
+    <h2>How the Day<br><em>Unfolds</em></h2>
+    <p class="iti-subtitle">Day trek · Forest checking camp, Mookambika Reserve · Start at 6 am, return before 5 pm</p>
+
+    <div class="iti-header">
+      <span>Time</span>
+      <span>Section</span>
+      <span>Elevation</span>
+      <span>Distance</span>
+    </div>
+
+    <div class="iti-cards">
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">6:00</span><span class="day-word">Start</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Forest checking camp — Entry and registration</div>
+          <div class="iti-card-highlight">Sign in, collect guide if applicable. Start early — the mist is best before 8 am and the trail dark by 5 pm.</div>
+        </div>
+        <div class="iti-card-alt">~600 m</div>
+        <div class="iti-card-km">0 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">6:30</span><span class="day-word">Forest</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Canopy forest — Mud, roots, first leeches</div>
+          <div class="iti-card-highlight">The trail is fully enclosed. Mud, drizzle, water in your shoes. The leeches begin. Keep moving.</div>
+        </div>
+        <div class="iti-card-alt">~700 m</div>
+        <div class="iti-card-km">~2 km</div>
+      </div>
+      <div class="iti-card iti-card-summit">
+        <div class="iti-card-day"><span class="day-num">8:00</span><span class="day-word">View</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">First open section — Farmland valley view</div>
+          <div class="iti-card-highlight">The forest opens onto farmlands, coconut trees, livestock, rain on the valley below. A wallpaper that earns it.</div>
+        </div>
+        <div class="iti-card-alt">~850 m</div>
+        <div class="iti-card-km">~4 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">9:00</span><span class="day-word">Rock</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Algae rock section → Rope crossing ascent</div>
+          <div class="iti-card-highlight">The slippery part. Algae-covered rocks, small waterfalls appearing out of the hillside. Five-minute rope climb.</div>
+        </div>
+        <div class="iti-card-alt">~950 m</div>
+        <div class="iti-card-km">~6 km</div>
+      </div>
+      <div class="iti-card iti-card-summit">
+        <div class="iti-card-day"><span class="day-num">10:30</span><span class="day-word">Falls</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Hidlumane Falls — The main moment</div>
+          <div class="iti-card-highlight">You hear it before you see it. Sixty feet of monsoon water, the spray radius huge. Stay as long as you can.</div>
+        </div>
+        <div class="iti-card-alt">~1050 m</div>
+        <div class="iti-card-km">~7.5 km</div>
+      </div>
+      <div class="iti-card iti-card-summit">
+        <div class="iti-card-day"><span class="day-num">12:30</span><span class="day-word">Summit</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Kodachadri summit — Sarvajna Peetha — Mookambika Temple</div>
+          <div class="iti-card-highlight">1,343 m. The throne of wisdom in cloud. The temple below the peetha. The kutaja flowers on the hillside.</div>
+        </div>
+        <div class="iti-card-alt">1,343 m</div>
+        <div class="iti-card-km">~10 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">2:00</span><span class="day-word">Down</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Descent — Trek or jeep on red clay roads</div>
+          <div class="iti-card-highlight">The jeep ride is something you will not forget. Red soil on everything. The cliff-edge corners. Sit by the window.</div>
+        </div>
+        <div class="iti-card-alt">1343→600 m</div>
+        <div class="iti-card-km">~14 km</div>
+      </div>
+      <div class="iti-card">
+        <div class="iti-card-day"><span class="day-num">4:30</span><span class="day-word">Base</span></div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Forest checking camp — Return</div>
+          <div class="iti-card-highlight">Before 5 pm mandatory. Monsoon darkness comes fast and cold. The mountain doesn't negotiate this one.</div>
+        </div>
+        <div class="iti-card-alt">~600 m</div>
+        <div class="iti-card-km">~14 km</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY — 9 frames -->
+<section id="gallery" class="add-photos reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Carried Home</span>
+    <h2>Through My<br><em>Lens</em></h2>
+    <p class="hint">Nine frames from a mountain that is mostly mist and mud and the particular green that only exists when it is raining.</p>
+
+    <div id="gal-grid-wrapper" class="photo-slots">
+      <figure class="photo-slot"><img src="images_kodachadri/wallpaper.jpg" alt="" loading="lazy" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/nature.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/nimi.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/viper.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/leaf.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/pathway.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/falls_latest.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/jeepride.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+      <figure class="photo-slot"><img src="images_kodachadri/lizard.jpg" alt="" loading="lazy" onerror="this.style.display='none'" /></figure>
+    </div>
+
+    <div class="lb-wrap" id="lightbox">
+      <div class="lb-top">
+        <span class="lb-counter" id="lb-counter"></span>
+        <button class="lb-close" id="lb-close">×</button>
+      </div>
+      <div class="lb-img-area">
+        <button class="lb-arrow left" id="lb-prev">‹</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-arrow right" id="lb-next">›</button>
+      </div>
+      <div class="lb-bottom">
+        <p class="lb-caption" id="lb-caption"></p>
+        <div class="lb-dots" id="lb-dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section id="author" class="author-section">
+  <div class="container">
+    <div class="author-inner">
+      <div class="author-photo">
+        <img src="images_kudremukha/Nirmala_badami.jpeg" style="object-fit:cover; object-position:center top;" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display:'none'" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>Getting Lost<br>to Find Myself</h2>
+        <p>I'm Nirmala — solo female trekker, writer, and the person who always wants to sit at the viewpoint five minutes longer than the group. I started She Explores because I wanted a record of what the mountains actually feel like, not what brochures say they feel like. The Western Ghats are my home range. I know them by smell and sound as much as by trail.</p>
+        <p style="margin-top:1rem;">Kodachadri in monsoon is a thing I would do again tomorrow. The mud, the leeches, the slipping — and then Hidlumane and the mist and the vine snake looking at me from the trees. Every time. Again.</p>
+        <div class="treks-done">
+          <span class="treks-label">Treks done</span>
+          <div class="trek-tags">
+            <span class="trek-tag current">Kodachadri ★</span>
+            <span class="trek-tag">Bandaje Falls</span>
+            <span class="trek-tag">Netravathi Peak</span>
+            <span class="trek-tag">Kudremukh</span>
+            <span class="trek-tag">Tadiandamol</span>
+            <span class="trek-tag">Kuari Pass</span>
+            <span class="trek-tag">Pangarchulla</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+            <span class="trek-tag future-tag">K2 Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAVE NO TRACE -->
+<section id="awareness" class="awareness-section reveal">
+  <div class="awareness-inner">
+    <span class="section-eyebrow">Leave No Trace</span>
+    <h2>The Trail Gives.<br><em>Don't Take More Than You Should.</em></h2>
+
+    <p class="awareness-intro">
+      Someone lit a small fire on the forest floor near the base section. Just for warmth, they said. The forest floor under it — that layer of fungi and root and slow accumulation — doesn't recover from that. I didn't say anything to them. I should have. That is the version of this story I am still working on.
+    </p>
+
+    <p class="scroll-hint">Scroll to read</p>
+
+    <div class="awareness-strip-wrap">
+      <div class="awareness-strip">
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🎒</span>
+          <span class="awareness-title">What Goes Up, Comes Down</span>
+          <p class="awareness-body">The forest floor is not a bin and the rain doesn't clean it. Every wrapper, every bottle, every foil you leave stays there — leaching into the same soil the kutaja flowers grow from. If it came up in your bag, it goes back down. Not negotiable.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🧴</span>
+          <span class="awareness-title">Not One More Bisleri</span>
+          <p class="awareness-body">The streams that cross the Kodachadri trail don't need your plastic in them. Carry a steel bottle. The water here is cold and good if you know where to fill — your guide does. Single-use has no place on this mountain.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🍫</span>
+          <span class="awareness-title">The Wrapper Outlives the Trek</span>
+          <p class="awareness-body">A biscuit takes a minute. The wrapper takes 400 years. In a forest this wet and this alive, plastic doesn't vanish — it breaks into smaller plastic that enters the groundwater. Bring a zip-lock for your trash. Take it all the way home.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🔇</span>
+          <span class="awareness-title">The Forest Has Its Own Sounds</span>
+          <p class="awareness-body">Mookambika Reserve has hornbills, Malabar whistling thrushes, things you will hear and not be able to name. Loud music on the trail covers all of it and stresses every animal in range. Use headphones. The forest is not background for your Reel.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🌱</span>
+          <span class="awareness-title">Stay on the Trail</span>
+          <p class="awareness-body">The Western Ghats soil is thin and steep. One shortcut by a hundred trekkers becomes an erosion channel. The monsoon does the rest. A landslide scar on this hillside lasts a decade. The extra fifty metres is not worth that.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🔥</span>
+          <span class="awareness-title">No Fire on the Forest Floor</span>
+          <p class="awareness-body">The forest floor here is decades of slow accumulation — fungi, roots, leaf litter, moisture. A fire, even a small one, destroys years of it in minutes. If there is no designated fire pit, there is no fire. Pack a better layer if you are cold.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🪨</span>
+          <span class="awareness-title">You Are a Visitor Here</span>
+          <p class="awareness-body">The orchids in the canopy gaps, the kutaja flowers on the hillside, the smooth river stones — they belong here. You are passing through. Take a photograph. Then leave everything exactly where you found it.</p>
+        </div>
+
+        <div class="awareness-card">
+          <span class="awareness-icon">🐍</span>
+          <span class="awareness-title">The Snake Is Not Posing</span>
+          <p class="awareness-body">The vine snake I found on this trail was living its life. If you find one, stand still and watch. Then let it leave first. Same for the bison in the grasslands, the deer at the forest edge, the hornbill overhead. They are not here for your photograph.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="awareness-close">
+      The sunrise from Kodachadri is free.<br>The forest that makes it possible took generations to build.<br>Walk through it like you know that.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">where the mist lives</span>
+  <p class="hillary-quote">"In every walk with nature, one receives far more than one seeks."</p>
+  <p>Kodachadri &nbsp;·&nbsp; Mookambika Reserve &nbsp;·&nbsp; Shivamogga, Western Ghats</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2025 She Explores</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() { hamburger.classList.add('open'); mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => { if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+
+<script>
+  const photos = [
+    { src: "images_kodachadri/wallpaper.jpg", caption: "The morning mist before the forest takes you." },
+    { src: "images_kodachadri/nature.jpg", caption: "Mud, roots, water. The trail starts immediately." },
+    { src: "images_kodachadri/nimi.jpg", caption: "The valley view — farmlands and coconut trees in the rain." },
+    { src: "images_kodachadri/viper.jpg", caption: "Algae rock. One of the most slippery surfaces I have walked on." },
+    { src: "images_kodachadri/leaf.jpg", caption: "The vine snake. Perfect green, perfect stillness. Non-venomous. Unforgettable." },
+    { src: "images_kodachadri/pathway.jpg", caption: "Hidlumane Falls in full monsoon force." },
+    { src: "images_kodachadri/falls_latest.jpg", caption: "The summit plateau. Sarvajna Peetha in cloud." },
+    { src: "images_kodachadri/jeepride.jpg", caption: "Kutaja blooms — hill jasmine — the reason for the name." },
+    { src: "images_kodachadri/lizard.jpg", caption: "The jeep descent. Red clay, cliff roads, and the driver who has no fear." },
+  ];
+
+  const galleryWrap = document.getElementById('gal-grid-wrapper');
+  const lightbox    = document.getElementById('lightbox');
+  const lbImg       = document.getElementById('lb-img');
+  const lbCaption   = document.getElementById('lb-caption');
+  const lbCounter   = document.getElementById('lb-counter');
+  const lbDots      = document.getElementById('lb-dots');
+  const lbClose     = document.getElementById('lb-close');
+  const lbPrev      = document.getElementById('lb-prev');
+  const lbNext      = document.getElementById('lb-next');
+  let current = 0;
+
+  galleryWrap.innerHTML = '';
+  galleryWrap.className = 'photo-slots';
+  photos.forEach(function(photo, index) {
+    const fig = document.createElement('figure');
+    fig.className = 'photo-slot';
+    fig.style.cursor = 'pointer';
+    fig.innerHTML = '<img src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy" onerror="this.style.display=\'none\'">';
+    fig.addEventListener('click', function() { openLightbox(index); });
+    galleryWrap.appendChild(fig);
+    const dot = document.createElement('button');
+    dot.className = 'lb-dot';
+    dot.dataset.index = index;
+    dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); });
+    lbDots.appendChild(dot);
+  });
+
+  function openLightbox(i) { current = i; galleryWrap.style.display = 'none'; lightbox.classList.add('open'); updateLightbox(); }
+  function closeLightbox() { lightbox.classList.remove('open'); galleryWrap.style.display = 'grid'; }
+  function goTo(i) { current = i; updateLightbox(); }
+  function updateLightbox() {
+    lbImg.style.opacity = 0;
+    setTimeout(function() {
+      lbImg.src = photos[current].src;
+      lbImg.alt = photos[current].caption;
+      lbCaption.textContent = photos[current].caption;
+      lbCounter.textContent = (current + 1) + ' / ' + photos.length;
+      lbImg.style.opacity = 1;
+    }, 150);
+    document.querySelectorAll('.lb-dot').forEach(function(dot, i) { dot.classList.toggle('active', i === current); });
+  }
+  lbClose.addEventListener('click', closeLightbox);
+  lbNext.addEventListener('click', function() { current = (current + 1) % photos.length; updateLightbox(); });
+  lbPrev.addEventListener('click', function() { current = (current - 1 + photos.length) % photos.length; updateLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') { current = (current + 1) % photos.length; updateLightbox(); }
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + photos.length) % photos.length; updateLightbox(); }
+    if (e.key === 'Escape')     { closeLightbox(); }
+  });
+</script>
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') { e.preventDefault(); }
+  });
+</script>
+</body>
+</html>

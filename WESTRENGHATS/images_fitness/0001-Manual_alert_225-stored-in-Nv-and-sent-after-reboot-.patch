@@ -1,0 +1,341 @@
+From 0aa6038fddd9dcfe41b3a0aff7d56a0af8eaf66e Mon Sep 17 00:00:00 2001
+From: "Shrinivas.S" <Shrinivas.S@ril.com>
+Date: Mon, 21 Sep 2026 14:18:05 +0530
+Subject: [PATCH] Manual_alert_225 stored in Nv and sent after reboot if its
+ not sent before reboot
+
+Change-Id: I6d7a9f4642bc30a5ac17ac3d8cd09042b1deccd0
+Signed-off-by: Shrinivas.S <Shrinivas.S@ril.com>
+---
+ .../app_main/src/tracker/inc/tracker_nvram.h  |  5 ++
+ .../app_main/src/tracker/src/tracker_main.c   |  4 +-
+ .../app_main/src/tracker/src/tracker_nvram.c  | 79 +++++++++++++++++++
+ .../middleware/kmqtt/src/ewin_kmqtt_main.c    | 14 +++-
+ .../rjio/src/jiotracker/src/jiotracker_task.c |  2 +-
+ .../src/jtos_jiotracker_mqtt_client.c         | 79 +++++++++++++++++++
+ 6 files changed, 180 insertions(+), 3 deletions(-)
+
+diff --git a/DM_LTEGSM/middleware/app_main/src/tracker/inc/tracker_nvram.h b/DM_LTEGSM/middleware/app_main/src/tracker/inc/tracker_nvram.h
+index 83593e90..7217a1b8 100644
+--- a/DM_LTEGSM/middleware/app_main/src/tracker/inc/tracker_nvram.h
++++ b/DM_LTEGSM/middleware/app_main/src/tracker/inc/tracker_nvram.h
+@@ -10,6 +10,7 @@
+ #include  "app_sos.h"
+ #endif
+ #define ICCID_MAX_LEN       21
++#define TRACKER_MANUAL_ALERT_MAX_LEN   512
+ typedef enum{
+ 	MQTT_NOTLS_ENUM,
+ #ifdef KAWAII_MQTT_NETWORK_TYPE_TLS   //test20250306.
+@@ -656,6 +657,7 @@ typedef struct
+ #define  TRACKER_RECONNECT_CONFIG_FILE       "ewin_reconnect_cfg.nvm"
+ 
+ #define TRACKER_STORE_ICCID_FILE             "ewin_iccid_cfg.nvm"
++#define TRACKER_STORE_MANUAL_ALERT_FILE       "ewin_manual_alert_cfg.nvm"
+ #if defined(FEATURE_DISPATCH_SERVER)
+ #define  TRACKER_DISPATCHSERVER_CONFIG_FILE       "ewin_dispatchserver_cfg.nvm"
+ #endif
+@@ -695,6 +697,9 @@ void* tracker_get_cfg_sema(void);
+ UINT8 EwinGetUsbConnStatus(void);//test20231010.
+ unsigned char  tracker_get_jt808_11bit_id(void);
+ int tracker_check_sim_iccid_changed(const char *current_iccid,char *out_prev_iccid, unsigned int out_prev_len);
++unsigned char tracker_write_manual_alert(const void *data, unsigned int len);
++unsigned int tracker_read_manual_alert(void *out_buf, unsigned int out_buf_size);
++void tracker_clear_manual_alert(void);
+ 
+ #define JT808_0107_BIT     (1<<0)           		//0107
+ #define JT808_REGIST_NOREPLY_BIT     (1<<1)           		//无需注册鉴权应答
+diff --git a/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_main.c b/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_main.c
+index 42ecc669..308bf6f1 100644
+--- a/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_main.c
++++ b/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_main.c
+@@ -25,6 +25,7 @@
+ #include "jtos_jiotracker_mqtt_client.h"
+ #include "tracker_alarm.h"
+ 
++
+ #define TRACKER_MAIN_TASK_STACK_SIZE    512*5+256*4 //1024*10 //FEATURE_EWIN_LOW_PSRAM//test20230313.
+ #define TRACKER_MAIN_TASK_PRIORITY      200
+ 
+@@ -66,6 +67,7 @@ extern bool ta200_tracker_mqtt_details_is_valid(void);
+ typedef void (*ta200_tracker_mqtt_details_ready_cb_t)(void);
+ extern void ta200_tracker_mqtt_details_register_ready_cb(ta200_tracker_mqtt_details_ready_cb_t cb);
+ extern void ta200_onboard_run_dummy_register_test(void);
++extern int check_and_send_manual_alert(void);
+ 
+ #ifdef SINGLE_SIM
+ extern unsigned char tracker_get_ewin_sim(void);
+@@ -953,6 +955,7 @@ void tracker_main_entry(void)
+ 					factory_server_connect_flag = 1;
+ 					link_time = tracker_read_tick();
+ 					reset_time = tracker_read_tick();
++					check_and_send_manual_alert();
+ 					if(tracker_get_blind_report() == 1)
+ 					ewin_save_location_cache_queue_in();
+ 					if (!sim_iccid_checked_once)
+@@ -965,7 +968,6 @@ void tracker_main_entry(void)
+ 							break;
+ 						}
+ 					}
+-					// 	jiotracker_send_simChange_alert();
+                     extern unsigned char tracker_get_reset_reason(void);
+                     tracker_printf("%s %d  reset_reason=%c",__func__,__LINE__,tracker_get_reset_reason());
+                     ewin_task_sleep(200); //delay added to reflect block/unblock
+diff --git a/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_nvram.c b/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_nvram.c
+index 6db62db6..2949b3b0 100644
+--- a/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_nvram.c
++++ b/DM_LTEGSM/middleware/app_main/src/tracker/src/tracker_nvram.c
+@@ -5084,6 +5084,85 @@ int tracker_write_stored_iccid(const char *iccid)
+     }
+ }
+ 
++unsigned char tracker_write_manual_alert(const void *data, unsigned int len)
++{
++    char *safe_buf;
++    char *existing_buf;
++    unsigned int existing_len;
++    unsigned char write_ok;
++    if (data == NULL || len == 0 )
++    {
++        return 0;
++    }
++    if (len >= TRACKER_MANUAL_ALERT_MAX_LEN)
++    {
++        return 0;
++    }
++
++    existing_buf = (char *)ewin_malloc(TRACKER_MANUAL_ALERT_MAX_LEN);
++    if (existing_buf == NULL)
++    {
++        return 0;
++    }
++    existing_len = tracker_read_manual_alert(existing_buf, TRACKER_MANUAL_ALERT_MAX_LEN);
++    ewin_free(existing_buf);
++
++    if (existing_len > 0)
++    {
++        return 0;
++    }
++
++    safe_buf = (char *)ewin_malloc(TRACKER_MANUAL_ALERT_MAX_LEN);
++    if (safe_buf == NULL)
++    {
++        return 0;
++    }
++    memset(safe_buf, 0, TRACKER_MANUAL_ALERT_MAX_LEN);
++    memcpy(safe_buf, data, len);
++
++    write_ok = (tracker_write_nvram_file(TRACKER_STORE_MANUAL_ALERT_FILE, safe_buf, TRACKER_MANUAL_ALERT_MAX_LEN) == 1) ? 1 : 0;
++    ewin_free(safe_buf);
++    return write_ok;
++}
++
++unsigned int tracker_read_manual_alert(void *out_buf, unsigned int out_buf_size)
++{
++    int handle;
++    int read_ret;
++
++    if (out_buf == NULL || out_buf_size == 0)
++    {
++        return 0;
++    }
++
++    memset(out_buf, 0, out_buf_size);
++
++    handle = ewin_open_file(TRACKER_STORE_MANUAL_ALERT_FILE, EW_FILE_READ, NULL);
++    if (handle <= 0)
++    {
++        return 0;
++    }
++
++    read_ret = tracker_read_nvram_file(handle, out_buf, (int)out_buf_size);
++
++
++    if (read_ret != 1)
++    {
++        return 0;
++    }
++
++    ((char *)out_buf)[out_buf_size - 1] = '\0';
++
++    return (unsigned int)strlen((char *)out_buf);
++}
++
++void tracker_clear_manual_alert(void)
++{
++    ewin_delete_file(TRACKER_STORE_MANUAL_ALERT_FILE);
++}
++
++
++
+ int tracker_check_sim_iccid_changed(const char *current_iccid,
+                                      char *out_prev_iccid, unsigned int out_prev_len)
+ {
+diff --git a/DM_LTEGSM/middleware/kmqtt/src/ewin_kmqtt_main.c b/DM_LTEGSM/middleware/kmqtt/src/ewin_kmqtt_main.c
+index 28eb54f5..71a95e96 100644
+--- a/DM_LTEGSM/middleware/kmqtt/src/ewin_kmqtt_main.c
++++ b/DM_LTEGSM/middleware/kmqtt/src/ewin_kmqtt_main.c
+@@ -8,6 +8,8 @@ static char mqtt_pubtopic_buf[KAWAII_MQTT_TOPIC_LEN_MAX] = {0};
+ static Kmqtt_host kmqtt_host = {0};
+ extern char* jiotracker_mqtt_get_client_id(void);
+ extern char* jiotracker_mqtt_get_pub_topic(void);
++extern int get_jiotracker_mannual_shutdown_alert_constructed(void);
++extern void set_jiotracker_mannual_shutdown_alert_constructed(int val);
+ 
+ mqtt_client_t *client = NULL; 
+ kmqtt_config_t kmqtt_cfg = {0};
+@@ -479,8 +481,18 @@ void ewin_kmqtt_send_main(void)
+ 			ewin_mqtt_debug("%s()...do while echo pub..ret=%d",__FUNCTION__,ret);
+ 			if(ret == 0)
+ 			{
++				if(get_jiotracker_mannual_shutdown_alert_constructed())
++				{	char *temp = NULL;
++					temp = strstr(pThis->send_buf, "\"alc\":\"225\"");
++					ewin_mqtt_debug("%s()...manual alert check...temp=%s", __FUNCTION__, temp);
++					if(temp){
++					tracker_clear_manual_alert();
++					set_jiotracker_mannual_shutdown_alert_constructed(0);
++					}
++					
++				}
+ 				ewin_kmqtt_clean_send_buf();
+-				ewin_kmqtt_clean_pubtopic_buf();
++					ewin_kmqtt_clean_pubtopic_buf();
+ 			}
+ 		}
+ 		ewin_task_sleep(1000);
+diff --git a/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jiotracker_task.c b/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jiotracker_task.c
+index d1612da9..af324503 100644
+--- a/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jiotracker_task.c
++++ b/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jiotracker_task.c
+@@ -637,7 +637,7 @@ void jiotracker_send_poweroff_manually_alert(void)
+     extern void tracker_record_reset_reason(void *reason);
+     JIOTRACKER_LOG("send poweroff_manually_alert");
+     JT_LOG_UPLOAD_I(JIOTKR_TASK, "send poweroff_manually_alert");
+-    tracker_record_reset_reason("Power_off_Manually");
++	tracker_record_reset_reason("Power_off_Manually");
+     process_upload_message(JIOTRACKER_POWEROFF_MANUALLY);
+ }
+ 
+diff --git a/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jtos_jiotracker_mqtt_client.c b/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jtos_jiotracker_mqtt_client.c
+index c7156675..989f4bcc 100644
+--- a/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jtos_jiotracker_mqtt_client.c
++++ b/DM_LTEGSM/pcac/rjio/src/jiotracker/src/jtos_jiotracker_mqtt_client.c
+@@ -51,6 +51,7 @@
+ #include "jiotracker_log_upload_api.h"
+ #include "jiotracker_safeconfig.h"
+ #include "ta200_tracker_mqtt_details.h"
++#include "tracker_nvram.h"
+ 
+ typedef enum
+ {
+@@ -75,6 +76,7 @@ typedef enum {
+ 
+ //--------------------- Platform API's Start----------------------------
+ extern int is_pdp_connected(int connnum);
++extern int ewin_kmqtt_is_valid(void);
+ typedef int (*MATConfIndCB)(TelAtParserID chnlId, const char* response, int size);
+ extern void ATRecv(int AtpIndex, void* data, unsigned int length);
+ extern void MATSetConfIndCB(TelAtParserID channelId, MATConfIndCB cb);
+@@ -100,7 +102,19 @@ int jiotracker_mobilenumber_fetching_done = 0;
+ static char publish_topic[MAX_PUBLISH_TOPIC_LEN] = {0};
+ static char subscribe_topic[MAX_SUBSCRIBE_TOPIC_LEN] = {0};
+ char client_ID[100];
++int maual_shutdown_alert_constructed = 0;
+ 
++int get_jiotracker_mannual_shutdown_alert_constructed(void){
++    if(maual_shutdown_alert_constructed){
++        return 1;
++    }
++    else{
++    return 0;
++    }
++}
++void set_jiotracker_mannual_shutdown_alert_constructed(int value){
++    maual_shutdown_alert_constructed = value;
++}
+ //----------------- MQTT Server Details start----------------------------------
+ 
+ #define CLUSTER_ID      "cl00"
+@@ -900,6 +914,20 @@ int send_mqtt_message(MessageType msg_type,jiotracker_construct_event_alert_t ev
+ 
+     jiotracker_printfulllogs(payload);
+ 
++     if (ev_al_code == JIOTRACKER_POWEROFF_MANUALLY_ALERT_CODE)
++    {
++		JIOTRACKER_LOG("payload len before write=%d", (int)strlen(payload));
++        unsigned char write_ok = tracker_write_manual_alert(payload, strlen(payload));
++
++        JIOTRACKER_LOG("manual alert nv write payload=%s", payload);
++        JT_LOG_UPLOAD_I(JIOTKR_MQTT, "manual alert nv write payload=%s", payload);
++        JIOTRACKER_LOG("manual alert nv write result=%d", write_ok);
++        JT_LOG_UPLOAD_I(JIOTKR_MQTT, "manual alert nv write result=%d", write_ok);
++
++        final_retval = write_ok ? 0 : -1;
++        check_and_send_manual_alert();
++        goto ERROR;
++    }
+     if ((is_pdp_connected(0) == 1) || (is_pdp_connected(1) == 1))
+     {
+         extern   int mqtt_sf_protocol_write(char *data,int len,char *pubtopic);
+@@ -920,6 +948,57 @@ ERROR:
+     return final_retval;
+ }
+ 
++
++int check_and_send_manual_alert(void)
++{
++    char *payload = NULL;
++    unsigned int read_ret;
++    int final_retval = 0;
++
++    payload = malloc(TRACKER_MANUAL_ALERT_MAX_LEN);
++    if (payload == NULL)
++    {
++        JIOTRACKER_LOG("payload alloc failed");
++        return -1;
++    }
++    memset(payload, 0, TRACKER_MANUAL_ALERT_MAX_LEN);
++
++    read_ret = tracker_read_manual_alert(payload, TRACKER_MANUAL_ALERT_MAX_LEN);
++    if (read_ret == 0)
++    {
++        JIOTRACKER_LOG("no pending manual alert to send");
++        JT_LOG_UPLOAD_I(JIOTKR_MQTT,"no pending manual alert to send");
++        free(payload);
++        payload = NULL;
++        return 0;
++    }
++
++    JIOTRACKER_LOG("manual alert nv read payload=%s", payload);
++    JT_LOG_UPLOAD_I(JIOTKR_MQTT,"manual alert nv read payload=%s", payload);
++
++    if(ewin_kmqtt_is_valid() == TRUE)
++    {
++        extern int mqtt_sf_protocol_write(char *data, int len, char *pubtopic);
++        final_retval = mqtt_sf_protocol_write(payload, strlen(payload), publish_topic);
++        JIOTRACKER_LOG("MQTT valid, sent manual alert payload=%s, ret=%d", payload, final_retval);
++        JT_LOG_UPLOAD_I(JIOTKR_MQTT,"MQTT valid, sent manual alert payload=%s, ret=%d", payload, final_retval);
++        if (final_retval == TRUE)
++        {
++            //tracker_clear_manual_alert();
++            set_jiotracker_mannual_shutdown_alert_constructed(1);
++        }
++    }
++    else
++    {
++        JIOTRACKER_LOG("MQTT not valid, cannot send manual alert");
++        JT_LOG_UPLOAD_E(JIOTKR_MQTT,"MQTT not valid, cannot send manual alert");
++    }
++    free(payload);
++    payload = NULL;
++    return final_retval;
++}
++
++
+ int send_ack_message(int status_type, const char *tid, const char *cmd_name) {
+     char *payload = NULL;
+     time_t now = 0;
+-- 
+2.39.1.windows.1
+

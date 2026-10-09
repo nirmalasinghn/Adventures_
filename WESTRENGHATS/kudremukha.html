@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kudremukha Peak — a monsoon trek to the horse-faced mountain of Chikkamagaluru, through shola grasslands, leech country, and streams that turn into rivers overnight. By She Explores Wild." />
+  <title>Kudremukha — The Mountain With a Horse's Face · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+  --deep:         #0c1011;
+  --card:         #141b1d;
+  --midnight:     #0f1517;
+  --alpine:       #628f6e;
+  --alpine-lt:    #94c29f;
+  --alpine-glow:  #e3a1c4;
+  --snow:         #eef1f1;
+  --frost:        #d3e0da;
+  --stone:        #85989a;
+  --border:       rgba(255,255,255,0.06);
+  --amber:        #c9889f;
+
+  --deep-rgb:       12,16,17;
+  --snow-rgb:       238,241,241;
+  --alpine-rgb:     98,143,110;
+  --alpine-lt-rgb:  148,194,159;
+  --amber-rgb:      201,136,159;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+
+    html { scroll-behavior: none; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; scrollbar-width: none; }
+    body::-webkit-scrollbar { display: none; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+
+    body::after { display:none !important; }
+    strong { color: #b9b9b9; font-weight: 600; }
+
+    /* NAV */
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(8,15,13,0); transition:background .4s,padding .4s; }
+    nav.scrolled { background:rgba(8,15,13,0.96); padding:1rem 3.5rem; }
+    nav, nav.scrolled { -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(var(--snow-rgb),.82); text-shadow:0 1px 10px rgba(0,0,0,.5); transition:color .3s; }
+    .nav-links a:hover { color:var(--alpine-glow); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(8,15,13,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.8rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.8rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--alpine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+    /* HERO */
+    .hero { position:relative; height:100svh; min-height:620px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background-size:cover; background-repeat:no-repeat; animation:none !important; transform:none !important; }
+    .hero-overlay { position:absolute; inset:0; background:
+      linear-gradient(to bottom, rgba(var(--deep-rgb),.6) 0%, rgba(var(--deep-rgb),0) 22%),
+      linear-gradient(to bottom, rgba(var(--deep-rgb),.15) 0%, rgba(var(--deep-rgb),.5) 45%, rgba(var(--deep-rgb),.98) 100%); }
+    .hero-content { position:relative; z-index:2; padding:0 3.5rem 5.5rem; max-width:920px; opacity:0; animation:riseIn 1.5s .3s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--frost); text-shadow:0 1px 10px rgba(0,0,0,.5); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:var(--alpine); }
+    .hero-title { font-family:var(--font-display); font-size:clamp(4rem,10vw,10rem); font-weight:300; line-height:.9; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--alpine-glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.5rem); font-style:italic; font-weight:300; color:rgba(var(--snow-rgb),.85); text-shadow:0 2px 14px rgba(0,0,0,.5); max-width:620px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(87,169,143,.22); background:rgba(87,169,143,.06); color:var(--frost); -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
+
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    .container-wide { max-width:1300px; margin:0 auto; }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--alpine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(237,242,240,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--alpine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--alpine); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
+
+    /* FULL BLEED */
+    .full-bleed { width:100%; height:65vh; min-height:380px; position:relative; overflow:hidden; }
+    .full-bleed-tall { height:80vh; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.9) saturate(1); }
+    .img-caption { font-family:var(--font-body); font-size:.72rem; color:var(--stone); font-style:italic; padding:.75rem 0; line-height:1.6; border-top:1px solid var(--border); }
+
+    /* DAY HEADERS */
+    .day-header { display:flex; align-items:flex-start; gap:1.8rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .day-number { font-family:var(--font-display); font-size:4.5rem; font-weight:300; line-height:1; color:rgba(255,255,255,0.18); flex-shrink:0; min-width:80px; text-align:right; }
+    .day-info { padding-top:.6rem; }
+    .day-name { font-family:var(--font-display); font-size:1.55rem; font-weight:400; color:var(--snow); margin-bottom:.25rem; }
+    .day-altitude { font-size:.72rem; color:var(--alpine-lt); letter-spacing:.06em; }
+
+    /* FLOAT IMAGES */
+    .clearfix::after { content:''; display:table; clear:both; }
+    .img-float-right { float:right; width:46%; margin:0 0 2rem 2.5rem; }
+    .img-float-left { float:left; width:44%; margin:0 2.5rem 2rem 0; }
+    .img-float-right img, .img-float-left img { width:100%; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .img-float-right:hover img, .img-float-left:hover img { filter:brightness(.92) saturate(1); }
+    /* IMAGE LAYOUTS */
+    .img-pair, .img-trio { display:grid; gap:4px; margin:3rem 0 0; }
+    .img-pair { grid-template-columns:1fr 1fr; }
+    .img-trio { grid-template-columns:1fr 1fr 1fr; }
+    .img-pair img, .img-trio img { width:100%; object-fit:cover; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .img-pair img { height:520px; }
+    .img-trio img { height:460px; }
+    .img-pair img:hover, .img-trio img:hover { filter:brightness(.92) saturate(1); }
+
+    /* SPECIAL BLOCKS */
+    .highlight-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(74,154,128,.05); border:1px solid rgba(74,154,128,.18); border-left:3px solid var(--amber); }
+    .highlight-block p { color:rgba(237,242,240,.7); font-family:var(--font-display); font-size:1.05rem; font-style:italic; line-height:1.8; margin:0; }
+    .note-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(46,107,94,.06); border:1px solid rgba(46,107,94,.2); border-left:3px solid var(--alpine); }
+    .note-block p { color:rgba(237,242,240,.7); margin:0; }
+    .alpine-section { background:var(--card); padding:6rem 0; }
+    .alpine-section .container { padding-top:0; padding-bottom:0; }
+
+    /* SUMMIT GRID */
+    .summit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin:3rem 0; }
+    .summit-cell { background:var(--card); padding:2rem 2.2rem; display:flex; flex-direction:column; gap:.3rem; }
+    .summit-cell-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); }
+    .summit-cell-value { font-family:var(--font-display); font-size:2.2rem; font-weight:300; line-height:1.1; color:var(--snow); }
+    .summit-cell-note { font-size:.75rem; color:var(--stone); line-height:1.6; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ITINERARY */
+    .itinerary-section { background:var(--midnight); padding:6rem 0; }
+    .itinerary-section .container { padding-top:0; padding-bottom:0; }
+    .iti-subtitle { font-size:.85rem; color:var(--stone); margin-bottom:3rem; margin-top:-.8rem; }
+    .iti-header { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:.9rem 1.4rem; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); border-bottom:1px solid var(--border); }
+    .iti-cards { display:flex; flex-direction:column; }
+    .iti-card { display:grid; grid-template-columns:90px 1fr 110px 90px; gap:1rem; padding:1.6rem 1.4rem; border-bottom:1px solid var(--border); transition:background .3s; }
+    .iti-card:hover { background:rgba(255,255,255,.02); }
+    .iti-card-day { display:flex; flex-direction:column; gap:.15rem; }
+    .day-num { font-family:var(--font-display); font-size:1.6rem; font-weight:400; color:var(--snow); line-height:1; }
+    .day-word { font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--alpine-lt); }
+    .iti-card-route { font-size:.9rem; color:var(--snow); margin-bottom:.3rem; }
+    .iti-card-highlight { font-size:.75rem; color:var(--stone); line-height:1.6; }
+    .iti-card-alt, .iti-card-km { font-size:.78rem; color:var(--stone); padding-top:.2rem; }
+    .iti-card-summit { background:rgba(46,107,94,.06); }
+    .iti-card-summit .day-num { color:var(--alpine-lt); }
+
+    /* GALLERY */
+    .add-photos { padding:6rem 0; }
+    .add-photos .container { padding-top:0; padding-bottom:0; }
+    .hint { font-size:.82rem; color:var(--stone); margin-bottom:3rem; }
+    .photo-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .photo-slot { aspect-ratio:4/3; overflow:hidden; margin:0; background:var(--card); cursor:pointer; }
+    .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.82) saturate(.85); transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s; }
+    .photo-slot:hover img { transform:scale(1.06); filter:brightness(.92) saturate(1); }
+
+    /* ── LIGHTBOX ─────────────────────────────────── */
+    .lb-overlay { display:none; position:fixed; inset:0; z-index:6000; background:rgba(8,15,13,0.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); align-items:center; justify-content:center; padding:1rem; }
+    .lb-overlay.open { display: flex; }
+    .lb-modal { width:100%; max-width:920px; background:var(--card); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; max-height:92vh; box-shadow:0 32px 80px rgba(0,0,0,.72); }
+    .lb-top { display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:var(--midnight); border-bottom:1px solid var(--border); }
+    .lb-counter { font-size:12px; color:var(--stone); font-family:var(--font-body); }
+    .lb-close { background:none; border:none; color:var(--stone); font-size:26px; cursor:pointer; line-height:1; padding:0 4px; transition:color .2s; }
+    .lb-close:hover { color:var(--snow); }
+    .lb-img-area { flex:1; display:flex; align-items:center; justify-content:center; padding:20px 62px; position:relative; min-height:320px; max-height:68vh; background:var(--card); }
+    .lb-img-area img { max-width:100%; max-height:62vh; border-radius:4px; object-fit:contain; transition:opacity .2s; display:block; }
+    .lb-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); color:var(--snow); font-size:22px; padding:10px 14px; cursor:pointer; border-radius:6px; transition:background .2s, border-color .2s; line-height:1; }
+    .lb-arrow:hover { background:rgba(87,169,143,.18); border-color:rgba(87,169,143,.35); }
+    .lb-arrow.left { left:10px; }
+    .lb-arrow.right { right:10px; }
+    .lb-bottom { padding:12px 18px 16px; background:var(--midnight); border-top:1px solid var(--border); }
+    .lb-caption { color:var(--stone); font-size:.82rem; margin:0 0 10px; font-style:italic; font-family:var(--font-body); line-height:1.6; }
+    .lb-dots { display:flex; gap:7px; }
+    .lb-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.12); cursor:pointer; border:none; padding:0; transition:background .2s, transform .2s; }
+    .lb-dot.active { background:var(--alpine-lt); transform:scale(1.35); }
+
+    /* CLOSING QUOTE */
+    .closing-quote-section { padding:6rem 0; text-align:center; border-top:1px solid var(--border); }
+    .closing-quote-section blockquote { font-family:var(--font-display); font-size:clamp(1.6rem,3.5vw,2.8rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.4; max-width:700px; margin:0 auto; }
+    .closing-quote-section cite { display:block; margin-top:1.4rem; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); font-style:normal; }
+
+    /* AUTHOR */
+    .author-section { background:var(--deep); padding:6rem 0; border-top:1px solid rgba(87,169,143,0.08); }
+    .author-inner { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; }
+    .author-photo { position:relative; height:420px; overflow:hidden; }
+    .author-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:brightness(.85) saturate(.85); }
+    .author-photo::after { content:''; position:absolute; inset:0; border:1px solid rgba(87,169,143,0.2); pointer-events:none; }
+    .treks-done { margin-top:2rem; }
+    .treks-label, .dreams-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--alpine-lt); display:block; margin-bottom:.8rem; }
+    .dreams-label { margin-top:1.6rem; }
+    .trek-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .trek-tag { font-size:.72rem; padding:.3em .9em; border:1px solid rgba(87,169,143,.22); color:var(--frost); }
+    .trek-tag.current { background:rgba(87,169,143,.1); border-color:var(--alpine-lt); color:var(--alpine-lt); }
+    .future-tag { border-style:dashed; color:var(--stone); }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--alpine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
+
+    /* LEAVE NO TRACE */
+    .awareness-section { background:var(--midnight); padding:6rem 0 5rem; border-top:1px solid rgba(255,255,255,0.04); }
+    .awareness-inner { max-width:1200px; margin:0 auto; padding:0 2rem; }
+    .awareness-intro { font-family:var(--font-display); font-size:clamp(1rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.65; margin-bottom:2rem; border-left:3px solid var(--alpine); padding-left:1.5rem; max-width:680px; }
+    .scroll-hint { font-size:0.72rem; color:rgba(255,255,255,0.28); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+    .scroll-hint::after { content:'→'; font-size:0.9rem; color:var(--alpine); }
+    .awareness-strip-wrap { position:relative; }
+    .awareness-strip-wrap::after { content:''; position:absolute; top:0; right:0; width:80px; height:100%; background:linear-gradient(to left,var(--midnight),transparent); pointer-events:none; z-index:2; }
+    .awareness-strip { display:flex; gap:1rem; overflow-x:auto; padding-bottom:1.2rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--alpine) transparent; }
+    .awareness-strip::-webkit-scrollbar { height:4px; }
+    .awareness-strip::-webkit-scrollbar-track { background:transparent; }
+    .awareness-strip::-webkit-scrollbar-thumb { background:var(--alpine); border-radius:4px; }
+    .awareness-card { flex:0 0 240px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:1.6rem 1.4rem; display:flex; flex-direction:column; gap:0.55rem; scroll-snap-align:start; transition:border-color 0.25s,background 0.25s; }
+    .awareness-card:hover { border-color:rgba(46,107,94,0.45); background:rgba(46,107,94,0.06); }
+    .awareness-icon { font-size:1.5rem; line-height:1; }
+    .awareness-title { font-family:var(--font-display); font-size:1rem; font-weight:600; color:var(--snow); line-height:1.3; }
+    .awareness-body { font-size:0.82rem; color:rgba(237,242,240,0.60); line-height:1.75; margin:0; }
+    .awareness-close { font-family:var(--font-display); font-size:clamp(1.1rem,2vw,1.6rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; text-align:center; margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 1.5rem 4rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .img-float-right, .img-float-left { float:none; width:100%; margin:1.5rem 0; }
+      .img-float-right img, .img-float-left img { height:260px; }
+      .photo-slots { grid-template-columns:repeat(2,1fr); }
+      .iti-header, .iti-card { grid-template-columns:70px 1fr; }
+      .iti-card-alt, .iti-card-km, .iti-header span:nth-child(3), .iti-header span:nth-child(4) { display:none; }
+      .author-inner { grid-template-columns:1fr; gap:2rem; }
+      .author-photo { height:260px; width:100%; }
+      .full-bleed { height:50vh; min-height:280px; }
+      .day-header { gap:1rem; }
+      .day-number { font-size:3rem; min-width:56px; }
+      .lb-img-area { padding:16px 50px; }
+    }
+    @media (max-width:520px) {
+      .photo-slots { grid-template-columns:1fr; }
+      .img-pair img { height:300px; }
+      .img-trio img { height:220px; }
+      .summit-grid { grid-template-columns:1fr; }
+      .hero-title { font-size:clamp(3.5rem,18vw,6rem); }
+      .lb-img-area { padding:12px 44px; min-height:220px; max-height:52vh; }
+      .lb-img-area img { max-height:48vh; }
+      footer { padding:2rem 1.5rem 3rem; }
+      .pull-quote { padding:1rem 0 1rem 1.4rem; }
+    }
+  img { -webkit-user-drag: none; user-select: none; }
+  body { -webkit-touch-callout: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#story">The Story</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#awareness">Trail Ethics</a></li>
+    <li><a href="#author">About</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#story" class="mobile-nav-link">The Story</a></li>
+    <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
+    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+    <li><a href="#author" class="mobile-nav-link">About</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Kudremukha Peak &nbsp;·&nbsp; Western Ghats &nbsp;·&nbsp; Monsoon</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images_kudremukha/hills_2_H.JPG'); background-position:center 60%;"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Western Ghats, Chikkamagaluru &nbsp;·&nbsp; Monsoon</span>
+    <h1 class="hero-title">Kudre<em>mukha</em></h1>
+    <p class="hero-sub">A mountain wearing a horse's face, twenty kilometres of forest and grass and water, and rain that doesn't ask permission.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🏔️ <span>1894 m · 6214 ft</span></div>
+      <div class="meta-pill">📍 <span>Balagalu Base, Karnataka</span></div>
+      <div class="meta-pill">🌿 <span>20 km, up and back</span></div>
+      <div class="meta-pill">🌧️ <span>Peak Monsoon</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">1894<span style="font-size:1.4rem;color:var(--stone)"> m</span></div>
+    <div class="stat-label">Summit altitude<br>Second-highest peak in Karnataka</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">20<span style="font-size:1.4rem;color:var(--stone)"> km</span></div>
+    <div class="stat-label">Total trail distance<br>Balagalu, through Mullodi, and back</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">3</div>
+    <div class="stat-label">rivers born in this region —<br>the Tunga, the Bhadra, the Netravathi</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container">
+    <span class="section-eyebrow">The Story</span>
+    <h2>The Mountain With<br><em>A Horse's Face</em></h2>
+
+    <!-- PROLOGUE -->
+    <p class="drop-cap">Kudremukha means horse-face. Look at the peak from the right angle and you'll see why — the rock curves like a muzzle, like the mountain was carved mid-gallop and left that way. It sits in Chikkamagaluru district, inside the Kudremukha forest reserve, and it doesn't let you forget you're a guest here. The base is Balagalu. The checkpost is at Mullodi. Everything after that belongs to the forest.</p>
+
+    <p>Twenty kilometres, ascent and descent combined. On a road, that's nothing. On this trail, in monsoon, it is a full-day negotiation with mud, water, and your own legs. Thick forest, open grasslands, streams that cross the path so many times you stop counting — that's the shape of Kudremukha. You don't walk through one landscape here. You walk through five, on repeat.</p>
+
+    <div class="reveal" style="margin:3rem 0;">
+      <div class="img-trio">
+        <img src="images_kudremukha/trench_mud_V.PNG" alt="Nirmala at the Mullodi waterfall" style="object-position:center 30%;" onerror="this.style.display='none'" />
+        <img src="images_kudremukha/flowers_V.JPG" alt="The muddy jeep road from Balagalu" style="object-position:center 55%;" onerror="this.style.display='none'" />
+        <img src="images_kudremukha/mullodi_waterfalls_V.PNG" alt="Waterfall near Mullodi" style="object-position:center 50%;" onerror="this.style.display='none'" />
+      </div>
+      <div class="img-caption">Balagalu to Mullodi. A muddy road, a roaring waterfall, and the trail hadn't even started.</div>
+    </div>
+
+    <!-- ASCENT PART 1 -->
+    <div class="day-header" style="margin-top:3rem;">
+      <div class="day-number">01</div>
+      <div class="day-info">
+        <div class="day-name">Balagalu → Streams → Onti Mara</div>
+        <div class="day-altitude">Monsoon · Forest, Streams, and the First Leeches</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_kudremukha/tree_V.jpg" alt="Checking for leeches on the Kudremukha trail" style="height:420px; object-fit:cover; object-position:center 35%;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Dettol, salt water, and checking my socks more than felt necessary.</div>
+      </div>
+
+      <p>There's a single tree at the start, and then the forest entry point, and then there's no pretending anymore — you're in it. The first real obstacle is a stream crossing they call Nose Stream. You get through it. You think that's the hard part done.</p>
+
+      <p>It isn't. The thick forest trail comes next, where your boots and the mud start negotiating with every step, and that's exactly when the leeches show up. They don't announce themselves. They just arrive, small and sure of themselves, like they've been expecting you. Carry a bottle of diluted Dettol with salt in it — separate from your drinking water, always — and check your socks more often than feels necessary.</p>
+
+      <p>Then the trail opens. Grassland, then forest again, then a water crossing, and the whole pattern repeats — enough times that you stop tracking which stream is which. Purple flowers along the path. Birds you can hear but rarely see. And underfoot, mud so consistent it starts to feel like part of the trail's personality.</p>
+    </div>
+
+    <div class="reveal" style="margin:3rem 0;">
+      <div class="img-pair">
+        <img src="images_kudremukha/rock and mud_V.PNG" alt="Nirmala in the Kudremukha forest" style="object-position:center 30%;" onerror="this.style.display='none'" />
+        <img src="images_kudremukha/nimsmile_leaf.jpeg" alt="Smiling on the forest trail" style="object-position:center 30%;" onerror="this.style.display='none'" />
+      </div>
+      <div class="img-caption">Five landscapes, on repeat. This was the forest one.</div>
+    </div>
+
+    <div class="pull-quote">
+      You stomp into a water-filled pond and something in you goes quiet and delighted at the same time. Like you're seven years old again and no one told you to stop.
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_kudremukha/ontimara.jpeg" alt="Onti Mara, the single tree on Kudremukha" style="height:380px; object-fit:cover; object-position:center 50%;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Onti Mara. One tree, and grass that comes back green every year.</div>
+      </div>
+      <p>Onti Mara — the single tree, in Kannada — is the halfway point. Around it, shola grassland stretches out, the specialty of the Western Ghats. This grass survives summers that should kill it. It dries out, it browns, it looks finished. Then the monsoon comes and the roots — which hold water the entire time, even through the driest months — send the whole meadow green again like nothing happened. Onti Mara doesn't look dramatic. It just quietly refuses to die, every single year.</p>
+    </div>
+
+    <div class="full-bleed reveal" style="margin:3rem 0;">
+      <img src="images_kudremukha/kudremukha top.jpeg" alt="Shola grasslands near Onti Mara on the Kudremukha trek" style="object-position:center 55%;" onerror="this.style.display='none'" />
+      <div class="img-caption container">Onti Mara country. The halfway point, and the first place the grasslands really open up.</div>
+    </div>
+
+    <!-- ASCENT PART 2 -->
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-info">
+        <div class="day-name">The Zigzag Climb</div>
+        <div class="day-altitude">60-Degree Ascent · A Waterfall No One Notices</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-left">
+        <img src="images_kudremukha/waterfall_inner_v.PNG" alt="Hidden monsoon waterfall on the Kudremukha trail" style="height:420px; object-fit:cover; object-position:center 55%;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">One curve, easy to miss. Then a waterfall that only exists because of the rain that's soaking you.</div>
+      </div>
+
+      <p>Past Onti Mara, the trail stops being gentle. The ascent steepens to something close to 60 degrees, and the path switches back on itself in a zigzag to keep the strain manageable. The soil here is loose, wet, and has no loyalty to your boots. Watching someone else slide is funny. Being the one who slides is not.</p>
+
+      <p>There's one last curve near the top of the zigzag that most people walk straight past — nothing marks it, nothing points to it. But in peak monsoon, there's a waterfall there. It exists because of the exact rain that's currently running down your collar. Raw, loud, completely unbothered by whether anyone sees it. You stand there for a second longer than planned.</p>
+    </div>
+
+    <!-- THE SUMMIT -->
+    <div class="day-header">
+      <div class="day-number">03</div>
+      <div class="day-info">
+        <div class="day-name">The Summit</div>
+        <div class="day-altitude">1894 m · Wind and Rain, Together, Fully</div>
+      </div>
+    </div>
+
+    <p>Past the zigzag, the trail moves through ridges and steep sections until it flattens out. On that flat stretch, there's one more small stream to cross before the final steep push to the top. Nothing about the last section is gentle — it saves its worst for right before the summit, on purpose or not.</p>
+
+    <p>At the top, the wind doesn't just blow — it pushes. It leans into you like it wants you gone. And the rain comes with it, sideways, hitting skin like it means to. I have trekked through a lot of the Western Ghats in monsoon. I have not felt wind and rain arrive together, at that force, anywhere else the way I felt it at Kudremukha's summit.</p>
+
+    <div class="full-bleed reveal" style="margin:3rem 0;">
+      <img src="images_kudremukha/top_view_H.JPG" alt="View from the top of Kudremukha" style="object-position:center 55%;" onerror="this.style.display='none'" />
+      <div class="img-caption container">The view from the top, on the rare moment the cloud allowed it.</div>
+    </div>
+
+    <div class="summit-grid">
+      <div class="summit-cell">
+        <span class="summit-cell-label">Summit</span>
+        <span class="summit-cell-value">1894 m</span>
+        <span class="summit-cell-note">Second-highest point in Karnataka. Wind that pushes you back a full step. No shelter, no waiting it out.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Halfway</span>
+        <span class="summit-cell-value">Onti Mara</span>
+        <span class="summit-cell-note">The single tree. Shola grassland all around it, dead in summer, green again the moment the rain starts.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Waterfall</span>
+        <span class="summit-cell-value">Near the Zigzag</span>
+        <span class="summit-cell-note">No name, no sign. Only there in peak monsoon, on a curve most people walk past without looking.</span>
+      </div>
+      <div class="summit-cell">
+        <span class="summit-cell-label">Companions</span>
+        <span class="summit-cell-value">Leeches</span>
+        <span class="summit-cell-note">From the forest entry onward. Dettol and salt water, checked socks, and you learn to live with it.</span>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      The wind didn't ask if I was ready. It just pushed, and the rain went straight through my skin, and I stood there anyway.
+    </div>
+
+    <!-- DESCENT -->
+    <div class="day-header">
+      <div class="day-number">04</div>
+      <div class="day-info">
+        <div class="day-name">The Descent — Streams That Grew</div>
+        <div class="day-altitude">Balagalu, the Long Way Back</div>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="img-float-right">
+        <img src="images_kudremukha/people_rivercrossing_1_V.PNG" alt="Trekkers crossing a flooded stream on the descent from Kudremukha" style="height:420px; object-fit:cover; object-position:center 55%;" onerror="this.style.display='none'" />
+        <div class="img-caption" style="background:var(--card); padding:0.6rem 0.9rem; font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The small stream near the summit wasn't small on the way down. Local guides got everyone across.</div>
+      </div>
+
+      <p>The small stream we'd stepped over near the summit on the way up wasn't small on the way down. It had rained without stopping since morning, and what had been an easy crossing was now a real one — fast, full, and not interested in letting anyone through without a plan. We stood there for a while, waiting for it to settle. It didn't.</p>
+
+      <p>Local guides got us across. Not with rope or gear — with knowledge. They know this river's moods the way you know a friend's. Kudos doesn't cover it. Every stream we'd crossed on the way up had grown by the time we came back down, and every time, the same quiet, competent help got everyone through.</p>
+
+      <p>By the end, everyone was exhausted in the specific way only rain and altitude can produce — not the tiredness of a 20 km walk on flat road, but something else entirely. Boots full of water, a leech or two still trying its luck, mud that didn't care that we were almost done. That's how a Kudremukha trek ends. Soaked, tired, and completely certain it was worth it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="closing-quote-section">
+  <div class="container">
+    <blockquote>
+      A mountain shaped like a horse's face,<br>and rivers born quietly in its hills —<br>I left with mud in my boots and none of it in a hurry to leave me.
+    </blockquote>
+    <cite>— Kudremukha Peak, Monsoon</cite>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="itinerary-section">
+  <div class="container">
+    <span class="section-eyebrow">Trail Breakdown</span>
+    <h2>How the Day<br><em>Unfolds</em></h2>
+    <p class="iti-subtitle">A long day trek from Balagalu via the Mullodi checkpost. Start early — 20 km in monsoon takes longer than the number suggests.</p>
+
+    <div class="iti-header">
+      <span>Phase</span>
+      <span>Route / Section</span>
+      <span>Altitude</span>
+      <span>Distance</span>
+    </div>
+
+    <div class="iti-cards">
+      <div class="iti-card">
+        <div class="iti-card-day">
+          <span class="day-num">Pre</span>
+          <span class="day-word">Dawn · Checkpost</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Balagalu → Mullodi Checkpost</div>
+          <div class="iti-card-highlight">Register at the checkpost. This is also where the single-tree starting point and forest entry begin.</div>
+        </div>
+        <div class="iti-card-alt">~700 m</div>
+        <div class="iti-card-km">—</div>
+      </div>
+
+      <div class="iti-card iti-card-summit">
+        <div class="iti-card-day">
+          <span class="day-num">A</span>
+          <span class="day-word">Ascent</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Mullodi → Stream crossings → Onti Mara → Zigzag → Summit</div>
+          <div class="iti-card-highlight">Forest, leech territory, shola grasslands, a steep zigzag climb, and a hidden waterfall near the top.</div>
+        </div>
+        <div class="iti-card-alt">1894 m</div>
+        <div class="iti-card-km">~10 km</div>
+      </div>
+
+      <div class="iti-card">
+        <div class="iti-card-day">
+          <span class="day-num">Mid</span>
+          <span class="day-word">Summit</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Kudremukha Peak</div>
+          <div class="iti-card-highlight">Full-force wind and rain. No shelter. A short stream crossing just before the final push.</div>
+        </div>
+        <div class="iti-card-alt">1894 m</div>
+        <div class="iti-card-km">—</div>
+      </div>
+
+      <div class="iti-card">
+        <div class="iti-card-day">
+          <span class="day-num">D</span>
+          <span class="day-word">Descent</span>
+        </div>
+        <div class="iti-card-main">
+          <div class="iti-card-route">Summit → Onti Mara → Mullodi → Balagalu</div>
+          <div class="iti-card-highlight">Same streams, higher and faster. Local guides essential for crossings after sustained rain.</div>
+        </div>
+        <div class="iti-card-alt">700 m</div>
+        <div class="iti-card-km">~10 km</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="add-photos reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Frames I Lived</span>
+    <h2>Every Frame<br><em>Tells a Story</em></h2>
+    <p class="hint">Twenty kilometres, a lot of rain, and a mountain that looks like a horse. These are the frames that stayed with me.</p>
+    <div id="gal-grid-wrapper" class="photo-slots"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-modal">
+    <div class="lb-top">
+      <span class="lb-counter" id="lb-counter"></span>
+      <button class="lb-close" id="lb-close" aria-label="Close">×</button>
+    </div>
+    <div class="lb-img-area">
+      <button class="lb-arrow left"  id="lb-prev" aria-label="Previous photo">‹</button>
+      <img id="lb-img" src="" alt="" />
+      <button class="lb-arrow right" id="lb-next" aria-label="Next photo">›</button>
+    </div>
+    <div class="lb-bottom">
+      <p class="lb-caption" id="lb-caption"></p>
+      <div class="lb-dots" id="lb-dots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTHOR -->
+<section id="author" class="author-section">
+  <div class="container">
+    <div class="author-inner">
+      <div class="author-photo">
+        <img src="images_kudremukha/Nirmala_badami.jpeg" style="object-fit:cover; object-position:center top;" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+      <div class="author-text">
+        <span class="section-eyebrow">About the Author</span>
+        <h2>Getting Lost<br>to Find Myself</h2>
+        <p>I'm someone who feels most alive in places where the trail gets quieter, the rain gets heavier, and the mountains strip life down to its simplest form. This blog is my honest account of walking through the Western Ghats — the slippery descents, river crossings, soaked boots, and the kind of silence only the mountains can give. Every trek leaves me with muddy shoes, tired legs, and a version of myself I understand a little better.</p>
+        <p style="margin-top:1rem;">Kudremukha was the toughest twenty kilometres I've walked in the Ghats so far. It will not be the last time I walk them.</p>
+        <div class="treks-done">
+          <span class="treks-label">Treks done</span>
+          <div class="trek-tags">
+            <span class="trek-tag current">Kudremukha ★</span>
+            <span class="trek-tag">Netravathi Peak</span>
+            <span class="trek-tag">Bandaje Falls Trek</span>
+            <span class="trek-tag">Kurinjal</span>
+            <span class="trek-tag">Kodachadri</span>
+          </div>
+          <span class="dreams-label">On the dream list</span>
+          <div class="trek-tags">
+            <span class="trek-tag future-tag">Annapurna Base Camp</span>
+            <span class="trek-tag future-tag">Manaslu Circuit</span>
+            <span class="trek-tag future-tag">Everest Base Camp</span>
+            <span class="trek-tag future-tag">K2 Base Camp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAVE NO TRACE -->
+<section id="awareness" class="awareness-section reveal">
+  <div class="awareness-inner">
+    <span class="section-eyebrow">Leave No Trace</span>
+    <h2>The Trail Gives.<br><em>Don't Take More Than You Should.</em></h2>
+    <p class="awareness-intro">
+      The grasslands at Kudremukha are protected forest. There are signs saying so. There were also three empty water bottles near the summit that weren't there when the signs were put up. The signs are still standing. The bottles were still there when I descended.
+    </p>
+
+    <p class="scroll-hint">Scroll to read</p>
+
+    <div class="awareness-strip-wrap">
+      <div class="awareness-strip">
+        <div class="awareness-card">
+          <span class="awareness-icon">🎒</span>
+          <span class="awareness-title">What Goes Up, Comes Down</span>
+          <p class="awareness-body">The mountain isn't managing your waste for you. Every wrapper, every bottle cap you drop stays there for years — the rain won't clear it, the wind won't move it anywhere better. If it came up in your bag going in, it comes back down in your bag going out. Not negotiable.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🧴</span>
+          <span class="awareness-title">Not One More Bisleri</span>
+          <p class="awareness-body">Three rivers begin in these hills — the Tunga, the Bhadra, the Netravathi — none of them starting out as plastic. Carry a steel bottle. Fill it where the guides tell you to. This mountain feeds half of Karnataka's water. It doesn't need yours made of plastic.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🍫</span>
+          <span class="awareness-title">The Wrapper Outlives You</span>
+          <p class="awareness-body">A biscuit takes a minute to eat. The wrapper takes 400 years to break down. The energy bar foil, the chips packet — none of it disappears because you left it on a rock at Onti Mara. Bring a small zip-lock for your trash. Take it all the way home.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🔇</span>
+          <span class="awareness-title">The Forest Has Its Own Sounds</span>
+          <p class="awareness-body">Birdsong, wind through shola grass, water finding its way downhill — that's the soundtrack this trail already has. Loud music stresses the wildlife and drowns out the only reason most of us climbed up here. Headphones exist. Use them.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🌱</span>
+          <span class="awareness-title">One Shortcut, Ten Years of Erosion</span>
+          <p class="awareness-body">The zigzag exists because someone worked out the path that damages the slope least. Cutting across it tramples roots that hold the whole hillside together. A hundred trekkers taking the same shortcut turns it into an erosion scar the next monsoon won't forgive.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🔥</span>
+          <span class="awareness-title">The Forest Floor Took Decades</span>
+          <p class="awareness-body">No fire unless there's a designated pit — and on this trail, there usually isn't one. The forest floor here took years to build itself into what it is. Pack a better layer if the rain gets to you. Don't burn what you can't rebuild.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🪨</span>
+          <span class="awareness-title">You Are a Visitor Here</span>
+          <p class="awareness-body">The purple flowers along the trail, the moss on the rocks near the streams — they belong to Kudremukha, not to your pocket. Take a photo if you need to remember them. Then leave them exactly where you found them, growing.</p>
+        </div>
+        <div class="awareness-card">
+          <span class="awareness-icon">🐾</span>
+          <span class="awareness-title">Your Photo Is Not Worth Their Fear</span>
+          <p class="awareness-body">Kudremukha is a protected reserve for a reason — the wildlife here is genuinely wild, and genuinely shy of you. Don't follow, don't chase, don't feed. Step back, use your zoom, and let them stay exactly as unbothered as they were before you arrived.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="awareness-close">
+      Kudremukha is one of the most biodiverse places on earth. It is also disappearing.<br>What you do on the trail is part of that story, whether you mean it to be or not.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">The mountain with a horse's face</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves."</p>
+  <p>Kudremukha Peak &nbsp;·&nbsp; Western Ghats, Chikkamagaluru &nbsp;·&nbsp; Monsoon</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank">@she_explores.wild</a></p>
+  <p>© 2025 She Explores Wild · Nirmala Singh. All rights reserved.</p>
+  <p>Made with love &amp; altitude sickness ♥</p>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 55); }, { passive: true });
+
+  // ── Hamburger / mobile menu ──
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => {
+    if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+  });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+
+<script>
+  // ── Gallery + Lightbox ──────────────────────────────────────────
+  const photos = [
+    { src:'images_kudremukha/ilove_kudremukha_H.JPG', pos:'center 55%', caption:'The base. Wet already, and the trail hadn\'t even started.' },
+    { src:'images_kudremukha/flowers_V.JPG', pos:'center 50%', caption:'Purple along the path. Photo yes, plucking no.' },
+    { src:'images_kudremukha/mullodi_waterfalls_H.PNG', pos:'center 50%', caption:'Mullodi. The first water of the day, loud before the trail begins.' },
+    { src:'images_kudremukha/trench_mud_V.PNG', pos:'center 60%', caption:'The trail narrows to a trench of mud. You go where it goes.' },
+    { src:'images_kudremukha/Nim_V.JPG', pos:'center 30%', caption:'The forest closes in. This is where it stops pretending.' },
+    { src:'images_kudremukha/base_V.JPG', pos:'center 55%', caption:'A board in the grass, reminding you whose home this is.' },
+    { src:'images_kudremukha/people_V.PNG', pos:'center 65%', caption:'Ponchos, mud, and everyone still moving.' },
+    { src:'images_kudremukha/top_sunny.jpeg', pos:'center 60%', caption:'Held for a photo. Left where it grew.' },
+    { src:'images_kudremukha/waterfalls_onhill.PNG', pos:'center 50%', caption:'Rain finding its own way down the hill.' },
+    { src:'images_kudremukha/hills_H.PNG', pos:'center 50%', caption:'The hills keep stacking up behind the cloud.' },
+    { src:'images_kudremukha/jeep_V.JPG', pos:'center 65%', caption:'Parked, patient, and waiting out the rain.' },
+    { src:'images_kudremukha/buffalo_H.JPG', pos:'center 50%', caption:'Back at the meadow, where nothing had hurried.' },
+  ];
+
+  const grid      = document.getElementById('gal-grid-wrapper');
+  const overlay   = document.getElementById('lb-overlay');
+  const lbImg     = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbDots    = document.getElementById('lb-dots');
+  let current = 0;
+
+  photos.forEach(function(photo, i) {
+    const fig = document.createElement('figure');
+    fig.className = 'photo-slot';
+    const img = document.createElement('img');
+    img.src     = photo.src;
+    img.alt     = photo.caption;
+    img.style.objectPosition = photo.pos || 'center';
+    img.loading = 'lazy';
+    img.onerror = function() { this.style.display = 'none'; };
+    fig.appendChild(img);
+    fig.addEventListener('click', function() { openLightbox(i); });
+    grid.appendChild(fig);
+
+    const dot = document.createElement('button');
+    dot.className = 'lb-dot';
+    dot.setAttribute('aria-label', 'Photo ' + (i + 1));
+    dot.dataset.index = i;
+    dot.addEventListener('click', function() { goTo(+this.dataset.index); });
+    lbDots.appendChild(dot);
+  });
+
+  function openLightbox(i) {
+    current = i;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateLightbox();
+  }
+  function closeLightbox() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function goTo(i) { current = i; updateLightbox(); }
+  function updateLightbox() {
+    lbImg.style.opacity = '0';
+    setTimeout(function() {
+      lbImg.src = photos[current].src;
+      lbImg.alt = photos[current].caption;
+      lbCaption.textContent = photos[current].caption;
+      lbCounter.textContent = (current + 1) + ' / ' + photos.length;
+      lbImg.style.opacity = '1';
+    }, 160);
+    document.querySelectorAll('.lb-dot').forEach(function(dot, i) {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-next').addEventListener('click', function() { current = (current + 1) % photos.length; updateLightbox(); });
+  document.getElementById('lb-prev').addEventListener('click', function() { current = (current - 1 + photos.length) % photos.length; updateLightbox(); });
+
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeLightbox(); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') { current = (current + 1) % photos.length; updateLightbox(); }
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + photos.length) % photos.length; updateLightbox(); }
+    if (e.key === 'Escape')     { closeLightbox(); }
+  });
+
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  overlay.addEventListener('touchend', function(e) {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      current = diff > 0 ? (current + 1) % photos.length : (current - 1 + photos.length) % photos.length;
+      updateLightbox();
+    }
+  }, { passive: true });
+</script>
+
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+</script>
+</body>
+</html>

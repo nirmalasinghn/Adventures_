@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="New to trekking? Start here. The things no one tells you before your first mountain in the Western Ghats — honest, practical, from the trail itself. By She Explores Wild." />
+  <title>The Beginner's Guide — Western Ghats Treks · She Explores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:         #060e09;
+      --card:         #0c1a0f;
+      --midnight:     #08110a;
+      --alpine:       #3a7a50;
+      --alpine-lt:    #68b882;
+      --alpine-glow:  #aadf70;
+      --snow:         #eef2f5;
+      --frost:        #c4e8d0;
+      --stone:        #7a9480;
+      --border:       rgba(255,255,255,0.06);
+      --amber:        #5faa72;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scrollbar-width: none; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    body { background: var(--deep); color: var(--snow); font-family: var(--font-body); font-weight: 300; line-height: 1.72; overflow-x: hidden; scrollbar-width: none; -webkit-touch-callout: none; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+    strong { color:#b9b9b9; font-weight:600; }
+    img { -webkit-user-drag: none; user-select: none; }
+
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; }
+
+    /* NAV */
+    nav { position:fixed; inset:0 0 auto; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 3.5rem; background:rgba(6,14,9,0); transition:background .4s,padding .4s,backdrop-filter .4s; }
+    nav.scrolled { background:rgba(6,14,9,0.96); padding:1rem 3.5rem; backdrop-filter:blur(12px); }
+    .nav-brand { font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--snow); }
+    .nav-links { list-style:none; display:flex; gap:2.2rem; }
+    .nav-links a { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(238,242,245,.45); transition:color .3s; }
+    .nav-links a:hover { color:var(--alpine-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:0.3rem; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position:fixed; inset:0; background:rgba(6,14,9,0.98); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu ul { list-style:none; text-align:center; }
+    .mobile-menu li { margin-bottom:1.6rem; }
+    .mobile-menu a { font-family:var(--font-display); font-size:2.2rem; font-style:italic; color:var(--snow); transition:color .3s; }
+    .mobile-menu a:hover { color:var(--alpine-lt); }
+    .mobile-menu-footer { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+    /* READING PROGRESS */
+    .read-progress { position:fixed; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg,var(--alpine),var(--alpine-glow)); z-index:300; }
+
+    /* HERO */
+    .hero { position:relative; min-height:92svh; display:flex; align-items:flex-end; overflow:hidden; background:
+      radial-gradient(ellipse 90% 60% at 20% 0%, rgba(58,122,80,0.22), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 90% 10%, rgba(104,184,130,0.10), transparent 55%),
+      var(--deep); }
+    .hero-bg { position:absolute; inset:0; background-size:cover; background-repeat:no-repeat; background-position:center; animation:zoomBg 22s ease-out forwards; }
+    @keyframes zoomBg { from{transform:scale(1.07)} to{transform:scale(1)} }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(6,14,9,.1) 0%,rgba(6,14,9,.35) 45%,rgba(6,14,9,.98) 100%); }
+    .contour-lines { position:absolute; inset:0; width:100%; height:100%; opacity:0.5; pointer-events:none; }
+
+    /* PHOTO SLOTS */
+    /* 16:9 frame shows ~3/4 of the height of the 4:3 photos used here */
+    .full-bleed { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; }
+    .full-bleed img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter:brightness(.84) saturate(.88); transition:filter .5s; }
+    .full-bleed:hover img { filter:brightness(.9) saturate(1); }
+    .full-bleed .img-caption { position:absolute; left:0; right:0; bottom:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(6,14,9,.85),transparent); font-size:.75rem; font-style:italic; color:var(--frost); text-align:center; }
+    .hero-content { position:relative; z-index:2; padding:8rem 3.5rem 5rem; max-width:980px; opacity:0; animation:riseIn 1.3s .2s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes riseIn { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .hero-tag { display:inline-flex; align-items:center; gap:.8rem; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; display:block; width:24px; height:1px; background:var(--alpine); }
+    .hero-title { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:300; line-height:.95; letter-spacing:-.01em; color:var(--snow); margin-bottom:1.6rem; }
+    .hero-title em { color:var(--alpine-glow); }
+    .hero-sub { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.4rem); font-style:italic; font-weight:300; color:rgba(238,242,245,.55); max-width:620px; line-height:1.55; margin-bottom:2.4rem; }
+    .hero-meta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .meta-pill { display:flex; align-items:center; gap:.5rem; font-size:.72rem; padding:.4em 1em; border:1px solid rgba(104,184,130,.22); background:rgba(104,184,130,.06); color:var(--frost); backdrop-filter:blur(8px); }
+
+    /* STATS BAR */
+    .stats-bar { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat-item { padding:2.6rem 3.5rem; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:.3rem; }
+    .stat-item:last-child { border-right:none; }
+    .stat-number { font-family:var(--font-display); font-size:3rem; font-weight:300; line-height:1; color:var(--snow); }
+    .stat-label { font-size:.72rem; color:var(--stone); letter-spacing:.04em; line-height:1.5; }
+
+    /* TABLE OF CONTENTS */
+    .toc { max-width:820px; margin:0 auto; padding:4rem 2rem 0; }
+    .toc-title { font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--stone); margin-bottom:1.2rem; }
+    .toc ol { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); counter-reset:toc; }
+    .toc li { counter-increment:toc; background:var(--card); }
+    .toc a { display:flex; gap:1rem; align-items:baseline; padding:1rem 1.3rem; font-size:.88rem; color:rgba(238,242,245,.7); transition:background .3s,color .3s; }
+    .toc a::before { content:counter(toc, decimal-leading-zero); font-family:var(--font-display); font-size:1.1rem; color:var(--alpine-lt); min-width:1.6rem; }
+    .toc a:hover { background:rgba(104,184,130,.06); color:var(--snow); }
+
+    /* SHARED */
+    .container { max-width:820px; margin:0 auto; padding:5rem 2rem; }
+    section.alt { background:var(--midnight); }
+    .section-eyebrow { display:inline-flex; align-items:center; gap:.9rem; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:1.2rem; }
+    .section-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--alpine); }
+    h2 { font-family:var(--font-display); font-size:clamp(2rem,4.5vw,3.5rem); font-weight:300; line-height:1.15; color:var(--snow); margin-bottom:1.6rem; }
+    h2 em { color:var(--alpine-glow); }
+    h3 { font-family:var(--font-display); font-size:1.5rem; font-weight:400; color:var(--snow); margin:2.4rem 0 .8rem; }
+    p { font-size:.97rem; line-height:1.9; color:rgba(238,242,245,.65); margin-bottom:1.4rem; }
+    p:last-child { margin-bottom:0; }
+    .drop-cap::first-letter { font-family:var(--font-display); font-size:4.2rem; font-weight:400; line-height:.78; float:left; margin:.1em .12em 0 0; color:var(--alpine-lt); }
+    .pull-quote { margin:3rem 0; padding:1.4rem 0 1.4rem 2rem; border-left:2px solid var(--alpine); font-family:var(--font-display); font-size:clamp(1.25rem,2.5vw,1.75rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.5; }
+    .inline-link { color:var(--alpine-lt); border-bottom:1px solid rgba(104,184,130,.3); transition:color .3s,border-color .3s; }
+    .inline-link:hover { color:var(--snow); border-color:var(--snow); }
+
+    .highlight-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(95,170,114,.05); border:1px solid rgba(95,170,114,.18); border-left:3px solid var(--amber); }
+    .highlight-block p { color:rgba(238,242,245,.7); font-family:var(--font-display); font-size:1.1rem; font-style:italic; line-height:1.8; margin:0; }
+    .note-block { margin:2.5rem 0; padding:2rem 2.2rem; background:rgba(58,122,80,.06); border:1px solid rgba(58,122,80,.2); border-left:3px solid var(--alpine); }
+    .note-block p { color:rgba(238,242,245,.7); margin:0; }
+    .note-label { display:block; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:.6rem; }
+
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+
+    /* CARD GRID */
+    .card-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin-top:2rem; }
+    .card { background:var(--card); padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:.5rem; }
+    .card-icon { font-size:1.6rem; line-height:1; margin-bottom:.4rem; }
+    .card-title { font-family:var(--font-display); font-size:1.3rem; color:var(--snow); line-height:1.3; }
+    .card p { font-size:.84rem; line-height:1.75; margin:0; }
+
+    /* DIFFICULTY TABLE */
+    .grade-table { width:100%; border-collapse:collapse; margin-top:2rem; font-size:.86rem; }
+    .grade-table th { text-align:left; font-weight:400; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); padding:.9rem 1rem; border-bottom:1px solid rgba(104,184,130,.25); }
+    .grade-table td { padding:1.1rem 1rem; border-bottom:1px solid var(--border); color:rgba(238,242,245,.68); vertical-align:top; line-height:1.6; }
+    .grade-table td:first-child { font-family:var(--font-display); font-size:1.15rem; color:var(--snow); white-space:nowrap; }
+    .grade-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:.6rem; vertical-align:middle; }
+
+    /* SEASON STRIP */
+    .season-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:2rem; }
+    .season { background:var(--card); padding:1.8rem 1.5rem; }
+    .season-months { font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--alpine-lt); margin-bottom:.5rem; }
+    .season-name { font-family:var(--font-display); font-size:1.4rem; color:var(--snow); margin-bottom:.6rem; }
+    .season p { font-size:.82rem; line-height:1.7; margin:0; }
+    .season.best { background:rgba(104,184,130,.07); }
+    .season-badge { display:inline-block; font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--deep); background:var(--alpine-lt); padding:.2em .7em; margin-bottom:.8rem; }
+
+    /* DO / DON'T */
+    .dodont { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin-top:2rem; }
+    .dodont-col { background:var(--card); padding:2rem 1.8rem; }
+    .dodont-head { font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:1.2rem; }
+    .dodont-col.do .dodont-head { color:var(--alpine-lt); }
+    .dodont-col.dont .dodont-head { color:#d98b7a; }
+    .dodont-col ul { list-style:none; display:flex; flex-direction:column; gap:.9rem; }
+    .dodont-col li { font-size:.86rem; line-height:1.65; color:rgba(238,242,245,.68); padding-left:1.4rem; position:relative; }
+    .dodont-col.do li::before { content:'✓'; position:absolute; left:0; color:var(--alpine-lt); }
+    .dodont-col.dont li::before { content:'✕'; position:absolute; left:0; color:#d98b7a; }
+
+    /* FAQ */
+    .faq { margin-top:2rem; border-top:1px solid var(--border); }
+    .faq details { border-bottom:1px solid var(--border); }
+    .faq summary { list-style:none; cursor:pointer; padding:1.4rem 2.4rem 1.4rem 0; position:relative; font-family:var(--font-display); font-size:1.25rem; color:var(--snow); transition:color .3s; }
+    .faq summary::-webkit-details-marker { display:none; }
+    .faq summary::after { content:'+'; position:absolute; right:.2rem; top:50%; transform:translateY(-50%); font-family:var(--font-body); font-size:1.3rem; color:var(--alpine-lt); transition:transform .3s; }
+    .faq details[open] summary::after { transform:translateY(-50%) rotate(45deg); }
+    .faq summary:hover { color:var(--alpine-lt); }
+    .faq details p { font-size:.9rem; padding:0 0 1.5rem; margin:0; }
+    .faq.numbered { counter-reset:q; }
+    .faq.numbered details { counter-increment:q; }
+    .faq.numbered summary { padding-left:3rem; }
+    .faq.numbered summary::before { content:counter(q, decimal-leading-zero); position:absolute; left:0; top:50%; transform:translateY(-50%); font-size:1.5rem; color:var(--alpine-lt); opacity:.8; }
+    .faq.numbered details p { padding-left:3rem; }
+
+    /* NEXT STEPS */
+    .next-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:2rem; }
+    .next-card { background:var(--card); padding:2rem 1.6rem; display:flex; flex-direction:column; gap:.5rem; transition:background .3s; }
+    .next-card:hover { background:rgba(104,184,130,.07); }
+    .next-kicker { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--alpine-lt); }
+    .next-title { font-family:var(--font-display); font-size:1.4rem; color:var(--snow); line-height:1.25; }
+    .next-desc { font-size:.8rem; color:var(--stone); line-height:1.65; }
+    .next-arrow { margin-top:auto; padding-top:.8rem; font-size:.75rem; color:var(--alpine-lt); letter-spacing:.08em; }
+
+    /* CLOSING QUOTE */
+    .closing-quote-section { padding:6rem 0; text-align:center; border-top:1px solid var(--border); }
+    .closing-quote-section blockquote { font-family:var(--font-display); font-size:clamp(1.6rem,3.5vw,2.8rem); font-style:italic; font-weight:300; color:var(--frost); line-height:1.4; max-width:700px; margin:0 auto; }
+    .closing-quote-section cite { display:block; margin-top:1.4rem; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); font-style:normal; }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:2rem 3.5rem 3rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.1rem; }
+    .footer-brand { font-family:var(--font-display); font-size:1.6rem; font-style:italic; font-weight:300; color:var(--snow); }
+    footer p { font-size:.78rem; color:var(--stone); margin:0; }
+    .hillary-quote { font-family:var(--font-display); font-size:1.05rem !important; font-style:italic; color:var(--frost) !important; max-width:560px; }
+    .insta-link a { color:var(--alpine-lt); transition:color .3s; }
+    .insta-link a:hover { color:var(--snow); }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:7rem 1.5rem 3.5rem; }
+      .stats-bar { grid-template-columns:1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .container { padding:4rem 1.5rem; }
+      .toc { padding:3rem 1.5rem 0; }
+      .season-strip, .next-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:640px) {
+      .toc ol, .card-grid, .dodont { grid-template-columns:1fr; }
+      .faq.numbered summary, .faq.numbered details p { padding-left:2.4rem; }
+      .grade-table th:nth-child(3), .grade-table td:nth-child(3) { display:none; }
+    }
+    @media (max-width:520px) {
+      .hero-title { font-size:clamp(2.6rem,15vw,4.5rem); }
+      footer { padding:2rem 1.5rem 3rem; }
+      .pull-quote { padding:1rem 0 1rem 1.4rem; }
+      .highlight-block, .note-block { padding:1.5rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="read-progress" id="readProgress"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">she explores</a>
+  <ul class="nav-links">
+    <li><a href="#truths">The Truths</a></li>
+    <li><a href="#first-trek">First Trek</a></li>
+    <li><a href="#on-trail">On the Trail</a></li>
+    <li><a href="#ghats">The Ghats</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#truths" class="mobile-nav-link">The Truths</a></li>
+    <li><a href="#first-trek" class="mobile-nav-link">First Trek</a></li>
+    <li><a href="#on-trail" class="mobile-nav-link">On the Trail</a></li>
+    <li><a href="#ghats" class="mobile-nav-link">The Ghats</a></li>
+    <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+  </ul>
+  <p class="mobile-menu-footer">Beginner's Guide &nbsp;·&nbsp; Western Ghats</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images_fitness/greenary_H.jpg'); background-position:center 55%;"></div>
+  <div class="hero-overlay"></div>
+  <svg class="contour-lines" viewBox="0 0 1200 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-50,600 C200,520 350,650 600,560 C850,470 950,600 1250,520" stroke="#3a7a50" stroke-width="1" fill="none" opacity="0.5"/>
+    <path d="M-50,650 C220,560 380,690 630,600 C880,510 980,640 1250,560" stroke="#3a7a50" stroke-width="1" fill="none" opacity="0.35"/>
+    <path d="M-50,550 C180,480 340,600 590,510 C840,420 940,550 1250,470" stroke="#68b882" stroke-width="1" fill="none" opacity="0.22"/>
+    <path d="M-50,700 C240,600 400,730 660,640 C900,550 1000,680 1250,600" stroke="#3a7a50" stroke-width="1" fill="none" opacity="0.25"/>
+    <path d="M-50,480 C160,420 320,540 570,450 C820,360 920,490 1250,410" stroke="#68b882" stroke-width="1" fill="none" opacity="0.14"/>
+  </svg>
+  <div class="hero-content">
+    <span class="hero-tag">Western Ghats &nbsp;·&nbsp; Beginner's Guide</span>
+    <h1 class="hero-title">New to Trekking?<br><em>Start Here.</em></h1>
+    <p class="hero-sub">The things no one tells you before your first mountain — honest, practical, from the trail itself.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">🌱 <span>Zero experience needed</span></div>
+      <div class="meta-pill">⛰️ <span>Western Ghats, Karnataka</span></div>
+      <div class="meta-pill">🥾 <span>Day treks</span></div>
+      <div class="meta-pill">🌧️ <span>Monsoon-aware</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">0</div>
+    <div class="stat-label">Treks you need to have done<br>before your first one</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">4–6<span style="font-size:1.4rem;color:var(--stone)"> wks</span></div>
+    <div class="stat-label">Of easy walking and stairs<br>is enough preparation</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1</div>
+    <div class="stat-label">Golden rule<br>The summit is optional. Coming back is not.</div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <div class="toc-title">In this guide</div>
+  <ol>
+    <li><a href="#truths">Things no one tells you</a></li>
+    <li><a href="#first-trek">Choosing your first trek</a></li>
+    <li><a href="#prepare">Getting ready</a></li>
+    <li><a href="#on-trail">On the trail</a></li>
+    <li><a href="#ghats">The Western Ghats, specifically</a></li>
+    <li><a href="#faq">Questions you're scared to ask</a></li>
+  </ol>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="container">
+    <span class="section-eyebrow">Before the First Step</span>
+    <h2>Nobody Was Born<br>a <em>Trekker</em></h2>
+    <p class="drop-cap">Every confident trekker you see was once the one stopping every ten minutes, red-faced, wondering why they signed up. I was. This guide is what I wish someone had told me before my first trek in the Western Ghats — the real version, not the brochure one.</p>
+    <div class="pull-quote">
+      You don't need to be fit to start trekking. You get fit because you started.
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO: first steps -->
+<div class="full-bleed full-bleed-tall reveal">
+  <img src="images_fitness/kodachadri_img.jpg" alt="Green Western Ghats landscape at the start of a trek" loading="lazy" onerror="this.parentElement.style.display='none'" />
+  <div class="img-caption">Everyone starts somewhere. Usually at the bottom, a little nervous.</div>
+</div>
+
+<!-- THINGS NO ONE TELLS YOU -->
+<section id="truths" class="alt reveal">
+  <div class="container">
+    <span class="section-eyebrow">The Honest Part</span>
+    <h2>Things No One<br><em>Tells</em> You</h2>
+    <p>Tap any one to open it.</p>
+    <div class="faq numbered">
+      <details>
+        <summary>The first hour is the hardest — not the last.</summary>
+        <p>Your body takes 30–45 minutes to find its rhythm. Feeling awful early is normal — it gets easier.</p>
+      </details>
+      <details>
+        <summary>Going down is harder than going up.</summary>
+        <p>The descent is where knees shake and most slips happen. Save energy for it.</p>
+      </details>
+      <details>
+        <summary>You will want to quit. More than once.</summary>
+        <p>That's just what effort feels like. Slow down, drink water, take ten more steps. Then ten more.</p>
+      </details>
+      <details>
+        <summary>Being the slowest is completely fine.</summary>
+        <p>It's not a race. A good group waits, and the mountain doesn't care how long you took.</p>
+      </details>
+      <details>
+        <summary>"Easy" on a trek website isn't easy for you.</summary>
+        <p>Grades are written by people who trek every weekend. Easy means moderate; moderate means challenging.</p>
+      </details>
+      <details>
+        <summary>The summit is often in the clouds.</summary>
+        <p>Especially in the Ghats. The view is a bonus, not a guarantee — the walk is still worth it.</p>
+      </details>
+      <details>
+        <summary>There are no toilets. Anywhere.</summary>
+        <p>Use the base village. On the trail, go well away from water and the path, and pack out your tissues.</p>
+      </details>
+      <details>
+        <summary>Your phone will lose signal — and battery.</summary>
+        <p>Download offline maps, use airplane mode between photos, and carry a power bank.</p>
+      </details>
+      <details>
+        <summary>Starting late is the most common mistake.</summary>
+        <p>Be at the trailhead by 6:30–7 am. Late starts mean peak heat and racing the sunset down.</p>
+      </details>
+      <details>
+        <summary>The day after will hurt more than the trek.</summary>
+        <p>Soreness peaks 24–48 hours later. Stretch, keep walking gently, and avoid stairs if you can.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CHOOSING YOUR FIRST TREK -->
+<section id="first-trek" class="reveal">
+  <div class="container">
+    <span class="section-eyebrow">Pick Your Mountain</span>
+    <h2>Choosing Your<br><em>First</em> Trek</h2>
+    <p>Your first trek should leave you tired and happy — not broken. Start smaller than your ego wants to.</p>
+
+    <table class="grade-table">
+      <thead>
+        <tr><th>Grade</th><th>What it really means</th><th>Typical day</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="grade-dot" style="background:#aadf70"></span>Easy</td>
+          <td>Well-defined path, gentle gradient, mostly walking. Ideal first trek.</td>
+          <td>6–10 km · 3–5 hrs</td>
+        </tr>
+        <tr>
+          <td><span class="grade-dot" style="background:#68b882"></span>Moderate</td>
+          <td>Steady climbs, some rocky or slippery stretches, longer day. Good second or third trek.</td>
+          <td>10–16 km · 5–8 hrs</td>
+        </tr>
+        <tr>
+          <td><span class="grade-dot" style="background:#d9b46a"></span>Difficult</td>
+          <td>Steep sustained ascents, scrambling, long distance. Needs prior experience and fitness.</td>
+          <td>16–24 km · 8–12 hrs</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Look for</h3>
+    <p><strong>Under 12 km</strong>, a <strong>clear popular trail</strong>, and <strong>a group or guide</strong> — never solo for your first few.</p>
+
+    <div class="note-block">
+      <span class="note-label">From my trail notes</span>
+      <p>Read my honest write-ups of <a href="bandaje.html" class="inline-link">Bandaje</a>, <a href="kudremukha.html" class="inline-link">Kudremukha</a>, <a href="netravathi.html" class="inline-link">Netravathi</a>, <a href="kodachadri.html" class="inline-link">Kodachadri</a> and <a href="kurinjil.html" class="inline-link">Kurinjal</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO: the trail -->
+<div class="full-bleed reveal">
+  <img src="images_fitness/sholaforest_H.JPG" alt="Shola forest and grassland on a Western Ghats trail" loading="lazy" onerror="this.parentElement.style.display='none'" />
+  <div class="img-caption">A clear path, a gentle climb — the perfect first trek.</div>
+</div>
+
+<!-- PREPARING YOUR BODY -->
+<section id="prepare" class="alt reveal">
+  <div class="container">
+    <span class="section-eyebrow">Body &amp; Gear</span>
+    <h2>Getting <em>Ready</em></h2>
+    <p>No gym needed. Four to six weeks of brisk walks, stair climbing and a few squats is enough. My <a href="fitness_guide.html" class="inline-link">fitness guide</a> has a simple routine.</p>
+    <p>Gear doesn't need to be expensive either — just right:</p>
+
+    <div class="dodont">
+      <div class="dodont-col do">
+        <div class="dodont-head">Wear this</div>
+        <ul>
+          <li>Shoes with deep, grippy soles — broken in beforehand</li>
+          <li>Quick-dry synthetic T-shirt and trek pants</li>
+          <li>A cap and a light rain layer</li>
+        </ul>
+      </div>
+      <div class="dodont-col dont">
+        <div class="dodont-head">Not this</div>
+        <ul>
+          <li>Brand-new shoes, sports sandals or flat-soled sneakers</li>
+          <li>Jeans or cotton anything — they stay wet and heavy</li>
+          <li>Jewellery, perfume or heavy makeup</li>
+          <li>A sling bag — you need both hands free</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem">Carry at least <strong>2 litres of water</strong>, snacks, ORS, a first aid kit, a headlamp and ID. Full checklist: <a href="packing_list.html" class="inline-link">The Packing List</a>.</p>
+  </div>
+</section>
+
+<!-- ON THE TRAIL -->
+<section id="on-trail" class="reveal">
+  <div class="container">
+    <span class="section-eyebrow">One Step at a Time</span>
+    <h2>On the <em>Trail</em></h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🗣️</span>
+        <div class="card-title">Pace yourself</div>
+        <p>If you can't talk in short sentences, you're going too fast.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⏸️</span>
+        <div class="card-title">Rest standing up</div>
+        <p>Short 1–2 minute breaks. Long sit-downs make your legs stiffen.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💧</span>
+        <div class="card-title">Drink before you're thirsty</div>
+        <p>Sip every 15–20 minutes, nibble something every hour.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⬇️</span>
+        <div class="card-title">Come down slowly</div>
+        <p>Knees soft, small steps, turn sideways on wet rock. Use your hands.</p>
+      </div>
+    </div>
+    <div class="highlight-block">
+      <p>Dizziness, chest pain, an injury, heavy rain or fading daylight — turn back. The mountain will still be there next season.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO: the Ghats -->
+<div class="full-bleed full-bleed-tall reveal">
+  <img src="images_fitness/netravathi_clouds_H.JPG" alt="Clouds rolling over the ridges at Netravathi" loading="lazy" onerror="this.parentElement.style.display='none'" />
+  <div class="img-caption">Older than the Himalayas. Wetter, greener, and full of surprises.</div>
+</div>
+
+<!-- THE WESTERN GHATS -->
+<section id="ghats" class="alt reveal">
+  <div class="container">
+    <span class="section-eyebrow">This Terrain, Specifically</span>
+    <h2>The Western Ghats<br>Are <em>Different</em></h2>
+
+    <div class="season-strip">
+      <div class="season">
+        <div class="season-months">Jun – Sep</div>
+        <div class="season-name">Monsoon</div>
+        <p>Lush and misty, but slippery and leech-filled. Many trails close.</p>
+      </div>
+      <div class="season best">
+        <span class="season-badge">Best for beginners</span>
+        <div class="season-months">Oct – Feb</div>
+        <div class="season-name">Post-monsoon &amp; Winter</div>
+        <p>Green, cool, clearer views and firmer trails.</p>
+      </div>
+      <div class="season">
+        <div class="season-months">Mar – May</div>
+        <div class="season-name">Summer</div>
+        <p>Hot and dry. Start very early; some trails close for fire season.</p>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🪱</span>
+        <div class="card-title">Leeches</div>
+        <p>Harmless and painless. Tuck pants into socks, carry salt, and never pull one off.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎫</span>
+        <div class="card-title">Permits</div>
+        <p>Many peaks need advance online booking with the Karnataka Forest Department. Check before you go.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌫️</span>
+        <div class="card-title">Weather</div>
+        <p>Fog and rain can roll in within an hour. Stay with your group.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🐃</span>
+        <div class="card-title">Wildlife</div>
+        <p>Gaur, snakes, sometimes elephants. Keep quiet, never feed animals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAIL ETIQUETTE -->
+<section id="etiquette" class="reveal">
+  <div class="container">
+    <span class="section-eyebrow">Leave It Better</span>
+    <h2>Trail <em>Etiquette</em></h2>
+    <p><strong>Pack out everything</strong> you carry in. <strong>Keep speakers off.</strong> <strong>Uphill has right of way.</strong> <strong>Stay on the trail</strong>, and never leave anyone behind alone.</p>
+  </div>
+</section>
+
+<!-- PHOTO: summit -->
+<div class="full-bleed reveal">
+  <img src="images_fitness/sun_at_top.JPG" alt="The sun over the summit at the end of the climb" loading="lazy" onerror="this.parentElement.style.display='none'" />
+  <div class="img-caption">And then, suddenly, you're there.</div>
+</div>
+
+<!-- FAQ -->
+<section id="faq" class="alt reveal">
+  <div class="container">
+    <span class="section-eyebrow">No Silly Questions</span>
+    <h2>Questions You're<br><em>Scared</em> to Ask</h2>
+    <div class="faq">
+      <details>
+        <summary>I'm overweight / out of shape. Can I still trek?</summary>
+        <p>Yes. Pick an easy trek, train for a few weeks, and go with people who'll wait. Check with your doctor if you have a medical condition.</p>
+      </details>
+      <details>
+        <summary>Is it safe for women to trek in the Western Ghats?</summary>
+        <p>Generally, yes, on popular regulated trails. Go with a trusted group, share your live location, and avoid solo treks until you're experienced.</p>
+      </details>
+      <details>
+        <summary>Do I need to buy expensive trekking gear?</summary>
+        <p>No. Good grippy shoes are the only real investment. Everything else can be affordable or borrowed.</p>
+      </details>
+      <details>
+        <summary>What if I can't make it to the top?</summary>
+        <p>Turn around — it's a skill, not a failure. Tell your group leader early.</p>
+      </details>
+      <details>
+        <summary>Can I trek during my period?</summary>
+        <p>Absolutely. Carry extra supplies, wet wipes, a zip-lock bag to pack used products out, and a painkiller if you need one.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="next" class="reveal">
+  <div class="container">
+    <span class="section-eyebrow">Where to Go From Here</span>
+    <h2>Your <em>Next</em> Steps</h2>
+    <div class="next-grid">
+      <a href="packing_list.html" class="next-card">
+        <span class="next-kicker">Step 01</span>
+        <span class="next-title">The Packing List</span>
+        <span class="next-desc">A tick-as-you-pack checklist for Western Ghats day treks.</span>
+        <span class="next-arrow">Open checklist →</span>
+      </a>
+      <a href="fitness_guide.html" class="next-card">
+        <span class="next-kicker">Step 02</span>
+        <span class="next-title">Trek Fitness Guide</span>
+        <span class="next-desc">A simple routine to get your legs and lungs trail-ready.</span>
+        <span class="next-arrow">Start training →</span>
+      </a>
+      <a href="bandaje.html" class="next-card">
+        <span class="next-kicker">Step 03</span>
+        <span class="next-title">Pick a Trail</span>
+        <span class="next-desc">Read honest trail stories from the Ghats and choose your first.</span>
+        <span class="next-arrow">Explore treks →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="closing-quote-section">
+  <div class="container">
+    <blockquote>
+      Every mountain you'll ever climb<br>starts with deciding<br>to show up for the first one.
+    </blockquote>
+    <cite>— She Explores, Trail Notes</cite>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Start small. Walk far.</span>
+  <p class="hillary-quote">"It is not the mountain we conquer, but ourselves."</p>
+  <p>The Beginner's Guide &nbsp;·&nbsp; Western Ghats, Karnataka &nbsp;·&nbsp; Day Treks</p>
+  <p class="insta-link">Follow the journey → <a href="https://instagram.com/she_explores.wild" target="_blank" rel="noopener noreferrer">@she_explores.wild</a></p>
+  <p>© 2065 She Explores Wild · Nirmala Singh. All rights reserved.</p>
+  <p>Made with love &amp; altitude sickness ♥</p>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav scroll + reading progress ──
+  const nav = document.getElementById('nav');
+  const readProgress = document.getElementById('readProgress');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 55);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    readProgress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // ── Hamburger / mobile menu ──
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => { hamburger.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => {
+    if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+  });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+</script>
+</body>
+</html>
