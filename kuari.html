@@ -13,7 +13,23 @@
   <title>Kuari Pass — You Can Stare at Mountains and Still Not Be Done | She Explores Wild </title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="canonical" href="https://sheexploreswild.com/kuari.html" />
+  <meta name="description" content="You can stare at mountains for so long and still not be done. Mt Dronagiri taught me that - huge, unhurried, entirely unbothered." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="She Explores Wild" />
+  <meta property="og:title" content="Kuari Pass - Staring at Mountains | She Explores Wild" />
+  <meta property="og:description" content="You can stare at mountains for so long and still not be done. Mt Dronagiri taught me that - huge, unhurried, entirely unbothered." />
+  <meta property="og:url" content="https://sheexploreswild.com/kuari.html" />
+  <meta property="og:image" content="https://sheexploreswild.com/og/kuari.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kuari Pass - Staring at Mountains | She Explores Wild" />
+  <meta name="twitter:description" content="You can stare at mountains for so long and still not be done. Mt Dronagiri taught me that - huge, unhurried, entirely unbothered." />
+  <meta name="twitter:image" content="https://sheexploreswild.com/og/kuari.jpg" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,7 +48,7 @@
       --amber:      #c49030;
       --amber-lt:   #e0b84a;
       --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -251,8 +267,10 @@
       .lb-img-area img { max-height:260px; }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <nav id="nav">
@@ -262,11 +280,13 @@
     <li><a href="#panorama">The Peaks</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#author">About</a></li>
+    <li><a href="index.html#explore">All Stories</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<span id="main" tabindex="-1"></span>
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <ul>
@@ -274,6 +294,7 @@
     <li><a href="#panorama" class="mobile-nav-link">The Peaks</a></li>
     <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
     <li><a href="#author" class="mobile-nav-link">About</a></li>
+      <li><a href="index.html#explore" class="mobile-nav-link">All Stories</a></li>
   </ul>
   <p class="mobile-menu-footer">Kuari Pass · December 2025</p>
 </div>
@@ -331,7 +352,7 @@
   <!-- DRONAGIRI HERO IMAGE -->
   <div class="full-bleed reveal">
     <!-- ★ Replace with your Dronagiri morning/alpine glow photo ★ -->
-    <img src="images_kuari/DRONAGIRI_MORNING.PNG" alt="Mt Dronagiri at first light" onerror="this.style.display='none'" />
+    <img srcset="images_kuari/thumbs/DRONAGIRI_MORNING-800.jpg 800w, images_kuari/thumbs/DRONAGIRI_MORNING-1400.jpg 1400w, images_kuari/DRONAGIRI_MORNING.jpg 2090w" sizes="(max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kuari/DRONAGIRI_MORNING.jpg" alt="Mt Dronagiri at first light" onerror="this.style.display='none'" loading="eager" fetchpriority="high" decoding="async" />
     <div class="img-caption container">Mt Dronagiri at dawn — huge, unhurried, entirely unbothered. I could not look away.</div>
   </div>
 
@@ -339,7 +360,7 @@
   <div class="stars-section reveal">
     <div class="stars-bg">
       <!-- ★ Replace with your night / stars photo from camp ★ -->
-      <img src="images_kuari/STARS_CAMP.jpg" alt="Stars over the campsite" onerror="this.style.background='linear-gradient(180deg,#020810 0%,#071020 100%)'" />
+      <img srcset="images_kuari/thumbs/STARS_CAMP-800.jpg 800w, images_kuari/thumbs/STARS_CAMP-1400.jpg 1400w, images_kuari/STARS_CAMP.jpg 2200w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kuari/STARS_CAMP.jpg" alt="Stars over the campsite" onerror="this.style.background='linear-gradient(180deg,#020810 0%,#071020 100%)'" loading="lazy" decoding="async" />
     </div>
     <div class="stars-overlay"></div>
     <div class="stars-content">
@@ -362,7 +383,7 @@
     <div class="clearfix">
       <div class="img-float-right">
         <!-- ★ Replace with a trail photo — dogs, mules, forest ★ -->
-        <img src="images_kuari/IMG_1369.jpg" alt="Trail through pine forest" style="height:360px; object-fit:cover;" onerror="this.style.display='none'" />
+        <img srcset="images_kuari/thumbs/IMG_1369-800.jpg 800w, images_kuari/thumbs/IMG_1369-1400.jpg 1400w, images_kuari/IMG_1369.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="images_kuari/IMG_1369.jpg" alt="Trail through pine forest" style="height:360px; object-fit:cover;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--wine);">Olive green grass, mosses, pine trees standing still — it felt genuinely unreal</div>
       </div>
       <p>Woke up the next morning excited to see mountains again. I feel lucky to see that. And then the journey began to the next campsite — and on this path, so many things. The small streams of water crossing the trail. The tiny temples. The mules carrying luggage, unbothered, doing what they have always done. The dogs following us, tails wagging.</p>
@@ -379,7 +400,7 @@
   <!-- FOREST IMAGE -->
   <div class="full-bleed reveal">
     <!-- ★ Replace with your pine forest / boulder path photo ★ -->
-    <img src="images_kuari/PINE_FOREST.JPG" alt="Pine forest on the Kuari trail" onerror="this.style.display:'none'" />
+    <img srcset="images_kuari/thumbs/PINE_FOREST-800.jpg 800w, images_kuari/thumbs/PINE_FOREST-1400.jpg 1400w, images_kuari/PINE_FOREST.JPG 2200w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kuari/PINE_FOREST.JPG" alt="Pine forest on the Kuari trail" onerror="this.style.display:'none'" loading="lazy" decoding="async" />
     <div class="img-caption container">Tall pine trees in stillness, olive green mosses underfoot, a breeze that felt like it had been there forever</div>
   </div>
 
@@ -399,7 +420,7 @@
   <!-- ALPINE GLOW IMAGE -->
   <div class="full-bleed full-bleed-tall reveal">
     <!-- ★ Replace with your alpine glow / campsite panorama photo ★ -->
-    <img src="images_kuari/ALPINE_GLOW.jpg" alt="Alpine glow on the mountains from camp" onerror="this.style.display='none'" />
+    <img srcset="images_kuari/thumbs/ALPINE_GLOW-800.jpg 800w, images_kuari/thumbs/ALPINE_GLOW-1400.jpg 1400w, images_kuari/ALPINE_GLOW.jpg 2083w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kuari/ALPINE_GLOW.jpg" alt="Alpine glow on the mountains from camp" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container">Alpine glow at camp — orange turning to light purple, mountains lit from within. Everything going quiet.</div>
   </div>
 
@@ -416,7 +437,7 @@
 <section id="panorama" class="panorama-section reveal">
   <div class="panorama-img">
     <!-- ★ Replace with your widest landscape photo — the one showing multiple peaks ★ -->
-    <img src="images_kuari/allpeaks.JPG" alt="Panorama of Himalayan peaks from Kuari Pass" onerror="this.style.display:'none'" />
+    <img srcset="images_kuari/thumbs/allpeaks-800.jpg 800w, images_kuari/thumbs/allpeaks-1400.jpg 1400w, images_kuari/allpeaks.JPG 2200w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kuari/allpeaks.JPG" alt="Panorama of Himalayan peaks from Kuari Pass" onerror="this.style.display:'none'" loading="lazy" decoding="async" />
     <div class="panorama-overlay"></div>
     <div class="panorama-labels">
       <div class="panorama-title">The peaks visible from Kuari Pass</div>
@@ -459,7 +480,7 @@
 <!-- SUMMIT IMAGE -->
 <div class="full-bleed full-bleed-tall reveal">
   <!-- ★ Replace with your summit / ridge photo ★ -->
-  <img src="images_kuari/top4.jpg" alt="Summit ridge Kuari Pass" onerror="this.style.display='none'" />
+  <img srcset="images_kuari/thumbs/top4-800.jpg 800w, images_kuari/thumbs/top4-1400.jpg 1400w, images_kuari/top4.jpg 2048w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kuari/top4.jpg" alt="Summit ridge Kuari Pass" onerror="this.style.display='none'" loading="lazy" decoding="async" />
   <div class="img-caption container">The ridge to Kuari Pass — cairns, prayer flags, dogs, the whole Himalayan skyline waiting</div>
 </div>
 
@@ -482,12 +503,12 @@
       <div class="photo-slots" id="gal-grid-wrapper">
         <!-- Static photo slots — shown before JS lightbox loads -->
         <!-- ★ Replace each src with your actual image filenames ★ -->
-        <figure class="photo-slot"><img src="images_kuari/HERO_IMAGE.jpg" alt=""  /></figure>
-        <figure class="photo-slot"><img src="images_kuari/menbag.jpg" alt=""  /></figure>
-        <figure class="photo-slot"><img src="images_kuari/Nimbackpose.jpg" alt="" /></figure>
-        <figure class="photo-slot"><img src="images_kuari/IMG_1369.jpg" alt=""  /></figure>
-        <figure class="photo-slot"><img src="images_kuari/nimandalpine.jpg" alt=""  /></figure>
-        <figure class="photo-slot"><img src="images_kuari/SUMMIT_RIDGE.jpg" alt=""  /></figure>
+        <figure class="photo-slot"><img srcset="images_kuari/thumbs/HERO_IMAGE-800.jpg 800w, images_kuari/thumbs/HERO_IMAGE-1400.jpg 1400w, images_kuari/HERO_IMAGE.jpg 2099w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 247px" src="images_kuari/HERO_IMAGE.jpg" alt="Kuari Pass at first light" loading="lazy" decoding="async" /></figure>
+        <figure class="photo-slot"><img srcset="images_kuari/thumbs/menbag-800.jpg 800w, images_kuari/thumbs/menbag-1400.jpg 1400w, images_kuari/menbag.jpg 1794w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 247px" src="images_kuari/menbag.jpg" alt="Resting against a tree trunk in the pine forest, leaning on a loaded backpack strung with prayer flags" loading="lazy" decoding="async" /></figure>
+        <figure class="photo-slot"><img srcset="images_kuari/thumbs/Nimbackpose-800.jpg 800w, images_kuari/Nimbackpose.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 247px" src="images_kuari/Nimbackpose.jpg" alt="Looking out across the valley from the trail" loading="lazy" decoding="async" /></figure>
+        <figure class="photo-slot"><img srcset="images_kuari/thumbs/IMG_1369-800.jpg 800w, images_kuari/thumbs/IMG_1369-1400.jpg 1400w, images_kuari/IMG_1369.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="images_kuari/IMG_1369.jpg" alt="Looking across the valley at sunlit snow peaks, carrying a loaded trekking pack" loading="lazy" decoding="async" /></figure>
+        <figure class="photo-slot"><img srcset="images_kuari/thumbs/nimandalpine-800.jpg 800w, images_kuari/nimandalpine.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 247px" src="images_kuari/nimandalpine.jpg" alt="Alpine glow lighting the peaks at dusk" loading="lazy" decoding="async" /></figure>
+        <figure class="photo-slot"><img srcset="images_kuari/thumbs/SUMMIT_RIDGE-800.jpg 800w, images_kuari/SUMMIT_RIDGE.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 247px" src="images_kuari/SUMMIT_RIDGE.jpg" alt="The summit ridge of Kuari Pass" loading="lazy" decoding="async" /></figure>
       </div>
     </div>
 
@@ -498,7 +519,7 @@
       </div>
       <div class="lb-img-area">
         <button class="lb-arrow left" id="lb-prev">‹</button>
-        <img id="lb-img" src="" alt="">
+        <img loading="lazy" decoding="async" id="lb-img" src="" alt="" decoding="async" />
         <button class="lb-arrow right" id="lb-next">›</button>
       </div>
       <div class="lb-bottom">
@@ -520,7 +541,7 @@
   <div class="container">
     <div class="author-inner">
       <div class="author-photo">
-        <img src="images/nirmala.jpeg" style="object-position:center;" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display='none'" />
+        <img src="images/nirmala.jpeg" style="object-position:center;" alt="Nirmala — She Explores" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </div>
       <div class="author-text">
         <span class="section-eyebrow">About the Author</span>
@@ -549,6 +570,47 @@
 </section>
 
 <!-- FOOTER -->
+
+<!-- ══ NEXT TREKS — every story now has a way out ══ -->
+<section class="next-treks" aria-labelledby="next-treks-label">
+  <p class="next-treks-label" id="next-treks-label">Keep walking</p>
+  <div class="next-treks-grid">
+      <a class="next-trek" href="kedarkanta.html">
+        <img srcset="images_kedarkanta/thumbs/sunrise-800.jpg 800w, images_kedarkanta/sunrise.jpg 1536w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_kedarkanta/sunrise.jpg" alt="Kedarkantha — Uttarkashi, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Uttarkashi, Uttarakhand</span>
+          <span class="next-trek-name">Kedarkantha</span>
+        </span>
+      </a>
+      <a class="next-trek" href="buranghati.html">
+        <img srcset="images/thumbs/Green%20mountain_H-800.jpg 800w, images/thumbs/Green%20mountain_H-1400.jpg 1400w, images/Green%20mountain_H.JPG 2048w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images/Green%20mountain_H.JPG" alt="Buran Ghati — Himachal Pradesh" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Himachal Pradesh</span>
+          <span class="next-trek-name">Buran Ghati</span>
+        </span>
+      </a>
+      <a class="next-trek" href="pangarchulla.html">
+        <img srcset="images_pangarchulla/thumbs/pangarchulla_peak-800.jpg 800w, images_pangarchulla/pangarchulla_peak.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_pangarchulla/pangarchulla_peak.jpg" alt="Pangarchulla Peak — Chamoli, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Chamoli, Uttarakhand</span>
+          <span class="next-trek-name">Pangarchulla Peak</span>
+        </span>
+      </a>
+      <a class="next-trek" href="BMC.html">
+        <img srcset="images_bmc/thumbs/hero-wide-800.jpg 800w, images_bmc/thumbs/hero-wide-1400.jpg 1400w, images_bmc/hero-wide.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_bmc/hero-wide.jpg" alt="NIM Basic Mountaineering Course — Uttarkashi" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Uttarkashi</span>
+          <span class="next-trek-name">NIM Basic Mountaineering Course</span>
+        </span>
+      </a>
+  </div>
+  <a class="all-stories" href="index.html#explore">View all stories &rarr;</a>
+</section>
+
 <footer>
   <span class="footer-brand">you can stare at mountains and still not be done</span>
   <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary</p>
@@ -582,6 +644,7 @@
 
 <script>
   // ★ ADD YOUR GALLERY IMAGES HERE — replace filenames and captions ★
+  function thumbSrcset(src){var s=decodeURI(src);return encodeURI(s.replace(/\/([^\/]+)\.[^.\/]+$/,'/thumbs/$1-800.jpg'))+' 800w, '+encodeURI(s)+' 2000w';}
   const photos = [
     { src: "images_kuari/HERO_IMAGE.jpg", caption: "Mt Dronagiri you beauty" },
     { src: "images_kuari/menbag.jpg", caption: "Quietly blending into the background " },
@@ -609,7 +672,7 @@
     const fig = document.createElement('figure');
     fig.className = 'photo-slot';
     fig.style.cursor = 'pointer';
-    fig.innerHTML = '<img src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy">';
+    fig.innerHTML = '<img srcset="' + thumbSrcset(photo.src) + '" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy" decoding="async" />';
     fig.addEventListener('click', function() { openLightbox(index); });
     galleryWrap.appendChild(fig);
     const dot = document.createElement('button');

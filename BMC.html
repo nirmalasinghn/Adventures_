@@ -13,7 +13,23 @@
   <title>The Mountain Doesn't Differentiate — NIM BMC 293 · She Explores</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="canonical" href="https://sheexploreswild.com/BMC.html" />
+  <meta name="description" content="The mountain doesn't care who you are. It just asks what you're made of. Basic Mountaineering Course, BMC 293 Ladies Batch, NIM Uttarkashi." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="She Explores Wild" />
+  <meta property="og:title" content="The Mountain Doesn't Differentiate - NIM BMC | She Explores Wild" />
+  <meta property="og:description" content="The mountain doesn't care who you are. It just asks what you're made of. Basic Mountaineering Course, BMC 293 Ladies Batch, NIM Uttarkashi." />
+  <meta property="og:url" content="https://sheexploreswild.com/BMC.html" />
+  <meta property="og:image" content="https://sheexploreswild.com/og/bmc.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Mountain Doesn't Differentiate - NIM BMC | She Explores Wild" />
+  <meta name="twitter:description" content="The mountain doesn't care who you are. It just asks what you're made of. Basic Mountaineering Course, BMC 293 Ladies Batch, NIM Uttarkashi." />
+  <meta name="twitter:image" content="https://sheexploreswild.com/og/bmc.jpg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -25,12 +41,12 @@
       --mycolour:   #1c365e;
       --olive:       #7a8a5a;
       --text:        #f0ede6;
-      --muted:       #6a6a5e;
+      --muted:       #7c7c70;
       --frost:       #d8d4cc;
       --border:      rgba(255,255,255,0.07);
       --rule:        rgba(255,255,255,0.11);
-      --font-display:'Bebas Neue', Impact, sans-serif;
-      --font-body:   'IBM Plex Sans', system-ui, sans-serif;
+      --font-display:'Cormorant Garamond', Georgia, serif;
+      --font-body:   'DM Sans', system-ui, -apple-system, sans-serif;
     }
     html { scroll-behavior: smooth;max-width: 100%; overflow-x: hidden; }
     body { background: var(--deep); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.72; max-width: 100%;  overflow-x: hidden; }
@@ -474,8 +490,10 @@ body.intro-active { overflow: hidden; }
 @keyframes fogMove { from { transform: translateX(0); } to { transform: translateX(-120px); } }
     @media (max-width: 480px) { .back-to-top { bottom: 1.4rem; right: 1.2rem; font-size: 0.55rem; padding: 0.5rem 0.85rem; } }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div id="intro" class="intro">
   <div class="fog-layer"></div>
@@ -498,17 +516,19 @@ body.intro-active { overflow: hidden; }
 
 <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div> 
 <nav id="nav">
-  <a href="#" class="nav-brand">SHE EXPLORES</a>
+  <a href="index.html" class="nav-brand">SHE EXPLORES</a>
   <ul class="nav-links">
     <li><a href="#story">The Story</a></li>
     <li><a href="#course">The Course</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#author">About</a></li>
+    <li><a href="index.html#explore">All Stories</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<span id="main" tabindex="-1"></span>
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <ul>
@@ -516,6 +536,7 @@ body.intro-active { overflow: hidden; }
     <li><a href="#course" class="mobile-nav-link">The Course</a></li>
     <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
     <li><a href="#author" class="mobile-nav-link">About</a></li>
+      <li><a href="index.html#explore" class="mobile-nav-link">All Stories</a></li>
   </ul>
   <p class="mobile-menu-footer">BMC 293 Ladies Batch · NIM Uttarkashi · June 2026</p>
 </div>
@@ -568,7 +589,7 @@ body.intro-active { overflow: hidden; }
   </div>
 
   <div class="full-bleed reveal" style="background-image:url('images_bmc/hero-wide.jpg');background-position:center 45%;filter:brightness(1) saturate(1);">
-    <img src="images_bmc/hero-wide.jpg" alt="The mountains at NIM" style="object-position:center 45%;" onerror="this.style.display='none'" />
+    <img src="images_bmc/hero-wide.jpg" alt="The mountains at NIM" style="object-position:center 45%;" onerror="this.style.display='none'" loading="eager" fetchpriority="high" decoding="async" />
     <div class="img-caption container"></div>
   </div>
 
@@ -636,7 +657,7 @@ body.intro-active { overflow: hidden; }
     <p>The hostel is not luxurious. It doesn't try to be. Hot water, clean spaces. Enough. More than enough, once you understand what <em>enough</em> means — which the mountains will teach you whether you ask or not.</p>
 
     <div class="img-float-right">
-      <img src="images_bmc/poncho.jpeg" alt="NIM instructors" style="width:100%;height:auto;object-fit:contain;" onerror="this.style.display='none'" />
+      <img srcset="images_bmc/thumbs/poncho-800.jpg 800w, images_bmc/thumbs/poncho-1400.jpg 1400w, images_bmc/poncho.jpeg 1911w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="images_bmc/poncho.jpeg" alt="NIM instructors" style="width:100%;height:auto;object-fit:contain;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       <div class="img-caption" style="padding:.6rem 0;font-size:.7rem;"></div>
     </div>
 
@@ -654,7 +675,7 @@ body.intro-active { overflow: hidden; }
 
   <!-- FULL BLEED -->
   <div class="full-bleed reveal" style="background-image:url('images_bmc/campus.jpg');background-position:center;filter:brightness(1) saturate(1);">
-    <img src="images_bmc/campus.jpg" alt="NIM campus Uttarkashi" style="object-position:center;" onerror="this.style.display='none'" />
+    <img src="images_bmc/campus.jpg" alt="NIM campus Uttarkashi" style="object-position:center;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container"></div>
   </div>
 
@@ -689,7 +710,7 @@ body.intro-active { overflow: hidden; }
 
   <!-- FULL BLEED ROPE TEAM -->
   <div class="full-bleed reveal" style="background-image:url('images_bmc/rope-team.jpg');background-position:center;filter:brightness(1) saturate(1);">
-    <img src="images_bmc/rope-team.jpg" alt="Rope 9 team" style="object-position:center;" onerror="this.style.display='none'" />
+    <img src="images_bmc/rope-team.jpg" alt="Rope 9 team" style="object-position:center;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container"></div>
   </div>
 
@@ -787,7 +808,7 @@ body.intro-active { overflow: hidden; }
   </div>
 
   <div class="full-bleed reveal" style="background-image:url('images_bmc/the_approach.jpg');background-position:center 40%;filter:brightness(1) saturate(1);">
-    <img src="images_bmc/the_approach.jpg" alt="Tela to Gujjar Hut approach" style="object-position:center 40%;" onerror="this.style.display='none'" />
+    <img src="images_bmc/the_approach.jpg" alt="Tela to Gujjar Hut approach" style="object-position:center 40%;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container"></div>
   </div>
 
@@ -863,7 +884,7 @@ body.intro-active { overflow: hidden; }
 
   <!-- FULL BLEED GLACIER -->
   <div class="full-bleed full-bleed-tall reveal" style="background-image:url('images_bmc/glacier.jpg');background-position:center 40%;">
-    <img src="images_bmc/glacier.jpg" alt="Glacier at base camp" style="object-position:center 40%;" onerror="this.style.display='none'" />
+    <img src="images_bmc/glacier.jpg" alt="Glacier at base camp" style="object-position:center 40%;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container"></div>
   </div>
 
@@ -896,7 +917,7 @@ body.intro-active { overflow: hidden; }
 
   <!-- FULL BLEED - SPOT / BUTTERCUPS -->
   <div class="full-bleed reveal" style="background-image:url('images_bmc/buttercups.jpeg');background-position:center 55%;filter:brightness(1) saturate(1);">
-    <img src="images_bmc/buttercups.jpeg" alt="Buttercup flowers base camp" style="object-position:center 55%;" onerror="this.style.display='none'" />
+    <img src="images_bmc/buttercups.jpeg" alt="Buttercup flowers base camp" style="object-position:center 55%;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container"></div>
   </div>
 
@@ -934,7 +955,7 @@ body.intro-active { overflow: hidden; }
         <div class="phase-sub">The ice axe. The badge of honour.</div>
       </div>
   <div class="img-float-left">
-  <img src="images_bmc/graduation.jpg" alt="Graduation day NIM" style="width:100%;height:auto;object-fit:contain;" onerror="this.style.display='none'" />
+  <img srcset="images_bmc/thumbs/graduation-800.jpg 800w, images_bmc/thumbs/graduation-1400.jpg 1400w, images_bmc/graduation.jpg 1738w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 333px" src="images_bmc/graduation.jpg" alt="Graduation day NIM" style="width:100%;height:auto;object-fit:contain;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
   <div class="img-caption" style="padding:.6rem 0;font-size:.7rem;">Earned. Not given.</div>
 </div>
 
@@ -1076,22 +1097,22 @@ body.intro-active { overflow: hidden; }
     <p class="hint">28 days. These are the ones I keep coming back to.</p>
 
     <div id="gal-grid-wrapper" class="photo-slots">
-      <figure class="photo-slot"><img src="images_bmc/NIMcampus.jpeg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/sportclimbing.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/basecamp.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/buttercup.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/dkd2.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/evening_sunset.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/ropeee.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/unreal.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/ropeiceaxe.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/sunshine.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/rivercrossing.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/night.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/boots&flowers.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/nonveg.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/backbend.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
-      <figure class="photo-slot"><img src="images_bmc/hailstorms.jpg" alt="" onerror="this.style.display='none'" loading="lazy" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/NIMcampus-800.jpg 800w, images_bmc/thumbs/NIMcampus-1400.jpg 1400w, images_bmc/NIMcampus.jpeg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/NIMcampus.jpeg" alt="The NIM campus at Uttarkashi" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/sportclimbing.JPG" alt="Sport climbing practice on the rock face" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/basecamp-800.jpg 800w, images_bmc/thumbs/basecamp-1400.jpg 1400w, images_bmc/basecamp.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/basecamp.jpg" alt="Tents pitched at base camp" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/buttercup-800.jpg 800w, images_bmc/thumbs/buttercup-1400.jpg 1400w, images_bmc/buttercup.jpg 1650w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/buttercup.jpg" alt="Himalayan buttercups on the slope" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/dkd2-800.jpg 800w, images_bmc/thumbs/dkd2-1400.jpg 1400w, images_bmc/dkd2.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/dkd2.jpg" alt="Draupadi ka Danda II breaking through the cloud cover" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/evening_sunset-800.jpg 800w, images_bmc/thumbs/evening_sunset-1400.jpg 1400w, images_bmc/evening_sunset.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/evening_sunset.jpg" alt="Evening light over the ridgeline" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/ropeee-800.jpg 800w, images_bmc/ropeee.jpeg 960w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/ropeee.jpeg" alt="Climbing rope coiled during training" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/unreal-800.jpg 800w, images_bmc/thumbs/unreal-1400.jpg 1400w, images_bmc/unreal.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/unreal.jpg" alt="A snow-tipped ridge above a green valley, a glacial stream winding through the birch forest below" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/ropeiceaxe-800.jpg 800w, images_bmc/ropeiceaxe.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/ropeiceaxe.jpg" alt="Rope and ice axe laid out before a climb" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/sunshine-800.jpg 800w, images_bmc/thumbs/sunshine-1400.jpg 1400w, images_bmc/sunshine.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/sunshine.jpg" alt="Sunlight breaking over the camp" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img src="images_bmc/rivercrossing.JPG" alt="A river crossing during training" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/night-800.jpg 800w, images_bmc/thumbs/night-1400.jpg 1400w, images_bmc/night.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/night.jpg" alt="The night sky above camp" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/boots%26flowers-800.jpg 800w, images_bmc/thumbs/boots%26flowers-1400.jpg 1400w, images_bmc/boots%26flowers.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/boots&flowers.jpg" alt="Mountaineering boots beside wildflowers" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/nonveg-800.jpg 800w, images_bmc/thumbs/nonveg-1400.jpg 1400w, images_bmc/nonveg.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/nonveg.jpg" alt="A meal served during the course" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/backbend-800.jpg 800w, images_bmc/thumbs/backbend-1400.jpg 1400w, images_bmc/backbend.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/backbend.jpg" alt="A backbend during morning training" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
+      <figure class="photo-slot"><img srcset="images_bmc/thumbs/hailstorms-800.jpg 800w, images_bmc/thumbs/hailstorms-1400.jpg 1400w, images_bmc/hailstorms.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="images_bmc/hailstorms.jpg" alt="Hail covering the ground after a storm" onerror="this.style.display='none'" loading="lazy" decoding="async" /></figure>
 
     </div>
 
@@ -1103,7 +1124,7 @@ body.intro-active { overflow: hidden; }
   <div class="container">
     <div class="author-inner reveal">
       <div class="author-photo">
-        <img src="images_bmc/nirmala.jpg" alt="Nirmala — She Explores" loading="lazy" onerror="this.style.display='none'" />
+        <img srcset="images_bmc/thumbs/nirmala-800.jpg 800w, images_bmc/nirmala.jpg 1237w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 320px" src="images_bmc/nirmala.jpg" alt="Nirmala — She Explores" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </div>
       <div class="author-text">
         <span class="section-eyebrow">About the Author</span>
@@ -1140,6 +1161,47 @@ body.intro-active { overflow: hidden; }
   </section>
 </section>
 
+
+<!-- ══ NEXT TREKS — every story now has a way out ══ -->
+<section class="next-treks" aria-labelledby="next-treks-label">
+  <p class="next-treks-label" id="next-treks-label">Keep walking</p>
+  <div class="next-treks-grid">
+      <a class="next-trek" href="kedarkanta.html">
+        <img srcset="images_kedarkanta/thumbs/sunrise-800.jpg 800w, images_kedarkanta/sunrise.jpg 1536w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_kedarkanta/sunrise.jpg" alt="Kedarkantha — Uttarkashi, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Uttarkashi, Uttarakhand</span>
+          <span class="next-trek-name">Kedarkantha</span>
+        </span>
+      </a>
+      <a class="next-trek" href="buranghati.html">
+        <img srcset="images/thumbs/Green%20mountain_H-800.jpg 800w, images/thumbs/Green%20mountain_H-1400.jpg 1400w, images/Green%20mountain_H.JPG 2048w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images/Green%20mountain_H.JPG" alt="Buran Ghati — Himachal Pradesh" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Himachal Pradesh</span>
+          <span class="next-trek-name">Buran Ghati</span>
+        </span>
+      </a>
+      <a class="next-trek" href="pangarchulla.html">
+        <img srcset="images_pangarchulla/thumbs/pangarchulla_peak-800.jpg 800w, images_pangarchulla/pangarchulla_peak.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_pangarchulla/pangarchulla_peak.jpg" alt="Pangarchulla Peak — Chamoli, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Chamoli, Uttarakhand</span>
+          <span class="next-trek-name">Pangarchulla Peak</span>
+        </span>
+      </a>
+      <a class="next-trek" href="kuari.html">
+        <img srcset="images_kuari/thumbs/HERO_IMAGE-800.jpg 800w, images_kuari/thumbs/HERO_IMAGE-1400.jpg 1400w, images_kuari/HERO_IMAGE.jpg 2099w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_kuari/HERO_IMAGE.jpg" alt="Kuari Pass — Chamoli, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Chamoli, Uttarakhand</span>
+          <span class="next-trek-name">Kuari Pass</span>
+        </span>
+      </a>
+  </div>
+  <a class="all-stories" href="index.html#explore">View all stories &rarr;</a>
+</section>
+
 <footer>
     <span class="footer-brand">THE MOUNTAIN DOESN'T DIFFERENTIATE.</span>
   <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Edmund Hillary</p>
@@ -1173,12 +1235,14 @@ body.intro-active { overflow: hidden; }
   <div class="lb-img-area">
         <div class="lb-bg-blur" id="lb-bg"></div> 
         <button class="lb-arrow left" id="lb-prev">‹</button>
-        <img id="lb-img" src="" alt="">
+        <img loading="lazy" decoding="async" id="lb-img" src="" alt="" decoding="async" />
         <button class="lb-arrow right" id="lb-next">›</button>
       </div>
       <div class="lb-bottom"><div class="lb-dots" id="lb-dots"><p class="lb-caption" id="lb-caption"></p></div></div>
+ </div>
       
 <script>
+  function thumbSrcset(src){var s=decodeURI(src);return encodeURI(s.replace(/\/([^\/]+)\.[^.\/]+$/,'/thumbs/$1-800.jpg'))+' 800w, '+encodeURI(s)+' 2000w';}
   const photos = [
     { src:"images_bmc/NIMcampus.jpeg", caption:"The campus at 5am. Mist, chai, and the sound of everyone figuring out what they signed up for." },
     { src:"images_bmc/sportclimbing.jpg", caption:"sport climbing session at the campus,The holds are different when they're real." },
@@ -1232,7 +1296,7 @@ body.intro-active { overflow: hidden; }
   photos.forEach(function(photo, index) {
     const fig = document.createElement('figure');
     fig.className = 'photo-slot';
-    fig.innerHTML = '<img src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy">';
+    fig.innerHTML = '<img srcset="' + thumbSrcset(photo.src) + '" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 187px" src="' + photo.src + '" alt="' + photo.caption + '" loading="lazy" decoding="async" />';
     fig.addEventListener('click', function() { openLightbox(index); });
     galleryWrap.appendChild(fig);
     const dot = document.createElement('button');

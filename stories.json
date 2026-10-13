@@ -1,0 +1,178 @@
+{
+  "_readme": [
+    "Single source of truth for every story card on the site.",
+    "After editing, run:   python3 tools/build_stories.py",
+    "That rewrites the marked regions in index.html (the whole story catalogue,",
+    "nav items and structured data) and the generated block in sitemap.xml.",
+    "adventures.html / treks.html / mountaineering.html only redirect to index.html.",
+    "",
+    "ADD A STORY: append to 'stories'. 'category' and 'sub' must match ids below.",
+    "  name      short name used in footers and structured data",
+    "  date      YYYY-MM  (lists sort newest first; the newest is the Latest Story by default)",
+    "  latest    optional true on ONE story to pin it as the Latest Story, first in every list",
+    "  theme     snow | green | sky | kuari | ember   (card colours live in site.css)",
+    "  days      number, or null if unknown",
+    "  image     srcset is optional; position is an optional object-position",
+    "ADD A CATEGORY / SUB: add to 'categories'. 'soon' is the Coming Soon card text;",
+    "  a sub may carry 'link': { href, label } shown beside its title."
+  ],
+
+  "site": "https://sheexploreswild.com",
+
+  "categories": [
+    {
+      "id": "treks", "label": "Treks",
+      "desc": "Multi-day trails, passes and summits walked on foot.",
+      "title": "Treks — Himalayan Trek Stories | She Explores Wild",
+      "description": "Himalayan trek stories - Kedarkantha, Buran Ghati, Pangarchulla, Kuari Pass and more.",
+      "subs": [
+        { "id": "himalayan", "label": "Himalayan Treks" }
+      ]
+    },
+    {
+      "id": "hikes", "label": "Hikes",
+      "desc": "Day hikes through forest, grassland and monsoon rain.",
+      "title": "Hikes — Western Ghats Day Hikes | She Explores Wild",
+      "description": "Western Ghats day hikes - Kudremukha, Netravathi, Kodachadri, Bandaje Falls and more.",
+      "subs": [
+        { "id": "western-ghats", "label": "Western Ghats",
+          "link": { "href": "#guides", "label": "Western Ghats hiking guides →" },
+          "soon": { "title": "Monsoon trails of the Sahyadris…", "note": "Western Ghats stories are being written up." } }
+      ]
+    },
+    {
+      "id": "mountaineering", "label": "Mountaineering",
+      "desc": "Formal training on rope, ice and snow.",
+      "title": "Mountaineering — NIM Basic Mountaineering Course | She Explores Wild",
+      "description": "Mountaineering stories - 28 days on rope, ice and snow at the NIM Basic Mountaineering Course, Uttarkashi.",
+      "subs": [
+        { "id": "bmc", "label": "Basic Mountaineering Course" }
+      ]
+    },
+    {
+      "id": "climbing", "label": "Climbing",
+      "desc": "Rock, wall and everything vertical.",
+      "title": "Climbing — Rock & Wall Climbing | She Explores Wild",
+      "description": "Rock climbing and wall climbing stories.",
+      "subs": [
+        { "id": "rock", "label": "Rock Climbing",
+          "soon": { "title": "Chalk, granite, first holds…", "note": "Rock climbing stories will appear here." } },
+        { "id": "wall", "label": "Wall Climbing",
+          "soon": { "title": "Up the wall…", "note": "Wall climbing stories will appear here." } }
+      ]
+    },
+    {
+      "id": "rides", "label": "Rides",
+      "desc": "Roads, passes and long days in the saddle.",
+      "title": "Rides | She Explores Wild", "description": "Ride stories.",
+      "soon": { "title": "The road is calling…", "note": "Ride stories will appear here." }
+    },
+    {
+      "id": "oceans", "label": "Oceans",
+      "desc": "Salt water, coastlines and what lies beneath.",
+      "title": "Oceans | She Explores Wild", "description": "Ocean stories.",
+      "soon": { "title": "Below the surface…", "note": "Ocean stories will appear here." }
+    },
+    {
+      "id": "travelling", "label": "Travelling",
+      "desc": "Places, people and the journeys in between.",
+      "title": "Travelling | She Explores Wild", "description": "Travel stories.",
+      "soon": { "title": "Elsewhere, soon…", "note": "Travel stories will appear here." }
+    }
+  ],
+
+  "stories": [
+    {
+      "href": "BMC.html", "name": "NIM Basic Mountaineering Course", "category": "mountaineering", "sub": "bmc",
+      "title": "The Mountain Doesn't Differentiate",
+      "desc": "The mountain doesn't care who you are. It just asks what you're made of. Basic Mountaineering Course, BMC 293 Ladies Batch, NIM Uttarkashi.",
+      "featured_desc": "The mountain doesn't care who you are. It just asks what you're made of. Twenty-eight days of rope, ice and snow — the Basic Mountaineering Course, BMC 293 Ladies Batch, NIM Uttarkashi.",
+      "latest": true,
+      "badge": "NIM Uttarkashi", "date": "2026-06", "altitude": "15,100ft", "days": 28,
+      "tag": "🧗 NIM Course", "theme": "ember", "status": "Published",
+      "fallback": { "emoji": "🧗", "label": "NIM BMC · 15,100ft" },
+      "image": { "src": "images_bmc/hero-wide.jpg", "alt": "NIM Basic Mountaineering Course",
+                 "srcset": "images_bmc/thumbs/hero-wide-800.jpg 800w, images_bmc/thumbs/hero-wide-1400.jpg 1400w, images_bmc/hero-wide.jpg 2200w" }
+    },
+    {
+      "href": "pangarchulla.html", "name": "Pangarchula Peak", "category": "treks", "sub": "himalayan",
+      "title": "The Sky at Your Feet",
+      "desc": "A peak that demands everything and returns it tenfold. Pangarchula isn't just a climb — it's a reckoning. The kind that leaves you quieter, and somehow fuller, on the other side.",
+      "badge": "Chamoli, Uttarakhand", "date": "2025-12", "altitude": "4700m", "days": 8,
+      "tag": "🩵 Summit", "theme": "sky", "status": "Published",
+      "fallback": { "emoji": "🩵", "label": "Pangarchula · 4700m" },
+      "image": { "src": "images_pangarchulla/IMG_1036.jpg", "alt": "Pangarchula Peak",
+                 "srcset": "images_pangarchulla/thumbs/IMG_1036-800.jpg 800w, images_pangarchulla/IMG_1036.jpg 1238w" }
+    },
+    {
+      "href": "kuari.html", "name": "Kuari Pass", "category": "treks", "sub": "himalayan",
+      "title": "Where the Himalayas Open Up",
+      "desc": "The Curzon Trail. Nanda Devi. Dronagiri. Kamet. The Kuari Pass offers a panorama so vast it feels less like a view and more like a conversation with the sky itself.",
+      "badge": "Chamoli, Uttarakhand", "date": "2025-12", "altitude": "3640m", "days": null,
+      "tag": "🩵 Alpine", "theme": "kuari", "status": "Published",
+      "fallback": { "emoji": "🏔️", "label": "Kuari Pass · 3640m" },
+      "image": { "src": "images_kuari/menbag.jpg", "alt": "Kuari Pass", "position": "center",
+                 "srcset": "images_kuari/thumbs/menbag-800.jpg 800w, images_kuari/thumbs/menbag-1400.jpg 1400w, images_kuari/menbag.jpg 1794w" }
+    },
+    {
+      "href": "buranghati.html", "name": "Buranghati Trek", "category": "treks", "sub": "himalayan",
+      "title": "Getting Lost to Find Myself",
+      "desc": "The trail began before dawn. The forest swallowed the path whole and I walked into a silence so complete it felt like a second skin — unfamiliar at first, and then, somehow, like coming home.",
+      "badge": "Himachal Pradesh", "date": "2025-06", "altitude": "3700m", "days": 7,
+      "tag": "🌿 Forest Trek", "theme": "green", "status": "Published",
+      "fallback": { "emoji": "🌲", "label": "Buranghati · 3700m" },
+      "image": { "src": "images/meonmountain.JPG", "alt": "Buranghati Trek",
+                 "srcset": "images/thumbs/meonmountain-800.jpg 800w, images/thumbs/meonmountain-1400.jpg 1400w, images/meonmountain.JPG 2048w" }
+    },
+    {
+      "href": "kedarkanta.html", "name": "Kedarkantha Peak", "category": "treks", "sub": "himalayan",
+      "title": "The Unfinished Business",
+      "desc": "The mountain has been calling for a while now. Snow-covered meadows, frozen lakes, a summit that promises a sky unlike any other — some journeys begin long before the first step.",
+      "badge": "Uttarakhand", "date": "2025-02", "altitude": "3800m", "days": 6,
+      "tag": "❄️ Snow Trek", "theme": "snow", "status": "Published",
+      "fallback": { "emoji": "❄️", "label": "Kedarkantha · 3800m" },
+      "image": { "src": "images_kedarkanta/Nirmalasitting.jpg", "alt": "Kedarkantha Peak",
+                 "srcset": "images_kedarkanta/thumbs/Nirmalasitting-800.jpg 800w, images_kedarkanta/thumbs/Nirmalasitting-1400.jpg 1400w, images_kedarkanta/Nirmalasitting.jpg 2200w" }
+    },
+    {
+      "href": "kudremukha.html", "name": "Kudremukha Peak", "category": "hikes", "sub": "western-ghats",
+      "title": "The Mountain With a Horse's Face",
+      "desc": "A mountain wearing a horse's face, twenty kilometres of forest and grass and water, and rain that doesn't ask permission.",
+      "badge": "Chikkamagaluru, Karnataka", "date": "2026-08", "altitude": "1894m", "days": 1,
+      "tag": "🌧️ Monsoon Hike", "theme": "green", "status": "Published",
+      "fallback": { "emoji": "🌧️", "label": "Kudremukha · 1894m" },
+      "image": { "src": "images_kudremukha/hills_2_H-edit.jpg", "alt": "Kudremukha Peak",
+                 "srcset": "images_kudremukha/thumbs/hills_2_H-edit-800.jpg 800w, images_kudremukha/thumbs/hills_2_H-edit-1400.jpg 1400w, images_kudremukha/hills_2_H-edit.jpg 2200w" }
+    },
+    {
+      "href": "bandaje.html", "name": "Bandaje Falls", "category": "hikes", "sub": "western-ghats",
+      "title": "Where the Water Starts",
+      "desc": "Not a peak. Not a summit. Just a waterfall that makes you feel like you've found the end of the world.",
+      "badge": "Chikkamagaluru, Karnataka", "date": "2025-09", "altitude": "1100m", "days": 1,
+      "tag": "💧 Waterfall Hike", "theme": "green", "status": "Published",
+      "fallback": { "emoji": "💧", "label": "Bandaje Falls · 200ft" },
+      "image": { "src": "images_bandaje/hero.JPG", "alt": "Bandaje Falls",
+                 "srcset": "images_bandaje/thumbs/hero-800.jpg 800w, images_bandaje/thumbs/hero-1400.jpg 1400w, images_bandaje/hero.JPG 5712w" }
+    },
+    {
+      "href": "kodachadri.html", "name": "Kodachadri", "category": "hikes", "sub": "western-ghats",
+      "title": "Where the Mist Lives",
+      "desc": "The mountain wakes you before you're ready. Mist in the trees, rain on the path, cold red mud that claims your shoes like it always meant to.",
+      "badge": "Shivamogga, Karnataka", "date": "2025-07", "altitude": "1343m", "days": 1,
+      "tag": "🌿 Forest Hike", "theme": "green", "status": "Published",
+      "fallback": { "emoji": "🌫️", "label": "Kodachadri · 1343m" },
+      "image": { "src": "images_kodachadri/hero.jpg", "alt": "Kodachadri",
+                 "srcset": "images_kodachadri/thumbs/hero-800.jpg 800w, images_kodachadri/thumbs/hero-1400.jpg 1400w, images_kodachadri/hero.jpg 3840w" }
+    },
+    {
+      "href": "netravathi.html", "name": "Netravathi Peak", "category": "hikes", "sub": "western-ghats",
+      "title": "Where the River Is Born",
+      "desc": "Where a river is born in the mist, and the grasslands feel like a world that shouldn't exist.",
+      "badge": "Samse, Karnataka", "date": "2025-06", "altitude": "1520m", "days": 1,
+      "tag": "🌧️ Monsoon Hike", "theme": "green", "status": "Published",
+      "fallback": { "emoji": "🌿", "label": "Netravathi · 1520m" },
+      "image": { "src": "images_netravathi/hero.JPG", "alt": "Netravathi Peak",
+                 "srcset": "images_netravathi/thumbs/hero-800.jpg 800w, images_netravathi/thumbs/hero-1400.jpg 1400w, images_netravathi/hero.JPG 4284w" }
+    }
+  ]
+}

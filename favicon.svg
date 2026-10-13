@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0c0c0c"/>
+  <!-- back ridge -->
+  <path d="M4 24 L13 11 L19 19.5 L22.5 15 L28 24 Z" fill="#6bbb82" opacity="0.45"/>
+  <!-- front peak with snow cap -->
+  <path d="M6 24 L15 9.5 L24 24 Z" fill="#f0ece4"/>
+  <path d="M15 9.5 L18.6 15.3 L16.8 14.3 L15 15.6 L13.2 14.3 L11.4 15.3 Z" fill="#0c0c0c" opacity="0.35"/>
+</svg>

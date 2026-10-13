@@ -11,10 +11,25 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kedarkantha — Where the Mountain Said, Not Yet | She Explores Wild</title>
-  <h1>Kedarkanta Trek</h1> 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="canonical" href="https://sheexploreswild.com/kedarkanta.html" />
+  <meta name="description" content="The mountain didn't let me reach the top this time. But it gave me something far greater - the peace I had been searching for." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="She Explores Wild" />
+  <meta property="og:title" content="Kedarkantha - Where the Mountain Said, Not Yet | She Explores Wild" />
+  <meta property="og:description" content="The mountain didn't let me reach the top this time. But it gave me something far greater - the peace I had been searching for." />
+  <meta property="og:url" content="https://sheexploreswild.com/kedarkanta.html" />
+  <meta property="og:image" content="https://sheexploreswild.com/og/kedarkanta.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kedarkantha - Where the Mountain Said, Not Yet | She Explores Wild" />
+  <meta name="twitter:description" content="The mountain didn't let me reach the top this time. But it gave me something far greater - the peace I had been searching for." />
+  <meta name="twitter:image" content="https://sheexploreswild.com/og/kedarkanta.jpg" />
   <style>
     /* GALLERY STYLES */
     /* force gallery to show */
@@ -80,8 +95,8 @@
       --sage:     #6a8f7a;
 
       --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Jost', sans-serif;
-      --font-italic:  'Cormorant', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+      --font-italic:  'Cormorant Garamond', Georgia, serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1104,23 +1119,27 @@
       .photo-slots { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ═══ NAV ═══ -->
 <nav>
-  <a href="#" class="nav-brand">getting lost to find myself</a>
+  <a href="index.html" class="nav-brand">she explores</a>
   <ul class="nav-links">
     <li><a href="#story">The Story</a></li>
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#author">About</a></li>
+    <li><a href="index.html#explore">All Stories</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<span id="main" tabindex="-1"></span>
 
 <!-- Mobile drawer -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
@@ -1129,6 +1148,7 @@
     <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
     <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
     <li><a href="#author" class="mobile-nav-link">About</a></li>
+      <li><a href="index.html#explore" class="mobile-nav-link">All Stories</a></li>
   </ul>
   <p class="mobile-menu-footer">Kedarkantha · February 2025</p>
 </div>
@@ -1187,7 +1207,7 @@
 
   <!-- DEV PRAYAG FULL BLEED -->
   <div class="full-bleed reveal" style="height: auto;">
-    <img src="images_kedarkanta/devprayag.jpg" alt="Dev Prayag confluence"  style="height:20%; object-fit: cover;"/>
+    <img srcset="images_kedarkanta/thumbs/devprayag-800.jpg 800w, images_kedarkanta/thumbs/devprayag-1400.jpg 1400w, images_kedarkanta/devprayag.jpg 2048w" sizes="(max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kedarkanta/devprayag.jpg" alt="Dev Prayag confluence"  style="height:20%; object-fit: cover;" loading="eager" fetchpriority="high" decoding="async" />
     <div class="img-caption container">Dev Prayag — where the Bhagirathi and Alaknanda meet, and the Ganga is born. Standing here, everything felt like a blessing.</div>
   </div>
 
@@ -1195,7 +1215,7 @@
   <div class="container reveal" style="padding: 4rem 0 2rem;">
     <div class="clearfix">
       <div class="img-float-right">
-        <img src="images_kedarkanta/sunrise.jpg" alt="Ganga at Rishikesh" style="height:340px; object-fit:cover;" />
+        <img srcset="images_kedarkanta/thumbs/sunrise-800.jpg 800w, images_kedarkanta/sunrise.jpg 1536w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 97vw, 341px" src="images_kedarkanta/sunrise.jpg" alt="Ganga at Rishikesh" style="height:340px; object-fit:cover;" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background: var(--deep); padding: 0.6rem 0.9rem; font-family: var(--font-body); font-size:0.72rem; color: var(--stone); font-style:italic; border-left: 3px solid var(--amber);">The Ganga at dawn — the light that told me I was exactly where I needed to be</div>
       </div>
       <p>The next morning, I rented a bike and rode alone to the bungee jumping point — just me, the road, and the mountains watching. There's something about riding solo through Uttarakhand that strips you of every excuse you've ever given yourself.</p>
@@ -1209,7 +1229,7 @@
 
   <!-- PEBBLES IMAGE -->
   <div class="full-bleed reveal" style="height:auto;">
-    <img src="images_kedarkanta/pebbles.JPG" alt="Pebbles at Rishikesh Ganga" style="object-position: center center;"  />
+    <img srcset="images_kedarkanta/thumbs/pebbles-800.jpg 800w, images_kedarkanta/thumbs/pebbles-1400.jpg 1400w, images_kedarkanta/pebbles.JPG 2048w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kedarkanta/pebbles.JPG" alt="Pebbles at Rishikesh Ganga" style="object-position: center center;" loading="lazy" decoding="async" />
     <div class="img-caption container">Rishikesh riverbank — stacked stones, still water, a mind beginning to quiet down</div>
   </div>
 
@@ -1224,7 +1244,7 @@
     </div>
     <div class="clearfix">
       <div class="img-float-left">
-        <img src="images_kedarkanta/flower.JPG" alt="Small flower on the trail" style="height:300px; object-fit:cover;" />
+        <img srcset="images_kedarkanta/thumbs/flower-800.jpg 800w, images_kedarkanta/flower.JPG 1536w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 91vw, 341px" src="images_kedarkanta/flower.JPG" alt="Small flower on the trail" style="height:300px; object-fit:cover;" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background: var(--deep); padding: 0.6rem 0.9rem; font-family: var(--font-body); font-size:0.72rem; color: var(--stone); font-style:italic; border-left: 3px solid var(--amber);">A tiny bloom on the trail — the mountains' way of saying hello</div>
       </div>
       <p>We set off from Sankri base camp, trekking through rocky paths lined with vibrant red rhododendrons. Dancing on the mountain trails, enjoying every breath of crisp air, made the journey feel less like effort and more like celebration.</p>
@@ -1234,7 +1254,7 @@
 
   <!-- RHODODENDRONS -->
   <div class="full-bleed reveal" style="height:60vh;">
-    <img src="images_kedarkanta/IMG_3285.JPG" alt="Red rhododendrons on trail" />
+    <img srcset="images_kedarkanta/thumbs/IMG_3285-800.jpg 800w, images_kedarkanta/IMG_3285.JPG 1536w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kedarkanta/IMG_3285.JPG" alt="Red rhododendrons on trail" loading="lazy" decoding="async" />
     <div class="img-caption container">Red rhododendrons lining the trail to Juda Ka Talab — nature's welcome committee, in full bloom</div>
   </div>
 
@@ -1254,7 +1274,7 @@
 
   <!-- SITTING IN SNOW FOREST -->
   <div class="full-bleed full-bleed-tall reveal" style="height: auto;">
-    <img src="images_kedarkanta/Nirmalasitting.jpg" alt="Sitting in snowy forest" style="object-position: center bottom;" />
+    <img srcset="images_kedarkanta/thumbs/Nirmalasitting-800.jpg 800w, images_kedarkanta/thumbs/Nirmalasitting-1400.jpg 1400w, images_kedarkanta/Nirmalasitting.jpg 2200w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kedarkanta/Nirmalasitting.jpg" alt="Sitting in snowy forest" style="object-position: center bottom;" loading="lazy" decoding="async" />
     <div class="img-caption container">Juda Ka Talab — sitting still in the snow, the bare oak trees all around me, the silence so full it felt like company</div>
   </div>
 
@@ -1269,7 +1289,7 @@
     </div>
     <div class="clearfix">
       <div class="img-float-right">
-        <img src="images_kedarkanta/nimianddog.jpg" alt="Nimi with mountain dog" style="height:380px; object-fit:cover;" />
+        <img srcset="images_kedarkanta/thumbs/nimianddog-800.jpg 800w, images_kedarkanta/nimianddog.jpg 1238w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 97vw, 311px" src="images_kedarkanta/nimianddog.jpg" alt="Nimi with mountain dog" style="height:380px; object-fit:cover;" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background: var(--deep); padding: 0.6rem 0.9rem; font-family: var(--font-body); font-size:0.72rem; color: var(--stone); font-style:italic; border-left: 3px solid var(--amber);">The fluffiest soul on the mountain — I would have carried it home if I could</div>
       </div>
       <p>Climbing the snowy trail, I tried to throw snow at my friends — and hilariously slipped and fell instead. I lost count of how many times I fell that day. Every single time, I laughed harder than the time before. There's something about falling in the snow that makes you feel like a child again.</p>
@@ -1280,7 +1300,7 @@
 
   <!-- MOUNTAIN PEAKS -->
   <div class="full-bleed reveal"  style="height: auto;">
-    <img src="images_kedarkanta/Mountain.jpg" alt="Snow capped Himalayan peaks" style="object-position: center bottom;"  />
+    <img srcset="images_kedarkanta/thumbs/Mountain-800.jpg 800w, images_kedarkanta/thumbs/Mountain-1400.jpg 1400w, images_kedarkanta/Mountain.jpg 2048w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_kedarkanta/Mountain.jpg" alt="Snow capped Himalayan peaks" style="object-position: center bottom;" loading="lazy" decoding="async" />
     <div class="img-caption container">Snow-capped peaks above Sankri — clouds wrapping the mountains like they were being kept secret. This view made every cold, every ache, worth it entirely.</div>
   </div>
 
@@ -1288,16 +1308,16 @@
   <div id="gallery" class="container-wide reveal" style="padding: 3rem 2rem;">
     <div class="photo-mosaic">
       <div class="mosaic-main">
-        <img src="images_kedarkanta/nimpacked.jpg" alt="Nirmala on the trail" style="object-position: center;" />
+        <img srcset="images_kedarkanta/thumbs/nimpacked-800.jpg 800w, images_kedarkanta/nimpacked.jpg 985w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 92vw, 680px" src="images_kedarkanta/nimpacked.jpg" alt="Nirmala on the trail" style="object-position: center;" loading="lazy" decoding="async" />
         <div class="img-caption">Day 1 on the trail — somewhere between climb and the clarity</div>
       </div>
       <div class="mosaic-side">
         <div>
-          <img src="images_kedarkanta/stars.jpg" alt="Base camp at sunset"  style="object-position: center bottom;" />
+          <img srcset="images_kedarkanta/thumbs/stars-800.jpg 800w, images_kedarkanta/thumbs/stars-1400.jpg 1400w, images_kedarkanta/stars.jpg 2200w" sizes="auto, (max-width: 480px) 40vw, (max-width: 1023px) 45vw, 340px" src="images_kedarkanta/stars.jpg" alt="Base camp at sunset"  style="object-position: center bottom;" loading="lazy" decoding="async" />
           <div class="img-caption">Base camp at dusk — glowing sky that felt painted just for us</div>
         </div>
         <div>
-          <img src="images_kedarkanta/legs.jpg" alt="All our boots in the snow" />
+          <img srcset="images_kedarkanta/thumbs/legs-800.jpg 800w, images_kedarkanta/legs.jpg 1536w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 95vw, 510px" src="images_kedarkanta/legs.jpg" alt="All our boots in the snow" loading="lazy" decoding="async" />
           <div class="img-caption">Boots in a circle on summit night — every pair a different story, all pointing the same way</div>
         </div>
       </div>
@@ -1318,7 +1338,7 @@
     </div>
     <p>That night, the snow kept falling. The whole night, the tent filled under its weight, the path outside became invisible, the wind picked up. We waited. We hoped. The campsite had more prayers going up than I could count.</p>
     <div class="snow-img">
-      <img src="images_kedarkanta/campsite2.jpg" alt="Base camp after overnight snowfall" style="width:100%; height:480px; object-fit:cover; border-radius:4px; margin-top:2rem;" />
+      <img srcset="images_kedarkanta/thumbs/campsite2-800.jpg 800w, images_kedarkanta/thumbs/campsite2-1400.jpg 1400w, images_kedarkanta/campsite2.jpg 2200w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 91vw, 676px" src="images_kedarkanta/campsite2.jpg" alt="Base camp after overnight snowfall" style="width:100%; height:480px; object-fit:cover; border-radius:4px; margin-top:2rem;" loading="lazy" decoding="async" />
       <div class="img-caption" style="font-family:var(--font-body); font-size:0.75rem; color:var(--stone); padding:0.6rem 0; font-style:italic;">Base camp after the snowfall — colourful tents against endless white, mountains keeping their secrets in the clouds</div>
     </div>
   </div>
@@ -1355,11 +1375,11 @@
 <div class="container-wide reveal" style="padding-bottom: 4rem;">
   <div class="two-col-grid">
     <div class="grid-img">
-      <img src="images_kedarkanta/IMG_0088.JPG" alt="Looking at the mountains"style="object-position: center top;" />
+      <img srcset="images_kedarkanta/thumbs/IMG_0088-800.jpg 800w, images_kedarkanta/IMG_0088.JPG 1536w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 95vw, 510px" src="images_kedarkanta/IMG_0088.JPG" alt="Looking at the mountains"style="object-position: center top;" loading="lazy" decoding="async" />
       <div class="img-caption">Somewhere on the trail — back to the camera, face to the Himalayas. This is the version of me I came to find.</div>
     </div>
     <div class="grid-img">
-      <img src="images_kedarkanta/legs.jpg" alt="Boots circled on summit night" />
+      <img srcset="images_kedarkanta/thumbs/legs-800.jpg 800w, images_kedarkanta/legs.jpg 1536w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 95vw, 510px" src="images_kedarkanta/legs.jpg" alt="Boots circled on summit night" loading="lazy" decoding="async" />
       <div class="img-caption">Summit night — all our boots in a circle, all our poles meeting in the middle. We were ready. The mountain wasn't.</div>
     </div>
   </div>
@@ -1450,22 +1470,22 @@
     <p class="hint">Some moments deserve to be seen, not just read about. These are mine.</p>
     <div class="photo-slots">
       <figure class="photo-slot">
-        <img src="images_kedarkanta/nimianddog.jpg" alt="Nimi and mountain dog" />
+        <img srcset="images_kedarkanta/thumbs/nimianddog-800.jpg 800w, images_kedarkanta/nimianddog.jpg 1238w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 97vw, 311px" src="images_kedarkanta/nimianddog.jpg" alt="Nimi and mountain dog" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_kedarkanta/nimpacked.jpg" alt="Ganga sunrise Rishikesh" />
+        <img srcset="images_kedarkanta/thumbs/nimpacked-800.jpg 800w, images_kedarkanta/nimpacked.jpg 985w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 92vw, 680px" src="images_kedarkanta/nimpacked.jpg" alt="Ganga sunrise Rishikesh" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_kedarkanta/camsite.PNG" alt="Tiny flower on trail" style="object-position: center bottom;" />
+        <img srcset="images_kedarkanta/thumbs/camsite-800.jpg 800w, images_kedarkanta/camsite.jpg 1179w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 45vw, 217px" src="images_kedarkanta/camsite.jpg" alt="Tiny flower on trail" style="object-position: center bottom;" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_kedarkanta/cutiee.PNG" alt="Sitting in snowy forest" />
+        <img srcset="images_kedarkanta/thumbs/cutiee-800.jpg 800w, images_kedarkanta/cutiee.jpg 1179w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 45vw, 217px" src="images_kedarkanta/cutiee.jpg" alt="Sitting in snowy forest" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_kedarkanta/nimsnowfall.PNG" alt="Dev Prayag confluence" />
+        <img srcset="images_kedarkanta/thumbs/nimsnowfall-800.jpg 800w, images_kedarkanta/nimsnowfall.jpg 1179w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 45vw, 217px" src="images_kedarkanta/nimsnowfall.jpg" alt="Dev Prayag confluence" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_kedarkanta/nimshoes.JPG" alt="Red rhododendrons" />
+        <img srcset="images_kedarkanta/thumbs/nimshoes-800.jpg 800w, images_kedarkanta/nimshoes.JPG 1536w" sizes="auto, (max-width: 480px) 89vw, (max-width: 1023px) 45vw, 217px" src="images_kedarkanta/nimshoes.JPG" alt="Red rhododendrons" loading="lazy" decoding="async" />
       </figure>
       
     </div>
@@ -1491,7 +1511,7 @@
       </div>
       <div class="lb-img-area">
         <button class="lb-arrow left" id="lb-prev">‹</button>
-        <img id="lb-img" src="" alt="">
+        <img loading="lazy" decoding="async" id="lb-img" src="" alt="" decoding="async" />
         <button class="lb-arrow right" id="lb-next">›</button>
       </div>
       <div class="lb-bottom">
@@ -1509,8 +1529,8 @@
       <div class="author-photo">
         <!-- ★ AUTHOR PHOTO — use the same image across all your blogs for a consistent brand look ★ -->
         <!-- Replace 'images/your-author-photo.jpg' with your chosen consistent photo -->
-        <img src="images/nirmala.jpeg" alt="Nirmala — getting lost to find myself" loading="lazy"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <img src="images/nirmala.jpeg" alt="Nirmala — getting lost to find myself"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy" decoding="async" />
       </div>
       <div class="author-text">
         <span class="section-eyebrow">About the Author</span>
@@ -1539,6 +1559,47 @@
 </section>
 
 <!-- ═══ FOOTER ═══ -->
+
+<!-- ══ NEXT TREKS — every story now has a way out ══ -->
+<section class="next-treks" aria-labelledby="next-treks-label">
+  <p class="next-treks-label" id="next-treks-label">Keep walking</p>
+  <div class="next-treks-grid">
+      <a class="next-trek" href="buranghati.html">
+        <img srcset="images/thumbs/Green%20mountain_H-800.jpg 800w, images/thumbs/Green%20mountain_H-1400.jpg 1400w, images/Green%20mountain_H.JPG 2048w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images/Green%20mountain_H.JPG" alt="Buran Ghati — Himachal Pradesh" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Himachal Pradesh</span>
+          <span class="next-trek-name">Buran Ghati</span>
+        </span>
+      </a>
+      <a class="next-trek" href="pangarchulla.html">
+        <img srcset="images_pangarchulla/thumbs/pangarchulla_peak-800.jpg 800w, images_pangarchulla/pangarchulla_peak.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_pangarchulla/pangarchulla_peak.jpg" alt="Pangarchulla Peak — Chamoli, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Chamoli, Uttarakhand</span>
+          <span class="next-trek-name">Pangarchulla Peak</span>
+        </span>
+      </a>
+      <a class="next-trek" href="kuari.html">
+        <img srcset="images_kuari/thumbs/HERO_IMAGE-800.jpg 800w, images_kuari/thumbs/HERO_IMAGE-1400.jpg 1400w, images_kuari/HERO_IMAGE.jpg 2099w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_kuari/HERO_IMAGE.jpg" alt="Kuari Pass — Chamoli, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Chamoli, Uttarakhand</span>
+          <span class="next-trek-name">Kuari Pass</span>
+        </span>
+      </a>
+      <a class="next-trek" href="BMC.html">
+        <img srcset="images_bmc/thumbs/hero-wide-800.jpg 800w, images_bmc/thumbs/hero-wide-1400.jpg 1400w, images_bmc/hero-wide.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_bmc/hero-wide.jpg" alt="NIM Basic Mountaineering Course — Uttarkashi" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Uttarkashi</span>
+          <span class="next-trek-name">NIM Basic Mountaineering Course</span>
+        </span>
+      </a>
+  </div>
+  <a class="all-stories" href="index.html#explore">View all stories &rarr;</a>
+</section>
+
 <footer>
   <span class="footer-brand">getting lost to find myself</span>
   <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary</p>
@@ -1600,6 +1661,7 @@
 </script>
 <script>
   // ↓ REPLACE THESE with your actual image filenames + captions
+  function thumbSrcset(src){var s=decodeURI(src);return encodeURI(s.replace(/\/([^\/]+)\.[^.\/]+$/,'/thumbs/$1-800.jpg'))+' 800w, '+encodeURI(s)+' 2000w';}
   const photos = [
     { src: "images_kedarkanta/devprayag.jpg",       caption: "Dev Prayag — the sacred confluence" },
     { src: "images_kedarkanta/sunrise.jpg",          caption: "Sunrise at Rishikesh" },
@@ -1614,7 +1676,7 @@
   // Everything below this line — don't touch it!
   const gallery=document.getElementById('gal-grid'),galleryView=document.getElementById('gallery-view'),lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCaption=document.getElementById('lb-caption'),lbCounter=document.getElementById('lb-counter'),lbDots=document.getElementById('lb-dots'),lbClose=document.getElementById('lb-close'),lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
   let current=0;
-  photos.forEach(function(photo,index){const item=document.createElement('div');item.className='gal-item';item.innerHTML=`<img src="${photo.src}" alt="${photo.caption}" loading="lazy"><div class="overlay"><span class="caption">${photo.caption}</span></div>`;item.addEventListener('click',function(){openLightbox(index);});gallery.appendChild(item);const dot=document.createElement('button');dot.className='lb-dot';dot.dataset.index=index;dot.addEventListener('click',function(){goTo(parseInt(this.dataset.index));});lbDots.appendChild(dot);});
+  photos.forEach(function(photo,index){const item=document.createElement('div');item.className='gal-item';item.innerHTML=`<img srcset="${thumbSrcset(photo.src)}" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" loading="lazy" decoding="async" src="${photo.src}" alt="${photo.caption}"><div class="overlay"><span class="caption">${photo.caption}</span></div>`;item.addEventListener('click',function(){openLightbox(index);});gallery.appendChild(item);const dot=document.createElement('button');dot.className='lb-dot';dot.dataset.index=index;dot.addEventListener('click',function(){goTo(parseInt(this.dataset.index));});lbDots.appendChild(dot);});
   function openLightbox(i){current=i;galleryView.style.display='none';lightbox.classList.add('open');updateLightbox();}
   function closeLightbox(){lightbox.classList.remove('open');galleryView.style.display='block';}
   function goTo(i){current=i;updateLightbox();}
