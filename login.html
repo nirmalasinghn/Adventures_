@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKN6X0WFC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKN6X0WFC2');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Sign In | She Explores Wild</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="canonical" href="https://sheexploreswild.com/login.html" />
+  <style>
+    :root {
+      --bg: #0c0c0c; --text: #f0ece4; --muted: #7f7a75;
+      --border: rgba(255,255,255,0.07);
+      --green: #6bbb82;
+      --error: #e07a6b;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui: 'Josefin Sans', system-ui, sans-serif;
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--font-ui); font-weight: 300;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 2px; }
+
+    /* NAV — matches index.html */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 66px; padding: 0 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12,12,12,0.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.85rem); font-weight: 300; letter-spacing: 0.05em; }
+    .nav-logo em { font-style: italic; color: var(--green); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* PAGE SHELL */
+    .auth {
+      min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 6vw 5rem;
+      position: relative; overflow: hidden;
+    }
+    .auth-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 75% 55% at 50% 35%, rgba(20,55,32,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 75% 75%, rgba(10,30,55,0.22) 0%, transparent 55%),
+        #0c0c0c;
+    }
+    .auth-bg::after {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* CARD */
+    .card {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 430px;
+      background: rgba(14,14,14,0.72); backdrop-filter: blur(18px);
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 3rem 2.6rem 2.4rem;
+      animation: up 0.9s var(--ease) both;
+    }
+    @keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+    @media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+    @media (max-width: 460px) { .card { padding: 2.4rem 1.6rem 2rem; } }
+
+    .card-eyebrow {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 1.1rem;
+    }
+    .card-title {
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(2.3rem, 7vw, 2.9rem); line-height: 1; margin-bottom: 0.7rem;
+    }
+    .card-title em { font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(240,236,228,0.45); }
+    .card-sub {
+      font-size: 0.78rem; line-height: 1.7; color: var(--muted);
+      margin-bottom: 2.3rem;
+    }
+
+    /* FIELDS */
+    .field { margin-bottom: 1.5rem; }
+    .field label {
+      display: block; font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.65rem;
+    }
+    .input-wrap { position: relative; }
+    .field input {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.95rem 1rem;
+      font-family: var(--font-ui); font-size: 0.88rem; font-weight: 300;
+      color: var(--text);
+      transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+    }
+    .field input::placeholder { color: rgba(122,117,112,0.55); }
+    .field input:focus {
+      outline: none;
+      border-color: rgba(107,187,130,0.55);
+      background: rgba(255,255,255,0.05);
+    }
+    .field input:focus-visible { outline: 2px solid rgba(107,187,130,0.35); outline-offset: 2px; }
+    .field input[aria-invalid="true"] { border-color: rgba(224,122,107,0.6); }
+    .field input[type="password"] { padding-right: 4.2rem; }
+
+    .peek {
+      position: absolute; top: 50%; right: 0.85rem; transform: translateY(-50%);
+      background: none; border: 0; cursor: pointer;
+      font-family: var(--font-ui); font-size: 0.55rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); padding: 0.4rem;
+      transition: color 0.2s;
+    }
+    .peek:hover { color: var(--text); }
+
+    .err {
+      display: block; min-height: 1rem; margin-top: 0.5rem;
+      font-size: 0.66rem; letter-spacing: 0.06em; color: var(--error);
+    }
+
+    /* ROW: remember + forgot */
+    .row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .remember { display: flex; align-items: center; gap: 0.55rem; cursor: pointer; }
+    .remember input {
+      appearance: none; -webkit-appearance: none;
+      width: 14px; height: 14px; flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 3px;
+      background: rgba(255,255,255,0.03); cursor: pointer;
+      position: relative; transition: border-color 0.2s, background 0.2s;
+    }
+    .remember input:checked { background: var(--green); border-color: var(--green); }
+    .remember input:checked::after {
+      content: ''; position: absolute; left: 4px; top: 1px;
+      width: 4px; height: 8px;
+      border: solid #0c0c0c; border-width: 0 1.5px 1.5px 0;
+      transform: rotate(45deg);
+    }
+    .remember input:focus-visible { outline: 2px solid rgba(107,187,130,0.35); outline-offset: 2px; }
+    .remember span, .forgot {
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    }
+    .forgot { transition: color 0.2s; }
+    .forgot:hover { color: var(--text); }
+
+    /* BUTTON */
+    .btn {
+      width: 100%; cursor: pointer;
+      background: var(--text); color: #0c0c0c;
+      border: 1px solid var(--text); border-radius: 100px;
+      padding: 1rem 1.5rem;
+      font-family: var(--font-ui); font-size: 0.66rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      transition: background 0.3s var(--ease), color 0.3s var(--ease), opacity 0.2s;
+    }
+    .btn:hover { background: transparent; color: var(--text); }
+    .btn:focus-visible { outline: 2px solid rgba(107,187,130,0.45); outline-offset: 3px; }
+    .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+    /* STATUS */
+    .status {
+      margin-top: 1.4rem; min-height: 1.2rem;
+      font-size: 0.7rem; line-height: 1.6; letter-spacing: 0.04em;
+      color: var(--muted); text-align: center;
+    }
+    .status.show { color: rgba(240,236,228,0.8); }
+
+    /* FOOTER OF CARD */
+    .card-foot {
+      margin-top: 2.2rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted);
+    }
+    .card-foot a { color: var(--green); transition: opacity 0.2s; }
+    .card-foot a:hover { opacity: 0.75; }
+    .back {
+      display: block; margin-top: 1.6rem; text-align: center;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .back:hover { color: var(--text); }
+  </style>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">She <em>Explores</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#treks">Treks</a></li>
+    <li><a href="index.html#explore">Adventures</a></li>
+  </ul>
+</nav>
+<span id="main" tabindex="-1"></span>
+
+<main class="auth">
+  <div class="auth-bg"></div>
+
+  <div class="card">
+    <p class="card-eyebrow">Welcome Back</p>
+    <h1 class="card-title">Sign <em>In</em></h1>
+    <p class="card-sub">Pick up where the trail left off.</p>
+
+    <!--
+      NOTE: front-end only. This site is static (GitHub Pages), so there is no
+      server to verify credentials against. The handler below validates the shape
+      of the input and nothing more — it does not authenticate anyone and must not
+      be used to gate private content.
+
+      To make this real, replace the marked block in the submit handler with a call
+      to an auth provider (Firebase Auth, Auth0, Supabase, Netlify Identity, or your
+      own API). Never put a password, API secret, or allow-list in this file — it is
+      readable by anyone who opens View Source.
+    -->
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <div class="input-wrap">
+          <input type="email" id="email" name="email" autocomplete="email"
+                 placeholder="you@example.com" required
+                 aria-describedby="emailErr" />
+        </div>
+        <span class="err" id="emailErr" role="alert"></span>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <input type="password" id="password" name="password" autocomplete="current-password"
+                 placeholder="••••••••" required
+                 aria-describedby="passErr" />
+          <button type="button" class="peek" id="peek" aria-label="Show password">Show</button>
+        </div>
+        <span class="err" id="passErr" role="alert"></span>
+      </div>
+
+      <div class="row">
+        <label class="remember">
+          <input type="checkbox" id="remember" name="remember" />
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot" id="forgot">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">Enter</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="card-foot">
+      New here? <a href="#" id="signupLink">Create an account</a>
+    </p>
+    <a href="index.html" class="back">&larr; Back to the trails</a>
+  </div>
+</main>
+
+<script>
+  const form    = document.getElementById('loginForm');
+  const email   = document.getElementById('email');
+  const pass    = document.getElementById('password');
+  const emailErr= document.getElementById('emailErr');
+  const passErr = document.getElementById('passErr');
+  const status  = document.getElementById('status');
+  const btn     = document.getElementById('submitBtn');
+  const peek    = document.getElementById('peek');
+
+  /* show / hide password */
+  peek.addEventListener('click', () => {
+    const shown = pass.type === 'text';
+    pass.type = shown ? 'password' : 'text';
+    peek.textContent = shown ? 'Show' : 'Hide';
+    peek.setAttribute('aria-label', shown ? 'Show password' : 'Hide password');
+    pass.focus();
+  });
+
+  function setError(input, node, message) {
+    node.textContent = message;
+    input.setAttribute('aria-invalid', message ? 'true' : 'false');
+    return !message;
+  }
+
+  function validateEmail() {
+    const v = email.value.trim();
+    if (!v)                         return setError(email, emailErr, 'Enter your email.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))
+                                    return setError(email, emailErr, 'That email does not look right.');
+    return setError(email, emailErr, '');
+  }
+
+  function validatePass() {
+    if (!pass.value)                return setError(pass, passErr, 'Enter your password.');
+    if (pass.value.length < 8)      return setError(pass, passErr, 'Passwords are at least 8 characters.');
+    return setError(pass, passErr, '');
+  }
+
+  /* clear the error as soon as the user fixes it, not on every keystroke before that */
+  email.addEventListener('blur', validateEmail);
+  pass .addEventListener('blur', validatePass);
+  email.addEventListener('input', () => { if (emailErr.textContent) validateEmail(); });
+  pass .addEventListener('input', () => { if (passErr.textContent)  validatePass();  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    status.classList.remove('show');
+
+    const ok = validateEmail() && validatePass();
+    if (!ok) {
+      (emailErr.textContent ? email : pass).focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Checking…';
+
+    /* ─── REPLACE FROM HERE ─────────────────────────────────────────
+       This is where a real auth call goes, e.g.:
+
+         signInWithEmailAndPassword(auth, email.value.trim(), pass.value)
+           .then(() => location.href = 'index.html')
+           .catch(err => { status.textContent = err.message; });
+
+       Until then, the form is honest about doing nothing.           */
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Enter';
+      status.textContent = 'Input looks valid — but no authentication service is connected yet, so there is nothing to sign in to.';
+      status.classList.add('show');
+    }, 550);
+    /* ─── TO HERE ──────────────────────────────────────────────── */
+  });
+
+  /* placeholders — no destinations exist yet */
+  for (const id of ['forgot', 'signupLink']) {
+    document.getElementById(id).addEventListener('click', (e) => {
+      e.preventDefault();
+      status.textContent = 'Not built yet.';
+      status.classList.add('show');
+    });
+  }
+</script>
+
+</body>
+</html>

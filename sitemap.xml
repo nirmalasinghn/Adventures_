@@ -1,42 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Canonical host is the custom domain in CNAME (sheexploreswild.com).
+       login.html is intentionally absent: it carries <meta name="robots" content="noindex">.
+       So are adventures.html, treks.html and mountaineering.html: they only redirect to the home page. -->
 
-<url>
-  <loc>https://nirmalasinghn.github.io/Adventures_/</loc>
-  <lastmod>2026-04-07T07:21:53+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://nirmalasinghn.github.io/Adventures_/kedarkanta.html</loc>
-  <lastmod>2026-04-07T07:21:53+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://nirmalasinghn.github.io/Adventures_/buranghati.html</loc>
-  <lastmod>2026-04-07T07:21:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://nirmalasinghn.github.io/Adventures_/pangarchulla.html</loc>
-  <lastmod>2026-04-07T07:21:53+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://nirmalasinghn.github.io/Adventures_/kuari.html</loc>
-  <lastmod>2026-04-07T07:21:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://nirmalasinghn.github.io/Adventures_/index.html</loc>
-  <lastmod>2026-04-07T07:21:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
+  <url>
+    <loc>https://sheexploreswild.com/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <!-- BUILD:generated — story pages, written by tools/build_stories.py from stories.json -->
+  <url>
+    <loc>https://sheexploreswild.com/BMC.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/kudremukha.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/pangarchulla.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/kuari.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/bandaje.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/kodachadri.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/buranghati.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/netravathi.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sheexploreswild.com/kedarkanta.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <!-- /BUILD:generated -->
 
 </urlset>

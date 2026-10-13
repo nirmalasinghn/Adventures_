@@ -13,7 +13,23 @@
   <title>Pangarchulla Peak — The Sky at Your Feet | She Explores Wild </title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="canonical" href="https://sheexploreswild.com/pangarchulla.html" />
+  <meta name="description" content="Nobody planned it. The mountain just appeared and asked if I was brave enough. I said yes before I had the sense to think about it." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="She Explores Wild" />
+  <meta property="og:title" content="Pangarchulla Peak - The Sky at Your Feet | She Explores Wild" />
+  <meta property="og:description" content="Nobody planned it. The mountain just appeared and asked if I was brave enough. I said yes before I had the sense to think about it." />
+  <meta property="og:url" content="https://sheexploreswild.com/pangarchulla.html" />
+  <meta property="og:image" content="https://sheexploreswild.com/og/pangarchulla.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pangarchulla Peak - The Sky at Your Feet | She Explores Wild" />
+  <meta name="twitter:description" content="Nobody planned it. The mountain just appeared and asked if I was brave enough. I said yes before I had the sense to think about it." />
+  <meta name="twitter:image" content="https://sheexploreswild.com/og/pangarchulla.jpg" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,7 +47,7 @@
       --border:       rgba(255,255,255,0.06);
       --amber:        #d4924a;
       --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -243,8 +259,10 @@
       .hero-title { font-size:clamp(3.5rem,18vw,6rem); }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <nav id="nav">
@@ -254,11 +272,13 @@
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#author">About</a></li>
+    <li><a href="index.html#explore">All Stories</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<span id="main" tabindex="-1"></span>
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <ul>
@@ -266,6 +286,7 @@
     <li><a href="#itinerary" class="mobile-nav-link">Itinerary</a></li>
     <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
     <li><a href="#author" class="mobile-nav-link">About</a></li>
+      <li><a href="index.html#explore" class="mobile-nav-link">All Stories</a></li>
   </ul>
   <p class="mobile-menu-footer">Pangarchulla · Dec 19–26, 2025</p>
 </div>
@@ -322,7 +343,7 @@
   <!-- GANGA IMAGE -->
   <div class="full-bleed reveal">
     <!-- ★ images_pangarchulla/ganga_aarti.jpg — Ganga Aarti or rafting photo ★ -->
-    <img src="images_pangarchulla/ganga_arthi.jpg" alt="Ganga Aarti Rishikesh" style="object-position:center center;" onerror="this.style.display='none'" />
+    <img srcset="images_pangarchulla/thumbs/ganga_arthi-800.jpg 800w, images_pangarchulla/thumbs/ganga_arthi-1400.jpg 1400w, images_pangarchulla/ganga_arthi.jpg 2079w" sizes="(max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_pangarchulla/ganga_arthi.jpg" alt="Ganga Aarti Rishikesh" style="object-position:center center;" onerror="this.style.display='none'" loading="eager" fetchpriority="high" decoding="async" />
     <div class="img-caption container">Ganga Aarti, Rishikesh — flames on water and a feeling something in you is about to change</div>
   </div>
 
@@ -331,7 +352,7 @@
     <div class="clearfix">
       <div class="img-float-right">
         <!-- ★ images_pangarchulla/dronagiri_morning.jpg ★ -->
-        <img src="images_pangarchulla/dronagiri_eve.jpg" alt="Mt Dronagiri at sunrise" style="height:340px; object-fit:cover;" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/dronagiriand%20forest-800.jpg 800w, images_pangarchulla/thumbs/dronagiriand%20forest-1400.jpg 1400w, images_pangarchulla/dronagiriand%20forest.jpg 2048w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="images_pangarchulla/dronagiriand%20forest.jpg" alt="Mt Dronagiri at sunrise" style="height:340px; object-fit:cover;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Mt Dronagiri at first light — huge, unhurried, entirely unbothered</div>
       </div>
       <span class="section-eyebrow">Dec 21 — Karchi, Tugasi Village</span>
@@ -353,7 +374,7 @@
     <div class="clearfix">
       <div class="img-float-left">
         <!-- ★ images_pangarchulla/trail_village.jpg ★ -->
-        <img src="images_pangarchulla/womenandchild.PNG" alt="Trail through mountain village" style="height:320px; object-fit:cover;" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/womenandchild-800.jpg 800w, images_pangarchulla/thumbs/womenandchild-1400.jpg 1400w, images_pangarchulla/womenandchild.jpg 2088w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 333px" src="images_pangarchulla/womenandchild.jpg" alt="Trail through mountain village" style="height:320px; object-fit:cover;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The trail through small mountain homes — slow, humble, gorgeous</div>
       </div>
       <p>The trail started in a village. Small homes, narrow paths, tiny shops, and more dogs than I could count. Children jumping around with joy that doesn't need a reason. Women working in farms, children on their backs, utterly unbothered. The most grounded people I have ever met anywhere.</p>
@@ -365,7 +386,7 @@
   <!-- ALPINE GLOW IMAGE -->
   <div class="full-bleed full-bleed-tall reveal">
     <!-- ★ images_pangarchulla/alpine_glow.jpg ★ -->
-    <img src="images_pangarchulla/alpine_dronagiri.PNG" alt="Alpine glow on Dronagiri" onerror="this.style.display='none'" />
+    <img srcset="images_pangarchulla/thumbs/hatigoda_alpine_glow-800.jpg 800w, images_pangarchulla/thumbs/hatigoda_alpine_glow-1400.jpg 1400w, images_pangarchulla/hatigoda_alpine_glow.jpg 2077w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_pangarchulla/hatigoda_alpine_glow.jpg" alt="Alpine glow on Dronagiri" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container">Alpine glow on Dronagiri — I had this on my vision board for a whole year. It was everything.</div>
   </div>
 
@@ -382,7 +403,7 @@
   <!-- STARS IMAGE -->
   <div class="full-bleed reveal">
     <!-- ★ images_pangarchulla/stars_gulling.jpg ★ -->
-    <img src="images_pangarchulla/night.jpg" alt="Starry sky over Gulling" onerror="this.style.display='none'" />
+    <img srcset="images_pangarchulla/thumbs/night-800.jpg 800w, images_pangarchulla/thumbs/night-1400.jpg 1400w, images_pangarchulla/night.jpg 2200w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_pangarchulla/night.jpg" alt="Starry sky over Gulling" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container">Gulling campsite, 0°C, hands freezing — some experiences cannot be photographed, only lived</div>
   </div>
 
@@ -398,7 +419,7 @@
     <div class="clearfix">
       <div class="img-float-right">
         <!-- ★ images_pangarchulla/pine_tree.jpg ★ -->
-        <img src="images_pangarchulla/tree.jpg" alt="The epic pine tree on the trail" style="height:380px; object-fit:cover;" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/tree-800.jpg 800w, images_pangarchulla/tree.jpg 1536w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="images_pangarchulla/tree.jpg" alt="The epic pine tree on the trail" style="height:380px; object-fit:cover;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
         <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">The pine tree — the photos we took here became some of my all-time favourites</div>
       </div>
       <p>Day 2 was dense forest and steep climb. Streams crossing the trail. Rucksack getting heavier with every switchback. The fluffy trek dog walking beside me like we had always known each other.</p>
@@ -414,7 +435,7 @@
   <!-- HATHI GHODA IMAGE -->
   <div class="full-bleed reveal">
     <!-- ★ images_pangarchulla/hathi_ghoda_glow.jpg ★ -->
-    <img src="images_pangarchulla/hatigoda_alpine_glow.PNG" alt="Alpine glow on Hathi-Ghoda peaks" onerror="this.style.display='none'" />
+    <img srcset="images_pangarchulla/thumbs/hatigoda_alpine_glow-800.jpg 800w, images_pangarchulla/thumbs/hatigoda_alpine_glow-1400.jpg 1400w, images_pangarchulla/hatigoda_alpine_glow.jpg 2077w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_pangarchulla/hatigoda_alpine_glow.jpg" alt="Alpine glow on Hathi-Ghoda peaks" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     <div class="img-caption container">Hathi-Ghoda peaks from Khullara — the mountains lit up like they were celebrating the decision we had just made</div>
   </div>
 
@@ -429,7 +450,7 @@
     </div>
     <!-- ★ images_pangarchulla/birthday_cupcake.jpg ★ -->
     <!-- <div class="full-bleed reveal" style="height:35vh; margin:2.5rem 0 0;">
-      <img src="images_pangarchulla/cake_with_candles.jpg" style="object-position: bottom;" alt="Birthday cupcake at Khullara" onerror="this.style.display='none'" />
+      <img src="images_pangarchulla/cake_with_candles.jpg" style="object-position: bottom;" alt="Birthday cupcake at Khullara" onerror="this.style.display='none'" loading="lazy" decoding="async" />
     </div>
     <div class="img-caption">Midnight birthday at Khullara — a cupcake, a candle the cake was just a detail. The real magic was still waiting, somewhere higher.</div> -->
   </div>
@@ -478,7 +499,7 @@
 <!-- SUMMIT CLIMB IMAGE -->
 <div class="full-bleed full-bleed-tall reveal" style="height:110vh;" > 
   <!-- ★ images_pangarchulla/summit_climb.jpg ★ -->
-  <img src="images_pangarchulla/nimonpeakback.jpg" style="object-position: 50% 45% !important;" alt="Climbing Pangarchulla in the dark" onerror="this.style.display='none'"  />
+  <img srcset="images_pangarchulla/thumbs/nimonpeakback-800.jpg 800w, images_pangarchulla/thumbs/nimonpeakback-1400.jpg 1400w, images_pangarchulla/nimonpeakback.jpg 2123w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_pangarchulla/nimonpeakback.jpg" style="object-position: 50% 45% !important;" alt="Climbing Pangarchulla in the dark" onerror="this.style.display='none'" loading="lazy" decoding="async" />
   <div class="img-caption container">The climb — headlamp, ice, cold air flooding the lungs, and one thought: one step at a time</div>
 </div>
 
@@ -487,7 +508,7 @@
   <div class="clearfix">
     <div class="img-float-right">
       <!-- ★ images_pangarchulla/summit_sunrise.jpg ★ -->
-      <img src="images_pangarchulla/Animated.PNG" alt="Sunrise on Pangarchulla" style="height:380px; object-fit:cover;" onerror="this.style.display='none'" />
+      <img srcset="images_pangarchulla/thumbs/Animated-800.jpg 800w, images_pangarchulla/thumbs/Animated-1400.jpg 1400w, images_pangarchulla/Animated.jpg 2088w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 94vw, 348px" src="images_pangarchulla/Animated.jpg" alt="Sunrise on Pangarchulla" style="height:380px; object-fit:cover;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       <div class="img-caption" style="position:relative; background:var(--card); padding:0.6rem 0.9rem; font-family:var(--font-body); font-size:0.72rem; color:var(--stone); font-style:italic; border-left:3px solid var(--alpine);">Sunrise on the climb — I turned back and felt like the main character of the movie</div>
     </div>
     <span class="section-eyebrow">The Summit · 9:15 AM</span>
@@ -505,7 +526,7 @@
 <!-- PANORAMA -->
 <div class="full-bleed reveal" style="height:75vh;">
   <!-- ★ images_pangarchulla/panorama_summit.jpg ★ -->
-  <img src="images_pangarchulla/top.jpg" alt="360 panorama Pangarchulla summit" onerror="this.style.display='none'" />
+  <img srcset="images_pangarchulla/thumbs/top-800.jpg 800w, images_pangarchulla/thumbs/top-1400.jpg 1400w, images_pangarchulla/top.jpg 2200w" sizes="auto, (max-width: 480px) 100vw, (max-width: 1023px) 100vw, 100vw" src="images_pangarchulla/top.jpg" alt="360 panorama Pangarchulla summit" onerror="this.style.display='none'" loading="lazy" decoding="async" />
   <div class="img-caption container">The 360° view — Nanda Devi, Kamet, Dronagiri, Trishul, Chaukamba. Everything all at once.</div>
 </div>
 
@@ -530,7 +551,7 @@
   <div class="photo-mosaic">
     <div class="mosaic-main" >
       <!-- ★ images_pangarchulla/nimi_summit_top.jpg ★ -->
-      <img src="images_pangarchulla/hero_image.PNG"  alt="At the Pangarchulla summit" style="height:420px; object-position: 50% 20% !important;" onerror="this.style.display='none'"  />
+      <img srcset="images_pangarchulla/thumbs/hero_image-800.jpg 800w, images_pangarchulla/thumbs/hero_image-1400.jpg 1400w, images_pangarchulla/hero_image.jpg 2074w" sizes="auto, (max-width: 480px) 84vw, (max-width: 1023px) 92vw, 821px" src="images_pangarchulla/hero_image.jpg"  alt="At the Pangarchulla summit" style="height:420px; object-position: 50% 20% !important;" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       <div class="img-caption">At the top · Pangarchulla Peak · 4,700m · My birthday · The moment I'll carry always</div>
     </div>
   
@@ -538,7 +559,7 @@
     <div class="mosaic-side">
       <div>
         <!-- ★ images_pangarchulla/nanda_devi_view.jpg ★ -->
-        <img src="images_pangarchulla/trishul2.jpg"style="height:420px;" alt="Nanda Devi from summit" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/trishul2-800.jpg 800w, images_pangarchulla/trishul2.jpg 1536w" sizes="auto, (max-width: 480px) 84vw, (max-width: 1023px) 92vw, 411px" src="images_pangarchulla/trishul2.jpg"style="height:420px;" alt="Nanda Devi from summit" onerror="this.style.display='none'" loading="lazy" decoding="async" />
         <div class="img-caption">Trishul — Standing in the presence of ultimate strength.</div>
       </div>
     </div>
@@ -640,22 +661,22 @@
     <div class="photo-slots">
       <!-- ★ Replace each src — all go in images_pangarchulla/ ★ -->
       <figure class="photo-slot">
-        <img src= "images_pangarchulla/kid.PNG" alt="Alpine glow" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/kid-800.jpg 800w, images_pangarchulla/thumbs/kid-1400.jpg 1400w, images_pangarchulla/kid.jpg 2088w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 249px" src= "images_pangarchulla/kid.jpg" alt="Alpine glow" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_pangarchulla/dronagiriand forest.jpg"  alt="Forest trail Day 2" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/dronagiriand%20forest-800.jpg 800w, images_pangarchulla/thumbs/dronagiriand%20forest-1400.jpg 1400w, images_pangarchulla/dronagiriand%20forest.jpg 2048w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 249px" src="images_pangarchulla/dronagiriand forest.jpg"  alt="Forest trail Day 2" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_pangarchulla/peakclean.jpg" alt="Sliding the descent" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/peakclean-800.jpg 800w, images_pangarchulla/peakclean.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 249px" src="images_pangarchulla/peakclean.jpg" alt="Sliding the descent" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_pangarchulla/aurafarm.jpg"style="object-position:center;"  alt="Birthday at basecamp" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/aurafarm-800.jpg 800w, images_pangarchulla/aurafarm.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 249px" src="images_pangarchulla/aurafarm.jpg"style="object-position:center;"  alt="Birthday at basecamp" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_pangarchulla/pangarchula steap.jpg" alt="The black ice section" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/pangarchula%20steap-800.jpg 800w, images_pangarchulla/pangarchula%20steap.jpg 1238w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 249px" src="images_pangarchulla/pangarchula steap.jpg" alt="The black ice section" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </figure>
       <figure class="photo-slot">
-        <img src="images_pangarchulla/dogontrail.jpg"  style="object-position:left ;" alt="Prayer flags Shiva temple" onerror="this.style.display='none'" />
+        <img srcset="images_pangarchulla/thumbs/dogontrail-800.jpg 800w, images_pangarchulla/thumbs/dogontrail-1400.jpg 1400w, images_pangarchulla/dogontrail.jpg 2070w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 47vw, 249px" src="images_pangarchulla/dogontrail.jpg"  style="object-position:left ;" alt="Prayer flags Shiva temple" onerror="this.style.display='none'" loading="lazy" decoding="async" />
       </figure>
 
     </div>
@@ -673,8 +694,8 @@
     <div class="author-inner">
       <div class="author-photo">
         <!-- ★ Same author photo as Kedarkantha — images/nirmala.jpeg ★ -->
-        <img src="images/nirmala.jpeg" style="object-fit: cover; object-position: center !important;" alt="Nirmala — She Explores" loading="lazy"
-  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <img src="images/nirmala.jpeg" style="object-fit: cover; object-position: center !important;" alt="Nirmala — She Explores"
+  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy" decoding="async" />
       </div>
       <div class="author-text">
         <span class="section-eyebrow">About the Author</span>
@@ -703,6 +724,47 @@
 </section>
 
 <!-- FOOTER -->
+
+<!-- ══ NEXT TREKS — every story now has a way out ══ -->
+<section class="next-treks" aria-labelledby="next-treks-label">
+  <p class="next-treks-label" id="next-treks-label">Keep walking</p>
+  <div class="next-treks-grid">
+      <a class="next-trek" href="kedarkanta.html">
+        <img srcset="images_kedarkanta/thumbs/sunrise-800.jpg 800w, images_kedarkanta/sunrise.jpg 1536w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_kedarkanta/sunrise.jpg" alt="Kedarkantha — Uttarkashi, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Uttarkashi, Uttarakhand</span>
+          <span class="next-trek-name">Kedarkantha</span>
+        </span>
+      </a>
+      <a class="next-trek" href="buranghati.html">
+        <img srcset="images/thumbs/Green%20mountain_H-800.jpg 800w, images/thumbs/Green%20mountain_H-1400.jpg 1400w, images/Green%20mountain_H.JPG 2048w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images/Green%20mountain_H.JPG" alt="Buran Ghati — Himachal Pradesh" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Himachal Pradesh</span>
+          <span class="next-trek-name">Buran Ghati</span>
+        </span>
+      </a>
+      <a class="next-trek" href="kuari.html">
+        <img srcset="images_kuari/thumbs/HERO_IMAGE-800.jpg 800w, images_kuari/thumbs/HERO_IMAGE-1400.jpg 1400w, images_kuari/HERO_IMAGE.jpg 2099w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_kuari/HERO_IMAGE.jpg" alt="Kuari Pass — Chamoli, Uttarakhand" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Chamoli, Uttarakhand</span>
+          <span class="next-trek-name">Kuari Pass</span>
+        </span>
+      </a>
+      <a class="next-trek" href="BMC.html">
+        <img srcset="images_bmc/thumbs/hero-wide-800.jpg 800w, images_bmc/thumbs/hero-wide-1400.jpg 1400w, images_bmc/hero-wide.jpg 2200w" sizes="auto, (max-width: 480px) 88vw, (max-width: 1023px) 43vw, 288px" src="images_bmc/hero-wide.jpg" alt="NIM Basic Mountaineering Course — Uttarkashi" loading="lazy" decoding="async" />
+        <span class="next-trek-veil"></span>
+        <span class="next-trek-text">
+          <span class="next-trek-place">Uttarkashi</span>
+          <span class="next-trek-name">NIM Basic Mountaineering Course</span>
+        </span>
+      </a>
+  </div>
+  <a class="all-stories" href="index.html#explore">View all stories &rarr;</a>
+</section>
+
 <footer>
   <span class="footer-brand">the sky at your feet</span>
   <p class="hillary-quote">"It is not the mountain we conquer, but ourselves." — Sir Edmund Hillary</p>

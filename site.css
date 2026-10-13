@@ -1,0 +1,384 @@
+/* ============================================================================
+   site.css — She Explores Wild
+   Shared skeleton + "Apple flavour" layer.
+
+   Loaded AFTER each page's inline <style> so it can normalise type, motion,
+   focus and materials without those style blocks being rewritten. Each page
+   keeps its own colour palette — the per-trek moods (forest / night / wine /
+   alpine / ember) are deliberate and untouched here.
+
+   Sections
+     1. Tokens          — 8pt spacing, radii, materials, spring easing
+     2. Typography      — unified families, Apple-style optical tracking
+     3. Motion          — reduced-motion honoured globally
+     4. Focus & targets — visible rings, 44px minimum hit areas
+     5. Media           — CLS-free images
+     6. Components      — frosted nav material, pill buttons, next-trek cards
+   ========================================================================= */
+
+/* ── 1. TOKENS ───────────────────────────────────────────────────────────── */
+:root {
+  /* Unified type roles */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Josefin Sans', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* 8pt spacing scale (Apple HIG rhythm) */
+  --sp-1: 0.5rem;  --sp-2: 1rem;    --sp-3: 1.5rem;
+  --sp-4: 2rem;    --sp-6: 3rem;    --sp-8: 4rem;
+  --sp-12: 6rem;   --sp-16: 8rem;
+
+  /* Corner radii — 980px is Apple's own pill button radius */
+  --r-sm: 10px; --r-md: 14px; --r-lg: 18px; --r-xl: 24px; --r-pill: 980px;
+
+  /* Hairline borders */
+  --hairline: rgba(255,255,255,0.08);
+  --hairline-strong: rgba(255,255,255,0.14);
+
+  /* Motion — Apple's standard spring-ish curves */
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --dur-fast: 0.2s; --dur-mid: 0.35s; --dur-slow: 0.6s;
+
+  /* Layout */
+  --nav-h: 66px;
+}
+
+/* Hairline borders where the display supports sub-pixel strokes */
+@media (min-resolution: 2dppx) {
+  :root { --hairline: rgba(255,255,255,0.10); }
+}
+
+/* ── 2. TYPOGRAPHY ───────────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* stop the fixed nav from covering anchor targets */
+  scroll-padding-top: calc(var(--nav-h) + var(--sp-2));
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Apple's signature move: large display type gets NEGATIVE tracking.
+   The bigger the type, the tighter it sets. */
+h1, .hero-title, .card-title, .display {
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+h2, h3 {
+  letter-spacing: -0.014em;
+  text-wrap: balance;
+}
+
+/* Long-form reading: comfortable measure and rag */
+p {
+  text-wrap: pretty;
+}
+
+/* Small uppercase chrome keeps its wide tracking — the opposite end of the
+   same idea: tiny type needs air, big type needs none. */
+.eyebrow, .badge, .nav-links a, .status-tag, .label {
+  font-feature-settings: "kern" 1;
+}
+
+/* Tabular figures for any stats/altitude/day numbers */
+.stat, .num, .day-num, time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 3. MOTION ───────────────────────────────────────────────────────────── */
+/* Site-wide reduced-motion contract. The pages are animation-heavy (scroll
+   reveals, parallax, particle canvas) — this makes all of it opt-out. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* reveal-on-scroll elements must not stay invisible when animation is off */
+  .reveal, .fade-in, .reveal-up { opacity: 1 !important; transform: none !important; }
+}
+
+/* ── 4. FOCUS & HIT TARGETS ──────────────────────────────────────────────── */
+/* Nothing on this site had a visible focus state. Keyboard and screen-reader
+   users need to see where they are. Soft halo rather than a hard outline. */
+:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.75);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+a:focus-visible, button:focus-visible {
+  outline-color: currentColor;
+  box-shadow: 0 0 0 5px rgba(255,255,255,0.10);
+}
+/* mouse users keep clean edges */
+:focus:not(:focus-visible) { outline: none; }
+
+/* Apple HIG: 44x44pt minimum touch target */
+@media (pointer: coarse) {
+  .nav-links a, .mob-menu a, .hamburger, button, .btn, .nav-brand {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .nav-links a { padding-block: 0.5rem; }
+}
+
+/* Press feedback — subtle scale, the way iOS controls respond */
+button:active, .btn:active, .card:active {
+  transform: scale(0.975);
+  transition-duration: 0.09s;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute; top: -100px; left: var(--sp-2);
+  z-index: 999;
+  padding: 0.75rem 1.25rem;
+  background: #fff; color: #000;
+  font-family: var(--font-ui); font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  border-radius: var(--r-sm);
+  transition: top var(--dur-fast) var(--ease-spring);
+}
+.skip-link:focus { top: var(--sp-2); }
+
+/* ── 5. MEDIA ────────────────────────────────────────────────────────────── */
+/* NOTE: deliberately no `height: auto` here. Several pages set
+   `img { width:100%; height:100%; object-fit:cover }` to fill fixed-height
+   containers, and a blanket height override collapses those galleries. Only
+   the tint is applied globally — it softens the pop-in as lazy images land. */
+img {
+  background-color: rgba(255,255,255,0.03);
+}
+
+figure { margin: 0; }
+
+/* ── 6. COMPONENTS ───────────────────────────────────────────────────────── */
+
+/* Story filter bar, chips and On the Horizon — the home page catalogue
+   (generated by tools/build_stories.py, filtered by the script in index.html). */
+#explore { scroll-margin-top: 66px; }
+.filter-bar { position: sticky; top: 66px; z-index: 50; margin: -1.5rem -6vw 3rem; padding: 1rem 6vw; background: rgba(12,12,12,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.75rem; }
+.chips { display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 36px; padding: 0.45rem 1rem; border-radius: 100px; border: 1px solid var(--border); font-size: 0.64rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+.chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+.chip[aria-current="true"] { color: #0c0c0c; background: var(--text); border-color: var(--text); }
+.chip .n { font-size: 0.58rem; letter-spacing: 0.05em; opacity: 0.6; }
+.chips-sub .chip { min-height: 30px; padding: 0.3rem 0.85rem; font-size: 0.58rem; }
+.chips-sub .chip[aria-current="true"] { color: var(--text); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); }
+.chip.is-empty { border-style: dashed; opacity: 0.55; }
+.chip.is-empty:hover, .chip.is-empty[aria-current="true"] { opacity: 1; }
+.horizon { margin-top: clamp(4rem,7vw,6rem); padding-top: 2.5rem; border-top: 1px solid var(--border); }
+.horizon .chips { flex-wrap: wrap; }
+.horizon .chip { border-style: dashed; }
+
+/* Story catalogue — category + sub sections and the featured Latest Story card.
+   Markup is generated by tools/build_stories.py for adventures.html, the
+   category pages and the home page. */
+.cat { scroll-margin-top: 180px; }
+.cat + .cat { margin-top: clamp(4rem,7vw,6rem); }
+.cat[hidden], .sub[hidden], .chips[hidden] { display: none; }
+.cat-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 2rem; }
+.cat-title { font-family: var(--font-display); font-size: clamp(2rem,4.5vw,3rem); font-weight: 300; line-height: 1; }
+.cat-desc { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.sub + .sub { margin-top: 3rem; }
+.sub-title { font-size: 0.63rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #6bbb82; margin-bottom: 1.3rem; }
+.featured { margin-bottom: clamp(4rem,7vw,6rem); }
+.featured[hidden], .horizon[hidden] { display: none; }
+.card-featured { flex-direction: row; min-height: 380px; }
+.card-featured .card-img { flex: 1.35; height: auto; min-height: 320px; }
+.card-featured .card-body { flex: 1; padding: clamp(1.8rem,3vw,2.8rem); justify-content: center; }
+.card-featured .card-title { font-size: clamp(1.8rem,3.2vw,2.6rem); margin-bottom: 1rem; }
+.card-featured .card-desc { flex: 0; font-size: 0.85rem; }
+@media (max-width: 768px) { .card-featured { flex-direction: column; } .card-featured .card-img { flex: none; height: 260px; min-height: 0; } }
+
+/* Frosted "material" — Apple's vibrancy: blur plus saturation boost, so
+   colour bleeds through the panel instead of going grey. */
+.material,
+nav, .nav {
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Pill button */
+.btn-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.85rem 1.75rem;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  font-family: var(--font-ui);
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--dur-mid) var(--ease-spring),
+              border-color var(--dur-mid) var(--ease-spring),
+              transform var(--dur-fast) var(--ease-spring);
+}
+.btn-pill:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.28);
+}
+
+/* ── NEXT-TREK FOOTER ────────────────────────────────────────────────────
+   Every trek page was a dead end: the brand logo pointed at "#" and there
+   were no links out. This block gives each story an exit to the next one. */
+.next-treks {
+  padding: var(--sp-12) 6vw var(--sp-8);
+  border-top: 1px solid var(--hairline);
+}
+.next-treks-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: var(--sp-4);
+  text-align: center;
+}
+.next-treks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--sp-2);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.next-trek {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+  color: #f4f1ea;
+  transition: transform var(--dur-mid) var(--ease-spring),
+              border-color var(--dur-mid) var(--ease-spring);
+}
+.next-trek:hover { transform: translateY(-4px); border-color: var(--hairline-strong); }
+.next-trek img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-spring);
+}
+.next-trek:hover img { transform: scale(1.06); }
+.next-trek-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 55%, transparent 100%);
+}
+.next-trek-text {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: var(--sp-3) var(--sp-2) var(--sp-2);
+}
+.next-trek-place {
+  font-family: var(--font-ui);
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 0.35rem;
+}
+.next-trek-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Back-to-all strip under the next-trek grid */
+.all-stories {
+  display: block;
+  margin: var(--sp-4) auto 0;
+  width: fit-content;
+  font-family: var(--font-ui);
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity var(--dur-fast);
+}
+.all-stories:hover { opacity: 1; }
+
+@media (max-width: 600px) {
+  .next-treks { padding-top: var(--sp-8); }
+  .next-trek-name { font-size: 1.25rem; }
+}
+
+
+/* ── STORY CARD THEMES ───────────────────────────────────────────────────
+   One colour mood per story card, shared by index.html, adventures.html and
+   the generated category pages. stories.json picks one per story ("theme").
+   Moved here from the pages' inline styles so they can't drift apart. */
+/* GREEN (Buranghati) */
+.theme-green { background: linear-gradient(145deg,#0e2218,#0c1b13); border-color: rgba(74,158,96,0.15); }
+.theme-green:hover { border-color: rgba(74,158,96,0.42); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(74,158,96,0.2); }
+.theme-green .placeholder { background: linear-gradient(145deg,#0e2218,#162d1e); }
+.theme-green .badge { background: rgba(74,158,96,0.18); color: #ffffff; border: 1px solid rgba(74,158,96,0.3); }
+.theme-green .cta-link { color: #6bbb82; }
+.theme-green .status-tag { background: rgba(74,158,96,0.1); color: #6bbb82; border: 1px solid rgba(74,158,96,0.2); }
+
+/* SNOW (Kedarkanta) */
+.theme-snow { background:  #466985; color: #ffffff; border-color: rgba(0,0,0,0.08); box-shadow: 0 2px 18px rgba(245, 244, 244, 0.06); }
+.theme-snow:hover { border-color: rgba(0,0,0,0.18); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.15), 0 0 38px -14px rgba(180,195,210,0.4); }
+.theme-snow .placeholder { background: linear-gradient(145deg,#e0e0da,#eaeae4); }
+.theme-snow .badge { background: rgba(42,42,38,0.07); color: #ffffff; border: 1px solid rgba(42,42,38,0.15); }
+.theme-snow .meta-item { color: #ffffff; opacity: 1; }
+.theme-snow .card-title { color: #ffffff; }
+.theme-snow .card-desc { color: #ffffff; opacity: 1; }
+.theme-snow .cta-link { color: #e1e1d8; }
+.theme-snow .status-tag { background: rgba(42,42,38,0.06); color: #e1e1d8; border: 1px solid rgba(42,42,38,0.12); }
+
+/* SKY (Kuari & Pangarchula) */
+.theme-sky { background: linear-gradient(145deg,#071626,#08121e); border-color: rgba(74,159,212,0.15); }
+.theme-sky:hover { border-color: rgba(74,159,212,0.42); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(74,159,212,0.2); }
+.theme-sky .placeholder { background: linear-gradient(145deg,#071626,#0e2035); }
+.theme-sky .badge { background: rgba(74,159,212,0.15); color: #ffffff; border: 1px solid rgba(74,159,212,0.28); }
+.theme-sky .cta-link { color: #5ab0e0; }
+.theme-sky .status-tag { background: rgba(74,159,212,0.1); color: #5ab0e0; border: 1px solid rgba(74,159,212,0.2); }
+
+/* Kuari Pass — burgundy + gold, dark blue base */
+.theme-kuari { background: linear-gradient(145deg,#0d0d1a,#1a0d12); border-color: rgba(162,38,70,0.18); }
+.theme-kuari:hover { border-color: rgba(196,145,50,0.45); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(162,38,70,0.22); }
+.theme-kuari .placeholder { background: linear-gradient(145deg,#0d0d1a,#1f0f18); }
+.theme-kuari .badge { background: rgba(196,145,50,0.12); color: #e8c97a; border: 1px solid rgba(196,145,50,0.28); }
+.theme-kuari .cta-link { color: #c8884a; }
+.theme-kuari .status-tag { background: rgba(162,38,70,0.1); color: #d4706a; border: 1px solid rgba(162,38,70,0.22); }
+
+/* EMBER (BMC) — matches BMC.html's --accent */
+.theme-ember { background: linear-gradient(145deg,#24110a,#1a0c07); border-color: rgba(201,75,30,0.18); }
+.theme-ember:hover { border-color: rgba(201,75,30,0.45); box-shadow: 0 22px 55px -10px rgba(0,0,0,0.65), 0 0 38px -14px rgba(201,75,30,0.25); }
+.theme-ember .placeholder { background: linear-gradient(145deg,#24110a,#2e160c); }
+.theme-ember .badge { background: rgba(201,75,30,0.2); color: #ffffff; border: 1px solid rgba(201,75,30,0.35); }
+.theme-ember .cta-link { color: #e06540; }
+.theme-ember .status-tag { background: rgba(201,75,30,0.1); color: #e06540; border: 1px solid rgba(201,75,30,0.22); }
+
+/* Broken cover image: the <img> onerror adds .img-failed and removes itself;
+   the placeholder is drawn from the card's data-emoji / data-fallback. */
+.card-img.img-failed { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.card-img.img-failed::before { content: attr(data-emoji); font-size: 2.5rem; }
+.card-img.img-failed::after { content: attr(data-fallback); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; color: #fff; }
+.theme-snow  .card-img.img-failed { background: linear-gradient(160deg,#466985 0%,#2a4a62 50%,#1a3045 100%); }
+.theme-green .card-img.img-failed { background: linear-gradient(160deg,#0e2218 0%,#1a3d25 50%,#0c1b13 100%); }
+.theme-sky   .card-img.img-failed { background: linear-gradient(160deg,#071626 0%,#0d2a42 50%,#08121e 100%); }
+.theme-kuari .card-img.img-failed { background: linear-gradient(160deg,#0d0d1a 0%,#1f1020 50%,#1a0d12 100%); }
+.theme-ember .card-img.img-failed { background: linear-gradient(160deg,#24110a 0%,#3a1a0e 50%,#1a0c07 100%); }
+
+/* "Browse everything" slot at the end of the homepage grid */
+a.card-all { text-decoration: none; color: inherit; transition: border-color 0.3s, background 0.3s, opacity 0.65s, transform 0.65s; }
+a.card-all:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+a.card-all .up-title { opacity: 0.75; }
+a.card-all .up-note { opacity: 0.5; }
+
+/* Optional link beside a sub title (stories.json: sub.link), e.g. the
+   Western Ghats trek guides. */
+.sub-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-bottom: 1.3rem; }
+.sub-head .sub-title { margin-bottom: 0; }
+.sub-link { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #6bbb82; transition: opacity 0.2s; }
+.sub-link:hover { opacity: 0.75; }
